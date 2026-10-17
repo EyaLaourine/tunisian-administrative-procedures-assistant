@@ -82,7 +82,18 @@ class TelegramBridge:
         logging.getLogger("httpx").setLevel(logging.CRITICAL)
         logging.getLogger("httpcore").setLevel(logging.CRITICAL)
 
-    def session(self, chat_id: int) -> dict:
+    @staticmethod
+    def session_key(message: dict, sender: dict | None = None):
+        """Private chats keep one session per chat. In groups every member gets an isolated session, so one
+        member's procedure, language or dialogue context never reaches another. Only Telegram's numeric
+        user id is used (no names or usernames); replies still go to the chat."""
+        chat = message["chat"]
+        if chat.get("type", "private") == "private":
+            return chat["id"]
+        user = (sender if sender is not None else message.get("from")) or {}
+        return (chat["id"], user.get("id"))
+
+    def session(self, chat_id) -> dict:
         with self._state_lock:
             now = time.monotonic()
             self.sessions = {key: value for key, value in self.sessions.items() if now - value["seen"] < 1800}
@@ -106,21 +117,22 @@ class TelegramBridge:
         if text.startswith("/") and command not in PROCEDURES:
             self.handle_message(message)
             return
+        skey = self.session_key(message)
         with self._state_lock:
-            if chat_id in self.inflight or len(self.inflight) >= 2:
-                lang = self.session(chat_id).get("language", "fr")
+            if skey in self.inflight or len(self.inflight) >= 2:
+                lang = self.session(skey).get("language", "fr")
                 self.safe_send(chat_id, BUSY[lang], navigation(lang))
                 return
             cancelled = threading.Event()
-            self.inflight[chat_id] = cancelled
+            self.inflight[skey] = cancelled
 
         def work():
             try:
                 self.handle_message(message, cancelled)
             finally:
                 with self._state_lock:
-                    if self.inflight.get(chat_id) is cancelled:
-                        self.inflight.pop(chat_id, None)
+                    if self.inflight.get(skey) is cancelled:
+                        self.inflight.pop(skey, None)
         # A blocked upstream call cannot prevent process shutdown. No uploads are stored on disk.
         threading.Thread(target=work, daemon=True).start()
 
@@ -228,7 +240,8 @@ class TelegramBridge:
         if self.stop.is_set() or (cancelled and cancelled.is_set()):
             return
         user_lang = TELEGRAM_LANGUAGES.get(((message.get("from") or {}).get("language_code") or "")[:2], "fr")
-        session = self.session(chat_id)
+        skey = self.session_key(message)
+        session = self.session(skey)
         user_lang = session.get("language", user_lang)
         command = (message.get("text") or "").split(" ", 1)[0].split("@")[0]
         if command.startswith("/"):
@@ -244,9 +257,9 @@ class TelegramBridge:
                 elif command == "form_check":
                     session.pop("upload_mode", None)
                 if command == "cancel":
-                    self.cancel_request(chat_id)
+                    self.cancel_request(skey)
                     with self._state_lock:
-                        self.sessions.pop(chat_id, None)
+                        self.sessions.pop(skey, None)
                 if key not in TEXT[user_lang]:
                     key = "help"
                 if command in {"procedures", "checklist"}:
@@ -318,11 +331,11 @@ class TelegramBridge:
             }:
                 with self._state_lock:
                     # A cancelled or expired interaction must not restore a cleared session.
-                    if self.sessions.get(chat_id) is session and not (cancelled and cancelled.is_set()):
+                    if self.sessions.get(skey) is session and not (cancelled and cancelled.is_set()):
                         session["procedure"] = category.replace("_", " ")
             if self.dialogue_enabled and result.context is not None and payload.get("text"):
                 with self._state_lock:
-                    if self.sessions.get(chat_id) is session and not (cancelled and cancelled.is_set()):
+                    if self.sessions.get(skey) is session and not (cancelled and cancelled.is_set()):
                         session["dialogue"] = result.context.model_dump(exclude_none=True)
             detected = result.language or result.route.get("language")
             if not session.get("language") and detected in TEXT:
@@ -394,7 +407,8 @@ class TelegramBridge:
                     continue
                 action, _, value = callback.get("data", "").partition(":")
                 chat_id = msg["chat"]["id"]
-                session = self.session(chat_id)
+                skey = self.session_key(msg, callback.get("from", {}))
+                session = self.session(skey)
                 lang = session.get("language", TELEGRAM_LANGUAGES.get(
                     (callback.get("from", {}).get("language_code") or "")[:2], "fr"))
                 if action == "language" and value in TEXT:
@@ -406,7 +420,7 @@ class TelegramBridge:
                     if value == "main":
                         self.safe_send(chat_id, TEXT[lang]["welcome"], main_keyboard(lang))
                     elif value == "new":
-                        self.cancel_request(chat_id)
+                        self.cancel_request(skey)
                         session.pop("procedure", None)
                         session.pop("checklist", None)
                         session.pop("upload_mode", None)

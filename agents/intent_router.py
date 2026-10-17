@@ -77,9 +77,11 @@ HINT_KEYWORDS: dict[str, list[str]] = {
         "étranger", "etranger", "abroad", "consulat", "consulate", "ambassade", "embassy",
         "بالخارج", "الخارج", "برّا", "برا", "barra", "kharej", "5arej",
     ],
-    "loss": ["perte", "perdu", r"\bvol\b", "volé", "lost", "stolen", "theft", "damaged", "détérioration", "deterioration", "الإتلاف", "تلف", "ضياع", "ضاع", "سرقة", "تسرق", "dha3", "tsre9"],
-    "renewal": ["renouvel", "renew", "تجديد", "جدد", "nejjedd", "jadded"],
-    "modification": ["changement", "modification", "modifier", "change", "تغيير", "بدّل", "nbaddel"],
+    "loss": ["perte", "perdu", r"\bvol\b", "volé", "lost", "stolen", "theft", "damaged", "détérioration", "deterioration", "الإتلاف", "تلف", "ضياع", "ضاع", "سرقة", "تسرق", "dha3", "tsre9",
+             # stems and spelling variants: détériorée, abîmée, سرقت, ضيّعت, dhaya3t
+             r"\bd[ée]t[ée]rior", r"\bab[îi]m[ée]", "damage", "سرق", "ضيع", "ضيّع", r"\bdh?ay+a3"],
+    "renewal": ["renouvel", "renew", "تجديد", "جدد", "nejjedd", "jadded", r"\bn?[jg]add?e?d", r"\bt[ae]?jdid"],
+    "modification": ["changement", "modification", "modifier", "change", "update my", "تغيير", "بدّل", "nbaddel", r"\bbaddel", "معطيات"],
     "first_time": ["première fois", "premiere fois", "first time", "أول مرة", "لأول مرة", "awel marra"],
     "pilgrimage": ["pèlerinage", "pelerinage", "pélerinage", "pilgrimage", "hajj", "الحج", "حج", "omra", "عمرة"],
 }
@@ -172,6 +174,11 @@ class IntentRouter:
         method, prompt_ref = "rules", None
 
         if category is None:
+            from agents.legal_evidence import CLARIFY, requested_article
+            if requested_article(req.text) is not None:
+                # An article number without the act it belongs to cannot be resolved: ask, never guess.
+                return RouteDecision(language=lang, intent="procedure_info", procedure_category="general",
+                                     hints=hints, next_agent="reply", reply=CLARIFY[lang], method="rules")
             greeting = _hits(text, GREETING_KEYWORDS) > 0
             if greeting and len(text.split()) <= 6:
                 category, intent = "none", "greeting"

@@ -42,9 +42,9 @@ LABELS = {
 }
 APPLICATIONS = {
  'first_time': r'premi[eè]re (?:demande|fois)|first (?:application|time)|awel marra|أول مرة|اول مرة|لأول مرة',
- 'renewal': r'renouvel|renew|تجديد|نجدد|nejjedd|jadded',
- 'loss': r'\b(?:perdue?|perte|vol[ée]e?|lost|stolen|theft|damaged|deterioration|détérioration|d[ée]t[ée]rior[ée]e?|ab[îi]m[ée]e?|dha3\w*|tsre9\w*)\b|ضياع|ضاع|سرق|إتلاف|تلف',
- 'modification': r'changement|modification|تغيير|nbaddel',
+ 'renewal': r'renouvel|renew|تجديد|نجدد|يجدد|nejjedd|jadded|\bn?[jg]add?e?d\w*|\bt[ae]?jdid',
+ 'loss': r'\b(?:perdue?|perte|vol[ée]e?|lost|stolen|theft|damaged|deterioration|détérioration|d[ée]t[ée]rior[ée]e?|ab[îi]m[ée]e?|dha3\w*|dh?ay+a3\w*|damage|tsre9\w*)\b|ضياع|ضاع|ضيع|ضيّع|سرق|إتلاف|تلف',
+ 'modification': r'changement|modification|modifier|تغيير|معطيات|n?baddel|update my|\bchang(?:e|ed|ing)\b.{0,30}\b(?:data|details|information|address|name)|\b(?:data|details|information|address|name)\b.{0,30}\bchang',
  'pilgrimage': r'pilgrimage|p[èe]lerinage|\bhajj\b|الحج',
 }
 POSSESSION = r"\b(?:j'ai|jai|je dispose|i have|i already have|already have|3andi|andi|got)\b|عندي|لدي|عندى"
@@ -269,6 +269,11 @@ def route_dialogue(router, req):
         state.rne_code = None
         state.legal_subject = None
     contextual = bool(re.search(r'^(et |and |what about|w |و|وماذا|وإذا)',text))
+    from agents.legal_evidence import requested_article
+    if requested_article(req.text) is not None and state.category == 'business_registration':
+        # "Que dit l'article 5 ?" refers to the act under discussion; without one, ask which act (below).
+        contextual = True
+        direct_intent = direct_intent or 'procedure_info'
     if not explicit and not direct_intent and not remaining and not facts and not contextual:
         return None
     intent = ('remaining_documents' if remaining else direct_intent or state.pending_intent or (state.last_intent if contextual or facts else None) or 'procedure_info')

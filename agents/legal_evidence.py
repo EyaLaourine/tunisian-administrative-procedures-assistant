@@ -3,6 +3,7 @@
 No legal rules or answer values are encoded here. Article bodies are read from the
 unchanged official extraction. A quotation is not a finding of legal applicability.
 """
+import math
 import re
 
 from agents import i18n
@@ -30,8 +31,43 @@ CLARIFY = {
     'ar': 'ما الإجراء أو الخدمة أو الحكم القانوني المقصود بالتحديد؟ صف الحالة دون معرفات شخصية؛ لا يمكنني افتراض انطباق هذا النص على حالتك.',
     'derja': 'على أي إجراء ولا خدمة ولا فصل بالضبط تحكي؟ فسّر الحالة من غير معطيات شخصية؛ ما نجمش نفترض النص هذا ينطبق على حالتك.',
 }
-ARTICLE = re.compile(r'(?:^|\s)(?:Art\.\s*(\d+)\s*[-–]|Article\s+(premier)\s*[-–]|الفص\s*ل\s*(الأو(?:\s*ل)?|الاول|\d+)\s*(?:[-–ـ]|(?=\S)))', re.I)
+ARTICLE = re.compile(r'(?:^|\s)(?:Art\.\s*(\d+)\s*[-–]|Article\s+(premier)\s*[-–]|ال\s*فص\s*ل\s*(الأو(?:\s*ل)?|الاول|\d+)\s*(?:[-–ـ]|(?=\S)))', re.I)
 HEADING = re.compile(r'^(?:Art\.\s*(\d+)|Article\s+(premier)|الفصل\s*(الأول|الاول|\d+))\s*$', re.I)
+# Penalties for the register are set by Law 2018-52; checked after the decree-law on the *remission* of
+# late penalties, so "remise des pénalités" keeps pointing to Decree-law 2022-18.
+REGISTER = r'RNE|registre|register|السجل الوطني|سجل المؤسسات'
+PENALTY = r'penalt|sanction|punish|\bfines?\b|amende|p[ée]nalit|emprisonn|prison|عقوب|يعاقب|خطية|السجن'
+LAW_THEMES = (rf'(?:{PENALTY}).{{0,80}}(?:{REGISTER})|(?:{REGISTER}).{{0,80}}(?:{PENALTY})'
+              r'|false declaration|fausse d[ée]claration|d[ée]claration (?:fausse|mensong[eè]re)|تصريح مخالف للحقيقة|بيان كاذب')
+# Cross-lingual search vocabulary for locating the relevant article of an act written in another language.
+# These are search terms only (no legal content): a concept found in the question adds the equivalent
+# wording used in the official texts to the article scoring.
+CONCEPTS = [
+    (PENALTY, ['يعاقب', 'بخطية', 'بالسجن', 'عقوبة', 'amende', 'emprisonnement']),
+    (r'false|fausse|faux|mensong|inexact|untrue|كاذب|مخالف للحقيقة', ['مخالف للحقيقة', 'كاذب', 'fausse']),
+    (r'd[ée]clar|statement|تصريح', ['تصريح', 'déclaration']),
+    (r'deadline|time limit|d[ée]lai|within|أجل|آجال|ظرف', ['أجل', 'آجال', 'ظرف', 'délai']),
+    (r'registration|register|immatricul|inscri|تسجيل|ترسيم', ['تسجيل', 'immatriculation']),
+    (r'trader|merchant|commer[çc]ant|تاجر', ['التاجر', 'commerçant']),
+    (r'presum|pr[ée]somption|قرينة', ['قرينة', 'présomption']),
+    (r'deregist|radiation|شطب', ['التشطيب', 'radiation']),
+    (r'access|acc[eè]s|consult|نفاذ|اطلاع', ['النفاذ', 'اطلاع', 'accès']),
+    (r'exchange|[ée]change|interop|تبادل|تشبيك', ['التبادل', 'تشبيك', 'interopérabilité']),
+    (r'payment|paiement|pay|recouvr|خلاص|استخلاص', ['paiement', 'recouvrées', 'خلاص']),
+    (r'reduc|r[ée]duit|discount|تخفيض', ['réduites', 'تخفيض']),
+    (r'refund|rembours|استرجاع', ['remboursé', 'remboursés', 'استرجاع']),
+    (r'tax|taxes|ttc|أداء', ['taxes', 'أداءات']),
+    (r'repeal|abrog|إلغاء', ['abrogées', 'تلغى']),
+    (r'beneficial owner|b[ée]n[ée]ficiaire effectif|المستفيد', ['المستفيد الحقيقي', 'bénéficiaire effectif']),
+    (r'confidential|confidenti|سرية', ['سرية', 'confidentialité']),
+]
+TABLE = re.compile(r'(?:tableau|table|جدول)\s*(?:n\s*°|no\.?|number|رقم|عدد)?\s*(\d+)', re.I)
+# Words that identify an act or a question form rather than the requested provision.
+GENERIC = set('''que quoi quel quelle quels quelles prévoit prevoit dit dire selon pour dans avec sont sur
+what which does say says provide provides according about under with from that this text official
+ماذا ينص يتعلق حسب الذي التي هذا هذه
+décret decret présidentiel presidentiel arrêté arrete loi décret-loi law decree order article articles
+rne registre entreprises national tunisie tunisian'''.split())
 
 
 def identify_subject(text):
@@ -44,7 +80,10 @@ def identify_subject(text):
                          (r'2019[- /]54|54.{0,12}2019', 'rne-decree-beneficial-owners')]:
         if re.search(pattern, text, re.I):
             return doc
-    return next((doc for doc, (pattern, _) in SUBJECTS.items() if re.search(pattern, text, re.I)), None)
+    thematic = next((doc for doc, (pattern, _) in SUBJECTS.items() if re.search(pattern, text, re.I)), None)
+    if thematic in {None, 'rne-law-2018-52-ar'} and re.search(LAW_THEMES, text, re.I):
+        return 'rne-law-2018-52-ar'
+    return thematic
 
 
 def subject_query(doc):
@@ -65,7 +104,11 @@ def articles(blocks):
             continue
         if current and re.match(r'^(?:MINISTERE |Par (?:arrêté|décret)|بمقتضى أمر|أمر حكومي عدد)', text):
             break
-        matches = [m for m in ARTICLE.finditer(text) if m.group(3) is None or text[:m.start()].strip() in {'', 'ل'}]
+        matches = [m for m in ARTICLE.finditer(text) if m.group(3) is None or text[:m.start()].strip() in {'', 'ل'}
+                   # A new Arabic article may also start mid-block after a full stop, but only as the next number
+                   # in sequence; this excludes cross-references such as "من الفصل27".
+                   or (current and text[:m.start()].rstrip().endswith(('.', ':', '؛'))
+                       and m.group(3).isdigit() and int(m.group(3)) == current['number'] + 1)]
         if matches:
             for pos, match in enumerate(matches):
                 number = _number(match)
@@ -78,6 +121,10 @@ def articles(blocks):
                 if not started:
                     continue
                 if current:
+                    # Text before a mid-block article start ends the previous article.
+                    head = text[:match.start()].strip() if pos == 0 else ''
+                    if head not in {'', 'ل'}:
+                        current['parts'].append(head)
                     result.append(current)
                 stop = matches[pos + 1].start() if pos + 1 < len(matches) else len(text)
                 current = {'number': number, 'page': block.get('page'), 'parts': [text[match.start():stop].strip()]}
@@ -90,6 +137,54 @@ def articles(blocks):
     if current:
         result.append(current)
     return result
+
+
+def requested_article(text):
+    """Explicit article number in the question ("article 5", "art. 5", "الفصل 5"), else None."""
+    match = re.search(r'(?:\barticle|\bart\.?|الفصل)\s*(\d+)\b', text, re.I)
+    return int(match[1]) if match else None
+
+
+def table_section(sections, number):
+    """The printed table n°N, cut from the article that contains it (tables are not articles)."""
+    for section in sections:
+        body = '\n'.join(section['parts'])
+        start = re.search(rf'Tableau\s*n\s*°\s*{number}\b', body, re.I)
+        if start:
+            nxt = re.search(r'Tableau\s*n\s*°\s*\d+', body[start.end():], re.I)
+            end = start.end() + nxt.start() if nxt else len(body)
+            return [{**section, 'parts': [body[start.start():end].strip()], 'table': number}]
+    return []
+
+
+def rank_sections(query, sections, subject, passages=()):
+    """Select up to three articles by IDF-weighted evidence for the informative words of the question.
+
+    Words naming the act itself (number, type, title) are ignored: they occur in signatures and repeal
+    clauses and previously pulled those articles to the top. A question with no informative word left
+    ("what does decree X provide?") receives the act's first, main provision.
+    """
+    texts = [norm(' '.join(s['parts'])) for s in sections]
+    title = norm(subject_query(subject))
+    words = {w for w in re.findall(r'\w+', norm(query)) if len(w) > 3 and not w.isdigit()
+             and w not in GENERIC and w not in title}
+    for pattern, expansion in CONCEPTS:
+        if re.search(pattern, query, re.I):
+            words |= {norm(e) for e in expansion}
+    n = len(sections)
+    idf = {w: math.log((n + 1) / (1 + sum(w in t for t in texts))) for w in words}
+    scores = []
+    for s, text in zip(sections, texts):
+        score = sum(idf[w] for w in words if w in text)
+        # Retrieved passages of the same act corroborate an article (cross-language questions).
+        score += sum(0.5 for p in passages if p.citation.doc_id == subject
+                     and any(norm(part) in norm(p.text) for part in s['parts'] if len(part) > 45))
+        scores.append(score)
+    best = max(scores, default=0)
+    if best <= 0:
+        return [s for s in sections if s['number'] == 1][:1] or sections[:1]
+    ranked = sorted(zip(scores, range(n)), key=lambda x: (-x[0], x[1]))
+    return [sections[i] for sc, i in ranked[:3] if sc >= 0.5 * best]
 
 
 def legal_reply(req, corpus):
@@ -110,22 +205,17 @@ def legal_reply(req, corpus):
     sections = articles(blocks)
     if not sections:
         return AnswerResult(text=i18n.t('insufficient_evidence', req.route.language), found=False, method='none')
-    requested = re.search(r'(?:article|art\.?|الفصل)\s*(\d+)\b', req.query, re.I)
-    if requested:
-        selected = [s for s in sections if s['number'] == int(requested[1])]
+    requested = requested_article(req.query)
+    table = TABLE.search(req.query)
+    if requested is not None:
+        selected = [s for s in sections if s['number'] == requested]
+    elif table:
+        selected = table_section(sections, int(table[1]))
     elif subject in {'rne-arrete-2026-35', 'rne-decree-beneficial-owners', 'rne-decree-name-reservation', 'rne-decree-law-2022-18-fr'}:
         # Short texts: retain all substantive provisions, including list qualifications.
         selected = sections
     else:
-        terms = {w for w in re.findall(r'\w+', norm(req.query)) if len(w) > 3}
-        def score(s):
-            text = norm(' '.join(s['parts']))
-            overlap = sum(w in text for w in terms)
-            # Retrieved body overlap resolves cross-language queries without generating law.
-            overlap += sum(5 for p in req.passages if p.citation.doc_id == subject
-                           and any(norm(part) in norm(p.text) for part in s['parts'] if len(part) > 45))
-            return overlap
-        selected = sorted(sections, key=score, reverse=True)[:3]
+        selected = rank_sections(req.query, sections, subject, req.passages)
     if not selected:
         return AnswerResult(text=i18n.t('insufficient_evidence', req.route.language), found=False, method='none')
     from agents.checklist_builder import sources_footer
@@ -134,6 +224,7 @@ def legal_reply(req, corpus):
         return None
     lines = [NOTICE[req.route.language]]
     for section in selected:
-        lines += ['', f"[1] § {section['number']} (p. {section['page']})", '\n'.join(section['parts'])]
+        label = f"§ {section['number']}" + (f" — Tableau n°{section['table']}" if section.get('table') else '')
+        lines += ['', f"[1] {label} (p. {section['page']})", '\n'.join(section['parts'])]
     return AnswerResult(text='\n'.join(lines + sources_footer(req.route.language, [citation])), found=True,
                         method='passages_fallback', citations=[citation], verification={'legal': {'method': 'unabridged_source_articles', 'articles': [s['number'] for s in selected], 'semantic_conclusion_verified': False}})
