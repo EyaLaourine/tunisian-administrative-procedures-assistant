@@ -388,11 +388,11 @@ onts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Eya Laourine/AppData/Local/Programs/M
 iKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] (figures/rag_pipeline.tex) [2{C:/Users/Ey
 a Laourine/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/U
 sers/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
-(figures/agents.tex) [3] (tables/retrieval.tex) (tables/chunks.tex)
-Overfull \hbox (3.0064pt too wide) in paragraph at lines 1--276
+(figures/agents.tex) [3] (tables/retrieval.tex) [4] (tables/chunks.tex)
+Overfull \hbox (3.0064pt too wide) in paragraph at lines 1--294
  [][] 
-(tables/script_chart.tex) (tables/prompts.tex) [4] (tables/heldout.tex)
-(tables/verification.tex) (tables/final_regression.tex) [5] (main.bbl [6])
+(tables/script_chart.tex) (tables/prompts.tex) (tables/heldout.tex)
+(tables/verification.tex) [5] (tables/final_regression.tex) (main.bbl [6])
 [7] (appendices/prompt_library.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 \T1/lmr/m/n/10 (+20) This an-nex re-pro-duces ev-ery prompt tem-plate of the im
@@ -462,6 +462,6 @@ fonts/type1/public/lm/lmsy9.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Eya Laourine/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Eya Laourine/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb>
-Output written on main.pdf (14 pages, 626174 bytes).
+Output written on main.pdf (14 pages, 627029 bytes).
 Transcript written on main.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.

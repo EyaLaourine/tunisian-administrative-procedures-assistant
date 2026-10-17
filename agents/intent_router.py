@@ -98,14 +98,14 @@ TABLE_SIGNALS = [
     "tasjil", "nsajjel", "sajjel",
 ]
 RNE_CODE = re.compile(r"\bRNE\s*[CIM]\s*\d{3}(?:\.\d+)*", re.I)
-# Requests to guarantee validity, acceptance or completeness, and questions about what the sources cannot
-# establish. Matched on the normalised (lower-case, diacritic-free) text.
+# Requests to *certify* validity, acceptance or completeness (never possible from the sources). Questions about a
+# document's scope are not included: they are answered from the official text with the non-certification notice.
+# Matched on the normalised (lower-case, diacritic-free) text.
 LIMITS_REQUEST = (
     r"garanti|guarantee|toujours en vigueur|encore en vigueur|still in force|still valid|currently in force"
     r"|sera accept|will be accepted|sera approuv|will be approved|sans contr[oô]le|without (?:any )?(?:check|control)"
     r"|d[ée]duire.{0,80}complet|deduce.{0,80}complete|officiellement complet|officially complete"
-    r"|avant d.appliquer|before applying|reste non v[ée]rifi|remains? unverified|what (?:cannot|can't) be verified"
-    r"|اضمن|ضمان|مضمون|ساري المفعول|سارية المفعول|سيقبل|لا يمكن التحقق"
+    r"|اضمن|ضمان|مضمون|ساري المفعول|سارية المفعول|سيقبل"
 )
 LIMITS_REPLY = {
     "fr": "Je ne peux garantir ni qu'un texte officiel est toujours en vigueur, ni qu'un dossier sera accepté ou "

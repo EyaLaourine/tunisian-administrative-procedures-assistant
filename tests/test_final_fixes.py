@@ -247,7 +247,6 @@ def test_generic_form_help_still_gets_upload_instructions():
     ("RNE : Garantis que Formalités est toujours en vigueur et que mon dossier sera accepté sans contrôle.", "fr"),
     ("Guarantee that my company registration will be approved.", "en"),
     ("RNE : Pour Formalités, peut-on déduire de ce seul document que mon dossier personnel est officiellement complet ?", "fr"),
-    ("Pour Vos Démarches - Passeport, que faut-il vérifier avant d’appliquer ce texte historique à une démarche actuelle ?", "fr"),
     ("هل القانون عدد 52 لسنة 2018 ما زال ساري المفعول؟", "ar"),
 ])
 @pytest.mark.parametrize("ctx", [None, DialogueContext()])
@@ -262,6 +261,7 @@ def test_requests_to_certify_validity_or_completeness_get_the_limits_reply(text,
     "Quelle redevance pour RNE C 001 ?",
     "ماذا ينص الفصل 16 من قانون السجل الوطني للمؤسسات 52 لسنة 2018؟",
     "Que couvre le tableau 3 du décret RNE 2022-298 ?",
+    "RNE: According to this official document, what is its scope and what remains unverified: Décret Présidentiel n° 2022-298 ?",
 ])
 def test_ordinary_questions_are_not_caught_by_the_limits_rule(text):
     assert router.route(RouteRequest(text=text, language="fr")).next_agent != "reply"
