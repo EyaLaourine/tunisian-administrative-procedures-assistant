@@ -1,0 +1,511 @@
+[
+ {
+  "id": "TnaaAssistant01",
+  "name": "03 - Assistant: multi-agent orchestration (Telegram / HTTP entry point)",
+  "active": false,
+  "settings": {
+   "executionOrder": "v1",
+   "saveDataSuccessExecution": "none",
+   "saveDataErrorExecution": "none",
+   "saveManualExecutions": false
+  },
+  "nodes": [
+   {
+    "id": "c3a0c1d2-0001-4c1a-9a01-000000000001",
+    "name": "POST /webhook/assistant",
+    "type": "n8n-nodes-base.webhook",
+    "typeVersion": 2,
+    "position": [
+     0,
+     200
+    ],
+    "webhookId": "8f2b6c1e-3d4a-4b5c-9e01-2a3b4c5d6e01",
+    "parameters": {
+     "httpMethod": "POST",
+     "path": "assistant",
+     "responseMode": "responseNode",
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0002-4c1a-9a01-000000000002",
+    "name": "File attached?",
+    "type": "n8n-nodes-base.if",
+    "typeVersion": 2.2,
+    "position": [
+     220,
+     200
+    ],
+    "parameters": {
+     "conditions": {
+      "options": {
+       "caseSensitive": true,
+       "leftValue": "",
+       "typeValidation": "strict",
+       "version": 2
+      },
+      "conditions": [
+       {
+        "id": "d1e2f3a4-0001-4000-8000-000000000001",
+        "leftValue": "={{ $json.body.file ? 'yes' : 'no' }}",
+        "rightValue": "yes",
+        "operator": {
+         "type": "string",
+         "operation": "equals"
+        }
+       }
+      ],
+      "combinator": "and"
+     },
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0003-4c1a-9a01-000000000003",
+    "name": "Form-Filling Helper",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     680,
+     -60
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "http://final-candidate:8000/agents/form-check",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ filename: $json.body.file.filename || 'upload', mime_type: $json.body.file.mime_type, data_b64: $json.body.file.data_b64, caption: $json.body.caption || null, language: $json.body.language || null }) }}",
+     "options": {
+      "timeout": 300000
+     }
+    }
+   },
+   {
+    "id": "c3a0c1d2-0004-4c1a-9a01-000000000004",
+    "name": "Intent Router",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     460,
+     300
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "http://final-candidate:8000/agents/route",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ text: $json.body.text, language: $json.body.language || null, context: $json.body.context || null }) }}",
+     "options": {
+      "timeout": 180000
+     }
+    }
+   },
+   {
+    "id": "c3a0c1d2-0005-4c1a-9a01-000000000005",
+    "name": "Direct reply?",
+    "type": "n8n-nodes-base.if",
+    "typeVersion": 2.2,
+    "position": [
+     680,
+     300
+    ],
+    "parameters": {
+     "conditions": {
+      "options": {
+       "caseSensitive": true,
+       "leftValue": "",
+       "typeValidation": "strict",
+       "version": 2
+      },
+      "conditions": [
+       {
+        "id": "d1e2f3a4-0002-4000-8000-000000000002",
+        "leftValue": "={{ $json.next_agent }}",
+        "rightValue": "reply",
+        "operator": {
+         "type": "string",
+         "operation": "equals"
+        }
+       }
+      ],
+      "combinator": "and"
+     },
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0006-4c1a-9a01-000000000006",
+    "name": "RAG Retriever",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     900,
+     400
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "http://final-candidate:8000/agents/retrieve",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ query: $('POST /webhook/assistant').item.json.body.text, route: $json, top_k: 8 }) }}",
+     "options": {
+      "timeout": 180000
+     }
+    }
+   },
+   {
+    "id": "c3a0c1d2-0007-4c1a-9a01-000000000007",
+    "name": "Checklist route?",
+    "type": "n8n-nodes-base.if",
+    "typeVersion": 2.2,
+    "position": [
+     1120,
+     400
+    ],
+    "parameters": {
+     "conditions": {
+      "options": {
+       "caseSensitive": true,
+       "leftValue": "",
+       "typeValidation": "strict",
+       "version": 2
+      },
+      "conditions": [
+       {
+        "id": "d1e2f3a4-0003-4000-8000-000000000003",
+        "leftValue": "={{ $('Intent Router').item.json.next_agent }}",
+        "rightValue": "checklist",
+        "operator": {
+         "type": "string",
+         "operation": "equals"
+        }
+       }
+      ],
+      "combinator": "and"
+     },
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0008-4c1a-9a01-000000000008",
+    "name": "Checklist Builder",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     1340,
+     300
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "http://final-candidate:8000/agents/checklist",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ query: $('POST /webhook/assistant').item.json.body.text, route: $('Intent Router').item.json, passages: $json.passages }) }}",
+     "options": {
+      "timeout": 600000
+     }
+    }
+   },
+   {
+    "id": "c3a0c1d2-0009-4c1a-9a01-000000000009",
+    "name": "Grounded Answer",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     1340,
+     500
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "http://final-candidate:8000/agents/answer",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ query: $('POST /webhook/assistant').item.json.body.text, route: $('Intent Router').item.json, passages: $json.passages }) }}",
+     "options": {
+      "timeout": 600000
+     }
+    }
+   },
+   {
+    "id": "c3a0c1d2-0010-4c1a-9a01-000000000010",
+    "name": "Respond: form check",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     920,
+     -60
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'form_helper', recognised: $json.recognised, form_doc_id: $json.form_doc_id, missing: $json.missing, error: $json.error, form_url: $json.form_url, language: $('POST /webhook/assistant').item.json.body.language || null }) }}",
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0011-4c1a-9a01-000000000011",
+    "name": "Respond: direct reply",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     900,
+     200
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ JSON.stringify({ text: $json.reply, agent: 'intent_router', route: $json, context: $json.context || null }) }}",
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0012-4c1a-9a01-000000000012",
+    "name": "Respond: checklist",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     1560,
+     300
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'checklist_builder', route: $('Intent Router').item.json, context: $('Intent Router').item.json.context || null, found: $json.found, doc_id: $json.doc_id, warnings: $json.warnings, translation: $json.translation, citations: $json.citations }) }}",
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0013-4c1a-9a01-000000000013",
+    "name": "Respond: answer",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     1560,
+     500
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'grounded_answer', route: $('Intent Router').item.json, context: $('Intent Router').item.json.context || null, found: $json.found, method: $json.method, prompt_ref: $json.prompt_ref, citations: $json.citations }) }}",
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0014-4c1a-9a01-000000000014",
+    "name": "Dossier mode?",
+    "type": "n8n-nodes-base.if",
+    "typeVersion": 2.2,
+    "position": [
+     460,
+     0
+    ],
+    "parameters": {
+     "conditions": {
+      "options": {
+       "caseSensitive": true,
+       "leftValue": "",
+       "typeValidation": "strict",
+       "version": 2
+      },
+      "conditions": [
+       {
+        "id": "d1e2f3a4-0004-4000-8000-000000000004",
+        "leftValue": "={{ ($json.body.mode || '') === 'dossier' ? 'yes' : 'no' }}",
+        "rightValue": "yes",
+        "operator": {
+         "type": "string",
+         "operation": "equals"
+        }
+       }
+      ],
+      "combinator": "and"
+     },
+     "options": {}
+    }
+   },
+   {
+    "id": "c3a0c1d2-0015-4c1a-9a01-000000000015",
+    "name": "Dossier Validator",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     680,
+     -220
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "http://final-candidate:8000/agents/dossier-check",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ filename: $json.body.file.filename || 'upload', mime_type: $json.body.file.mime_type, data_b64: $json.body.file.data_b64, caption: $json.body.caption || null, language: $json.body.language || null }) }}",
+     "options": {
+      "timeout": 300000
+     }
+    }
+   },
+   {
+    "id": "c3a0c1d2-0016-4c1a-9a01-000000000016",
+    "name": "Respond: dossier check",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     920,
+     -220
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'dossier_validator', recognised: $json.recognized, form_doc_id: $json.form_type ? $json.form_type.doc_id : null, form_url: $json.form_type ? $json.form_type.url : null, missing: $json.missing_fields, error: $json.error, language: $('POST /webhook/assistant').item.json.body.language || null, citations: $json.source_references, report: { form_fields: { filled: $json.filled_fields, missing: $json.missing_fields, unreadable: $json.unreadable_fields, cannot_verify: $json.unverifiable_fields, details: $json.recognized_fields }, dossier: { official_checklist_available: $json.official_checklist_available, official_requirements: $json.official_requirements, requirements_not_verified: $json.requirements_not_verified, completeness_certified: false }, readiness_summary: $json.readiness_summary, limitations: $json.limitations } }) }}",
+     "options": {}
+    }
+   }
+  ],
+  "connections": {
+   "POST /webhook/assistant": {
+    "main": [
+     [
+      {
+       "node": "File attached?",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "File attached?": {
+    "main": [
+     [
+      {
+       "node": "Dossier mode?",
+       "type": "main",
+       "index": 0
+      }
+     ],
+     [
+      {
+       "node": "Intent Router",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Form-Filling Helper": {
+    "main": [
+     [
+      {
+       "node": "Respond: form check",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Intent Router": {
+    "main": [
+     [
+      {
+       "node": "Direct reply?",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Direct reply?": {
+    "main": [
+     [
+      {
+       "node": "Respond: direct reply",
+       "type": "main",
+       "index": 0
+      }
+     ],
+     [
+      {
+       "node": "RAG Retriever",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "RAG Retriever": {
+    "main": [
+     [
+      {
+       "node": "Checklist route?",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Checklist route?": {
+    "main": [
+     [
+      {
+       "node": "Checklist Builder",
+       "type": "main",
+       "index": 0
+      }
+     ],
+     [
+      {
+       "node": "Grounded Answer",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Checklist Builder": {
+    "main": [
+     [
+      {
+       "node": "Respond: checklist",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Grounded Answer": {
+    "main": [
+     [
+      {
+       "node": "Respond: answer",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Dossier mode?": {
+    "main": [
+     [
+      {
+       "node": "Dossier Validator",
+       "type": "main",
+       "index": 0
+      }
+     ],
+     [
+      {
+       "node": "Form-Filling Helper",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Dossier Validator": {
+    "main": [
+     [
+      {
+       "node": "Respond: dossier check",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   }
+  },
+  "pinData": {}
+ }
+]

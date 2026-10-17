@@ -6,7 +6,7 @@
   arr/.style={-{Latex[length=2mm]}, thick, draw=gray!70!black}]
   % clients
   \node[ext, minimum width=20mm] (tg) at (0,1.6) {Telegram user};
-  \node[ext, minimum width=20mm] (http) at (0,0) {HTTP client\\{\scriptsize demo / tests}};
+  \node[ext, minimum width=20mm] (http) at (0,0) {HTTP client\\{\scriptsize web fallback, CLI}};
   % compose services
   \node[box, minimum width=24mm] (bridge) at (3.4,1.6) {telegram-bridge\\{\scriptsize long polling}};
   \node[box, minimum width=27mm, minimum height=14mm] (n8n) at (7.0,0.8) {\textbf{n8n} workflow 03\\{\scriptsize orchestrator}\\{\scriptsize POST /webhook/assistant}};
@@ -16,7 +16,7 @@
     {\scriptsize /agents/retrieve \hfill RAG Retriever}\\
     {\scriptsize /agents/checklist \hfill Checklist Builder}\\
     {\scriptsize /agents/answer \hfill Grounded Answer}\\
-    {\scriptsize \quad + answerability gate, evidence verifier}\\
+    {\scriptsize \quad + legal extractor, gate, verifiers}\\
     {\scriptsize /agents/form-check \hfill Form-Filling Helper}\\
     {\scriptsize /agents/dossier-check \hfill Dossier Validator$^\ast$}};
   \node[store, minimum width=26mm] (qd) at (16.9,1.8) {Qdrant\\{\scriptsize 2 collections}};

@@ -174,3 +174,50 @@ It never builds a list with an LLM.
 **How are uploads protected in the validator?**
 Same path as the Form-Filling Helper: in memory only. It reports field statuses, never field values; logs
 contain counts only (tested); nothing is indexed.
+
+## Final candidate (2026-10-17): likely defence questions
+
+**Is this really a multi-agent system?**
+It is an *orchestrated* multi-agent architecture, not an autonomous one. n8n owns the control flow and calls
+six specialised agents with typed contracts:
+- **Generate text with an LLM:** two agents (grounded answer; FR→EN checklist translation).
+- **Uses an LLM only as a fallback classifier:** the router.
+- **Deterministic:** retriever, form helper and dossier validator.
+
+No agent plans or negotiates. That is a deliberate choice: in an administrative and legal domain the control
+flow must be predictable and auditable. See `docs/MULTI_AGENT_ARCHITECTURE_ASSESSMENT.md`.
+
+**Why not let the LLM answer legal questions?**
+Measured, not assumed:
+- The generic LLM path contained the official legal passage in 1 of 30 legal questions.
+- It fabricated an "Article 16" provision behind a valid citation.
+- Prompt versions v2 and v3 did not fix paraphrasing.
+
+The legal path now locates the requested article or table and quotes it verbatim, or refuses if the article
+does not exist.
+
+**Your citations were 100 % valid: why was that not enough?**
+A citation proves that the document exists, not that the answer says what the document says. The
+end-to-end audit found empty RNE answers and a fabricated provision while every citation was valid. Since
+then, targeted checks look for the official fact itself in the answer body.
+
+**What does 480/480 mean?**
+Every targeted official fact (380 RNE rows with and without dialogue context, 72 guide scenarios, 16 guide
+fees, 12 CIN/passport profiles) appears verbatim in the answer. It is **not** an overall accuracy figure:
+other question types (free legal questions, form-instruction questions) are evaluated separately, and some
+still fail.
+
+**Can two Telegram users see each other's context?**
+- **Private chats:** no, one session per chat.
+- **Groups:** since the final candidate, one session per (chat, member). Only the numeric user id is used.
+- **Lifetime:** sessions expire after 30 minutes and are cleared by `/cancel`.
+
+**What happens if an agent fails?**
+Each n8n agent node has an error output that returns a structured 503 naming the failed agent. The bridge
+retries, then shows a localised error. An LLM failure in the answer agent falls back to quoting passages.
+
+**What is still not done?**
+- Real-handwriting evaluation.
+- Human review of the evaluation labels.
+- Production deployment of the corrected candidate and a real Telegram acceptance test of it.
+- Authentication of the local API (documented, opt-in key implemented).

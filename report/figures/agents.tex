@@ -1,4 +1,4 @@
-% Figure 3: n8n workflow 03 as deployed (workflows/03_assistant_multi_agent.json, 16 nodes) and the agents it calls.
+% Figure: n8n workflow 03 of the final candidate (workflows/03_assistant_multi_agent.json, 17 nodes) and the agents it calls.
 \begin{tikzpicture}[font=\scriptsize,
   n/.style={draw=accent, rounded corners=2pt, fill=accent!6, align=center, minimum height=7mm, inner sep=2pt, text width=19mm},
   b/.style={n, draw=orange!70!black, fill=orange!8},
@@ -14,12 +14,12 @@
   \node[r] (o0) at (10.6,2.3) {Respond\\{\tiny readiness report}};
   \node[r] (o1) at (10.6,0.8) {Respond};
   % question branch
-  \node[n] (route) at (5.0,-1.3) {Intent Router\\{\tiny rules + LLM fallback}};
+  \node[n] (route) at (5.0,-1.3) {Intent Router\\{\tiny rules, dialogue state,}\\{\tiny LLM fallback}};
   \node[d] (rep) at (7.3,-1.3) {reply?};
-  \node[n] (ret) at (9.6,-1.3) {RAG Retriever\\{\tiny hybrid RRF}};
+  \node[n] (ret) at (9.6,-1.3) {RAG Retriever\\{\tiny hybrid RRF,}\\{\tiny exact RNE code}};
   \node[d] (chk) at (12.0,-1.3) {checklist?};
-  \node[n] (cb) at (14.6,-0.5) {Checklist Builder\\{\tiny deterministic}};
-  \node[n] (ga) at (14.6,-2.1) {Grounded Answer\\{\tiny LLM + verifier}};
+  \node[n] (cb) at (14.6,-0.5) {Checklist Builder\\{\tiny verbatim sections,}\\{\tiny FR$\to$EN check}};
+  \node[n] (ga) at (14.6,-2.3) {Grounded Answer\\{\tiny legal extractor $|$}\\{\tiny gate, LLM, verifier}};
   \node[r] (o2) at (7.3,-2.6) {Respond\\{\tiny greeting / refusal}};
   \node[r] (o3) at (16.9,-0.5) {Respond};
   \node[r] (o4) at (16.9,-2.1) {Respond};
@@ -36,4 +36,10 @@
   \draw[arr] (chk) |- node[pos=0.25, left]{yes} (cb);
   \draw[arr] (chk) |- node[pos=0.25, left]{no} (ga);
   \draw[arr] (cb) -- (o3); \draw[arr] (ga) -- (o4);
+  % error outputs of the six agent nodes (n8n onError = continueErrorOutput)
+  \node[r, draw=red!60!black, fill=red!5, text width=24mm] (err) at (11.2,-3.5) {Respond 503\\{\tiny structured agent error}};
+  \draw[arr, dashed, draw=red!60!black] (route.south) |- (err.west);
+  \draw[arr, dashed, draw=red!60!black] (ret.south) -- (ret.south |- err.north);
+  \draw[arr, dashed, draw=red!60!black] (ga.south) |- (err.east);
+  \node[font=\tiny, text=red!60!black, below=0.5mm of err] {error output of every agent node};
 \end{tikzpicture}

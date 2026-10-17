@@ -1,0 +1,17 @@
+% PROVISIONAL layout check -- replaced by final-candidate numbers (scripts output) before delivery.
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Check (original audit cases, end-to-end through n8n) & Original production & Final candidate \\
+\midrule
+RNE fee/deadline with Telegram-style context: exact row and value & 0/190 & 190/190 \\
+RNE fee/deadline without context: exact row first, value present & 179/190 & 190/190 \\
+Guide scenarios: all required official spans in the answer & 68/72 & 72/72 \\
+All targeted official facts (RNE, guides, fees, CIN/passport profiles) & 281/480 & 480/480 \\
+Legal questions: official passage contained in the answer & 1/30 & 23/25 \\
+Fabricated legal provision (Art.~16) & yes & no (verbatim) \\
+Official uploads (F-001/F-002, PDF/PNG, form/dossier) recognised & 8/8 & 8/8 \\
+Corrupt/unsupported uploads handled safely & 6/6 & 6/6 \\
+Citation URLs in the official manifest & 1710/1710 & 1614/1614 \\
+Unit / integration tests & -- & 859 / 40 \\
+\bottomrule
+\end{tabular}

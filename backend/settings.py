@@ -59,6 +59,10 @@ class Settings(BaseSettings):
     # false refusals (docs/EVALUATION.md section 7). Kept for experiments: EVIDENCE_TOPIC_CHECK=true.
     evidence_topic_check: bool = False
 
+    # Optional shared secret for the state-changing endpoints (/ingestion/run, /index/run). When set, callers
+    # must send it in the X-Admin-Key header; when unset, behaviour is unchanged (localhost-only binding).
+    admin_api_key: str | None = Field(default=None, repr=False)
+
     # --- Telegram bridge (long polling; the token is only read from the environment / .env) ---
     telegram_bot_token: str | None = Field(default=None, repr=False)
     assistant_webhook_url: str = "http://localhost:5678/webhook/assistant"

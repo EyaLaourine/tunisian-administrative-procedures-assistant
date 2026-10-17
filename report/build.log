@@ -1,0 +1,467 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo)
+)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.st
+y)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.
+sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.s
+ty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.st
+y))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.cfg))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbo
+x.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype-pdftex.def)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.cfg))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+x.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+s.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.st
+y)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\gra
+phics.cfg)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdf
+tex.def)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktab
+s.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.s
+ty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.st
+y
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\col
+or.cfg)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcol
+or.ltx))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.
+sty
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.
+sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.s
+ty))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.s
+ty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.s
+ty))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.
+sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3
+.sty))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty)
+
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumite
+m.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/fvextra\fvextra.
+sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvr
+b.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.
+sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.st
+y))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.st
+y
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvopti
+ons.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmd
+s.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetk
+eys.sty))))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlaye
+r\tikz.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\p
+gf.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pg
+frcs.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\
+pgfutil-common.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\
+pgfutil-latex.def)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\
+pgfrcs.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revisi
+on.tex)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\p
+gfcore.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\
+pgfsys.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlaye
+r\pgfsys.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\
+pgfkeys.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\
+pgfkeyslibraryfiltered.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlaye
+r\pgf.cfg)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlaye
+r\pgfsys-pdftex.def
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlaye
+r\pgfsys-common-pdf.def)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlaye
+r\pgfsyssoftpath.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlaye
+r\pgfsysprotocol.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcore.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+th.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thutil.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thparser.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.basic.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.trigonometric.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.random.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.comparison.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.base.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.round.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.misc.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfunctions.integerarithmetics.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thcalc.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+thfloat.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfin
+t.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorepoints.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorepathconstruct.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorepathusage.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorescopes.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcoregraphicstate.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcoretransformations.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorequick.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcoreobjects.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorepathprocessing.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorearrows.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcoreshade.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcoreimage.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcoreexternal.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorelayers.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcoretransparency.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorepatterns.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer
+\pgfcorerdf.code.tex)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pg
+fmoduleshapes.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pg
+fmoduleplot.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibilit
+y\pgfcomp-version-0-65.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibilit
+y\pgfcomp-version-1-18.sty))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pg
+ffor.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pg
+fkeys.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\
+pgfkeys.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath
+.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfma
+th.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\
+pgffor.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz\tikz.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\
+pgflibraryplothandlers.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pg
+fmodulematrix.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibrarytopaths.code.tex)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\
+pgflibraryarrows.meta.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibrarypositioning.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibraryfit.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibrarybackgrounds.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibrarycalc.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/
+shapes\pgflibraryshapes.geometric.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplot
+s.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+ots.revision.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+ots.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+otscore.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\p
+gfplotssysgeneric.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\
+pgfplotslibrary.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpg
+fcompatib\pgfplotsoldpgfsupp_loader.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\
+pgflibraryfpu.code.tex)
+Package pgfplots: loading complementary utilities for your pgf version...
+
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpg
+fcompatib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\
+pgfplotsutil.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/lists
+tructure\pgfplotsliststructure.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/lists
+tructure\pgfplotsliststructureext.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/lists
+tructure\pgfplotsarray.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/lists
+tructure\pgfplotsmatrix.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/numta
+ble\pgfplotstableshared.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/lists
+tructure\pgfplotsdeque.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\
+pgfplotsbinary.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\
+pgfplotsbinary.data.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\
+pgfplotsutil.verb.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\
+pgflibrarypgfplots.surfshading.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\p
+gflibrarypgfplots.surfshading.pgfsys-pdftex.def)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\
+pgfplotscolormap.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\
+pgfplotscolor.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+otsstackedplots.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+otsplothandlers.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+otsmeshplothandler.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+otsmeshplotimage.code.tex)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+ots.scaling.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+otscoordprocessing.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+ots.errorbars.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+ots.markers.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+otsticks.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfpl
+ots.paths.code.tex)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibrarydecorations.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pg
+fmoduledecorations.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/
+decorations\pgflibrarydecorations.pathmorphing.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/
+decorations\pgflibrarydecorations.pathreplacing.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\
+tikzlibrarypgfplots.contourlua.code.tex))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendla
+yer/tikz/libraries\tikzlibraryplotmarks.code.tex
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\
+pgflibraryplotmarks.code.tex)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperre
+f.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\k
+vdefinekeys.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfe
+scape.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdf
+texcmds.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infw
+arerr.sty)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.
+sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref
+.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcoun
+t.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring
+\gettitlestring.sty))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stri
+ngenc.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.
+def)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcal
+c.sty)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.d
+ef) (C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.
+sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\big
+intcalc.sty)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex
+.def
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\r
+erunfilecheck.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\
+uniquecounter.sty)))
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3back
+end-pdftex.def) (main.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr
+.cfg)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp
+-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\eps
+topdf-base.sty
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopd
+f-sys.cfg))
+Package pgfplots notification 'compat/show suggested version=true': you might b
+enefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
+
+(main.out) (main.out)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd)
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+(figures/architecture.tex) [1{C:/Users/Eya Laourine/AppData/Local/MiKTeX/fonts/
+map/pdftex/pdftex.map}{C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/font
+s/enc/dvips/lm/lm-ec.enc}{C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/f
+onts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Eya Laourine/AppData/Local/Programs/M
+iKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] (figures/rag_pipeline.tex) [2{C:/Users/Ey
+a Laourine/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/U
+sers/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+(figures/agents.tex) [3] (tables/retrieval.tex) (tables/chunks.tex)
+Overfull \hbox (3.0064pt too wide) in paragraph at lines 1--276
+ [][] 
+(tables/script_chart.tex) (tables/prompts.tex) [4] (tables/heldout.tex)
+(tables/verification.tex) (tables/final_regression.tex) [5] (main.bbl [6])
+[7] (appendices/prompt_library.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+\T1/lmr/m/n/10 (+20) This an-nex re-pro-duces ev-ery prompt tem-plate of the im
+-ple-men-ta-tion \T1/lmr/m/it/10 (+20) ver-ba-tim\T1/lmr/m/n/10 (+20) , as stor
+ed in
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/lmtt/m/n/9 agents/verification.py \T1/lmr/m/n/8 (+20) (\T1/lmtt/m/n/9 Ev
+idenceVerifier.check_topic\T1/lmr/m/n/8 (+20) ):
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/lmtt/m/n/9 agents/intent_router.py \T1/lmr/m/n/8 (+20) (\T1/lmtt/m/n/9 I
+ntentRouter._llm_classify\T1/lmr/m/n/8 (+20) ):
+
+Underfull \hbox (badness 1342) in paragraph at lines 16--16
+[]|\T1/lmtt/m/n/9 agents/checklist_builder.py \T1/lmr/m/n/8 (+20) (\T1/lmtt/m/n
+/9 _translate\T1/lmr/m/n/8 (+20) ): French of-fi-cial
+[8]
+(C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd)
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+\T1/lmr/bx/n/10 (+20) Runtime: \T1/lmtt/m/n/9 agents/verification.py \T1/lmr/m/
+n/10 (+20) (\T1/lmtt/m/n/9 EvidenceVerifier.check_topic\T1/lmr/m/n/10 (+20) ). 
+Dis-abled by de-fault
+[11]
+Underfull \hbox (badness 2035) in paragraph at lines 310--311
+[]\T1/lmr/bx/n/10 (+20) Model: \T1/lmtt/m/n/9 mistral:latest \T1/lmr/m/n/10 (+2
+0) (Mis-tral 7B In-struct, Q4_K_M); op-tions: \T1/lmtt/m/n/9 temperature=0, num
+_predict=600,
+
+Underfull \hbox (badness 2035) in paragraph at lines 352--353
+[]\T1/lmr/bx/n/10 (+20) Model: \T1/lmtt/m/n/9 mistral:latest \T1/lmr/m/n/10 (+2
+0) (Mis-tral 7B In-struct, Q4_K_M); op-tions: \T1/lmtt/m/n/9 temperature=0, num
+_predict=900,
+[12]
+Underfull \hbox (badness 2035) in paragraph at lines 396--397
+[]\T1/lmr/bx/n/10 (+20) Model: \T1/lmtt/m/n/9 mistral:latest \T1/lmr/m/n/10 (+2
+0) (Mis-tral 7B In-struct, Q4_K_M); op-tions: \T1/lmtt/m/n/9 temperature=0, num
+_predict=900,
+[13]) [14] (main.aux) )
+(see the transcript file for additional information)<C:/Users/Eya Laourine/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Eya Laouri
+ne/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Eya
+ Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Use
+rs/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><
+C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi1
+0.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
+m/lmmi5.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/lm/lmmi6.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/lm/lmmi7.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/lm/lmmi9.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Eya Laourine/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Eya Laourine/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Users/Eya Laourine/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Eya Laourine/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Eya Laourine
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Eya Lao
+urine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/Ey
+a Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/U
+sers/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb
+><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
+y10.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/lm/lmsy5.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/lm/lmsy6.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/lm/lmsy8.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmsy9.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Eya Laourine/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Eya Laourine/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb>
+Output written on main.pdf (14 pages, 626174 bytes).
+Transcript written on main.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

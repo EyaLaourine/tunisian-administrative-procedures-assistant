@@ -1,0 +1,134 @@
+\begin{thebibliography}{10}
+
+\bibitem{chen2024bgem3}
+Jianlv Chen, Shitao Xiao, Peitian Zhang, Kun Luo, Defu Lian, and Zheng Liu.
+\newblock {BGE} {M3}-embedding: Multi-lingual, multi-functionality,
+  multi-granularity text embeddings through self-knowledge distillation.
+\newblock {\em arXiv preprint arXiv:2402.03216}, 2024.
+
+\bibitem{cormack2009rrf}
+Gordon~V. Cormack, Charles L.~A. Clarke, and Stefan B{\"u}ttcher.
+\newblock Reciprocal rank fusion outperforms {Condorcet} and individual rank
+  learning methods.
+\newblock In {\em Proceedings of the 32nd International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}, pages 758--759, 2009.
+
+\bibitem{fischler1981ransac}
+Martin~A. Fischler and Robert~C. Bolles.
+\newblock Random sample consensus: A paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock {\em Communications of the ACM}, 24(6):381--395, 1981.
+
+\bibitem{greshake2023injection}
+Kai Greshake, Sahar Abdelnabi, Shailesh Mishra, Christoph Endres, Thorsten
+  Holz, and Mario Fritz.
+\newblock Not what you've signed up for: Compromising real-world
+  {LLM}-integrated applications with indirect prompt injection.
+\newblock In {\em Proceedings of the 16th ACM Workshop on Artificial
+  Intelligence and Security (AISec)}, 2023.
+
+\bibitem{ji2023hallucination}
+Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii,
+  Ye~Jin Bang, Andrea Madotto, and Pascale Fung.
+\newblock Survey of hallucination in natural language generation.
+\newblock {\em ACM Computing Surveys}, 55(12):1--38, 2023.
+
+\bibitem{jiang2023mistral}
+Albert~Q. Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford,
+  Devendra~Singh Chaplot, Diego de~las Casas, Florian Bressand, Gianna Lengyel,
+  Guillaume Lample, Lucile Saulnier, et~al.
+\newblock Mistral {7B}.
+\newblock {\em arXiv preprint arXiv:2310.06825}, 2023.
+
+\bibitem{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt{\"a}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~33, pages 9459--9474, 2020.
+
+\bibitem{interior_passport}
+{Ministère de l'Intérieur}.
+\newblock {Vos Démarches -- Passeport (French) and Jawaz al-safar (Arabic)
+  procedure guides}.
+\newblock
+  \url{https://services.interieur.gov.tn/wap/fr/docs/demarches/02.html},
+  \url{https://services.interieur.gov.tn/wap/ar/docs/demarches/02.html},
+  retrieved 15 October 2026, 2026.
+
+\bibitem{n8n}
+{n8n GmbH}.
+\newblock n8n: Workflow automation platform, version 2.41.
+\newblock \url{https://n8n.io}.
+\newblock Accessed October 2026.
+
+\bibitem{ollama}
+{Ollama}.
+\newblock Ollama: Run large language models locally.
+\newblock \url{https://ollama.com}.
+\newblock Accessed October 2026.
+
+\bibitem{qdrant}
+{Qdrant}.
+\newblock Qdrant vector database, version 1.19.
+\newblock \url{https://qdrant.tech}.
+\newblock Accessed October 2026.
+
+\bibitem{fastapi}
+Sebasti{\'a}n Ram{\'i}rez.
+\newblock {FastAPI}.
+\newblock \url{https://fastapi.tiangolo.com}.
+\newblock Accessed October 2026.
+
+\bibitem{rne_formalities}
+{Registre National des Entreprises}.
+\newblock {Formalités (table of RNE procedures, fees and legal deadlines)}.
+\newblock \url{https://home.registre-entreprises.tn/formalites/}, retrieved 15
+  October 2026, 2026.
+
+\bibitem{robertson2009bm25}
+Stephen Robertson and Hugo Zaragoza.
+\newblock The probabilistic relevance framework: {BM25} and beyond.
+\newblock {\em Foundations and Trends in Information Retrieval}, 3(4):333--389,
+  2009.
+
+\bibitem{law2018_52}
+{République Tunisienne}.
+\newblock {Loi n\textsuperscript{o} 2018-52 du 29 octobre 2018 relative au
+  Registre national des entreprises}.
+\newblock Journal Officiel de la République Tunisienne n\textsuperscript{o}
+  89, 6 novembre 2018 (Arabic version).
+  \url{https://home.registre-entreprises.tn/wp-content/uploads/2022/10/Loi_52_2018_Arabe.pdf},
+  2018.
+
+\bibitem{decree2022_298}
+{République Tunisienne}.
+\newblock {Décret Présidentiel n\textsuperscript{o} 2022-298 du 28 mars 2022,
+  fixant les montants des redevances pour services rendus par le Centre
+  national du registre des entreprises}.
+\newblock JORT n\textsuperscript{o} 34, 30 mars 2022.
+  \url{https://home.registre-entreprises.tn/wp-content/uploads/2022/10/Decret2022_0298_redevances_Fr.pdf},
+  2022.
+
+\bibitem{smith2007tesseract}
+Ray Smith.
+\newblock An overview of the {Tesseract} {OCR} engine.
+\newblock In {\em Ninth International Conference on Document Analysis and
+  Recognition (ICDAR 2007)}, volume~2, pages 629--633, 2007.
+
+\bibitem{telegram_bot_api}
+{Telegram}.
+\newblock Telegram bot {API}.
+\newblock \url{https://core.telegram.org/bots/api}.
+\newblock Accessed October 2026.
+
+\bibitem{wu2023autogen}
+Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu,
+  Li~Jiang, Xiaoyun Zhang, Shaokun Zhang, Jiale Liu, Ahmed~Hassan Awadallah,
+  Ryen~W. White, Doug Burger, and Chi Wang.
+\newblock {AutoGen}: Enabling next-gen {LLM} applications via multi-agent
+  conversation.
+\newblock {\em arXiv preprint arXiv:2308.08155}, 2023.
+
+\end{thebibliography}

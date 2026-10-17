@@ -77,7 +77,8 @@
         "options": {
           "timeout": 300000
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "id": "c3a0c1d2-0004-4c1a-9a01-000000000004",
@@ -97,7 +98,8 @@
         "options": {
           "timeout": 180000
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "id": "c3a0c1d2-0005-4c1a-9a01-000000000005",
@@ -150,7 +152,8 @@
         "options": {
           "timeout": 180000
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "id": "c3a0c1d2-0007-4c1a-9a01-000000000007",
@@ -203,7 +206,8 @@
         "options": {
           "timeout": 600000
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "id": "c3a0c1d2-0009-4c1a-9a01-000000000009",
@@ -223,7 +227,8 @@
         "options": {
           "timeout": 600000
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "id": "c3a0c1d2-0010-4c1a-9a01-000000000010",
@@ -336,7 +341,8 @@
         "options": {
           "timeout": 300000
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "id": "c3a0c1d2-0016-4c1a-9a01-000000000016",
@@ -351,6 +357,23 @@
         "respondWith": "json",
         "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'dossier_validator', recognised: $json.recognized, form_doc_id: $json.form_type ? $json.form_type.doc_id : null, form_url: $json.form_type ? $json.form_type.url : null, missing: $json.missing_fields, error: $json.error, language: $('POST /webhook/assistant').item.json.body.language || null, citations: $json.source_references, report: { form_fields: { filled: $json.filled_fields, missing: $json.missing_fields, unreadable: $json.unreadable_fields, cannot_verify: $json.unverifiable_fields, details: $json.recognized_fields }, dossier: { official_checklist_available: $json.official_checklist_available, official_requirements: $json.official_requirements, requirements_not_verified: $json.requirements_not_verified, completeness_certified: false }, readiness_summary: $json.readiness_summary, limitations: $json.limitations } }) }}",
         "options": {}
+      }
+    },
+    {
+      "id": "d1e2f3a4-00ee-4000-8000-0000000000ee",
+      "name": "Respond: agent error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        460
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: ({ en: 'The assistant is temporarily unavailable. Please try again later.', fr: \"L'assistant est temporairement indisponible. Veuillez réessayer plus tard.\", ar: 'المساعد غير متاح مؤقتا. يرجى المحاولة لاحقا.', derja: 'المساعد موش متوفر توا، عاود جرب بعد شوية.' })[$('POST /webhook/assistant').item.json.body.language] || \"L'assistant est temporairement indisponible. Veuillez réessayer plus tard.\", agent: 'orchestrator', error: 'agent_unavailable', failed_agent: $prevNode.name }) }}",
+        "options": {
+          "responseCode": 503
+        }
       }
     }
   ],
@@ -392,6 +415,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -400,6 +430,13 @@
         [
           {
             "node": "Direct reply?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
             "type": "main",
             "index": 0
           }
@@ -432,6 +469,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -461,6 +505,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -469,6 +520,13 @@
         [
           {
             "node": "Respond: answer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
             "type": "main",
             "index": 0
           }
@@ -498,6 +556,13 @@
         [
           {
             "node": "Respond: dossier check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
             "type": "main",
             "index": 0
           }

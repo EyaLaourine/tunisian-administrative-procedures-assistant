@@ -197,3 +197,19 @@ def test_group_language_choice_is_per_member():
     bridge.api = lambda method, **kw: updates if method == "getUpdates" else {}
     bridge.poll_once()
     assert bridge.sessions[(-5, 7)]["language"] == "ar" and (-5, 8) not in bridge.sessions
+
+
+# ------------------------------------------------------------------ optional admin key on mutating endpoints
+def test_admin_key_is_required_only_when_configured():
+    from types import SimpleNamespace
+    from fastapi import HTTPException
+    import backend.main as main
+    main.app.state.settings = SimpleNamespace(admin_api_key=None)
+    main.require_admin(None)  # unset: unchanged behaviour
+    main.app.state.settings = SimpleNamespace(admin_api_key="s3cret-value")
+    with pytest.raises(HTTPException) as exc:
+        main.require_admin(None)
+    assert exc.value.status_code == 401
+    with pytest.raises(HTTPException):
+        main.require_admin("wrong")
+    main.require_admin("s3cret-value")

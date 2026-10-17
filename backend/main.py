@@ -1,10 +1,11 @@
 """FastAPI service exposing ingestion, indexing and retrieval to n8n workflows."""
 
+import hmac
 import logging
 from contextlib import asynccontextmanager
 from dataclasses import asdict
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel
 
@@ -74,14 +75,21 @@ class IngestionRequest(BaseModel):
     only: list[str] | None = None
 
 
-@app.post("/ingestion/run")
+def require_admin(x_admin_key: str | None = Header(default=None)) -> None:
+    """Protect state-changing endpoints when ADMIN_API_KEY is configured (constant-time comparison)."""
+    expected = app.state.settings.admin_api_key
+    if expected and not (x_admin_key and hmac.compare_digest(x_admin_key, expected)):
+        raise HTTPException(status_code=401, detail="Missing or invalid X-Admin-Key header.")
+
+
+@app.post("/ingestion/run", dependencies=[Depends(require_admin)])
 async def ingestion_run(req: IngestionRequest | None = None) -> dict:
     summary = await run_in_threadpool(run_ingestion, app.state.settings, req.only if req else None)
     return {"started_at": summary.started_at, "finished_at": summary.finished_at,
             "counts": summary.counts(), "results": summary.results}
 
 
-@app.post("/index/run")
+@app.post("/index/run", dependencies=[Depends(require_admin)])
 async def index_run() -> dict:
     s = app.state.settings
     try:
