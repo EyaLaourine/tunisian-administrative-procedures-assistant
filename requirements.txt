@@ -1,0 +1,15 @@
+# Runtime dependencies (mirrors pyproject.toml; used by the backend Docker image).
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.4
+pydantic-settings==2.7.0
+httpx==0.28.1
+certifi>=2024.8.30
+pymupdf==1.25.1
+qdrant-client==1.19.1
+pyyaml==6.0.2
+beautifulsoup4==4.12.3
+python-multipart==0.0.20
+# Phase 2: form image alignment (local, no cloud OCR/vision services)
+opencv-python-headless==4.10.0.84
+numpy==2.4.6

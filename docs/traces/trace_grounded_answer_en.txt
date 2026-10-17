@@ -1,0 +1,17 @@
+{"ts": "2026-10-16T15:36:02.349402+00:00", "level": "INFO", "logger": "backend.main", "event": "backend_started", "env": "development"}
+{"ts": "2026-10-16T15:36:02.357521+00:00", "level": "INFO", "logger": "backend.agents_api", "event": "agent_route", "ms": 5, "intent": "procedure_info", "category": "business_registration", "language": "en", "method": "rules", "next": "answer"}
+{"ts": "2026-10-16T15:36:02.902567+00:00", "level": "INFO", "logger": "backend.agents_api", "event": "agent_retrieve", "ms": 542, "passages": 8}
+{"ts": "2026-10-16T15:36:46.662055+00:00", "level": "INFO", "logger": "backend.agents_api", "event": "agent_answer", "ms": 43755, "method": "llm_grounded", "citations": 1}
+[local, not via n8n] 44.7s | agent=grounded_answer language=en intent=procedure_info category=business_registration route=rules
+verification: {'topic': {'consistent': True, 'method': 'disabled'}, 'numbers': {'claims': 11, 'unsupported': [], 'removed_sentences': 0}}
+--------------------------------------------------------------------------------
+The penalty for late registration with the RNE (Registre National des Entreprises) is not specified in the provided passages.
+However, a decree-law from 2022 [1] grants a remission of penalties for delays in depositing documents or updating data or information whose deadlines were overdue as of December 31, 2021, under certain conditions and procedures specified by the law n° 2018-52 of October 29, 2018 [1].
+This remission is applicable to persons immatriculated or subject to the obligation of immatriculation in accordance with the dispositions of the mentioned law, provided they complete the operations mentioned in the first article of the decree-law within a six-month period starting from April 1, 2022, and ending on September 30, 2022 [1].
+The passages do not provide information about the penalties for late registration outside of the specified period or for other types of entities.
+
+📚 Official sources:
+[1] Décret-loi2022_18_FR (Registre National des Entreprises (RNE)) — Décret-loi n° 2022-18 du 29 mars 2022, portant remise des pénalités de retard relatives au Registre national des entreprises (JORT n° 34 du 30 mars 2022) — p. 1
+https://home.registre-entreprises.tn/wp-content/uploads/2022/10/De%CC%81cret-loi2022_18_FR.pdf
+
+⚖️ Information quoted from official sources; not legal advice. Their current validity has not been verified: please confirm with the competent administration.

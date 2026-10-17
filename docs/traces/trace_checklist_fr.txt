@@ -1,0 +1,44 @@
+{"ts": "2026-10-16T15:35:59.030631+00:00", "level": "INFO", "logger": "backend.main", "event": "backend_started", "env": "development"}
+{"ts": "2026-10-16T15:35:59.038627+00:00", "level": "INFO", "logger": "backend.agents_api", "event": "agent_route", "ms": 5, "intent": "required_documents", "category": "passport", "language": "fr", "method": "rules", "next": "checklist"}
+{"ts": "2026-10-16T15:35:59.631519+00:00", "level": "INFO", "logger": "backend.agents_api", "event": "agent_retrieve", "ms": 590, "passages": 6}
+{"ts": "2026-10-16T15:35:59.640549+00:00", "level": "INFO", "logger": "backend.agents_api", "event": "agent_checklist", "ms": 6, "found": true, "doc_id": "interior-passport-guide-fr", "translated": false}
+[local, not via n8n] 1.0s | agent=checklist_builder language=fr intent=required_documents category=passport route=rules
+--------------------------------------------------------------------------------
+🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.
+
+▪️ Pièces à fournir
+• Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.
+• Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.
+• 4 photos avec les caractéristiques suivantes :
+• fond blanc
+• format 3.5/4.5 cm
+• Justificatif de scolarisation pour les élèves et les étudiants.
+• Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.
+• Quittance de paiement du droit de timbre fiscal dû:
+• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,
+• De 60 dinars pour les autres.
+• Joindre l'ancien passeport en cas de renouvellement,
+• Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.
+
+▪️ Conditions
+• Le demandeur doit :
+• Etre de nationalité tunisienne ,
+• Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.
+
+▪️ Lieu de dépôt
+• Poste de la police ou de la garde nationale territorialement compétent
+
+▪️ Délais
+• Dans les 15 jours à compter de la date de dépôt du dossier
+
+⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.
+
+↪️ Autres cas dans le guide officiel: Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents à l’étranger | Changement d’un passeport ordinaire pour les Tunisiens résidents sur le territoire Tunisien | Changement d’un passeport ordinaire pour les Tunisiens résidents à l’étranger | Obtention d’un duplicata du passeport (pour cause de perte, de vol ou de détérioration) pour les Tunisiens résidents sur le territoire Tunisien | Obtention d’un duplicata du passeport (pour cause de perte, de vol ou de détérioration) pour les Tunisiens résidents à l’étranger | Document de voyage pour le pélerinage
+
+📚 Sources officielles:
+[1] Vos Démarches - Passeport (Ministère de l'Intérieur)
+http://services.interieur.gov.tn/wap/fr/docs/demarches/02.html
+[2] جواز السفر (Ministère de l'Intérieur)
+http://services.interieur.gov.tn/wap/ar/docs/demarches/02.html
+
+⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente.

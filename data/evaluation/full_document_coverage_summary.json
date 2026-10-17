@@ -1,0 +1,434 @@
+{
+  "at": "2026-10-17T13:54:03.273240+00:00",
+  "planned": 846,
+  "executed": 846,
+  "completed": 846,
+  "errors": 0,
+  "automatic_failure_cases": 260,
+  "intent_matches": 723,
+  "intent_assessed": 832,
+  "expected_document_cited": 662,
+  "answer_citations_valid": 1710,
+  "answer_citations_total": 1710,
+  "retrieved_passage_metadata_valid": 935,
+  "retrieved_passage_metadata_total": 935,
+  "required_spans_retained": 590,
+  "required_spans_total": 814,
+  "requested_source_fact_correct": 281,
+  "requested_source_fact_assessed": 480,
+  "execution_stages": {
+    "real n8n webhook -> deployed backend": 728,
+    "deployed backend route -> retrieve probe (no n8n or composed answer)": 118
+  },
+  "retrieval_probe_exact_chunk_hits": 79,
+  "retrieval_probe_document_hits": 113,
+  "retrieval_probe_supporting_span_hits": 80,
+  "known_uncovered_birth_refusals_correct": 4,
+  "known_uncovered_birth_refusals_assessed": 4,
+  "requested_source_fact_scope": "Exact official requested fee/deadline plus exact procedure row, or all requested guide-section items plus scenario title. This does not assess other claims or translated semantic fidelity.",
+  "semantic_correctness": "No global accuracy estimate. Narrow requested-source-fact checks and a purposive source-comparison sample are reported separately; citations alone never establish correctness.",
+  "groundedness": "Not fully scored: extraction-preservation diagnostics only; no semantic entailment judge.",
+  "context_handling": "Real setup turns executed; intent and response traces recorded, semantic continuity requires review.",
+  "refusal_accuracy": "Markers recorded; semantic refusal accuracy requires review.",
+  "documents": {
+    "idaraty-birth-certificate": {
+      "planned": 4,
+      "executed": 4,
+      "completed": 4,
+      "automatic_failures": 0
+    },
+    "interior-national-id-guide-fr": {
+      "planned": 39,
+      "executed": 39,
+      "completed": 39,
+      "automatic_failures": 1
+    },
+    "interior-passport-application-form": {
+      "planned": 1,
+      "executed": 1,
+      "completed": 1,
+      "automatic_failures": 0
+    },
+    "interior-passport-guide-ar": {
+      "planned": 54,
+      "executed": 54,
+      "completed": 54,
+      "automatic_failures": 6
+    },
+    "interior-passport-guide-fr": {
+      "planned": 56,
+      "executed": 56,
+      "completed": 56,
+      "automatic_failures": 0
+    },
+    "rne-arrete-2026-35": {
+      "planned": 28,
+      "executed": 28,
+      "completed": 28,
+      "automatic_failures": 0
+    },
+    "rne-c012-c004-checklist-pdfs": {
+      "planned": 2,
+      "executed": 2,
+      "completed": 2,
+      "automatic_failures": 0
+    },
+    "rne-c014-beneficial-owner-form": {
+      "planned": 1,
+      "executed": 1,
+      "completed": 1,
+      "automatic_failures": 0
+    },
+    "rne-decree-2022-298-2026-upload": {
+      "planned": 1,
+      "executed": 1,
+      "completed": 1,
+      "automatic_failures": 0
+    },
+    "rne-decree-2022-298-fees-fr": {
+      "planned": 73,
+      "executed": 73,
+      "completed": 73,
+      "automatic_failures": 14
+    },
+    "rne-decree-beneficial-owners": {
+      "planned": 22,
+      "executed": 22,
+      "completed": 22,
+      "automatic_failures": 3
+    },
+    "rne-decree-law-2022-18-fr": {
+      "planned": 22,
+      "executed": 22,
+      "completed": 22,
+      "automatic_failures": 1
+    },
+    "rne-decree-name-reservation": {
+      "planned": 29,
+      "executed": 29,
+      "completed": 29,
+      "automatic_failures": 7
+    },
+    "rne-form-f001-natural-person-registration": {
+      "planned": 19,
+      "executed": 19,
+      "completed": 19,
+      "automatic_failures": 4
+    },
+    "rne-form-f002-legal-entity-registration": {
+      "planned": 19,
+      "executed": 19,
+      "completed": 19,
+      "automatic_failures": 4
+    },
+    "rne-formalities-procedure-table": {
+      "planned": 395,
+      "executed": 395,
+      "completed": 395,
+      "automatic_failures": 192
+    },
+    "rne-law-2018-52-ar": {
+      "planned": 77,
+      "executed": 77,
+      "completed": 77,
+      "automatic_failures": 28
+    },
+    "rne-legacy-domain": {
+      "planned": 0,
+      "executed": 0,
+      "completed": 0,
+      "automatic_failures": 0
+    }
+  },
+  "protected_files_changed": [],
+  "qdrant_payloads_unchanged": {
+    "official_docs_recursive": true,
+    "official_docs_structure": true
+  },
+  "unexpected_new_collections": [],
+  "deployed_backend_source_mismatch": [],
+  "container_ids_unchanged": {
+    "backend": true,
+    "n8n": true,
+    "qdrant": true,
+    "telegram-bridge": true
+  },
+  "health_after": {
+    "backend": {
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "qdrant": true,
+        "ollama": true,
+        "manifest_records": 14
+      }
+    },
+    "n8n": {
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "ollama": {
+      "status": 200,
+      "body": {
+        "models": [
+          {
+            "name": "bge-m3:latest",
+            "model": "bge-m3:latest",
+            "modified_at": "2026-10-15T21:37:08.1803913+01:00",
+            "size": 1157672605,
+            "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "bert",
+              "families": [
+                "bert"
+              ],
+              "parameter_size": "566.70M",
+              "quantization_level": "F16",
+              "context_length": 8192,
+              "embedding_length": 1024,
+              "runner": "ggml"
+            },
+            "capabilities": [
+              "embedding"
+            ]
+          },
+          {
+            "name": "translategemma:4b",
+            "model": "translategemma:4b",
+            "modified_at": "2026-10-09T15:17:53.3831221+01:00",
+            "size": 3309667310,
+            "digest": "6d2c3b38bc4aa83298344da5f0b802c35ad32cec3ebfb08bd2358047fb5f184d",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "gemma3",
+              "families": [
+                "gemma3",
+                "clip"
+              ],
+              "parameter_size": "4.3B",
+              "quantization_level": "Q4_K_M",
+              "context_length": 131072,
+              "embedding_length": 2560,
+              "runner": "llamacpp"
+            },
+            "capabilities": [
+              "completion",
+              "vision"
+            ]
+          },
+          {
+            "name": "mistral:latest",
+            "model": "mistral:latest",
+            "modified_at": "2026-08-19T14:46:12.0054278+01:00",
+            "size": 4372824384,
+            "digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "llama",
+              "families": [
+                "llama"
+              ],
+              "parameter_size": "7.2B",
+              "quantization_level": "Q4_K_M",
+              "context_length": 32768,
+              "embedding_length": 4096,
+              "runner": "ggml"
+            },
+            "capabilities": [
+              "completion",
+              "tools"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "telegram_messages_sent": 0,
+  "chunk_integrity": {
+    "structure": {
+      "local_count": 272,
+      "deployed_count": 272,
+      "missing_from_deployed": [],
+      "extra_in_deployed": [],
+      "text_mismatch": []
+    },
+    "recursive": {
+      "local_count": 174,
+      "deployed_count": 174,
+      "missing_from_deployed": [],
+      "extra_in_deployed": [],
+      "text_mismatch": []
+    }
+  },
+  "execution_status": "all_planned_cases_attempted",
+  "source_compared_review_sample": {
+    "count": 51,
+    "verdicts": {
+      "correct": 12,
+      "incorrect": 17,
+      "incomplete": 8,
+      "false_refusal": 4,
+      "unsupported_query_pattern": 8,
+      "unsupported_addition": 1,
+      "correct_with_omission": 1
+    },
+    "stale_or_unmatched_review_ids": [],
+    "selection": "Purposive sample; do not extrapolate an overall accuracy percentage."
+  },
+  "by_kind": {
+    "adversarial": {
+      "planned": 24,
+      "executed": 24,
+      "failures": 0
+    },
+    "corpus_boundary": {
+      "planned": 6,
+      "executed": 6,
+      "failures": 0
+    },
+    "dialogue_regression": {
+      "planned": 2,
+      "executed": 2,
+      "failures": 0
+    },
+    "direct_factual": {
+      "planned": 60,
+      "executed": 60,
+      "failures": 13
+    },
+    "fee_condition": {
+      "planned": 3,
+      "executed": 3,
+      "failures": 1
+    },
+    "fee_service": {
+      "planned": 37,
+      "executed": 37,
+      "failures": 8
+    },
+    "formalities_row": {
+      "planned": 190,
+      "executed": 190,
+      "failures": 2
+    },
+    "formalities_row_dialogue": {
+      "planned": 190,
+      "executed": 190,
+      "failures": 190
+    },
+    "fresh_cin_profile": {
+      "planned": 4,
+      "executed": 4,
+      "failures": 1
+    },
+    "fresh_passport_profile": {
+      "planned": 8,
+      "executed": 8,
+      "failures": 0
+    },
+    "guide_fee": {
+      "planned": 18,
+      "executed": 18,
+      "failures": 2
+    },
+    "guide_scenario": {
+      "planned": 72,
+      "executed": 72,
+      "failures": 4
+    },
+    "legal_passage_probe": {
+      "planned": 118,
+      "executed": 118,
+      "failures": 39
+    },
+    "multi_turn": {
+      "planned": 36,
+      "executed": 36,
+      "failures": 0
+    },
+    "multilingual": {
+      "planned": 24,
+      "executed": 24,
+      "failures": 0
+    },
+    "scenario_specific": {
+      "planned": 36,
+      "executed": 36,
+      "failures": 0
+    },
+    "unsupported_birth_certificate": {
+      "planned": 4,
+      "executed": 4,
+      "failures": 0
+    },
+    "unsupported_upload": {
+      "planned": 2,
+      "executed": 2,
+      "failures": 0
+    },
+    "upload": {
+      "planned": 8,
+      "executed": 8,
+      "failures": 0
+    },
+    "upload_error": {
+      "planned": 4,
+      "executed": 4,
+      "failures": 0
+    }
+  },
+  "by_language": {
+    "fr": {
+      "planned": 745,
+      "executed": 745
+    },
+    "en": {
+      "planned": 27,
+      "executed": 27
+    },
+    "ar": {
+      "planned": 72,
+      "executed": 72
+    },
+    "derja": {
+      "planned": 2,
+      "executed": 2
+    }
+  },
+  "procedure_coverage": {
+    "formalities_row": {
+      "planned_units": 95,
+      "exercised_units": 95
+    },
+    "guide_scenario": {
+      "planned_units": 18,
+      "exercised_units": 18
+    },
+    "indexed_legal_passage": {
+      "planned_units": 118,
+      "exercised_units": 118
+    },
+    "fee_service": {
+      "planned_units": 37,
+      "exercised_units": 37
+    }
+  },
+  "rne_mode_comparison": {
+    "formalities_row": {
+      "completed": 190,
+      "requested_source_fact_correct": 188,
+      "no_substantive_body": 0
+    },
+    "formalities_row_dialogue": {
+      "completed": 190,
+      "requested_source_fact_correct": 0,
+      "no_substantive_body": 190
+    }
+  }
+}

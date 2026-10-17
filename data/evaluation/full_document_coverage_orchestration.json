@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-17T12:02:07.852408+00:00",
+  "completed_at_reschedule": 140,
+  "reason": "Resume the checkpointed test harness with procedure/file cases first. No service restart. In-flight requests without a collected final response are not counted as completed. Questions and score-bearing expectations unchanged.",
+  "further_checkpoints": [
+    {
+      "at": "2026-10-17T12:31:59.571314+00:00",
+      "collected_rows": 390,
+      "factual_questions_completed": 60,
+      "reason": "Resume with the finalized layered test plan, fresh Telegram-style context profiles, corrected evaluator datatype and shared actual-prefix fixtures. Existing questions and score-bearing expectations are preserved; new coverage cases are appended. No service or corpus changes."
+    }
+  ]
+}

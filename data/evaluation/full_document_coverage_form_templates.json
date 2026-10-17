@@ -1,0 +1,53 @@
+{
+  "rne-form-f001-natural-person-registration": {
+    "field_labels": [
+      "التاريخ",
+      "E-mail / البريد الإلكتروني",
+      "N°GSM / الهاتف الجوال",
+      "Nom du Déposant / إسم و لقب المودع",
+      "N° Identité du Déposant / رقم بطاقة هوية المودع",
+      "N°Identité / رقم الهوية",
+      "Nom et Prénom (s) / الإسم و اللقب"
+    ],
+    "field_count": 7,
+    "dossier_rules": {
+      "procedure_query": "Déclaration d'immatriculation d'une personne physique au Registre National des Entreprises",
+      "table_filter": {
+        "Genre d'Entreprise": "Personne physique",
+        "Procédure": "Création"
+      },
+      "cannot_verify": [
+        "إمضاء المصرّ ح أو من ينوبه بتوكيل",
+        "Type de Pièce d’identité / نوع بطاقة الهوية",
+        "Métier Libéral - مهنة حرّ ة Artisan - حرفيCommerçant -تاجر",
+        "IDENTIFIANT UNIQUE -المعرّف الوحيد"
+      ]
+    }
+  },
+  "rne-form-f002-legal-entity-registration": {
+    "field_labels": [
+      "التاريخ",
+      "Représantant Légal / الممثل القانوني",
+      "Dénomination / إسم المؤسسة",
+      "E-mail / البريد الإلكتروني",
+      "N°GSM / الهاتف الجوال",
+      "Nom du Déposant / إسم و لقب المودع",
+      "N° Identité du Déposant / رقم بطاقة هوية المودع",
+      "N°Identité / رقم الهوية"
+    ],
+    "field_count": 8,
+    "dossier_rules": {
+      "procedure_query": "Déclaration d'immatriculation d'une personne morale au Registre National des Entreprises",
+      "table_filter": {
+        "Genre d'Entreprise": "Personne Morale",
+        "Procédure": "Création"
+      },
+      "cannot_verify": [
+        "إمضاء الممثل القانوني أو من ينوبه بتوكيل",
+        "Type de Pièce d’identité / نوع بطاقة الهوية",
+        "RIB -المعرف البنكي",
+        "IDENTIFIANT UNIQUE -المعرّف الوحيد"
+      ]
+    }
+  }
+}

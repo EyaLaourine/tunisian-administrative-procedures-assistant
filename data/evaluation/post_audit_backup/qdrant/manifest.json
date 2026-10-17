@@ -1,0 +1,16 @@
+[
+  {
+    "collection": "official_docs_structure",
+    "snapshot": "data/evaluation/post_audit_backup/qdrant/official_docs_structure-2291018569016737-2026-10-17-14-21-59.snapshot",
+    "size": 4432384,
+    "sha256": "0d544f069673ad7921f379369a22c395616fffc6659b4ed285cf47d5fb834ec3",
+    "points": 272
+  },
+  {
+    "collection": "official_docs_recursive",
+    "snapshot": "data/evaluation/post_audit_backup/qdrant/official_docs_recursive-2291018569016737-2026-10-17-14-22-06.snapshot",
+    "size": 3361792,
+    "sha256": "0da06b9a625d83506d59324f3ef183cc5f3ec958e2096dec5bdffc3f13f89cfd",
+    "points": 174
+  }
+]

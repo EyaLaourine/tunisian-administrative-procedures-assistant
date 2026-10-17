@@ -1,0 +1,12 @@
+# Versioned prompt library.
+#
+# Each prompt lives in prompts/<name>/<version>.yaml and is immutable once used in an evaluation:
+# change a prompt by adding a new version file and switching `active` here. Every agent response
+# reports the prompt name and version it used, so results stay traceable.
+
+active:
+  intent_router: v1
+  grounded_answer: v2
+  translate_items: v1
+  evidence_topic: v1
+  dialogue_understanding: v3

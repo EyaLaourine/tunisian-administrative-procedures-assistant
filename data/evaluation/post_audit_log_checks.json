@@ -1,0 +1,26 @@
+[
+  {
+    "container": "post-audit-candidate",
+    "log_lines": 4887,
+    "configured_token_seen": false,
+    "base64_payload_key_seen": false,
+    "neutral_private_test_marker_seen": false,
+    "inspection": "No raw logs are copied to the report."
+  },
+  {
+    "container": "post-audit-n8n",
+    "log_lines": 27,
+    "configured_token_seen": false,
+    "base64_payload_key_seen": false,
+    "neutral_private_test_marker_seen": false,
+    "inspection": "No raw logs are copied to the report."
+  },
+  {
+    "container": "tunisian-admin-telegram-bridge",
+    "log_lines": 0,
+    "configured_token_seen": false,
+    "base64_payload_key_seen": false,
+    "neutral_private_test_marker_seen": false,
+    "inspection": "No raw logs are copied to the report."
+  }
+]

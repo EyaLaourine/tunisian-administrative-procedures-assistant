@@ -1,0 +1,15 @@
+{
+  "test_count": 846,
+  "unique_ids": 846,
+  "minimum_per_indexed_document": {
+    "direct_factual": 5,
+    "scenario_specific": 3,
+    "multi_turn": 3,
+    "multilingual": 2,
+    "adversarial": 2
+  },
+  "required_spans_verified": 814,
+  "supporting_passages_traced_to_actual_sources": 807,
+  "direct_questions_without_localized_passage": [],
+  "failures": []
+}

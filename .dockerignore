@@ -1,0 +1,4 @@
+# Local credentials must never be sent in a Docker build context.
+.env
+.env.*
+!.env.example

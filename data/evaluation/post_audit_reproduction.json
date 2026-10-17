@@ -1,0 +1,474 @@
+{
+  "case": {
+    "id": "rne-formalities-procedure-table:formalities_row_dialogue:001",
+    "document_id": "rne-formalities-procedure-table",
+    "kind": "formalities_row_dialogue",
+    "question": "Quelle redevance pour RNE C 001 (Personne physique commerçant; Création) ?",
+    "conversation_context": {},
+    "conversation_setup": [],
+    "language": "fr",
+    "expected_intent": "fees",
+    "expected_document_ids": [
+      "rne-formalities-procedure-table"
+    ],
+    "expected_category": "business_registration",
+    "expected_behavior": "Answer the requested point only from the cited official passage; preserve conditions, scope and temporal limitations. Do not certify present legal validity. Exercise the fresh dialogue context sent by the production Telegram bridge; preserve the explicitly requested RNE code.",
+    "official_supporting_passage": "Code procédure: RNE C 001\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique commerçant\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: Trente jours à compter de la date du début de l'activité mentionnée dans la carte d'identification fiscale.",
+    "official_source_url": "https://home.registre-entreprises.tn/formalites/",
+    "refusal_or_clarification": "answer_from_evidence",
+    "procedure": "rne-formalities-procedure-table:row:001",
+    "required_verbatim_spans": [
+      "vingt dinars (20 TND)"
+    ],
+    "upload": null,
+    "evaluation_criteria": [
+      "HTTP pipeline completes",
+      "Expected intent and procedure scope",
+      "Citation URL and SHA match the actual manifest",
+      "Expected document cited (not sufficient for correctness)",
+      "Required evidence spans retained when specified",
+      "No unsupported facts, guarantee or current-validity assertion",
+      "Semantic correctness and entailment require review where lexical checks are insufficient"
+    ],
+    "execution_stage": "n8n_full_assistant"
+  },
+  "route": {
+    "language": "fr",
+    "intent": "fees",
+    "procedure_category": "business_registration",
+    "hints": [],
+    "next_agent": "checklist",
+    "reply": null,
+    "method": "rules",
+    "prompt_ref": null,
+    "context": {
+      "category": "business_registration",
+      "hints": [],
+      "residence": null,
+      "declared_items": [],
+      "pending_intent": null,
+      "last_intent": "fees"
+    },
+    "retrieval_query": "frais fees business registration RNE résident en Tunisie"
+  },
+  "retrieval": {
+    "expanded_query": "frais fees business registration RNE résident en Tunisie Registre National des Entreprises immatriculation السجل الوطني للمؤسسات redevance droit de timbre معلوم",
+    "filters": {
+      "procedure_category": "business_registration"
+    },
+    "passages": [
+      {
+        "score": 0.04586,
+        "text": "Formalités > Formalités - Registre National des Entreprises\nCode procédure: RNE C 010.2\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par des réglementations particulières\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)",
+        "chunk_id": "rne-formalities-procedure-table:structure:10:105fad4b90d8b1c6",
+        "citation": {
+          "doc_id": "rne-formalities-procedure-table",
+          "title": "Formalités",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/formalites/",
+          "official_reference": null,
+          "publication_date": null,
+          "applicability": "unverified",
+          "page_start": null,
+          "page_end": null,
+          "heading_path": [
+            "Formalités",
+            "Formalités - Registre National des Entreprises"
+          ],
+          "sha256": "540ebb5abd469b01e0dce7e731559750d18bf7be0b463a0b6720ac822a48c45c",
+          "language": "fr",
+          "document_type": "procedure_table",
+          "procedure_category": "business_registration"
+        }
+      },
+      {
+        "score": 0.04546,
+        "text": "Formalités > Formalités - Registre National des Entreprises\nCode procédure: RNE C 009\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Réseau d'associations\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir",
+        "chunk_id": "rne-formalities-procedure-table:structure:8:c37ed5ee2630588c",
+        "citation": {
+          "doc_id": "rne-formalities-procedure-table",
+          "title": "Formalités",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/formalites/",
+          "official_reference": null,
+          "publication_date": null,
+          "applicability": "unverified",
+          "page_start": null,
+          "page_end": null,
+          "heading_path": [
+            "Formalités",
+            "Formalités - Registre National des Entreprises"
+          ],
+          "sha256": "540ebb5abd469b01e0dce7e731559750d18bf7be0b463a0b6720ac822a48c45c",
+          "language": "fr",
+          "document_type": "procedure_table",
+          "procedure_category": "business_registration"
+        }
+      },
+      {
+        "score": 0.04534,
+        "text": "Formalités > Formalités - Registre National des Entreprises\nCode procédure: RNE C 010.1\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par le décret-loi n° 88/2011 portant organisation des associations\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)",
+        "chunk_id": "rne-formalities-procedure-table:structure:9:829f1e68711f173b",
+        "citation": {
+          "doc_id": "rne-formalities-procedure-table",
+          "title": "Formalités",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/formalites/",
+          "official_reference": null,
+          "publication_date": null,
+          "applicability": "unverified",
+          "page_start": null,
+          "page_end": null,
+          "heading_path": [
+            "Formalités",
+            "Formalités - Registre National des Entreprises"
+          ],
+          "sha256": "540ebb5abd469b01e0dce7e731559750d18bf7be0b463a0b6720ac822a48c45c",
+          "language": "fr",
+          "document_type": "procedure_table",
+          "procedure_category": "business_registration"
+        }
+      },
+      {
+        "score": 0.0315,
+        "text": "RNE-F-001_declation_immatriculation_personne_physique\nتونس- 1003 تونس- 66 نهج ابو العباس القسنطيني الحي الاولمبي، ص.ب1 عدد N°1 Rue Abou Abbas Al Kasantini Cité Olympique, BP 66 - Tunis 1003 - Tunisie +216 70 248 170\n+216 70 248 172\ncontact@registre-entreprises.tn\nwww.registre-entreprises.tn\nإمضاء المصرّ ح أو من ينوبه بتوكيل التاريخ : .... / ..... / ........\n:هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+        "chunk_id": "rne-form-f001-natural-person-registration:structure:0:124a495733d94b71",
+        "citation": {
+          "doc_id": "rne-form-f001-natural-person-registration",
+          "title": "RNE-F-001_declation_immatriculation_personne_physique",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf",
+          "official_reference": null,
+          "publication_date": null,
+          "applicability": "unverified",
+          "page_start": 1,
+          "page_end": 1,
+          "heading_path": [
+            "RNE-F-001_declation_immatriculation_personne_physique"
+          ],
+          "sha256": "dbfa1f815312620a99519e84ff854d751f8784b970861082df686bf911296172",
+          "language": "mixed",
+          "document_type": "official_form",
+          "procedure_category": "business_registration"
+        }
+      },
+      {
+        "score": 0.03101,
+        "text": "RNE-F-002_declation_immatriculation_personne_motale\nتونس- 1003 تونس- 66 نهج ابو العباس القسنطيني الحي الاولمبي، ص.ب1 عدد N°1 Rue Abou Abbas Al Kasantini Cité Olympique, BP 66 - Tunis 1003 - Tunisie +216 70 248 170\n+216 70 248 172\ncontact@registre-entreprises.tn\nwww.registre-entreprises.tn\nإمضاء الممثل القانوني أو من ينوبه بتوكيل التاريخ : .... / ..... / ........\n:هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+        "chunk_id": "rne-form-f002-legal-entity-registration:structure:0:a348ffc771167f15",
+        "citation": {
+          "doc_id": "rne-form-f002-legal-entity-registration",
+          "title": "RNE-F-002_declation_immatriculation_personne_motale",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf",
+          "official_reference": null,
+          "publication_date": null,
+          "applicability": "unverified",
+          "page_start": 1,
+          "page_end": 1,
+          "heading_path": [
+            "RNE-F-002_declation_immatriculation_personne_motale"
+          ],
+          "sha256": "f68cfaa0a715fd213c4e3a97b32a270d513eabcac2e868f98531d401a73ff06c",
+          "language": "mixed",
+          "document_type": "official_form",
+          "procedure_category": "business_registration"
+        }
+      },
+      {
+        "score": 0.01515,
+        "text": "Decret2022_0298_redevances_Fr > Décrets et arrêtés > Article premier > dinars\n11 Extrait du registre de l’entreprise ou de l’un de ses établissements secondaires en arabe ou en français muni de la signature et du cachet électronique Extrait 10\n12\nExtrait du registre de l’entreprise ou de l’un de ses établissements secondaires en arabe ou en français muni de la signature et du cachet électronique comportant toutes les inscriptions et les insertions\nExtrait 20\n13 Extrait de la fiche d’identité de l’entreprise en arabe ou en français Fiche 5\n14 Traduction de l’extrait du registre de l’entreprise ou de l’un de ses établissements secondaires avec les inscriptions et les insertions en langue étrangère Page 20\n15 Copie conforme à l’original des contrats et documents contenus dans le registre Document 10\n16 Copie conforme à l’original des états financiers et des documents comptables, et des rapports annuels devant être déposés au registre Document 20\nN° 34 Journal Officiel de la République Tunisienne — 30 mars 2022 Page 855",
+        "chunk_id": "rne-decree-2022-298-fees-fr:structure:7:1e33909df409a29f",
+        "citation": {
+          "doc_id": "rne-decree-2022-298-fees-fr",
+          "title": "Decret2022_0298_redevances_Fr",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/Decret2022_0298_redevances_Fr.pdf",
+          "official_reference": "Décret Présidentiel n° 2022-298 du 28 mars 2022, fixant les montants des redevances pour services (JORT n° 34 du 30 mars 2022)",
+          "publication_date": "2022-03-30",
+          "applicability": "unverified",
+          "page_start": 2,
+          "page_end": 3,
+          "heading_path": [
+            "Decret2022_0298_redevances_Fr",
+            "Décrets et arrêtés",
+            "Article premier",
+            "dinars"
+          ],
+          "sha256": "08e815cc4e9220aec3608c6c22fa8c67c6b129da1b77af54910c47cb7fa9a537",
+          "language": "fr",
+          "document_type": "decree",
+          "procedure_category": "business_registration"
+        }
+      },
+      {
+        "score": 0.01493,
+        "text": "Decret2022_0298_redevances_Fr > Décrets et arrêtés > Article premier > dinars\ndu Registre national\ndes entreprises\nAbonnement 50\n33 Consultation à distance du registre des bénéficiaires effectifs Identifiant unique 5\n34 Licence de mise à jour périodique des données Identifiant unique 0.2\n35 Licence au service d’identification instantanée et à distance des personnes\nphysiques et morales\nIdentifiant unique 0.5\n36 Copie électronique de la liste des associés ou actionnaires Identifiant unique 20\n37 Consultation sur place des données contenues dans le registre Tranche de 15\nminutes 3\nPage 856 Journal Officiel de la République Tunisienne — 30 mars 2022 N° 34",
+        "chunk_id": "rne-decree-2022-298-fees-fr:structure:10:5e2945e957dbdcf2",
+        "citation": {
+          "doc_id": "rne-decree-2022-298-fees-fr",
+          "title": "Decret2022_0298_redevances_Fr",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/Decret2022_0298_redevances_Fr.pdf",
+          "official_reference": "Décret Présidentiel n° 2022-298 du 28 mars 2022, fixant les montants des redevances pour services (JORT n° 34 du 30 mars 2022)",
+          "publication_date": "2022-03-30",
+          "applicability": "unverified",
+          "page_start": 3,
+          "page_end": 4,
+          "heading_path": [
+            "Decret2022_0298_redevances_Fr",
+            "Décrets et arrêtés",
+            "Article premier",
+            "dinars"
+          ],
+          "sha256": "08e815cc4e9220aec3608c6c22fa8c67c6b129da1b77af54910c47cb7fa9a537",
+          "language": "fr",
+          "document_type": "decree",
+          "procedure_category": "business_registration"
+        }
+      },
+      {
+        "score": 0.01471,
+        "text": "Arrete2026_35 > Article premier\n1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes",
+        "chunk_id": "rne-arrete-2026-35:structure:3:68c576eada257b14",
+        "citation": {
+          "doc_id": "rne-arrete-2026-35",
+          "title": "Arrete2026_35",
+          "source_organization": "Registre National des Entreprises (RNE)",
+          "url": "https://home.registre-entreprises.tn/wp-content/uploads/2026/01/Arrete2026_35.pdf",
+          "official_reference": "Arrêté de la Cheffe du Gouvernement du 13 janvier 2026, fixant la procédure d'obtention des informations relatives au bénéficiaire effectif des personnes morales et des constructions juridiques (JORT n° 5 du 13 janvier 2026)",
+          "publication_date": "2026-01-13",
+          "applicability": "unverified",
+          "page_start": 1,
+          "page_end": 1,
+          "heading_path": [
+            "Arrete2026_35",
+            "Article premier"
+          ],
+          "sha256": "4ee3eb1657820255c2454b61c745974211b322020cad6c9b28bee32d0b4ea5d7",
+          "language": "fr",
+          "document_type": "ministerial_order",
+          "procedure_category": "business_registration"
+        }
+      }
+    ]
+  },
+  "response": {
+    "text": "🏢 \n\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n[3] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente.",
+    "agent": "checklist_builder",
+    "route": {
+      "language": "fr",
+      "intent": "fees",
+      "procedure_category": "business_registration",
+      "hints": [],
+      "next_agent": "checklist",
+      "reply": null,
+      "method": "rules",
+      "prompt_ref": null,
+      "context": {
+        "category": "business_registration",
+        "hints": [],
+        "residence": null,
+        "declared_items": [],
+        "pending_intent": null,
+        "last_intent": "fees"
+      },
+      "retrieval_query": "frais fees business registration RNE résident en Tunisie"
+    },
+    "context": {
+      "category": "business_registration",
+      "hints": [],
+      "residence": null,
+      "declared_items": [],
+      "pending_intent": null,
+      "last_intent": "fees"
+    },
+    "found": true,
+    "doc_id": "rne-formalities-procedure-table",
+    "warnings": [],
+    "translation": null,
+    "citations": [
+      {
+        "doc_id": "rne-formalities-procedure-table",
+        "title": "Formalités",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/formalites/",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "540ebb5abd469b01e0dce7e731559750d18bf7be0b463a0b6720ac822a48c45c",
+        "language": "fr",
+        "document_type": "procedure_table",
+        "procedure_category": "business_registration"
+      },
+      {
+        "doc_id": "rne-form-f001-natural-person-registration",
+        "title": "RNE-F-001_declation_immatriculation_personne_physique",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "dbfa1f815312620a99519e84ff854d751f8784b970861082df686bf911296172",
+        "language": "mixed",
+        "document_type": "official_form",
+        "procedure_category": "business_registration"
+      },
+      {
+        "doc_id": "rne-form-f002-legal-entity-registration",
+        "title": "RNE-F-002_declation_immatriculation_personne_motale",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "f68cfaa0a715fd213c4e3a97b32a270d513eabcac2e868f98531d401a73ff06c",
+        "language": "mixed",
+        "document_type": "official_form",
+        "procedure_category": "business_registration"
+      }
+    ]
+  },
+  "context_checklist": {
+    "text": "🏢 \n\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n[3] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente.",
+    "found": true,
+    "doc_id": "rne-formalities-procedure-table",
+    "scenario": null,
+    "source_language": "fr",
+    "sections": [],
+    "alternatives": [],
+    "warnings": [],
+    "citations": [
+      {
+        "doc_id": "rne-formalities-procedure-table",
+        "title": "Formalités",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/formalites/",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "540ebb5abd469b01e0dce7e731559750d18bf7be0b463a0b6720ac822a48c45c",
+        "language": "fr",
+        "document_type": "procedure_table",
+        "procedure_category": "business_registration"
+      },
+      {
+        "doc_id": "rne-form-f001-natural-person-registration",
+        "title": "RNE-F-001_declation_immatriculation_personne_physique",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "dbfa1f815312620a99519e84ff854d751f8784b970861082df686bf911296172",
+        "language": "mixed",
+        "document_type": "official_form",
+        "procedure_category": "business_registration"
+      },
+      {
+        "doc_id": "rne-form-f002-legal-entity-registration",
+        "title": "RNE-F-002_declation_immatriculation_personne_motale",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "f68cfaa0a715fd213c4e3a97b32a270d513eabcac2e868f98531d401a73ff06c",
+        "language": "mixed",
+        "document_type": "official_form",
+        "procedure_category": "business_registration"
+      }
+    ],
+    "translation": null
+  },
+  "base_checklist": {
+    "text": "🏢 Registre National des Entreprises (RNE)\n\nCode procédure: RNE C 010.2\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par des réglementations particulières\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\nCode procédure: RNE C 009\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Réseau d'associations\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir\n\nCode procédure: RNE C 010.1\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par le décret-loi n° 88/2011 portant organisation des associations\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\n📝 Formulaires officiels:\n• RNE-F-001_declation_immatriculation_personne_physique\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n• RNE-F-002_declation_immatriculation_personne_motale\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n[3] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente.",
+    "found": true,
+    "doc_id": "rne-formalities-procedure-table",
+    "scenario": null,
+    "source_language": "fr",
+    "sections": [
+      {
+        "kind": "other",
+        "heading": "Formalités",
+        "items": [
+          "Code procédure: RNE C 010.2\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par des réglementations particulières\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)",
+          "Code procédure: RNE C 009\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Réseau d'associations\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir",
+          "Code procédure: RNE C 010.1\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par le décret-loi n° 88/2011 portant organisation des associations\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)"
+        ],
+        "translated_items": null
+      }
+    ],
+    "alternatives": [],
+    "warnings": [],
+    "citations": [
+      {
+        "doc_id": "rne-formalities-procedure-table",
+        "title": "Formalités",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/formalites/",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "540ebb5abd469b01e0dce7e731559750d18bf7be0b463a0b6720ac822a48c45c",
+        "language": "fr",
+        "document_type": "procedure_table",
+        "procedure_category": "business_registration"
+      },
+      {
+        "doc_id": "rne-form-f001-natural-person-registration",
+        "title": "RNE-F-001_declation_immatriculation_personne_physique",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "dbfa1f815312620a99519e84ff854d751f8784b970861082df686bf911296172",
+        "language": "mixed",
+        "document_type": "official_form",
+        "procedure_category": "business_registration"
+      },
+      {
+        "doc_id": "rne-form-f002-legal-entity-registration",
+        "title": "RNE-F-002_declation_immatriculation_personne_motale",
+        "source_organization": "Registre National des Entreprises (RNE)",
+        "url": "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf",
+        "official_reference": null,
+        "publication_date": null,
+        "applicability": "unverified",
+        "page_start": null,
+        "page_end": null,
+        "heading_path": [],
+        "sha256": "f68cfaa0a715fd213c4e3a97b32a270d513eabcac2e868f98531d401a73ff06c",
+        "language": "mixed",
+        "document_type": "official_form",
+        "procedure_category": "business_registration"
+      }
+    ],
+    "translation": null
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": 3,
+  "corrections": [
+    {
+      "check": "blank_official_form_reported_filled",
+      "reason": "Workflow 03 returns form_fields.filled as a list of field labels, not a scalar count. The evaluator now checks its length. The expected behavior remains zero filled fields for a public blank form. Four initial raw alerts were evaluator type errors, not production failures. Raw HTTP responses/results remain unchanged; rescored results are separate."
+    }
+  ],
+  "limitations": [
+    "Intent expectations are generated candidate labels and not human-validated global ground truth.",
+    "Exact requested-fact matches assess only the requested official row/section; other claims and translated meaning require review.",
+    "Refusal markers alone are not refusal accuracy."
+  ],
+  "additional_diagnostics": [
+    "Source-only replies are checked for a substantive body independently of found/citation flags.",
+    "Fresh empty-context cases are context tests, even without a preceding setup turn.",
+    "Known uncovered birth refusals are checked against the actual supported refusal contract; this is not a global refusal estimate.",
+    "Legal passage probes report retrieval only, separately from composed-answer citations.",
+    "Saved source-comparison reviews apply only when the observed-response hash matches; changed outputs require renewed review."
+  ]
+}

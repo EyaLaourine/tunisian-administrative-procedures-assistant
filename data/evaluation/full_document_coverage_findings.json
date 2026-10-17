@@ -1,0 +1,83 @@
+[
+  {
+    "id": "RNE-DIALOGUE-EMPTY",
+    "severity": "high",
+    "status": "verified_http_and_code_inspection",
+    "evidence_tests": [
+      "rne-formalities-procedure-table:formalities_row_dialogue:001",
+      "rne-formalities-procedure-table:formalities_row_dialogue:002"
+    ],
+    "observed": "All 190 fresh-context RNE fee/deadline replies contain only an icon and source footer. The stateless comparator returns the requested source fact in 188 of 190 cases.",
+    "code_locations": [
+      "telegram_bridge/__main__.py:42",
+      "telegram_bridge/bridge.py:282",
+      "agents/dialogue.py:287",
+      "agents/checklist_builder.py:81",
+      "agents/checklist_builder.py:285"
+    ],
+    "cause": "Canonical dialogue queries omit explicit RNE codes for focused intents. Contextual rendering filters for fees/delay sections, whereas business table sections are tagged other; no substantive section survives. found remains true.",
+    "production_changes_applied": false
+  },
+  {
+    "id": "CIN-NATURAL-LOSS",
+    "severity": "medium",
+    "status": "verified_http_and_code_inspection",
+    "evidence_tests": [
+      "interior-national-id-guide-fr:fresh_cin_profile:004"
+    ],
+    "observed": "A natural CIN-loss request retains a loss hint but answers the first-application scenario.",
+    "code_locations": [
+      "agents/checklist_builder.py:101"
+    ],
+    "cause": "The official loss title also contains Changement. The special-scenario filter requires every matched special hint, excluding that loss scenario when modification was not separately stated.",
+    "production_changes_applied": false
+  },
+  {
+    "id": "AR-INTENT-PHRASE",
+    "severity": "medium",
+    "status": "verified_http_and_code_inspection",
+    "evidence_tests": [
+      "interior-passport-guide-ar:guide_scenario:018",
+      "interior-passport-guide-ar:guide_fee:005"
+    ],
+    "observed": "Arabic conditions/documents/fees questions containing the official loss title are classified processing_time and omit the requested section.",
+    "cause": "The processing-time keyword أجل also matches the ordinary phrase من أجل in the official title.",
+    "production_changes_applied": false
+  },
+  {
+    "id": "LEGAL-SEMANTIC-GROUNDING",
+    "severity": "high",
+    "status": "source_compared_observed_failures",
+    "evidence_tests": [
+      "rne-law-2018-52-ar:direct_factual:005",
+      "rne-decree-name-reservation:direct_factual:001",
+      "rne-arrete-2026-35:direct_factual:003"
+    ],
+    "observed": "Observed replies invent an Article 16 definition, confuse validity with delivery time, or attribute a deadline to the wrong article, despite valid document metadata.",
+    "cause": "Not attributed to one component from final replies alone. Full evidence and reply hashes are retained in the source-comparison reviews.",
+    "production_changes_applied": false
+  },
+  {
+    "id": "FORM-TEXT-ROUTING",
+    "severity": "medium",
+    "status": "verified_http_and_code_inspection",
+    "evidence_tests": [
+      "rne-form-f001-natural-person-registration:direct_factual:003",
+      "rne-form-f002-legal-entity-registration:direct_factual:003"
+    ],
+    "observed": "Questions about printed form instructions that match form_help receive generic welcome/upload guidance. Official blank PDF/image recognition works separately.",
+    "production_changes_applied": false
+  },
+  {
+    "id": "LEGAL-CONTEXT-SUBJECT",
+    "severity": "high",
+    "status": "verified_http_and_code_inspection",
+    "evidence_tests": [
+      "rne-arrete-2026-35:multi_turn:001",
+      "rne-arrete-2026-35:multi_turn:002"
+    ],
+    "observed": "Follow-ups about access to beneficial-owner information switch to association-registration rows without clarifying.",
+    "cause": "Serialized context retains the RNE category but no legal subject/document reference; canonical follow-up queries are generic.",
+    "production_changes_applied": false
+  }
+]

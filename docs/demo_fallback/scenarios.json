@@ -1,0 +1,196 @@
+{
+ "status_before": {
+  "n8n": {
+   "ok": true,
+   "detail": {
+    "http": 200
+   }
+  },
+  "backend": {
+   "ok": true,
+   "detail": {
+    "status": "ok",
+    "qdrant": true,
+    "ollama": true,
+    "manifest_records": 14
+   }
+  }
+ },
+ "scenarios": [
+  {
+   "id": "S1",
+   "title": "Supported question in French (official citations)",
+   "eval_id": "P01",
+   "input": "Quelles pièces fournir pour une première demande de passeport ?",
+   "expected": "Checklist Builder quotes the official 'Pièces à fournir' section verbatim, cites the Ministry of the Interior pages and warns about the FR/AR stamp-duty discrepancy.",
+   "observed": {
+    "agent": "checklist_builder",
+    "language": "fr",
+    "method": null,
+    "missing_fields": null,
+    "warnings": [
+     "Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration."
+    ],
+    "first_line": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien."
+   },
+   "sources": [
+    "http://services.interieur.gov.tn/wap/ar/docs/demarches/02.html",
+    "http://services.interieur.gov.tn/wap/fr/docs/demarches/02.html"
+   ],
+   "seconds": 0.6,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S1.txt"
+  },
+  {
+   "id": "S2",
+   "title": "Supported question in English",
+   "eval_id": "P02",
+   "input": "What documents are needed to renew a Tunisian passport?",
+   "expected": "Checklist in English (validated FR->EN translation of the official items, or the French original with a note if validation fails), with citations.",
+   "observed": {
+    "agent": "checklist_builder",
+    "language": "en",
+    "method": null,
+    "missing_fields": null,
+    "warnings": [
+     "Warning: the official FR and AR versions of this page state different amounts (20/60 vs 25/80). Confirm the current amount with the administration."
+    ],
+    "first_line": "🛂 Obtaining a passport for the first time or renewing it for Tunisians residing in Tunisia."
+   },
+   "sources": [
+    "http://services.interieur.gov.tn/wap/ar/docs/demarches/02.html",
+    "http://services.interieur.gov.tn/wap/fr/docs/demarches/02.html"
+   ],
+   "seconds": 25.1,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S2.txt"
+  },
+  {
+   "id": "S3a",
+   "title": "Tunisian Derja question (Arabic script)",
+   "eval_id": "P04",
+   "input": "شنوة الأوراق اللازمة باش نجدد الباسبور؟",
+   "expected": "Detected as Derja; the official Arabic passport page is quoted with Derja labels.",
+   "observed": {
+    "agent": "checklist_builder",
+    "language": "derja",
+    "method": null,
+    "missing_fields": null,
+    "warnings": [],
+    "first_line": "🛂 الحصول على جواز سفر لأول مرة أو تجديده بالنسبة للتونسيّين المقيمين بالخارج"
+   },
+   "sources": [
+    "http://services.interieur.gov.tn/wap/ar/docs/demarches/02.html",
+    "http://services.interieur.gov.tn/wap/fr/docs/demarches/02.html"
+   ],
+   "seconds": 2.6,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S3a.txt"
+  },
+  {
+   "id": "S3b",
+   "title": "Tunisian Derja question (Latin script)",
+   "eval_id": "P05",
+   "input": "chnowa el wra9 eli lezmin bech nejjedd el passbor?",
+   "expected": "Latin-script Derja detected; passport checklist from the official sources.",
+   "observed": {
+    "agent": "checklist_builder",
+    "language": "derja",
+    "method": null,
+    "missing_fields": null,
+    "warnings": [
+     "ردّ بالك: النسخة الرسمية AR والنسخة FR فيهم مبالغ مختلفة (25/80 و 20/60). ثبّت في المبلغ الصحيح عند الإدارة."
+    ],
+    "first_line": "🛂 الحصول على جواز سفر لأوّل مرّة أو تجديده بالنسبة للتونسيّين المقيمين بالتراب التونسي"
+   },
+   "sources": [
+    "http://services.interieur.gov.tn/wap/ar/docs/demarches/02.html",
+    "http://services.interieur.gov.tn/wap/fr/docs/demarches/02.html"
+   ],
+   "seconds": 0.5,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S3b.txt"
+  },
+  {
+   "id": "S4",
+   "title": "Unsupported administrative question safely refused",
+   "eval_id": "B01",
+   "input": "Comment obtenir un extrait de naissance ?",
+   "expected": "Reported as not covered (the only source opts out of AI use); no procedure invented.",
+   "observed": {
+    "agent": "intent_router",
+    "language": "fr",
+    "method": null,
+    "missing_fields": null,
+    "warnings": null,
+    "first_line": "Cette procédure n'est pas encore couverte : aucune source officielle n'a pu être intégrée à ma base."
+   },
+   "sources": [],
+   "seconds": 0.3,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S4.txt"
+  },
+  {
+   "id": "S5",
+   "title": "Official RNE F-001 upload in Form Check mode",
+   "eval_id": null,
+   "input": "dbfa1f815312_RNE-F-001_declation_immatriculation_personne_physique.pdf (official blank form), mode=form_check",
+   "expected": "Form recognised (RNE-F-001); 7 fields listed as empty.",
+   "observed": {
+    "agent": "form_helper",
+    "language": null,
+    "method": null,
+    "missing_fields": 7,
+    "warnings": null,
+    "first_line": "📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique"
+   },
+   "sources": [
+    "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf"
+   ],
+   "seconds": 0.5,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S5.txt"
+  },
+  {
+   "id": "S6",
+   "title": "Same form in Dossier Validation mode",
+   "eval_id": null,
+   "input": "dbfa1f815312_RNE-F-001_declation_immatriculation_personne_physique.pdf (official blank form), mode=dossier",
+   "expected": "Readiness report: 7 missing fields; e-mail and mobile mandatory per the form (quoted); supporting-document list unavailable, so completeness cannot be assessed; never certified.",
+   "observed": {
+    "agent": "dossier_validator",
+    "language": null,
+    "method": null,
+    "missing_fields": 7,
+    "warnings": null,
+    "first_line": "🗂️ Rapport de préparation du dossier (aide uniquement)"
+   },
+   "sources": [
+    "https://home.registre-entreprises.tn/formalites/",
+    "https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf"
+   ],
+   "seconds": 0.5,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S6.txt"
+  },
+  {
+   "id": "S7",
+   "title": "Optional: numerical evidence verifier",
+   "eval_id": "RN1 (= held-out H14)",
+   "input": "What is the penalty for making a false declaration to the National Business Register?",
+   "expected": "If the model states a figure that is not in the cited article (observed: 510,000 TND for 'خمسون ألف دينار'), the answer is refused; a supported answer would be shown with its citation. LLM output can vary.",
+   "observed": {
+    "agent": "grounded_answer",
+    "language": "en",
+    "method": "none",
+    "missing_fields": null,
+    "warnings": null,
+    "first_line": "I could not verify the figures of the answer against the official sources, so I will not give it. Please consult the official text or the competent administrati"
+   },
+   "sources": [],
+   "seconds": 20.0,
+   "pass": true,
+   "output_file": "docs/demo_fallback/outputs/S7.txt"
+  }
+ ]
+}

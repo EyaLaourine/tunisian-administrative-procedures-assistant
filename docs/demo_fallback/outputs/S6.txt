@@ -1,0 +1,42 @@
+🗂️ Rapport de préparation du dossier (aide uniquement)
+📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique
+
+7 des 7 champs détectés semblent vides et 0 n'ont pas pu être lus. Les sources officielles disponibles ne listent pas les pièces justificatives requises : la complétude du dossier ne peut pas être évaluée. Ce rapport n'est pas une validation officielle.
+
+❗ Champs à vérifier:
+• التاريخ
+• E-mail / البريد الإلكتروني (obligatoire selon le formulaire)
+• N°GSM / الهاتف الجوال (obligatoire selon le formulaire)
+• Nom du Déposant / إسم و لقب المودع
+• N° Identité du Déposant / رقم بطاقة هوية المودع
+• N°Identité / رقم الهوية
+• Nom et Prénom (s) / الإسم و اللقب
+
+❔ Sections que cet outil ne peut pas vérifier (signature, cases à cocher):
+• إمضاء المصرّ ح أو من ينوبه بتوكيل
+• Type de Pièce d’identité / نوع بطاقة الهوية
+• Métier Libéral - مهنة حرّ ة Artisan - حرفيCommerçant -تاجر
+• IDENTIFIANT UNIQUE -المعرّف الوحيد
+
+📜 Exigences officielles:
+• [source officielle] Le formulaire officiel demande de remplir toutes les données ; il indique que toute donnée manquante entraîne le rejet.
+  « الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب »
+• [source officielle] Le formulaire officiel indique que l'e-mail et le numéro de mobile sont obligatoires.
+  « تضمين البريد الالكتروني و الهاتف الجوال وجوبي »
+• [liste officielle indisponible] Le formulaire exige les pièces justificatives requises, mais les sources officielles disponibles ne les listent pas : la complétude du dossier ne peut pas être évaluée.
+  « كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا »
+• [non vérifié] Le tableau officiel du RNE liste 4 procédures d'immatriculation pour ce type d'entreprise, chacune avec sa redevance et son délai ; celle qui s'applique n'est pas vérifiée.
+
+⚠️ Non vérifié par cet outil:
+• La présence des pièces justificatives
+• Le paiement de la redevance
+• La signature et la date
+• L'exactitude des valeurs saisies
+
+📚 Sources officielles:
+[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))
+https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf
+[2] Formalités (Registre National des Entreprises (RNE))
+https://home.registre-entreprises.tn/formalites/
+
+⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente.

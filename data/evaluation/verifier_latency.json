@@ -1,0 +1,12 @@
+{
+ "numeric_check_ms": {
+  "n": 17,
+  "median": 3.03,
+  "max": 5.27
+ },
+ "topic_check_s": {
+  "n": 6,
+  "median": 6.57,
+  "max": 10.75
+ }
+}

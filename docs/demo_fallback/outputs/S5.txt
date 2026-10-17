@@ -1,0 +1,16 @@
+📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique
+
+❗ Champs qui semblent vides:
+• التاريخ
+• E-mail / البريد الإلكتروني
+• N°GSM / الهاتف الجوال
+• Nom du Déposant / إسم و لقب المودع
+• N° Identité du Déposant / رقم بطاقة هوية المودع
+• N°Identité / رقم الهوية
+• Nom et Prénom (s) / الإسم و اللقب
+
+ℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.
+
+📚 Sources officielles:
+[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))
+https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf

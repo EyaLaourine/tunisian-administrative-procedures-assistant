@@ -1,0 +1,21 @@
+name: translate_items
+version: v1
+created: 2026-10-15
+description: >
+  Translates numbered checklist items taken verbatim from an official document. The caller checks
+  that the output has exactly the same numbered lines and that every number (amounts, sizes,
+  dates) of the source appears in the translation; otherwise the original text is shown.
+model_role: translation
+options:
+  temperature: 0
+  num_predict: 1200
+json_output: false
+system: ""
+user_template: |
+  Translate the following numbered lines from {source_language_name} into {target_language_name}.
+  Output only the translation, one line per item, keeping exactly the same numbering.
+  Keep all numbers, amounts and measurements exactly as they are.
+
+  {items}
+changelog:
+  - v1: initial version.

@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-17T14:38:36.540257+00:00",
+  "modified_existing_files": [
+    "agents/answer.py",
+    "agents/checklist_builder.py",
+    "agents/dialogue.py",
+    "agents/intent_router.py",
+    "agents/retriever.py",
+    "agents/schemas.py",
+    "backend/agents_api.py",
+    "telegram_bridge/contracts.py"
+  ],
+  "protected_changes": [],
+  "collections": {
+    "official_docs_recursive": {
+      "count": 174,
+      "payload_sha256": "fe509bb40351c7f3706316b44dc714148660458aa1024ebfa2026f180a5f74db",
+      "unchanged": true
+    },
+    "official_docs_structure": {
+      "count": 272,
+      "payload_sha256": "ed9ec6a61c6a915ba8fd2ad0ac32e533c21ad93efcf36f29f11dfacd9d31dac3",
+      "unchanged": true
+    }
+  },
+  "services": [
+    {
+      "Service": "backend",
+      "ID": "28862b4efec1",
+      "Image": "tunisian-admin-assistant-backend",
+      "State": "running",
+      "Health": "healthy",
+      "same_container_as_audit": true
+    },
+    {
+      "Service": "n8n",
+      "ID": "3f0730abfb1e",
+      "Image": "n8nio/n8n:2.41.3",
+      "State": "running",
+      "Health": "healthy",
+      "same_container_as_audit": true
+    },
+    {
+      "Service": "qdrant",
+      "ID": "915776cfd007",
+      "Image": "qdrant/qdrant:v1.19.0",
+      "State": "running",
+      "Health": "healthy",
+      "same_container_as_audit": true
+    },
+    {
+      "Service": "telegram-bridge",
+      "ID": "2571b2a7b3c2",
+      "Image": "tunisian-admin-assistant-telegram",
+      "State": "running",
+      "Health": "healthy",
+      "same_container_as_audit": true
+    }
+  ],
+  "health": {
+    "backend": {
+      "status_code": 200,
+      "body": {
+        "status": "ok",
+        "qdrant": true,
+        "ollama": true,
+        "manifest_records": 14
+      }
+    },
+    "candidate_backend": {
+      "status_code": 200,
+      "body": {
+        "status": "ok",
+        "qdrant": true,
+        "ollama": true,
+        "manifest_records": 14
+      }
+    },
+    "n8n": {
+      "status_code": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "candidate_n8n": {
+      "status_code": 200,
+      "body": {
+        "status": "ok"
+      }
+    }
+  },
+  "active_workflow_unchanged": true,
+  "deployment": "candidate_only_production_unchanged",
+  "telegram_live_message_test": "not_performed"
+}

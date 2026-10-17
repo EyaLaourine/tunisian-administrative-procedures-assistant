@@ -1,0 +1,7 @@
+{
+  "initial_cases": 584,
+  "current_cases": 846,
+  "score_bearing_expectations_changed": {},
+  "appended_cases": 262,
+  "note": "Five evidence-only locator corrections are recorded with original/corrected passages and reasons. No original questions, context, language, upload specification, intent, expected behavior or required source spans changed. Existing repository evaluation files remain protected by the original SHA baseline."
+}

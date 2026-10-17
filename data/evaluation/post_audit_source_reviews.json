@@ -1,0 +1,158 @@
+[
+  {
+    "id": "rne-law-2018-52-ar:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.918493+00:00",
+    "response_sha256": "99eb0de4f30859c2c0b6cd2f99abc1a363bf56549ea14e5103023e0f289f9a87",
+    "source_document": "rne-law-2018-52-ar",
+    "source_block_indices": [
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66
+    ],
+    "all_selected_source_blocks_retained": true,
+    "verdict": "source_faithful_requested_provision",
+    "reason": "Article 3 quotes real-time data exchange and the complete extracted public-body list. It does not substitute Article 4 establishing the Centre.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified."
+  },
+  {
+    "id": "rne-law-2018-52-ar:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.919018+00:00",
+    "response_sha256": "b5d8538a80504819921a26c0fd45f779180e08ade3b10c592ff2b2ad5a018cd8",
+    "source_document": "rne-law-2018-52-ar",
+    "source_block_indices": [
+      209,
+      210,
+      211,
+      212,
+      213,
+      214
+    ],
+    "all_selected_source_blocks_retained": true,
+    "verdict": "source_faithful_requested_provision",
+    "reason": "Article 16 quotes the rebuttable trader-status presumption and effects against third parties; no generated definitions of amendments or changes.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified."
+  },
+  {
+    "id": "rne-arrete-2026-35:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.920086+00:00",
+    "response_sha256": "951bcb4df359198d9f67fd565afbdd738f927a0637c10717daedd5bc657775d3",
+    "source_document": "rne-arrete-2026-35",
+    "source_block_indices": [
+      10,
+      11
+    ],
+    "all_selected_source_blocks_retained": true,
+    "verdict": "source_faithful_requested_provision",
+    "reason": "Written authority requests retain the complete Article 2 conditions and maximum two-day period from receipt.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified."
+  },
+  {
+    "id": "rne-arrete-2026-35:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.920086+00:00",
+    "response_sha256": "951bcb4df359198d9f67fd565afbdd738f927a0637c10717daedd5bc657775d3",
+    "source_document": "rne-arrete-2026-35",
+    "source_block_indices": [
+      20,
+      21,
+      23
+    ],
+    "all_selected_source_blocks_retained": true,
+    "verdict": "source_faithful_requested_provision",
+    "reason": "Public access conditions and decision time are quoted under their distinct Article 4 and Article 5 labels; no generated attribution of the deadline to Article 4.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified."
+  },
+  {
+    "id": "rne-decree-name-reservation:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.921158+00:00",
+    "response_sha256": "e5bc889df022b0232fa2e3395febf5c73980f0594285d165b1d721b32e1fac6c",
+    "source_document": "rne-decree-name-reservation",
+    "source_block_indices": [
+      26,
+      27,
+      28
+    ],
+    "all_selected_source_blocks_retained": true,
+    "verdict": "source_faithful_requested_provision",
+    "reason": "The complete extracted Article 3 retains same-day issuance separately from six-month validity and renewal. No generated six-month delivery claim.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified."
+  },
+  {
+    "id": "rne-decree-beneficial-owners:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.921685+00:00",
+    "response_sha256": "41e7b04b2a8e27754447916c39d70366fae26e8246ed9a562b0574f93c290a27",
+    "source_document": "rne-decree-beneficial-owners",
+    "source_block_indices": [
+      21,
+      22,
+      23,
+      24
+    ],
+    "all_selected_source_blocks_retained": true,
+    "verdict": "source_faithful_requested_provision",
+    "reason": "Ownership threshold and control/senior-manager fallbacks are all preserved in their source wording; no missing threshold or invented identification rule.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified."
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.922759+00:00",
+    "response_sha256": "1dcd3aa03826182ec99c455c15613d42ae0b6bf22418b7949b75de3060ad90e3",
+    "source_document": "rne-decree-2022-298-fees-fr",
+    "source_block_indices": [
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131
+    ],
+    "all_selected_source_blocks_retained": true,
+    "verdict": "source_faithful_requested_provision",
+    "reason": "All six extracted payment methods and refund qualifications are retained unchanged; no malformed generated 5] list.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified."
+  },
+  {
+    "id": "rne-arrete-2026-35:multi_turn:001",
+    "reviewer": "Codex source comparison",
+    "reviewed_at": "2026-10-17T14:33:29.922759+00:00",
+    "response_sha256": "951bcb4df359198d9f67fd565afbdd738f927a0637c10717daedd5bc657775d3",
+    "source_document": "rne-arrete-2026-35",
+    "source_block_indices": [
+      8,
+      11,
+      16,
+      21
+    ],
+    "all_selected_source_blocks_retained": false,
+    "verdict": "source_clause_faithful_with_heading_prefix_omitted",
+    "reason": "Follow-up stays on beneficial-ownership access: competent authorities, regulated persons and public conditions remain distinct. No switch to association registration.",
+    "limits": "Purposive review of these eight cases only; source applicability and individual legal completeness remain unverified.",
+    "source_fragment": {
+      "block_index": 16,
+      "start_character": 47,
+      "reason": "The preceding words belong to the section heading; the legal Article 3 clause begins here."
+    },
+    "article_clause_retained": true
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "id": "TnaaIngestIndex1",
+  "name": "01 - Official corpus: ingest and index",
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "nodes": [
+    {
+      "id": "a1f0c1d2-0001-4c1a-9a01-000000000001",
+      "name": "Manual trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "parameters": {}
+    },
+    {
+      "id": "a1f0c1d2-0002-4c1a-9a01-000000000002",
+      "name": "Weekly refresh",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 200],
+      "parameters": {
+        "rule": { "interval": [{ "field": "weeks", "triggerAtDay": [1], "triggerAtHour": 3 }] }
+      }
+    },
+    {
+      "id": "a1f0c1d2-0003-4c1a-9a01-000000000003",
+      "name": "Download official documents",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 100],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/ingestion/run",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": { "timeout": 900000 }
+      }
+    },
+    {
+      "id": "a1f0c1d2-0004-4c1a-9a01-000000000004",
+      "name": "Build chunks and index (both strategies)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [520, 100],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/index/run",
+        "options": { "timeout": 900000 }
+      }
+    },
+    {
+      "id": "a1f0c1d2-0005-4c1a-9a01-000000000005",
+      "name": "Run summary",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [780, 100],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            { "id": "s1", "name": "ingestion_counts", "type": "object", "value": "={{ $('Download official documents').item.json.counts }}" },
+            { "id": "s2", "name": "documents_indexed", "type": "array", "value": "={{ $json.documents_indexed }}" },
+            { "id": "s3", "name": "documents_skipped", "type": "object", "value": "={{ $json.documents_skipped }}" },
+            { "id": "s4", "name": "collection_points", "type": "object", "value": "={{ $json.collection_points }}" }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Manual trigger": { "main": [[{ "node": "Download official documents", "type": "main", "index": 0 }]] },
+    "Weekly refresh": { "main": [[{ "node": "Download official documents", "type": "main", "index": 0 }]] },
+    "Download official documents": { "main": [[{ "node": "Build chunks and index (both strategies)", "type": "main", "index": 0 }]] },
+    "Build chunks and index (both strategies)": { "main": [[{ "node": "Run summary", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {}
+}

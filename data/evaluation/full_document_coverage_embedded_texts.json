@@ -1,0 +1,100 @@
+[
+  {
+    "parent_document_id": "rne-arrete-2026-35",
+    "component_locator": "extracted_block:2",
+    "literal_title_candidate": "Arrêté de la Cheffe du Gouvernement du 13 janvier 2026, fixant la procédure d’obtention des informations relatives au bénéficiaire effectif des personnes morales et des constructions juridiques.",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-arrete-2026-35",
+    "component_locator": "extracted_block:29",
+    "literal_title_candidate": "Par arrêté du ministre de la santé du 24 décembre 2025.",
+    "page": 2,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-2022-298-fees-fr",
+    "component_locator": "extracted_block:2",
+    "literal_title_candidate": "Par décret Présidentiel n° 2022-301 du 29 mars 2022.",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-2022-298-fees-fr",
+    "component_locator": "extracted_block:4",
+    "literal_title_candidate": "Par décret Présidentiel n° 2022-302 du 29 mars 2022.",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-2022-298-fees-fr",
+    "component_locator": "extracted_block:7",
+    "literal_title_candidate": "Décret Présidentiel n° 2022-298 du 28 mars 2022, fixant les montants des redevances pour services rendus par le Centre national du registre des entreprises et les modalités de leur recouvrement.",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-2022-298-fees-fr",
+    "component_locator": "extracted_block:143",
+    "literal_title_candidate": "Par décret Présidentiel n° 2022-300 du 28 mars 2022.",
+    "page": 4,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-2022-298-fees-fr",
+    "component_locator": "extracted_block:146",
+    "literal_title_candidate": "Arrêté du ministre des affaires étrangères de la migration et des tunisiens à l’étranger du 28 mars 2022, portant ouverture du concours interne sur dossiers pour la promotion au grade d'ingénieur général du corps commun des ingénieurs des administrations publiques au titre de l’année 2021.",
+    "page": 4,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-beneficial-owners",
+    "component_locator": "extracted_block:6",
+    "literal_title_candidate": "أمر حكومي عدد 54 ة سن ل2019 مؤرخ في21 جانفي 2019 يتعلّق ب ضبط آ ليات ومعايير تحديد المستفيد ال حقيقي .",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-beneficial-owners",
+    "component_locator": "extracted_block:35",
+    "literal_title_candidate": "بمقتضى أمر حكومي عدد 55 لسنة2019 مؤرخ في21 جانفي 2019 .",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-law-2022-18-fr",
+    "component_locator": "extracted_block:1",
+    "literal_title_candidate": "Décret-loi n° 2022-18 du 29 mars 2022, portant remise des pénalités de retard relatives au Registre national des entreprises.",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-name-reservation",
+    "component_locator": "extracted_block:1",
+    "literal_title_candidate": "أمر حكومي عدد 53 لسنة 2019 مؤرخ في21 جانفي2019 يتعلق بضبط شروط وإجراءات شهادة حجز الشارة والتسمية الاجتماعية والاسم التجاري . إن رئيس الحكومة،",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-name-reservation",
+    "component_locator": "extracted_block:47",
+    "literal_title_candidate": "أمر حكومي عدد54 سن ل ة2019 مؤرخ في21 جانفي",
+    "page": 2,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-decree-name-reservation",
+    "component_locator": "extracted_block:101",
+    "literal_title_candidate": "بمقتضى أمر حكومي عدد55 لسنة2019 مؤرخ في21",
+    "page": 2,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  },
+  {
+    "parent_document_id": "rne-law-2018-52-ar",
+    "component_locator": "extracted_block:6",
+    "literal_title_candidate": "ون قان عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر2018",
+    "page": 1,
+    "status": "Embedded text candidate; parent provenance only, no independently registered document ID or current applicability claim"
+  }
+]

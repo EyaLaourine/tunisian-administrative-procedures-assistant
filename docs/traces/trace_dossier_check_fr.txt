@@ -1,0 +1,49 @@
+{"ts": "2026-10-16T15:43:38.480384+00:00", "level": "INFO", "logger": "backend.main", "event": "backend_started", "env": "development"}
+{"ts": "2026-10-16T15:43:38.565335+00:00", "level": "INFO", "logger": "agents.form_helper", "event": "form_check", "method": "text_layer", "words": 411, "mime": "application/pdf"}
+{"ts": "2026-10-16T15:43:39.120610+00:00", "level": "INFO", "logger": "agents.dossier_validator", "event": "dossier_check", "form": "rne-form-f002-legal-entity-registration", "method": "text_layer", "filled": 0, "missing": 8, "unreadable": 0, "rag_passages": 6, "checklist_builder_found": true, "checklist_available": false}
+{"ts": "2026-10-16T15:43:39.121137+00:00", "level": "INFO", "logger": "backend.agents_api", "event": "agent_dossier_check", "ms": 627, "recognised": true, "missing": 8, "checklist_available": false}
+[local, not via n8n] POST /agents/dossier-check in 1.0s
+--------------------------------------------------------------------------------
+🗂️ Rapport de préparation du dossier (aide uniquement)
+📝 Formulaire reconnu : RNE-F-002_declation_immatriculation_personne_motale
+
+8 des 8 champs détectés semblent vides et 0 n'ont pas pu être lus. Les sources officielles disponibles ne listent pas les pièces justificatives requises : la complétude du dossier ne peut pas être évaluée. Ce rapport n'est pas une validation officielle.
+
+❗ Champs à vérifier:
+• التاريخ
+• Représantant Légal / الممثل القانوني
+• Dénomination / إسم المؤسسة
+• E-mail / البريد الإلكتروني (obligatoire selon le formulaire)
+• N°GSM / الهاتف الجوال (obligatoire selon le formulaire)
+• Nom du Déposant / إسم و لقب المودع
+• N° Identité du Déposant / رقم بطاقة هوية المودع
+• N°Identité / رقم الهوية
+
+❔ Sections que cet outil ne peut pas vérifier (signature, cases à cocher):
+• إمضاء الممثل القانوني أو من ينوبه بتوكيل
+• Type de Pièce d’identité / نوع بطاقة الهوية
+• RIB -المعرف البنكي
+• IDENTIFIANT UNIQUE -المعرّف الوحيد
+
+📜 Exigences officielles:
+• [source officielle] Le formulaire officiel demande de remplir toutes les données ; il indique que toute donnée manquante entraîne le rejet.
+  « الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب »
+• [source officielle] Le formulaire officiel indique que l'e-mail et le numéro de mobile sont obligatoires.
+  « تضمين البريد الالكتروني و الهاتف الجوال وجوبي »
+• [liste officielle indisponible] Le formulaire exige les pièces justificatives requises, mais les sources officielles disponibles ne les listent pas : la complétude du dossier ne peut pas être évaluée.
+  « كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا »
+• [non vérifié] Le tableau officiel du RNE liste 27 procédures d'immatriculation pour ce type d'entreprise, chacune avec sa redevance et son délai ; celle qui s'applique n'est pas vérifiée.
+
+⚠️ Non vérifié par cet outil:
+• La présence des pièces justificatives
+• Le paiement de la redevance
+• La signature et la date
+• L'exactitude des valeurs saisies
+
+📚 Sources officielles:
+[1] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))
+https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf
+[2] Formalités (Registre National des Entreprises (RNE))
+https://home.registre-entreprises.tn/formalites/
+
+⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente.

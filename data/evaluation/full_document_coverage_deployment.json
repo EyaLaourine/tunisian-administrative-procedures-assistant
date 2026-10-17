@@ -1,0 +1,178 @@
+{
+  "deployed_source_hashes": {
+    "agents/schemas.py": "25df662e1427998e750bc0aa5bb7849bbb89b997bf331b7a6f6255c3a8f881bd",
+    "agents/checklist_builder.py": "15e10784a967849c8a252b3637740870100e875072fe3c7c15a54385d6f620ee",
+    "agents/i18n.py": "2c212a8e3f55263f70636403ab1d21ef9f43f44f55ae4bee87f66311c5d239c4",
+    "agents/verification.py": "991f1f9a784503f1b9b6c66d7ef60e23a242cb3d768eda4e919c139a5f312803",
+    "agents/dialogue.py": "6e98dbbb538946580313945007f318131adf46908fe527575a76d2c8555501bc",
+    "agents/prompts.py": "6ab8e3b1fe3ca00647114787e2b07f7efd322af3453eeb6ac43d73a492ef2e52",
+    "agents/answer.py": "5d09c13467a53c0859d5d4e8c032e0531eaba901ecea691f186ac128f0cb9d44",
+    "agents/intent_router.py": "4068f1e5798b9dea694699f182b21bd3b60e945f43728950ad1c1ff69259ed82",
+    "agents/language.py": "5019cc2a76212cfe5a6dd43252953dfcdade31ab54640c95c602a971cc1d9012",
+    "agents/corpus.py": "35f46e3c015d6206e9fe267f953753607ad23500f6653c0fd1f3200ba5423b93",
+    "agents/dossier_validator.py": "d4ccffb3269014610c06c2d627f37e9706928200cc08f5cdc581a8a004090f43",
+    "agents/form_helper.py": "62c45fcd65b442d867014ae965aa7431c09c2e62227827d1b395d55f3600913d",
+    "agents/answerability.py": "0f65e3d2737bc252052d01c031d1b17998cb125e5926310d4158e6da711e5ea3",
+    "agents/retriever.py": "b7a069ae253093be044ff2ace65223da859623cbc0f7b71a9c8c00c3a3da1994",
+    "agents/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "agents/llm.py": "a64df206a862a0e21f6822eafd248340d199009ecc6992862b8ec22e40ff88e8",
+    "backend/agents_api.py": "2f56997588397516c09146cbadb41b2033beb48c63dcd7b1d3058840df5ee94d",
+    "backend/logging_setup.py": "5f2105097215db738829478f13a855bb72c98104165b1e8ae63c98b34f48bff7",
+    "backend/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/settings.py": "cbd87453e1c4bc65b50f982a65c805139c5297cc6870e23ff538a7526bf78bcf",
+    "backend/main.py": "223eb6d82ed7c388d65e1ba5e2ff8c2e230f08b41687e62fd344a26946f0a76d",
+    "rag/extraction.py": "f170628dae1826867a47565dcdfb2b097c7e511eac07c09b1a8875393920b5e4",
+    "rag/vector_store.py": "5597af1b2fea7808f6e7f753c8100dc81d54edcc8214e598c134b8072d2cf779",
+    "rag/hybrid.py": "79a09ab68982dc186988357ccafe92fdf29ffcbafc3944abb74b08c9572bfce8",
+    "rag/chunking.py": "eee20d7650ffacc5624bf7e706f71410c685feee013def80cec34c767d6d4edf",
+    "rag/evaluation.py": "3b5a598fc7939e4cb4133b3cab053748add0282c8d7d6d2a551d5da8a3884802",
+    "rag/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rag/retrieval.py": "7fd1ccf548d1c43a945b2afdd95e418990e60b63738c9da2687597e7fb373dfb",
+    "rag/indexing.py": "75a559073a4f70788267faa41ac0d408ce792a0c2110dc7bf1981c2126ef113f",
+    "rag/embeddings.py": "14c704423b52f8e2978cd087b2ed1eb64fda2d49874276b23a0a1610f8f902c8",
+    "ingestion/downloader.py": "d7b4b0978088ae19c372aa744f0ecbd1f855d1e767b96b0d10bd1c118292422f",
+    "ingestion/pipeline.py": "ac4458ff8696d5ed891c3372f18659b3fa81e3e059ebc8ff789d536d55748ff5",
+    "ingestion/__main__.py": "bf181a2d45bfa6a7a63149aa7a528850853fb90a21ce5ec35d6ee0f0da172134",
+    "ingestion/models.py": "a43fbcdc75dbe551d69b6622f66b36bec00293b5073f4718f02251fc225f1161",
+    "ingestion/registry.py": "7ab33fea162a61474dcf12d25fb7415b626c4bbe609490927977cb4532ebbd2f",
+    "ingestion/robots.py": "05035dabc67b3e07bf084b39e7de406c72e01cbfd630496f8d84d44272af70a1",
+    "ingestion/integrity.py": "1e99a09d48ac62927d50bc460330c661bb301f8d97d57881ea5959ec93c63e7b",
+    "ingestion/manual_import.py": "e37112c00ff979b2faf2d2812fd58afe46b503b031fe926ad4147cdaf554f5b3",
+    "ingestion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ingestion/tls.py": "8b1c4e92a2b7bc58d6ec3fa4cd671656e4fdbfbf03825656eb251f34f290920e",
+    "ingestion/manifest.py": "a373d07cb3b46bba1aa68cfc3c53565414e0e961a3263227ab7dd6afdeefddfd"
+  },
+  "local_deployed_code_mismatch": [],
+  "n8n_workflow": {
+    "id": "TnaaAssistant01",
+    "active": true,
+    "nodeCount": 16,
+    "settings": {
+      "executionOrder": "v1",
+      "saveDataSuccessExecution": "none",
+      "saveDataErrorExecution": "none",
+      "saveManualExecutions": false
+    },
+    "nodesSha256": "661526438dbbe3ed120fadc0f02b4b68d4a983e4a5b05c3c505352f196c32157"
+  },
+  "collection_configuration": {
+    "official_docs_recursive": {
+      "status": "green",
+      "points_count": 174,
+      "vectors": {
+        "size": 1024,
+        "distance": "Cosine",
+        "hnsw_config": null,
+        "quantization_config": null,
+        "on_disk": null,
+        "memory": null,
+        "datatype": null,
+        "multivector_config": null
+      }
+    },
+    "official_docs_structure": {
+      "status": "green",
+      "points_count": 272,
+      "vectors": {
+        "size": 1024,
+        "distance": "Cosine",
+        "hnsw_config": null,
+        "quantization_config": null,
+        "on_disk": null,
+        "memory": null,
+        "datatype": null,
+        "multivector_config": null
+      }
+    }
+  },
+  "deployed_manifest_comparison": {
+    "count": 14,
+    "missing_ids": [],
+    "extra_ids": [],
+    "field_mismatch": {}
+  },
+  "deployed_registry_count": 18,
+  "untracked_raw_document_files": [],
+  "downloaded_document_files": 13,
+  "deployed_telegram_source_hashes": {
+    "telegram_bridge/__main__.py": "ad33b08217573f6708bece9597d46ed208d81a1cdfb32365da58f2752e407e29",
+    "telegram_bridge/contracts.py": "4243f972669fd43ce9452b6fa05f68ed5c7807374d26d93949a8815ad3f4ed20",
+    "telegram_bridge/bridge.py": "56188f7bc8125f102b3ce9beb965df64866fbe4ab0a3f5b809ced7bcecf02952",
+    "telegram_bridge/dossier.py": "2ad020aff8c0116158f8d49e544df7fa095612da56f6006f022c9c8bcb5567e3",
+    "telegram_bridge/ui.py": "1753bb3941a808e8d94df89dfa1c5fccd2cda9bbdde901e384bca15cfe4a190b",
+    "telegram_bridge/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "local_deployed_telegram_code_mismatch": [],
+  "container_start_comparison": {
+    "backend": {
+      "started_at": "2026-10-17T11:30:37.613482422Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    },
+    "n8n": {
+      "started_at": "2026-10-17T11:16:26.228131991Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    },
+    "qdrant": {
+      "started_at": "2026-10-15T20:54:34.22384275Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    },
+    "telegram-bridge": {
+      "started_at": "2026-10-17T11:30:45.32517399Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    }
+  },
+  "nonsecret_backend_runtime_settings": {
+    "llm_model": "mistral:latest",
+    "embedding_model": "bge-m3",
+    "embedding_dim": 1024,
+    "translation_model": "translategemma:4b",
+    "retrieval_mode": "hybrid",
+    "retrieval_min_score": 0.45,
+    "retrieval_max_per_doc_ratio": 0.4,
+    "evidence_verification": true,
+    "evidence_topic_check": false,
+    "ocr_languages": "ara+fra",
+    "max_upload_bytes": 10485760,
+    "llm_timeout_seconds": 300.0
+  },
+  "n8n_workflow_after": {
+    "id": "TnaaAssistant01",
+    "active": true,
+    "nodeCount": 16,
+    "settings": {
+      "executionOrder": "v1",
+      "saveDataSuccessExecution": "none",
+      "saveDataErrorExecution": "none",
+      "saveManualExecutions": false
+    },
+    "nodesSha256": "661526438dbbe3ed120fadc0f02b4b68d4a983e4a5b05c3c505352f196c32157"
+  },
+  "n8n_workflow_unchanged": true,
+  "container_start_comparison_after": {
+    "backend": {
+      "started_at": "2026-10-17T11:30:37.613482422Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    },
+    "n8n": {
+      "started_at": "2026-10-17T11:16:26.228131991Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    },
+    "qdrant": {
+      "started_at": "2026-10-15T20:54:34.22384275Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    },
+    "telegram-bridge": {
+      "started_at": "2026-10-17T11:30:45.32517399Z",
+      "restart_count": 0,
+      "started_during_audit": false
+    }
+  },
+  "final_preservation_check_at": "2026-10-17T13:55:37.205378+00:00"
+}

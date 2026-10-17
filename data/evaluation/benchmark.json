@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-10-15T22:25:30.516790+00:00",
+  "machine": {
+    "platform": "Windows-10-10.0.26300-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU, 4096 MiB"
+  },
+  "models": {
+    "mistral:latest": {
+      "runs": [
+        {
+          "load_s": 5.38,
+          "total_s": 7.66,
+          "gen_tokens_per_s": 12.3
+        },
+        {
+          "load_s": 0.01,
+          "total_s": 1.92,
+          "gen_tokens_per_s": 12.1
+        },
+        {
+          "load_s": 0.0,
+          "total_s": 2.05,
+          "gen_tokens_per_s": 11.3
+        }
+      ],
+      "gpu_share": 0.4,
+      "warm_tokens_per_s_median": 11.7
+    },
+    "translategemma:4b": {
+      "runs": [
+        {
+          "load_s": 11.35,
+          "total_s": 12.75,
+          "gen_tokens_per_s": 21.9
+        },
+        {
+          "load_s": 0.0,
+          "total_s": 1.17,
+          "gen_tokens_per_s": 22.1
+        },
+        {
+          "load_s": 0.0,
+          "total_s": 1.24,
+          "gen_tokens_per_s": 20.5
+        }
+      ],
+      "gpu_share": 0.46,
+      "warm_tokens_per_s_median": 21.3
+    }
+  },
+  "chain": {
+    "checklist_fr": {
+      "agent": "checklist_builder",
+      "seconds": [
+        5.65,
+        2.48,
+        2.57
+      ],
+      "median_s": 2.57
+    },
+    "checklist_derja": {
+      "agent": "checklist_builder",
+      "seconds": [
+        2.53,
+        2.53,
+        2.55
+      ],
+      "median_s": 2.53
+    },
+    "checklist_en_translated": {
+      "agent": "checklist_builder",
+      "seconds": [
+        21.19,
+        21.43,
+        21.72
+      ],
+      "median_s": 21.43
+    },
+    "rne_fee_table": {
+      "agent": "checklist_builder",
+      "seconds": [
+        2.6,
+        2.52,
+        2.52
+      ],
+      "median_s": 2.52
+    },
+    "grounded_answer_en": {
+      "agent": "grounded_answer",
+      "seconds": [
+        37.36,
+        37.34,
+        34.4
+      ],
+      "median_s": 37.34
+    },
+    "router_llm_fallback": {
+      "agent": "intent_router",
+      "seconds": [
+        4.99,
+        4.65,
+        4.78
+      ],
+      "median_s": 4.78
+    }
+  }
+}

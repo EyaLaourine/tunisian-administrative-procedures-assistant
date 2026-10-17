@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tunisian-admin-assistant"
+version = "0.2.0"
+description = "Multi-agent RAG assistant for Tunisian administrative procedures, built on official sources only."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.115.6",
+    "uvicorn[standard]==0.32.1",
+    "pydantic==2.10.4",
+    "pydantic-settings==2.7.0",
+    "httpx==0.28.1",
+    "certifi>=2024.8.30",
+    "pymupdf==1.25.1",
+    "qdrant-client==1.19.1",
+    "pyyaml==6.0.2",
+    "beautifulsoup4==4.12.3",
+    "python-multipart==0.0.20",
+    "opencv-python-headless==4.10.0.84",
+    "numpy==2.4.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.4"]
+
+[tool.setuptools.packages.find]
+include = ["backend*", "ingestion*", "rag*", "agents*", "telegram_bridge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: requires running services (Qdrant, Ollama) or network access",
+]

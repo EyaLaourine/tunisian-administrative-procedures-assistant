@@ -1,0 +1,77 @@
+[
+ {
+  "check": "supported FR checklist via n8n",
+  "ok": true,
+  "detail": "2.4s agent=checklist_builder citations=2 warning=True"
+ },
+ {
+  "check": "Derja question via n8n",
+  "ok": true,
+  "detail": "0.2s language=derja doc=interior-passport-guide-ar"
+ },
+ {
+  "check": "RNE fee via n8n",
+  "ok": true,
+  "detail": "0.2s agent=checklist_builder"
+ },
+ {
+  "check": "unsupported (birth certificate) refused",
+  "ok": true,
+  "detail": "0.0s agent=intent_router"
+ },
+ {
+  "check": "unsupported (driving licence) refused",
+  "ok": true,
+  "detail": "20.4s agent=grounded_answer found=False"
+ },
+ {
+  "check": "grounded answer via n8n (new backend)",
+  "ok": true,
+  "detail": "34.8s method=llm_grounded citations=1"
+ },
+ {
+  "check": "numerical verifier active in deployed backend",
+  "ok": true,
+  "detail": "method=none verification={\"topic\": {\"consistent\": true, \"method\": \"disabled\"}, \"numbers\": {\"claims\": 1, \"unsupported\": [\"510,000\"], \"removed_sentences\": 1}}"
+ },
+ {
+  "check": "topic check disabled in deployed backend",
+  "ok": true,
+  "detail": "topic={'consistent': True, 'method': 'disabled'}"
+ },
+ {
+  "check": "dossier-check blank rne-form-f00",
+  "ok": true,
+  "detail": "missing=7 checklist_available=False requirements=[('form_all_fields', 'supported_by_official_source'), ('form_contact', 'supported_by_official_source'), ('supporting_documents', 'official_requirement_unavailable'), ('registration_fee', 'not_verified')]"
+ },
+ {
+  "check": "dossier-check blank rne-form-f00",
+  "ok": true,
+  "detail": "missing=8 checklist_available=False requirements=[('form_all_fields', 'supported_by_official_source'), ('form_contact', 'supported_by_official_source'), ('supporting_documents', 'official_requirement_unavailable'), ('registration_fee', 'not_verified')]"
+ },
+ {
+  "check": "dossier-check filled fixture (2 fields)",
+  "ok": true,
+  "detail": "filled=['Dénomination / إسم المؤسسة', 'E-mail / البريد الإلكتروني'] missing=6"
+ },
+ {
+  "check": "dossier-check scan-like image (OCR in container)",
+  "ok": true,
+  "detail": "method=ocr_ink missing=7 unreadable=0"
+ },
+ {
+  "check": "dossier-check unrelated PDF rejected",
+  "ok": true,
+  "detail": "recognized=False"
+ },
+ {
+  "check": "dossier-check invalid type rejected",
+  "ok": true,
+  "detail": "error=unsupported file type text/plain"
+ },
+ {
+  "check": "no approval/certification claims",
+  "ok": true,
+  "detail": "checked report texts"
+ }
+]

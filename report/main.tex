@@ -1,0 +1,443 @@
+% Tunisian Administrative Procedures Assistant -- academic project report.
+% Compiles with pdfLaTeX + BibTeX (Overleaf: upload the report/ folder, main document main.tex).
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.7cm,top=1.5cm,bottom=1.7cm]{geometry}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage[font=small,labelfont=bf,skip=3pt]{caption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds,calc,shapes.geometric}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent]{hyperref}
+
+\definecolor{accent}{HTML}{1F4E79}
+\setlist{itemsep=1pt,topsep=2pt,parsep=0pt,leftmargin=*}
+\setlength{\parskip}{2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\newcommand{\code}[1]{\texttt{\small #1}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Tunisian Administrative Procedures Assistant}\\[3pt]
+  {\large A Local, Source-Grounded Multi-Agent RAG System for Multilingual Administrative Guidance}\\[4pt]
+  {\small Academic project report \quad$\cdot$\quad October 2026}
+  % Author names and institution: add here (not recorded in the project files).
+\end{center}
+\vspace{-4pt}
+
+\begin{abstract}
+\noindent Information on Tunisian administrative procedures is spread across ministry web pages, the
+National Business Register (RNE) site and Official Journal (JORT) PDFs, in French and Arabic, while many
+citizens ask questions in Tunisian Derja. Large language models answer such questions fluently but may
+invent fees, deadlines or required documents. We present a fully local assistant that answers in English,
+French, Arabic and Derja (Arabic and Latin script) exclusively from 13 verified official documents (12 indexed). Five
+agents orchestrated by n8n route the question, retrieve evidence from Qdrant, quote official checklists
+verbatim, generate citation-checked answers, and detect empty fields in photographed official forms. On a
+84-question evaluation set whose relevance labels are verified verbatim against the official texts, a hybrid
+retriever (dense BGE-M3 on raw and expanded queries plus BM25, reciprocal rank fusion and a per-document cap)
+raises Hit@5 from 0.704 to 0.873 and MRR@5 from 0.577 to 0.675 over the Phase-2 agent retriever, and from
+0.000 to 0.714 for Latin-script Derja on a parallel multilingual subset, at a median retrieval cost of 386\,ms.
+On 20 held-out questions written after all tuning, the same retriever reaches Hit@5 0.750 (Phase-2
+retriever: 0.562; raw dense retrieval: 0.750), showing that part of the development gain was overfitting.
+\end{abstract}
+\noindent\textbf{Keywords:} retrieval-augmented generation, multilingual retrieval, Tunisian Arabic, multi-agent systems, n8n, hallucination mitigation, document analysis.
+
+% ---------------------------------------------------------------------------
+\section{Introduction and problem statement}
+Obtaining a passport or registering a company in Tunisia requires combining several official sources: the
+Ministry of the Interior publishes procedure guides in French and Arabic \cite{interior_passport}; the RNE
+publishes a table of 95 procedures with fees and legal deadlines \cite{rne_formalities} and the legal texts
+that govern them \cite{law2018_52,decree2022_298}. These sources are fragmented, not always consistent (we
+found that the French and Arabic passport pages state different stamp duties, 20/60 vs.\ 25/80 TND), and
+written in languages that differ from the one many users speak (Derja, often typed in Latin script with
+digits, e.g.\ \emph{``9adech ya5ou wa9t el passbor?''}).
+
+A general-purpose chatbot is a risky answer to this problem: hallucinated requirements or amounts
+\cite{ji2023hallucination} can cost citizens time and money. Our objectives were therefore: (i) answer only
+from verifiable official documents, with citations; (ii) refuse when the corpus has no answer; (iii) support
+four query languages without altering official text; (iv) check official forms for missing fields; (v) run
+entirely on local hardware (one laptop GPU with 4\,GB VRAM) without paid APIs or exposure of personal data.
+Scope: passports, the national identity card and RNE business registration. Birth certificates are
+\emph{deliberately not covered}: the only source found (idaraty.tn) opts out of AI use in its
+\code{robots.txt}, so the system reports the procedure as uncovered.
+
+% ---------------------------------------------------------------------------
+\section{System architecture}
+Figure~\ref{fig:arch} shows the deployed system (Docker Compose, all ports bound to \code{127.0.0.1}). A
+Telegram bridge uses Bot API long polling, so no public URL is needed, and forwards each message to an n8n
+webhook; HTTP clients use the same webhook. n8n orchestrates five agents exposed by a FastAPI backend. Qdrant
+stores the vectors; Ollama on the host GPU serves BGE-M3 embeddings \cite{chen2024bgem3}, Mistral~7B
+\cite{jiang2023mistral} (routing fallback and grounded answers) and \code{translategemma:4b} (French-to-English
+translation of quoted items). All processing is local.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{\input{figures/architecture.tex}}
+  \caption{Implemented architecture. Arrows are HTTP/JSON calls; green boxes are stores and model servers. $^\ast$Innovation extension, reached through workflow 03 with \code{mode: dossier}.}
+  \label{fig:arch}
+\end{figure}
+
+\textbf{Technology choices.} \emph{RAG instead of fine-tuning} \cite{lewis2020rag}: the knowledge must remain
+traceable to a source document and updatable when a decree changes, and fine-tuning a 7B model is not
+feasible on 4\,GB VRAM. \emph{n8n} makes the agent chain visible and editable as a workflow and provides
+scheduling for re-ingestion. \emph{Qdrant} offers payload filtering on procedure category and stores the full
+provenance with each chunk. \emph{Ollama} keeps user questions and uploaded documents on the machine.
+
+% ---------------------------------------------------------------------------
+\section{Official corpus and RAG pipeline}
+\textbf{Provenance.} A source registry (\code{config/sources.yaml}) lists every candidate with its status:
+13 approved documents (passport guides FR/AR, national ID guide, the RNE formalities table, RNE law
+2018-52, decree 2022-298 on fees, decree-law 2022-18, two decrees of 2019, an order of 2026, two official
+forms and a scanned decree), plus excluded and not-found candidates with the reason; the passport
+application form was not downloaded because the server's \code{robots.txt} disallows it. The downloader enforces
+\code{robots.txt}, AI opt-out directives and TLS verification; each original is stored unmodified with its
+SHA-256, retrieval time and HTTP metadata in a manifest. Official references and publication dates are copied
+from the documents themselves; legal applicability stays \code{unverified} until a human confirms it.
+
+\textbf{Extraction and chunking.} PDFs (PyMuPDF) and HTML pages are converted to typed \emph{TextBlocks}
+(heading, paragraph, list item, table row) with page numbers; Arabic presentation forms are normalised with
+NFKC. Two chunkers consume the same blocks (Table~\ref{tab:chunks}): a \emph{structure-aware} chunker that
+keeps headings, list sections and table rows together (max.\ 1200 characters, heading path prefixed) and a
+\emph{recursive} character splitter (1000 characters, 150 overlap). Chunks are embedded with BGE-M3 (1024-d,
+cosine) into two Qdrant collections with the full provenance as payload. The scanned decree has no text layer
+and is skipped rather than OCR'd into the public corpus.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{\input{figures/rag_pipeline.tex}}
+  \caption{Ingestion and indexing (top) and query-time retrieval (bottom). Dashed arrows: stored artefacts used at query time.}
+  \label{fig:rag}
+\end{figure}
+
+\textbf{Retrieval (Fig.~\ref{fig:rag}).} The Phase-2 retriever expanded the user query with fixed bilingual
+search terms for the routed procedure and intent (e.g.\ the French and Arabic headings for ``documents to provide''),
+filtered on the procedure category and gave a small bonus to chunks in the user's script. Section~\ref{sec:eval}
+shows that this expansion helps transliterated Derja but drowns specific questions in the 95 near-identical
+rows of the RNE table. The final retriever therefore fuses, with reciprocal rank fusion (RRF, $k=60$)
+\cite{cormack2009rrf}, three lists restricted to the routed category: dense retrieval of the raw query,
+dense retrieval of the expanded query (both embedded in one batched call), and BM25 \cite{robertson2009bm25}
+over the raw query plus deterministic term normalisation (company types such as \emph{public limited company}
+$\rightarrow$ \emph{Société anonyme}; common Arabizi words such as \emph{khtiya} $\rightarrow$ the Arabic-script word for ``fine''); at most
+two chunks per document enter the top~5. \textbf{Citations} are not generated: they are copied from the
+chunk payload (title, organisation, URL, official reference, page, SHA-256).
+
+% ---------------------------------------------------------------------------
+\section{Multi-agent system and prompt engineering}
+Figure~\ref{fig:agents} shows workflow~03. The design principle is \emph{deterministic first}: an LLM is
+used only where no rule can do the job, and every LLM output is validated.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{\input{figures/agents.tex}}
+  \caption{n8n workflow 03 as deployed (16 nodes): each box is an HTTP node calling one backend agent; diamonds are n8n IF nodes. $^\ast$Uploads with \code{mode: dossier}; uploads without it keep the unchanged form check.}
+  \label{fig:agents}
+\end{figure}
+
+\begin{itemize}
+\item \textbf{Intent Router.} Language detection (EN/FR/AR/Derja, including Latin-script Derja via digit-letters
+  such as \emph{3, 7, 9}) and keyword rules give the procedure, intent and hints (abroad, loss, renewal). The LLM
+  prompt \code{intent\_router@v1} is called only when no procedure keyword matches; its JSON output is
+  checked against fixed enumerations. RNE questions go to the Checklist Builder only when they name a
+  procedure code or a registration act (company type, registration, transfer, \ldots); other fee or deadline
+  questions (fee decree, name reservation) go to the Grounded Answer agent.
+\item \textbf{RAG Retriever.} Section~3. Unknown procedures are searched without filter.
+\item \textbf{Checklist Builder.} Retrieval only identifies the document and the \emph{scenario} (e.g.\ passport,
+  renewal, resident abroad). The complete official sections (conditions, documents, place, deadline) are then
+  read verbatim from the extracted structure, so chunk boundaries never truncate a list. When the same guide
+  exists in French and Arabic with identical structure, Arabic and Derja users receive the Arabic text, and
+  the amounts of both versions are compared: a discrepancy produces a warning. Translation is applied only
+  French$\rightarrow$English and is rejected unless every line and every number is preserved. For the RNE,
+  where no official checklist exists, the agent says so and quotes the official table rows in retrieval
+  order (plus top-ranked legal passages verbatim); a requested procedure code absent from the table (e.g.\
+  RNE C\,014) is reported as non-existent instead of being answered with other rows.
+\item \textbf{Grounded Answer.} For free questions (penalties, beneficial owners, \ldots) Mistral~7B answers from
+  numbered passages; answers without citations or citing non-existent passages are rejected and the passages
+  are quoted instead. An \emph{answerability gate} runs first: if the procedure was not identified by the
+  keyword rules, at least half of the question's IDF-weighted informative terms (words absent from the
+  corpus count as maximally informative) must occur in the retrieved passages, otherwise the assistant
+  refuses instead of answering or quoting unrelated evidence. An \emph{evidence verifier} then checks
+  (i) topic consistency (Section~7) and (ii) every number written with digits in the LLM answer against the
+  passages cited by the same sentence, reading source numbers both as digits and as French, English or
+  Arabic number words; sentences with unsupported numbers are removed, and if no cited sentence remains the
+  answer is refused (no number is ever replaced).
+\item \textbf{Form-Filling Helper.} Section~5.
+\end{itemize}
+
+\textbf{Versioned prompts.} Prompts live in \code{prompts/<name>/<version>.yaml}; a registry selects the active
+version, and every LLM response records its \code{prompt\_ref}. Iterations (Table~\ref{tab:prompts}):
+(1) \code{grounded\_answer} v1$\rightarrow$v2: an Arabic answer was cut by the 600-token limit; v2 raised it
+to 900 and asked to reproduce official lists. Measured on the 12 questions routed to this agent, v2 raised
+acceptance (valid citations) from 0.667 to 0.750 and response-language consistency from 0.917 to 1.000, but
+verbatim evidence in the answer fell from 3/11 to 1/11, as the model paraphrased more. (2) v3 therefore
+requires quoting the official words before explaining them: evidence rose only from 1/11 to 2/11, acceptance
+was unchanged and the median time grew from 24.7 to 31.7\,s. With one item of difference on 11, v3 was
+\emph{not adopted}; v2 remains active. (3) \code{translate\_items@v1} FR$\rightarrow$AR was \emph{withdrawn}
+rather than re-prompted: it passed format checks but changed meanings (\emph{veuve}, widow, became
+``one-eyed woman''); Arabic and Derja users receive the official text with a note. Numbers in all accepted
+LLM answers occurred in the passages given to the model (faithfulness 1.0 in every run).
+
+% ---------------------------------------------------------------------------
+\section{n8n automation and multimodality}
+Workflow~01 runs ingestion and indexing (manual or weekly); workflow~02 exposes plain retrieval; workflow~03
+(Fig.~\ref{fig:agents}) answers users and is configured not to store execution data, because executions
+would contain user questions and files. The bridge splits long answers at line boundaries (Telegram limit
+4096 characters) and never logs message contents or the bot token.
+
+\textbf{Form analysis.} Field templates are derived from the official blank forms RNE F-001 and F-002: every
+dot-leader line is a field labelled by the adjacent French and Arabic text. Digital PDFs are checked
+geometrically (words not printed on the blank form lying on a dot leader). For photos and scans, the page is
+deskewed by a projection-profile search, OCR'd with Tesseract \code{ara+fra} \cite{smith2007tesseract}, aligned
+to the blank form by a RANSAC homography \cite{fischler1981ransac} over anchor words, and the ink in each
+dot-leader band is compared with the blank form rendered at the same scale. OCR text alone proved unusable for
+this decision: text written on dot leaders is read merged with the dots at near-zero confidence. Uploads are
+processed in memory only and never indexed. Speech input is not implemented.
+
+\textbf{Innovation: Smart Administrative Dossier Validator.} \code{POST /agents/dossier-check}, reached through workflow~03 when an upload carries \code{mode: dossier} (Fig.~\ref{fig:agents}), extends the
+Form-Filling Helper into a readiness report for the official RNE forms F-001 and F-002, keeping three
+notions apart. \emph{Form-field status}: each detected field is \code{filled}, \code{missing} or
+\code{unreadable}; signature and checkbox sections are \code{cannot\_verify}. \emph{Official requirements}:
+only statements an official source makes, quoted verbatim with their status
+(\code{supported\_by\_official\_source}, \code{not\_verified}, \code{official\_requirement\_unavailable}): the
+instructions printed on the form itself (all data must be completed, a missing item leads to rejection,
+e-mail and mobile number are mandatory, a declaration lacking the required documents is void) and the
+matching rows of the RNE formalities table (fee, deadline). \emph{Dossier completeness} is never certified:
+the validator asks the RAG Retriever and Checklist Builder whether an official list of supporting documents
+exists for the procedure; for the RNE none does, so the report states that completeness cannot be assessed
+instead of reconstructing a list with an LLM. The validator is deterministic (no LLM call), reports field
+statuses but never field values, and summarises in the user's language. 17 tests (official blank forms and
+placeholder-filled test fixtures; recognition, rejection of unrelated files, filled/missing/unreadable
+fields, verbatim official quotes, absence of validation claims, privacy of values, four languages) pass, and
+the OCR path returned the exact field statuses in 6/6 scan-like images (both forms; blank, two fields
+filled, rotated 2$^\circ$). It was not evaluated on real handwriting or photographs.
+
+% ---------------------------------------------------------------------------
+\section{Evaluation methodology}\label{sec:eval}
+\textbf{Dataset.} 84 questions (34 FR, 26 EN, 11 AR, 13 Derja of which 9 in Latin script) covering passports
+(25), the national ID (4), RNE registration, fees, forms and legal texts (45), birth certificates (4,
+unsupported) and out-of-scope requests (5). Ground truth is never written by hand: each answerable item names
+\emph{evidence spans} that must occur verbatim in a named official document; a build script verifies every span
+against the extracted text and stores the page, the full official block and the source URL. 69 items have
+verified evidence, 2 ambiguous items have document-level labels, 13 have no answer in the corpus. Equivalent
+French and Arabic passages form one evidence \emph{group}; conflicting items have one group per version. A
+\emph{parallel subset} asks 7 verified facts (and one unsupported request) in 4--5 language/script variants each. Human review of the labels is pending.
+
+\textbf{Metrics.} A retrieved chunk is relevant if it belongs to the group's document and contains the span
+(after Unicode, whitespace and diacritic normalisation). Recall@$k$ is the share of groups found in the top
+$k$, Hit@5 whether any group is found, MRR@5 the reciprocal rank of the first relevant chunk. All
+configurations use the same questions, routes (cached from the production router), filters and $k=5$.
+Answer quality is measured on the full production chain with deterministic checks only (no LLM judge):
+routing accuracy, citation validity against the manifest (URL and SHA-256), presence of a verified evidence
+span, faithfulness (checklist items verbatim in the official text; numbers in LLM answers present in the
+passages given to the model), refusal on unsupported items (refusal-phrase heuristic for LLM answers),
+conflict warnings and response script. Latencies were measured on the development laptop (RTX 3050 4\,GB,
+host-side calls through \code{127.0.0.1}: \code{localhost} added a 2.1\,s IPv6 fallback per request on this
+Windows host, an artefact we found and excluded).
+
+% ---------------------------------------------------------------------------
+\section{Results and failure analysis}
+\begin{table}[H]
+  \centering\small
+  \caption{Retrieval on the 71 questions with verified relevance labels ($k=5$, median latency per query).}
+  \label{tab:retrieval}
+  \input{tables/retrieval.tex}
+\end{table}
+
+\textbf{Retrieval and chunking (Tables~\ref{tab:retrieval}, \ref{tab:chunks}).} With raw dense retrieval,
+recursive chunks beat structure-aware chunks (Hit@5 0.817 vs.\ 0.732): the 95 structure chunks of the RNE
+table are near-identical and, at 430 characters median, too short to carry distinctive context. With routing,
+fusion and the per-document cap the ranking reverses: structure-aware chunks give the best configuration
+(Hit@5 0.873, MRR@5 0.675) because one table row is exactly one chunk, which BM25 can match on exact codes
+(\emph{RNE M 004.03}) and entity names, while recursive chunks merge several rows. Each component was kept only
+after a measured gain: fusion +0.127 Hit@5 over the agent retriever, the cap +0.028, term normalisation
++0.014 for the agent retriever; a cap of 3 was worse than 2. Batched embedding keeps the hybrid within 22\,ms of
+plain dense retrieval.
+
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+\begin{table}[H]
+  \centering\small
+  \caption{Chunking statistics.}\label{tab:chunks}
+  \input{tables/chunks.tex}
+\end{table}
+\vspace{-6pt}
+\begin{table}[H]
+  \centering\small
+  \caption{Hit@5 by query language/script (all 71 items).}\label{tab:script}
+  \input{tables/by_script.tex}
+\end{table}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.5\textwidth}
+\vspace{0pt}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ybar, width=\linewidth, height=4.4cm, bar width=5pt, ymin=0, ymax=1.1,
+  symbolic x coords={fr,en,ar,derja,derja-latin}, xtick=data, ylabel={Hit@5}, ylabel style={font=\scriptsize},
+  tick label style={font=\scriptsize}, legend style={font=\tiny, at={(0.5,1.02)}, anchor=south, legend columns=3},
+  enlarge x limits=0.15, cycle list={{fill=gray!40,draw=gray},{fill=orange!60,draw=orange!80!black},{fill=accent!70,draw=accent}}]
+\input{tables/script_chart.tex}
+\end{axis}
+\end{tikzpicture}
+\caption{Parallel subset: the same 7 facts asked in each language (Derja in Arabic and Latin script).}\label{fig:ml}
+\end{figure}
+\end{minipage}
+
+\textbf{Multilingual retrieval (Fig.~\ref{fig:ml}, Table~\ref{tab:script}).} BGE-M3 handles French, English and
+Arabic questions over French and Arabic documents well, but raw dense retrieval finds \emph{none} of the
+Latin-script Derja questions of the parallel subset: words such as \emph{passbor}, \emph{charika} or
+\emph{khtiya} have no counterpart in either script. Routed expansion and the Arabizi map raise this to 0.714;
+the residual failures (beneficial-owner and penalty questions in Arabizi) use vocabulary outside the map.
+Because the map was compiled after observing failures and no held-out set exists, this gain is likely
+optimistic. Official passages are never translated for retrieval; only queries are expanded.
+
+\textbf{Remaining retrieval failures.} (i) English or French questions about the fee decree (refunds, payment)
+still lose to RNE table rows; (ii) R23 asks in French about an appeal deadline that exists only in the Arabic
+law, ranked below the 2026 order; (iii) \emph{which form} questions (R32) are poorly served because the
+forms' text is mostly field labels.
+
+\begin{minipage}[t]{0.6\textwidth}
+\vspace{0pt}
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{Answer quality of the production chain (84 items).}\label{tab:agents}
+  \IfFileExists{tables/agents.tex}{\input{tables/agents.tex}}{\emph{pending}}
+\end{table}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.37\textwidth}
+\vspace{0pt}
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{End-to-end latency by final agent.}\label{tab:latency}
+  \IfFileExists{tables/latency.tex}{\input{tables/latency.tex}}{\emph{pending}}
+\end{table}
+\end{minipage}
+
+\begin{table}[H]
+  \centering\small
+  \caption{Prompt iteration on the questions routed to the Grounded Answer agent (same passages for both versions).}\label{tab:prompts}
+  \IfFileExists{tables/prompts.tex}{\input{tables/prompts.tex}}{\emph{pending}}
+\end{table}
+
+\textbf{Answer quality (Table~\ref{tab:agents}).} The final chain (hybrid retrieval, prompt v2) cites only
+real manifest entries (147/147 citations match URL and SHA-256), never quotes an item that is not in the
+official text, and copies every number of an accepted LLM answer from its passages (faithfulness 1.0). Both
+conflicting fee questions carry the FR/AR warning. Error analysis on the first full runs led to fixes, each
+re-measured on the same 84 items: unknown procedure codes are reported as non-existent; RNE fee or duration
+questions without a registration act go to the Grounded Answer agent instead of the table; special
+scenarios (pilgrimage, change of passport) are no longer chosen for generic questions; and the answerability
+gate refuses unsupported topics. Rejection of unsupported requests rose from 0.833 to 0.917 and then to 1.000
+(the driving-licence question O04 is now refused), and citation support from 0.826 to 0.855. Verbatim evidence
+is 0.565, a strict lower bound: R25 is answered correctly in French
+(\emph{valable pour une durée de six mois, renouvelable une fois}) from an Arabic-only decree, and English
+checklists are validated translations, so neither can contain the official span verbatim.
+
+\textbf{Remaining failures.} (i) Routing: 4 category errors, all from the LLM fallback (e.g.\ R28 uses the
+indefinite Arabic form of ``beneficial owner'', which the keyword rules do not cover, and was sent out of
+scope); intent accuracy is 0.819, mostly fee/duration/information confusions that do not change the agent.
+(ii) Questions asking \emph{which} RNE form to use get the generic greeting rather than the form links.
+(iii) Strict language consistency (0.821) fails mainly by design: English and Derja users receive verbatim
+French originals when no validated translation or Arabic version exists. Excluding verbatim official
+quotations, the assistant's own text is in the user's language in 0.929 of the answers.
+
+\textbf{Held-out validation (Table~\ref{tab:heldout}).} Because every fix above was found on the
+development set, 20 new questions (16 with verified evidence, 4 unsupported) were written on official facts
+not used during development and evaluated once before and once after the last changes (answerability gate;
+localised labels before verbatim official lines; a fraction-slash bug that made every translation of the
+national-ID photo requirement fail validation; Derja detection), without tuning on them. Retrieval does not
+generalise as well as on the development set: the production hybrid ties raw dense retrieval on Hit@5
+(0.750) with a lower MRR@5 (0.531 vs.\ 0.635), but still clearly beats the Phase-2 retriever (0.562).
+Citations stay 100\,\% valid; language detection reaches 1.0, strict language consistency rises from 0.70 to
+0.80 and assistant-text consistency from 0.944 to 1.000. Two failures remain unseen during development:
+(H17) ``carte grise'' is answered with national-ID evidence, because the generic words \emph{renouveler} and
+\emph{carte} give the gate 58\,\% lexical support; (H14) an accepted LLM answer contains a number absent from
+its passages (faithfulness 0.938). These two discovered failures motivated the evidence verifier below;
+from then on the held-out set is no longer independent for them, and new test sets were written.
+
+\begin{table}[H]
+  \centering\small
+  \caption{Development vs.\ held-out results before and after the final reliability changes (retrieval was not changed; production configuration).}\label{tab:heldout}
+  \input{tables/heldout.tex}
+\end{table}
+
+\textbf{Evidence verification (Table~\ref{tab:verif}).} H14 and H17 had two root causes: the answer agent
+only checked that citation markers existed, so the LLM could convert the Arabic ``fifty thousand dinars'' of
+Law 2018-52 into ``510,000 TND''; and nothing checked that the evidence described the procedure asked about.
+The numerical check is deterministic (median 3\,ms) and removed every unsupported number on all five sets,
+including two independent test sets written before it was built, and never caused a false refusal by
+itself (the refusals it triggers replace answers whose figures were wrong). Topic verification was harder.
+A first version asked Mistral~7B (prompt \code{evidence\_topic@v1}, 6.6\,s median per call) whether the
+evidence describes the asked procedure; its verdict proved unstable (the same ``carte grise'' question was
+judged consistent in one run and inconsistent in another, depending on the excerpts shown). The retained
+version is deterministic for French and Arabic questions, the corpus languages: a topical content word that
+occurs in none of the official documents (after light stemming; verb forms excluded) means the subject is not
+covered; English and Derja questions keep the LLM verdict. It removes the known failure type (regression set:
+false acceptance 0.143$\rightarrow$0) but, on the independent test sets, it did \emph{not} reduce false
+acceptance and added false refusals: synonyms absent from the corpus (``tarif'' instead of ``redevance'') and
+word forms (``fixe'') are read as uncovered subjects, while uncovered subjects named with corpus words
+(``attestation de travail'', a supporting document only) still pass. On test set~2, 5 of 6 answerable
+questions were already refused by the router's LLM fallback without the verifier. The topic check is
+therefore \emph{disabled by default} and kept for experiments (\code{EVIDENCE\_TOPIC\_CHECK}); the numerical check is a clear gain and stays enabled.
+
+\begin{table}[H]
+  \centering\small
+  \caption{Without (off) and with (on) the evidence verifier. $^a$Contaminated: H17 and H09 were analysed
+  before the final version. $^b$Second evaluation (first: verifier v1). $^c$Untouched, evaluated once with
+  the final verifier; ``off'' is the same code with the verifier disabled.}\label{tab:verif}
+  \input{tables/verification.tex}
+\end{table}
+
+\textbf{Other component tests.} 227 unit tests and 20 integration tests pass (official forms, extraction, chunking, routing, checklist
+construction on the real corpus, metrics). Integration tests run the n8n chain end to end. The Telegram bridge
+was tested with a \emph{mocked} Telegram API forwarding to the real n8n chain; a live Telegram conversation is
+\emph{not} part of this evaluation. The form helper recognised the form and returned exactly the set of empty
+fields in 30/30 synthetic image cases (two official forms; blank, partial and complete fills with placeholder
+text; 120--200\,dpi, JPEG, 1--3$^\circ$ rotation, perspective). Real handwriting and real photographs were not
+tested because no real filled forms were used.
+
+% ---------------------------------------------------------------------------
+\section{Security, limitations and conclusion}
+\textbf{Privacy and security.} All models run locally; services listen on \code{127.0.0.1}; the Telegram bridge
+needs no inbound port. User questions, uploads and the bot token are never logged; uploads are decoded in
+memory, never written to disk and never indexed; n8n stores no executions of workflow~03. Users are advised to
+send redacted forms.
+
+\textbf{Limitations.} The corpus is small (13 documents) and its legal currency is unverified: publication in
+the JORT does not prove that a text is still in force, and the two passport pages disagree. There is no
+official RNE checklist of required documents; the system states this instead of guessing. Retrieval is
+weakest for Latin-script Derja and for fee-decree questions; the evaluation sets were built by the developers
+and their labels await human review; the held-out set is small (20 items), and it shows that part of the
+development gain was overfitting. The lexical answerability gate can be fooled by generic shared words
+(H17), and the topic verifier trades it for false refusals on synonyms; neither guarantees legal
+correctness. LLM paths are slow on 4\,GB VRAM
+(Mistral~7B runs 40\,\% on GPU), translation is restricted to French$\rightarrow$English, and speech input,
+birth certificates and the passport application form are not covered.
+
+\textbf{Future work.} Human review and a larger held-out set; a stronger semantic topic verifier (local
+entailment model or multilingual concept lexicon) and a better routing fallback; more official
+sources (birth certificates with the operator's permission); a learned Arabizi transliterator; reranking once
+hardware allows; and a live Telegram field test.
+
+\textbf{Conclusion.} Grounding every administrative statement in verbatim official text, measuring retrieval
+against verified evidence rather than model judgement, and refusing when the corpus is silent produced an
+assistant whose answers can be traced to their source. The evaluation also showed where intuition failed: the
+production query expansion lowered Hit@5 for specific questions, and the better chunking strategy depended on
+the retriever. Both were found only because every change was measured on the same verified questions.
+
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

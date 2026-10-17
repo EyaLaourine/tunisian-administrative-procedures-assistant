@@ -1,0 +1,37 @@
+[
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:002",
+    "field": "official_supporting_passage",
+    "original": null,
+    "corrected": "Tableau n°1 : Les redevances afférentes aux procédures\nN° du service\nNature du service\nUnité\nRedevance en\ndinars\nle demandeur : personne physique\nRedevance en\ndinars\nle demandeur : personne morale\n1\nImmatriculation principale y compris la déclaration du bénéficiaire ou des bénéficiaires effectifs de la personne morale et la publication au Bulletin officiel du Centre\nProcédure 20 50\n2 Inscription complémentaire Procédure 20 50\n3 Radiation de l’enregistrement Procédure 10 10\n4 Modification ou mise à jour des données du registre Procédure 20 20\n5 Dépôt des états financiers Procédure 20 50\n6 Dépôt de la déclaration du bénéficiaire effectif ou sa modification Procédure ...... 20\n7 Publication au Bulletin officiel du Centre outre les opérations n°1, 2, 3, 4 et 5 Procédure 20 20\n8 Inscription d’un nantissement ou leasing Procédure 10 10\n9 Demande de réservation de dénomination sociale, nom commercial ou enseigne Procédure 30 30\n10 Renouvellement ou modification de la réservation de la dénomination sociale, nom commercial ou enseigne Procédure 10 10",
+    "reason": "Source-locator correction: the official PDF table uses singular column headers and separates headers from rows; recovery modalities are in Article 5. No question, intent label, expected behavior, required span, production code or existing evaluation file changed. These evidence-only corrections do not change automatic scores."
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:003",
+    "field": "official_supporting_passage",
+    "original": "Extraction d’une liste des personnes morales ou physiques inscrites au",
+    "corrected": "Tableau n°1 : Les redevances afférentes aux procédures\nN° du service\nNature du service\nUnité\nRedevance en\ndinars\nle demandeur : personne physique\nRedevance en\ndinars\nle demandeur : personne morale\n1\nImmatriculation principale y compris la déclaration du bénéficiaire ou des bénéficiaires effectifs de la personne morale et la publication au Bulletin officiel du Centre\nProcédure 20 50\n2 Inscription complémentaire Procédure 20 50\n3 Radiation de l’enregistrement Procédure 10 10\n4 Modification ou mise à jour des données du registre Procédure 20 20\n5 Dépôt des états financiers Procédure 20 50\n6 Dépôt de la déclaration du bénéficiaire effectif ou sa modification Procédure ...... 20\n7 Publication au Bulletin officiel du Centre outre les opérations n°1, 2, 3, 4 et 5 Procédure 20 20\n8 Inscription d’un nantissement ou leasing Procédure 10 10\n9 Demande de réservation de dénomination sociale, nom commercial ou enseigne Procédure 30 30\n10 Renouvellement ou modification de la réservation de la dénomination sociale, nom commercial ou enseigne Procédure 10 10",
+    "reason": "Source-locator correction: the official PDF table uses singular column headers and separates headers from rows; recovery modalities are in Article 5. No question, intent label, expected behavior, required span, production code or existing evaluation file changed. These evidence-only corrections do not change automatic scores."
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:004",
+    "field": "official_supporting_passage",
+    "original": "Décret Présidentiel n° 2022-298 du 28 mars 2022, fixant les montants des redevances pour services rendus par le Centre national du registre des entreprises et les modalités de leur recouvrement.",
+    "corrected": "Art. 5 - Les redevances prévues par le présent décret Présidentiel sont recouvrées selon l’une des modalités suivantes :\n- Paiement électronique,\n- Chèque bancaire ou postal remis directement au Centre national du Registre des entreprises,\n- Virement bancaire ou postal au compte du Centre national du Registre des entreprises,\n- Mandat postal au nom du Centre national du Registre des entreprises,\n- Versement bancaire ou postal direct au compte du Centre national du Registre des entreprises,\n- Paiement en espèce.\nTout montant payé pour service rendu par le Centre national du Registre des entreprises ne peut être remboursé.\nLes montants indûment perçus ou le trop-perçu des redevances, peuvent être remboursés.",
+    "reason": "Source-locator correction: the official PDF table uses singular column headers and separates headers from rows; recovery modalities are in Article 5. No question, intent label, expected behavior, required span, production code or existing evaluation file changed. These evidence-only corrections do not change automatic scores."
+  },
+  {
+    "id": "interior-passport-guide-fr:dialogue_regression:001",
+    "field": "official_supporting_passage",
+    "original": null,
+    "corrected": "Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\nCopie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n4 photos avec les caractéristiques suivantes :\nfond blanc\nformat 3.5/4.5 cm\nJustificatif de scolarisation pour les élèves et les étudiants.\nAutorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\nQuittance de paiement du droit de timbre fiscal dû:\nDe 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\nDe 60 dinars pour les autres.\nJoindre l'ancien passeport en cas de renouvellement,\nPrésenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.",
+    "reason": "Attach the actual available official document list to the behavioral conversation regression. Questions, context, required spans and score-bearing expectations are unchanged; this evidence-only metadata correction cannot change automatic scores."
+  },
+  {
+    "id": "interior-passport-guide-fr:dialogue_regression:002",
+    "field": "official_supporting_passage",
+    "original": null,
+    "corrected": "Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\nCopie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n4 photos avec les caractéristiques suivantes :\nfond blanc\nformat 3.5/4.5 cm\nJustificatif de scolarisation pour les élèves et les étudiants.\nAutorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\nQuittance de paiement du droit de timbre fiscal dû:\nDe 25 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\nDe 80 dinars pour les autres.\nJoindre l'ancien passeport en cas de renouvellement,\nPrésenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\nTout document prouvant la résidence réglementaire à l'étranger.",
+    "reason": "Attach the actual available official document list to the behavioral conversation regression. Questions, context, required spans and score-bearing expectations are unchanged; this evidence-only metadata correction cannot change automatic scores."
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "candidate_backend_source_matches_host": true,
+  "sha256": {
+    "agents/answer.py": "f87abeefb5932560b00aacce203dcf4f3d0393d0f362c1ed6916447ee4d7887f",
+    "agents/checklist_builder.py": "2f6a48eee002a1f8329e2761e75e76de98d5b0a58c3c161cd16efd88752d632b",
+    "agents/dialogue.py": "06110116b61180e4f17842090d2754326013b6f05ac0885f24d36c7b7a5ef8e0",
+    "agents/intent_router.py": "0d47db766ff219201a692bafb3969c6da34ccfcfa698f3a112032c0b1253420b",
+    "agents/schemas.py": "f33e06168ceb56c205aa8f4ca9135177480f9a5d635a52d8274ac7b1a0963aca",
+    "agents/retriever.py": "5d2a4e28f1266f56e8878cb7fac2450b4003b2909ef9e24075aba73f69c7d88f",
+    "agents/legal_evidence.py": "c03c69be47f7f3edbf0661b15be44ce5d9a1d8e5a4411b8855cf2df300261144",
+    "backend/agents_api.py": "e28dc7ba00564376d796c50b072cadc4a09510cf1323fb841d8cd90e1900c1b0",
+    "telegram_bridge/contracts.py": "208d158546998c2d57280e00254fbe69d40a400dc89c7cbdfdc0d6edf8caa13e"
+  },
+  "backend_final_image": "sha256:7254fcf240129dbfd144b1f3c334614720adb88b0366c2d6686fd5e72d6d25bc",
+  "bridge_final_image": "sha256:befa1e0c0a8116ef087e961b6f8141f4848f365813f3a5641e1a5bdcbec455f0"
+}

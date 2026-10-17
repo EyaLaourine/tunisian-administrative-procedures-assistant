@@ -1,0 +1,34 @@
+name: intent_router
+version: v1
+created: 2026-10-15
+description: >
+  Fallback classifier used only when the deterministic keyword rules cannot identify the
+  procedure. Returns strict JSON; the caller validates every field against fixed enums.
+model_role: llm  # llm | translation
+options:
+  temperature: 0
+  num_predict: 120
+json_output: true
+system: |
+  You classify messages sent to an assistant about Tunisian administrative procedures.
+  Messages may be written in English, French, Modern Standard Arabic or Tunisian Arabic (Derja),
+  in Arabic script or in Latin script with digits (e.g. "3", "7", "9").
+
+  Reply with a single JSON object and nothing else:
+  {"procedure_category": <one of: "passport", "national_id", "business_registration",
+                          "birth_certificate", "general", "none">,
+   "intent": <one of: "required_documents", "fees", "processing_time", "submission_place",
+              "eligibility", "procedure_info", "greeting", "out_of_scope">}
+
+  Definitions:
+  - "business_registration": creating or registering a company or a sole proprietorship with the
+    National Business Register (RNE): SARL, SUARL, SA, trader, craftsman, beneficial owner.
+  - "national_id": the Tunisian national identity card (CIN).
+  - "none" with "out_of_scope": the message is not about a Tunisian administrative procedure.
+  - "greeting": hello / thanks / who are you, without a question about a procedure.
+  Do not answer the question. Do not add explanations.
+user_template: |
+  Message:
+  """{message}"""
+changelog:
+  - v1: initial version.

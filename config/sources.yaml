@@ -1,0 +1,262 @@
+# Official source registry.
+#
+# Rules:
+#  - Only official Tunisian government sources. Domains must match `allowed_domains`.
+#  - `title` is the title exactly as listed by the official website (link text, page <title>,
+#    or the CMS media title). It is NOT invented.
+#  - `language` / `publication_date` are set only after inspecting the original file.
+#    Unknown values stay `unknown` / null. Never guess.
+#  - `applicability` is `unverified` until a human confirms the document is still in force.
+#  - status: approved   -> downloaded and processed by the ingestion pipeline
+#            excluded   -> deliberately not ingested (see exclusion_reason)
+#            not_found  -> a discovery candidate that could not be located on official sources
+#
+# Discovery performed: 2026-10-15.
+
+allowed_domains:
+  - home.registre-entreprises.tn
+  - www.registre-entreprises.tn
+  - services.interieur.gov.tn
+  - www.interieur.gov.tn
+  - www.iort.gov.tn
+
+# robots.txt agents treated as "AI usage opt-out" signals. If a site disallows any of
+# these for a path, the downloader refuses it even if our own user agent is allowed.
+ai_optout_agents:
+  - anthropic-ai
+  - ClaudeBot
+  - GPTBot
+  - CCBot
+  - Google-Extended
+
+sources:
+  # ------------------------------------------------------------------ RNE
+  - doc_id: rne-formalities-procedure-table
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/formalites/
+    listing_url: https://home.registre-entreprises.tn/
+    title: Formalités
+    document_type: procedure_table
+    procedure_category: business_registration
+    language: fr
+    publication_date: null
+    notes: >
+      HTML page embedding an official table of 95 RNE procedures (code, service, enterprise
+      type, fee, legal deadline). Contains RNE C 004 (SA) and RNE C 012 (SARL/SUARL) rows.
+
+  - doc_id: rne-decree-2022-298-fees-fr
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2022/10/Decret2022_0298_redevances_Fr.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: Decret2022_0298_redevances_Fr
+    document_type: decree
+    procedure_category: business_registration
+    language: fr
+    publication_date: 2022-03-30
+    # verified 2026-10-15 from the document header
+    official_reference: "Décret Présidentiel n° 2022-298 du 28 mars 2022, fixant les montants des redevances pour services (JORT n° 34 du 30 mars 2022)"
+    notes: The PDF is the full JORT pages; it also contains unrelated decrees printed on the same pages.
+
+  - doc_id: rne-decree-2022-298-2026-upload
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2026/01/Decret-Presidentiel-298-2022.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: Decret-Presidentiel-298-2022
+    document_type: decree
+    procedure_category: business_registration
+    language: unknown
+    publication_date: null
+    notes: Image-only scan (no text layer); requires OCR before indexing. Uploaded to the RNE site in January 2026; may be a different edition of the same decree.
+
+  - doc_id: rne-arrete-2026-35
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2026/01/Arrete2026_35.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: Arrete2026_35
+    document_type: ministerial_order
+    procedure_category: business_registration
+    language: fr
+    publication_date: 2026-01-13
+    # verified 2026-10-15 from the document header
+    official_reference: "Arrêté de la Cheffe du Gouvernement du 13 janvier 2026, fixant la procédure d'obtention des informations relatives au bénéficiaire effectif des personnes morales et des constructions juridiques (JORT n° 5 du 13 janvier 2026)"
+
+  - doc_id: rne-law-2018-52-ar
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2022/10/Loi_52_2018_Arabe.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: Loi_52_2018_Arabe
+    document_type: law
+    procedure_category: business_registration
+    language: ar
+    publication_date: 2018-11-06
+    # verified 2026-10-15 from the document header
+    official_reference: "قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018)"
+
+  - doc_id: rne-decree-law-2022-18-fr
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    # The filename uses a decomposed "é" (e + U+0301); the precomposed form returns 404.
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2022/10/De%CC%81cret-loi2022_18_FR.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: Décret-loi2022_18_FR
+    document_type: decree
+    procedure_category: business_registration
+    language: fr
+    publication_date: 2022-03-30
+    # verified 2026-10-15 from the document header
+    official_reference: "Décret-loi n° 2022-18 du 29 mars 2022, portant remise des pénalités de retard relatives au Registre national des entreprises (JORT n° 34 du 30 mars 2022)"
+
+  - doc_id: rne-decree-beneficial-owners
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2022/10/decret_beneficiaire.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: decret_beneficiaire
+    document_type: decree
+    procedure_category: business_registration
+    language: ar
+    publication_date: 2019-01-22
+    # verified 2026-10-15 from the document header
+    official_reference: "أمر حكومي عدد 54 لسنة 2019 مؤرخ في 21 جانفي 2019 يتعلق بضبط آليات ومعايير تحديد المستفيد الحقيقي (الرائد الرسمي عدد 7 بتاريخ 22 جانفي 2019)"
+
+  - doc_id: rne-decree-name-reservation
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2022/10/decret_reservation.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: decret_reservation
+    document_type: decree
+    procedure_category: business_registration
+    language: ar
+    publication_date: 2019-01-22
+    # verified 2026-10-15 from the document header
+    official_reference: "أمر حكومي عدد 53 لسنة 2019 مؤرخ في 21 جانفي 2019 يتعلق بضبط شروط وإجراءات شهادة حجز الشارة والتسمية الاجتماعية والاسم التجاري (الرائد الرسمي عدد 7 بتاريخ 22 جانفي 2019)"
+
+  - doc_id: rne-form-f001-natural-person-registration
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: RNE-F-001_declation_immatriculation_personne_physique
+    document_type: official_form
+    procedure_category: business_registration
+    language: mixed  # bilingual Arabic/French form (verified 2026-10-15)
+    publication_date: null
+
+  - doc_id: rne-form-f002-legal-entity-registration
+    status: approved
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf
+    listing_url: https://home.registre-entreprises.tn/wp-json/wp/v2/media?mime_type=application/pdf
+    title: RNE-F-002_declation_immatriculation_personne_motale
+    document_type: official_form
+    procedure_category: business_registration
+    language: mixed  # bilingual Arabic/French form (verified 2026-10-15)
+    publication_date: null
+
+  # ------------------------------------------------------------------ Ministry of the Interior
+  - doc_id: interior-passport-guide-fr
+    status: approved
+    source_organization: Ministère de l'Intérieur
+    url: https://services.interieur.gov.tn/wap/fr/docs/demarches/02.html
+    listing_url: https://services.interieur.gov.tn/wap/fr/index.html
+    title: Vos Démarches - Passeport
+    document_type: procedure_guide
+    procedure_category: passport
+    language: fr
+    publication_date: null
+    notes: Linked as http:// from www.interieur.gov.tn; the server 301-redirects to https. Footer reads "© 2013"; HTTP Last-Modified is June 2016.
+
+  - doc_id: interior-passport-guide-ar
+    status: approved
+    source_organization: Ministère de l'Intérieur
+    url: https://services.interieur.gov.tn/wap/ar/docs/demarches/02.html
+    listing_url: https://services.interieur.gov.tn/wap/ar/index.html
+    title: جواز السفر
+    document_type: procedure_guide
+    procedure_category: passport
+    language: ar
+    publication_date: null
+
+  - doc_id: interior-passport-application-form
+    status: approved
+    source_organization: Ministère de l'Intérieur
+    url: https://services.interieur.gov.tn/uploads/imprimes/02.pdf
+    listing_url: https://services.interieur.gov.tn/
+    title: جواز السفر
+    document_type: official_form
+    procedure_category: passport
+    language: unknown
+    publication_date: null
+    notes: Listed under "مطبوعات على الخط" (online printable forms).
+
+  - doc_id: interior-national-id-guide-fr
+    status: approved
+    source_organization: Ministère de l'Intérieur
+    url: https://services.interieur.gov.tn/wap/fr/docs/demarches/01.html
+    listing_url: https://services.interieur.gov.tn/wap/fr/index.html
+    title: Vos Démarches - Carte d'Identité Nationale
+    document_type: procedure_guide
+    procedure_category: national_id
+    language: fr
+    publication_date: null
+    notes: National ID card is a prerequisite document for passport applications.
+
+  # ------------------------------------------------------------------ Excluded / not found
+  - doc_id: idaraty-birth-certificate
+    status: excluded
+    source_organization: Portail des services administratifs (idaraty.tn)
+    url: https://idaraty.tn/procedures/extrait-de-naissance
+    title: استخراج مضمون ولادة
+    document_type: procedure_guide
+    procedure_category: birth_certificate
+    language: ar
+    exclusion_reason: >
+      https://www.idaraty.tn/robots.txt explicitly disallows AI agents (anthropic-ai, ClaudeBot,
+      GPTBot, CCBot, Google-Extended, ...). Ingesting it into an AI corpus would contradict the
+      site's usage policy. Requires written permission from the site operator before inclusion.
+
+  - doc_id: rne-legacy-domain
+    status: excluded
+    source_organization: Registre National des Entreprises (RNE)
+    url: http://www.rne.tn/
+    title: Page par défaut site web
+    document_type: other
+    procedure_category: general
+    language: fr
+    exclusion_reason: >
+      Domain serves a hosting-provider placeholder page (no RNE content); HTTPS does not respond.
+      The active official RNE site is home.registre-entreprises.tn.
+
+  - doc_id: rne-c014-beneficial-owner-form
+    status: not_found
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/formalites/
+    title: RNE C014 beneficial owner declaration form (discovery candidate)
+    document_type: official_form
+    procedure_category: business_registration
+    language: unknown
+    exclusion_reason: >
+      No "RNE C 014" code exists in the official formalities table (C 013 is followed by C 015),
+      and no matching PDF exists in the RNE media library. Beneficial-owner declaration is part of
+      every "Immatriculation principale" service per the table. The legal basis is covered by
+      rne-decree-beneficial-owners.
+
+  - doc_id: rne-c012-c004-checklist-pdfs
+    status: not_found
+    source_organization: Registre National des Entreprises (RNE)
+    url: https://home.registre-entreprises.tn/formalites/
+    title: RNE C012 / C004 required-documents checklists (discovery candidates)
+    document_type: other
+    procedure_category: business_registration
+    language: unknown
+    exclusion_reason: >
+      "RNE C 012" and "RNE C 004" are procedure codes in the official formalities table (fee and
+      deadline only). No standalone required-documents checklist PDF was found on the RNE site or
+      media library. A required-documents list for SARL/SUARL exists on idaraty.tn, which is
+      excluded (AI opt-out in robots.txt).

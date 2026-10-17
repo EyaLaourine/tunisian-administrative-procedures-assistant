@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tunisian Administrative Procedures Assistant</title>
+<style>
+  :root { --accent:#1f4e79; --bg:#f4f6f9; --card:#fff; --text:#1d2430; --muted:#5b6575; --ok:#1e7d3a; --bad:#b3261e; --warn:#8a5a00; --border:#d9dee6; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family: "Segoe UI", Tahoma, Arial, sans-serif; background:var(--bg); color:var(--text); }
+  header { background:var(--accent); color:#fff; padding:14px 20px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+  header h1 { font-size:20px; margin:0; font-weight:600; }
+  header .sub { font-size:12px; opacity:.85; }
+  .status { display:flex; gap:8px; align-items:center; font-size:12px; }
+  .pill { padding:3px 9px; border-radius:12px; background:#ffffff22; border:1px solid #ffffff55; }
+  .pill.ok::before { content:"● "; color:#7be495; } .pill.bad::before { content:"● "; color:#ff8a80; } .pill.unknown::before { content:"● "; color:#ddd; }
+  main { max-width:1100px; margin:16px auto; padding:0 16px; display:grid; grid-template-columns: 1fr 330px; gap:16px; }
+  @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; }
+  #chat { height:62vh; overflow-y:auto; padding:14px; }
+  .msg { margin:10px 0; max-width:92%; }
+  .msg .bubble { padding:10px 12px; border-radius:8px; white-space:pre-wrap; line-height:1.45; font-size:14px; unicode-bidi:plaintext; }
+  .msg.user { margin-left:auto; } .msg.user .bubble { background:#e3ecf7; }
+  .msg.assistant .bubble { background:#f7f8fa; border:1px solid var(--border); }
+  .msg.error .bubble { background:#fdecea; border:1px solid #f5c2bd; color:var(--bad); }
+  .meta { font-size:11px; color:var(--muted); margin-top:3px; }
+  .warn { color:var(--warn); font-size:13px; margin-top:6px; }
+  .cites { margin-top:6px; font-size:12px; } .cites a { color:var(--accent); word-break:break-all; }
+  .disclaimer { font-size:12px; background:#fff8e1; border:1px solid #f0d58c; padding:6px 8px; border-radius:6px; margin-top:6px; }
+  form.ask { display:flex; gap:8px; padding:10px; border-top:1px solid var(--border); }
+  form.ask input[type=text] { flex:1; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:14px; unicode-bidi:plaintext; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:9px 14px; cursor:pointer; font-size:14px; }
+  button:disabled { opacity:.5; cursor:default; }
+  aside .card { padding:12px; margin-bottom:12px; }
+  aside h2 { font-size:14px; margin:0 0 8px; }
+  label { font-size:13px; display:block; margin:6px 0 3px; }
+  select, input[type=file] { width:100%; font-size:13px; }
+  .modes label { display:inline-block; margin-right:10px; }
+  .hint { font-size:11px; color:var(--muted); }
+  .examples button { display:block; width:100%; text-align:start; background:#eef3f9; color:var(--text); margin:4px 0; font-size:12px; unicode-bidi:plaintext; }
+  table.report { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:8px; }
+  table.report th { text-align:start; background:#eef3f9; padding:5px; }
+  table.report td { border-top:1px solid var(--border); padding:5px; vertical-align:top; unicode-bidi:plaintext; }
+  .tag { display:inline-block; font-size:11px; padding:1px 6px; border-radius:8px; border:1px solid var(--border); margin-inline-end:4px; }
+  .tag.filled { background:#e6f4ea; } .tag.missing { background:#fdecea; } .tag.unreadable { background:#fff4e5; } .tag.cannot_verify { background:#eceff1; }
+  .spinner { display:inline-block; width:12px; height:12px; border:2px solid #9ab; border-top-color:var(--accent); border-radius:50%; animation:spin 1s linear infinite; vertical-align:middle; margin-inline-end:6px; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Tunisian Administrative Procedures Assistant</h1>
+    <div class="sub">Local demonstration interface · answers from n8n workflow 03 and official sources · informational only</div>
+  </div>
+  <div class="status" aria-live="polite">
+    <span id="st-n8n" class="pill unknown">n8n: checking…</span>
+    <span id="st-backend" class="pill unknown">Backend: checking…</span>
+  </div>
+</header>
+<main>
+  <section class="card" style="display:flex;flex-direction:column">
+    <div id="chat" aria-live="polite"></div>
+    <form class="ask" id="askForm">
+      <input type="text" id="question" maxlength="2000" dir="auto" placeholder="Ask about a passport, national ID or RNE procedure (EN / FR / AR / Derja)…" autocomplete="off">
+      <button type="submit" id="sendBtn">Send</button>
+    </form>
+  </section>
+  <aside>
+    <div class="card">
+      <h2>Language</h2>
+      <select id="language">
+        <option value="">Auto-detect</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="derja">Tunisian Derja (تونسي / Latin)</option>
+      </select>
+      <div class="hint">Auto-detect recognises Derja in Arabic or Latin script (e.g. “chnowa lezmni…”).</div>
+    </div>
+    <div class="card">
+      <h2>Administrative document</h2>
+      <input type="file" id="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg">
+      <div class="hint">PDF, PNG or JPEG · max 10 MB · processed in memory, never stored. Use official blank forms or redacted copies.</div>
+      <div class="modes" style="margin-top:6px">
+        <label><input type="radio" name="mode" value="form_check" checked> Form check</label>
+        <label><input type="radio" name="mode" value="dossier"> Dossier validation</label>
+      </div>
+      <button id="uploadBtn" type="button" style="margin-top:6px;width:100%">Analyse document</button>
+      <div class="hint" style="margin-top:8px">Or analyse an official blank form from the corpus:</div>
+      <div style="display:flex;gap:6px;margin-top:4px">
+        <button type="button" class="sample" data-sample="f001" style="flex:1;font-size:12px">RNE F-001</button>
+        <button type="button" class="sample" data-sample="f002" style="flex:1;font-size:12px">RNE F-002</button>
+      </div>
+    </div>
+    <div class="card examples">
+      <h2>Verified examples</h2>
+      <button type="button" data-q="Quelles pièces fournir pour une première demande de passeport ?">FR · Passport first application</button>
+      <button type="button" data-q="What documents are needed to renew a Tunisian passport?">EN · Passport renewal</button>
+      <button type="button" data-q="شنوة الأوراق اللازمة باش نجدد الباسبور؟">Derja · تجديد الباسبور</button>
+      <button type="button" data-q="chnowa el wra9 eli lezmin bech nejjedd el passbor?">Derja (Latin) · passbor</button>
+      <button type="button" data-q="Combien coûte l'immatriculation d'une SARL ?">FR · RNE SARL fee</button>
+      <button type="button" data-q="Comment obtenir un extrait de naissance ?">FR · Uncovered procedure</button>
+      <div class="hint">Questions from the project's verified evaluation set.</div>
+    </div>
+  </aside>
+</main>
+<script>
+"use strict";
+const chat = document.getElementById("chat");
+const ARABIC = /[\u0600-\u06FF]/;
+const MAX_BYTES = 10 * 1024 * 1024;
+const ALLOWED = ["application/pdf", "image/png", "image/jpeg"];
+const DISCLAIMER = "Informational assistance only: not legal advice, not an official approval and not a certification that a dossier is complete. Confirm with the competent administration.";
+
+function el(tag, cls, text) {  // all backend content is inserted as text, never as HTML
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined && text !== null) e.textContent = String(text);
+  return e;
+}
+function dirFor(text) { return ARABIC.test(text || "") ? "rtl" : "ltr"; }
+function scroll() { chat.scrollTop = chat.scrollHeight; }
+
+function addUser(text) {
+  const m = el("div", "msg user"); const b = el("div", "bubble", text); b.dir = dirFor(text);
+  m.appendChild(b); chat.appendChild(m); scroll();
+}
+function addPending(label) {
+  const m = el("div", "msg assistant"); const b = el("div", "bubble");
+  b.appendChild(el("span", "spinner")); b.appendChild(document.createTextNode(label));
+  m.appendChild(b); chat.appendChild(m); scroll(); return m;
+}
+function addError(text) {
+  const m = el("div", "msg error"); m.appendChild(el("div", "bubble", text)); chat.appendChild(m); scroll();
+}
+
+function renderCitations(container, citations) {
+  if (!Array.isArray(citations) || !citations.length) return;
+  const box = el("div", "cites"); box.appendChild(el("strong", null, "Official sources: "));
+  const seen = new Set();
+  citations.forEach((c) => {
+    if (!c || !c.url || seen.has(c.url)) return; seen.add(c.url);
+    const line = el("div"); line.dir = "auto";
+    line.appendChild(document.createTextNode((c.title || c.doc_id || "source") + (c.source_organization ? " (" + c.source_organization + ") " : " ")));
+    const a = el("a", null, c.url); a.href = c.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+    line.appendChild(a); box.appendChild(line);
+  });
+  container.appendChild(box);
+}
+
+function renderDossier(container, report) {
+  if (!report) return;
+  const t = el("table", "report");
+  const head = el("tr"); head.appendChild(el("th", null, "Form field")); head.appendChild(el("th", null, "Status")); t.appendChild(head);
+  const ff = report.form_fields || {};
+  [["filled", ff.filled], ["missing", ff.missing], ["unreadable", ff.unreadable], ["cannot_verify", ff.cannot_verify]].forEach(([status, list]) => {
+    (list || []).forEach((label) => {
+      const tr = el("tr"); const td = el("td", null, label); td.dir = "auto"; tr.appendChild(td);
+      const s = el("td"); s.appendChild(el("span", "tag " + status, status.replace("_", " "))); tr.appendChild(s); t.appendChild(tr);
+    });
+  });
+  container.appendChild(t);
+  const d = report.dossier || {};
+  const r = el("table", "report");
+  const h2 = el("tr"); h2.appendChild(el("th", null, "Official requirement")); h2.appendChild(el("th", null, "Status")); r.appendChild(h2);
+  (d.official_requirements || []).forEach((q) => {
+    const tr = el("tr"); const td = el("td"); td.dir = "auto";
+    td.appendChild(el("div", null, q.note || q.id));
+    if (q.official_quote && q.id !== "registration_fee") { const quote = el("div", "hint", "« " + q.official_quote + " »"); quote.dir = "rtl"; td.appendChild(quote); }
+    tr.appendChild(td); tr.appendChild(el("td", null, (q.status || "").replaceAll("_", " "))); r.appendChild(tr);
+  });
+  (d.requirements_not_verified || []).forEach((x) => {
+    const tr = el("tr"); const td = el("td", null, x); td.dir = "auto"; tr.appendChild(td); tr.appendChild(el("td", null, "not verified by this tool")); r.appendChild(tr);
+  });
+  container.appendChild(r);
+  const cert = el("div", "warn", "Official checklist available: " + (d.official_checklist_available ? "yes" : "no") +
+    " · Dossier completeness certified: " + (d.completeness_certified === false ? "no (never certified)" : "no"));
+  container.appendChild(cert);
+}
+
+function addAnswer(pending, data, seconds) {
+  pending.innerHTML = "";
+  const b = el("div", "bubble", data.text || "(empty response)"); b.dir = dirFor(data.text);
+  pending.appendChild(b);
+  (data.warnings || []).forEach((w) => { const x = el("div", "warn", "⚠ " + w); x.dir = "auto"; pending.appendChild(x); });
+  renderCitations(pending, data.citations);
+  if (data.agent === "dossier_validator") renderDossier(pending, data.report);
+  if (data.agent === "form_helper" || data.agent === "dossier_validator") pending.appendChild(el("div", "disclaimer", DISCLAIMER));
+  const route = data.route || {};
+  const meta = ["agent: " + (data.agent || "?")];
+  if (route.language) meta.push("language: " + route.language);
+  if (route.procedure_category) meta.push("procedure: " + route.procedure_category);
+  if (data.method) meta.push("method: " + data.method);
+  meta.push(seconds.toFixed(1) + " s via n8n");
+  pending.appendChild(el("div", "meta", meta.join(" · ")));
+  scroll();
+}
+
+async function post(path, payload) {
+  const resp = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+  let body = null; try { body = await resp.json(); } catch (_) {}
+  if (!resp.ok) {
+    const detail = body && body.detail ? (Array.isArray(body.detail) ? body.detail.map((d) => d.msg).join("; ") : body.detail) : "HTTP " + resp.status;
+    throw new Error(detail);
+  }
+  return body;
+}
+
+async function ask(text) {
+  text = (text || "").trim(); if (!text) return;
+  addUser(text);
+  const pending = addPending("Routing through n8n (Intent Router → Retriever → Checklist / Answer)…");
+  const lang = document.getElementById("language").value || null;
+  const t0 = performance.now();
+  setBusy(true);
+  try { addAnswer(pending, await post("/api/ask", { text: text, language: lang }), (performance.now() - t0) / 1000); }
+  catch (e) { pending.remove(); addError("Request failed: " + e.message); }
+  finally { setBusy(false); }
+}
+
+function setBusy(b) { ["sendBtn", "uploadBtn"].forEach((id) => document.getElementById(id).disabled = b); }
+
+document.getElementById("askForm").addEventListener("submit", (e) => {
+  e.preventDefault(); const q = document.getElementById("question"); const v = q.value; q.value = ""; ask(v);
+});
+document.querySelectorAll(".examples button").forEach((b) => b.addEventListener("click", () => ask(b.dataset.q)));
+
+async function analyse(payload, label) {
+  const mode = payload.mode;
+  addUser((mode === "dossier" ? "Dossier validation: " : "Form check: ") + label);
+  const pending = addPending(mode === "dossier" ? "Dossier Validator (form fields + official requirements)…" : "Form-Filling Helper…");
+  const t0 = performance.now(); setBusy(true);
+  try { addAnswer(pending, await post("/api/upload", payload), (performance.now() - t0) / 1000); }
+  catch (e) { pending.remove(); addError("Analysis failed: " + e.message); }
+  finally { setBusy(false); }
+}
+function currentMode() { return document.querySelector('input[name="mode"]:checked').value; }
+function currentLang() { return document.getElementById("language").value || null; }
+
+document.getElementById("uploadBtn").addEventListener("click", () => {
+  const input = document.getElementById("file"); const f = input.files && input.files[0];
+  if (!f) { addError("Choose a PDF, PNG or JPEG file first."); return; }
+  if (!ALLOWED.includes(f.type)) { addError("Unsupported file type: only PDF, PNG and JPEG are accepted."); return; }
+  if (f.size > MAX_BYTES) { addError("File too large: the limit is 10 MB."); return; }
+  const reader = new FileReader();
+  reader.onload = () => {
+    const b64 = String(reader.result).split(",")[1];
+    input.value = "";  // the file is not kept in the page
+    analyse({ filename: f.name, mime_type: f.type, data_b64: b64, mode: currentMode(), language: currentLang() }, f.name);
+  };
+  reader.onerror = () => addError("The file could not be read.");
+  reader.readAsDataURL(f);
+});
+
+async function analyseSample(id, mode) {
+  try {
+    const s = await (await fetch("/api/sample/" + id)).json();
+    analyse({ filename: s.filename, mime_type: s.mime_type, data_b64: s.data_b64, mode: mode || currentMode(), language: currentLang() }, s.label);
+  } catch (e) { addError("Sample form not available: " + e.message); }
+}
+document.querySelectorAll("button.sample").forEach((b) => b.addEventListener("click", () => analyseSample(b.dataset.sample)));
+
+async function refreshStatus() {
+  const set = (id, name, ok, extra) => { const e = document.getElementById(id); e.className = "pill " + (ok ? "ok" : "bad");
+    e.textContent = name + ": " + (ok ? "available" : "unavailable") + (extra || ""); };
+  try {
+    const s = await (await fetch("/api/status")).json();
+    set("st-n8n", "n8n", s.n8n && s.n8n.ok);
+    const d = (s.backend && s.backend.detail) || {};
+    set("st-backend", "Backend", s.backend && s.backend.ok, s.backend && s.backend.ok ? " (Qdrant " + (d.qdrant ? "✓" : "✗") + ", Ollama " + (d.ollama ? "✓" : "✗") + ")" : "");
+  } catch (_) { set("st-n8n", "n8n", false); set("st-backend", "Backend", false); }
+}
+refreshStatus(); setInterval(refreshStatus, 30000);
+
+const params = new URLSearchParams(location.search);  // ?lang=..&q=.. (used for scripted screenshots)
+if (params.get("lang")) document.getElementById("language").value = params.get("lang");
+if (params.get("q")) ask(params.get("q"));
+if (params.get("sample")) analyseSample(params.get("sample"), params.get("mode"));
+</script>
+</body>
+</html>

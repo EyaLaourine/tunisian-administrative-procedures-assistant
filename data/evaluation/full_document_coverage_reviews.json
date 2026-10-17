@@ -1,0 +1,491 @@
+[
+  {
+    "id": "interior-national-id-guide-fr:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "correct",
+    "reason": "The three first-application conditions match the official section; this is source accuracy, not confirmation of current applicability.",
+    "official_supporting_passage": "Remplir l'imprimé administratif et le signer\nAtteindre l'âge légal (18 ans),\nEtre de nationalité tunisienne,",
+    "observed_response_sha256": "880e2f5380c4408fee3fa207eecf3c854dcb23e7feab9ac39900cdfd29025537"
+  },
+  {
+    "id": "rne-arrete-2026-35:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "incorrect",
+    "reason": "The question asks which competent authorities. The reply omits the official enumerated authorities and mixes authority access with diligence-obligated persons. Valid document citations do not fix the scope error.",
+    "official_supporting_passage": "1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes. Chapitre II Procédure d’obtention des informations relatives au bénéficiaire effectif Section première - Procédure d’obtention des informations relatives au bénéficiaire effectif par les autorités compétentes",
+    "observed_response_sha256": "f292f5af53d8ccc290482dca9aa8ab59964b480925956733483ca9fa2f353247"
+  },
+  {
+    "id": "rne-arrete-2026-35:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "incomplete",
+    "reason": "The source defines legitimate interest and gives purposes. The reply says the retrieved passages do not specify it and does not answer the requested definition; this is an evidence-discovery/completeness failure, not proof that the corpus lacks it.",
+    "official_supporting_passage": "1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes. Chapitre II Procédure d’obtention des informations relatives au bénéficiaire effectif Section première - Procédure d’obtention des informations relatives au bénéficiaire effectif par les autorités compétentes",
+    "observed_response_sha256": "124481d020bfb4c621f7b980182ec8c3494ea671ba1f3dcb509e98fd0dd10908"
+  },
+  {
+    "id": "rne-arrete-2026-35:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "incorrect",
+    "reason": "The requested authority paper-request deadline is correct (Article 2). The added public-request claim attributes its deadline to Article 4, while the supplied official text puts that deadline in Article 5. Correct number and valid document URL do not make the full answer correct.",
+    "official_supporting_passage": "Les autorités compétentes peuvent, le cas échéant, demander l’obtention de ces informations sous format papier, et ce, sur demande écrite adressée au Centre national du registre des entreprises. Celui-ci se charge, dans ce cas, de donner suite à la demande dans un délai maximum de deux (2) jours à compter de la date de sa réception.",
+    "observed_response_sha256": "59778503325ff6addb55c9291799c6e2d95bcea3fd18ec81b503dec3a6bef401"
+  },
+  {
+    "id": "rne-arrete-2026-35:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "correct",
+    "reason": "The six public-access data fields, legitimate-interest/payment conditions and Article 5 deadline/notification/reasoned-rejection statements match the extracted official text.",
+    "official_supporting_passage": "- le nom et prénom, - la nationalité, - le pays de résidence, - la dénomination sociale de la personne morale ou de la construction juridique, - l’identifiant unique de la personne morale ou de la construction juridique, - le critère d’identification du bénéficiaire effectif. La demande est introduite par voie électronique via la plateforme numérique du Centre national du registre des entreprises, conformément à un modèle établi à cet effet. La demande doit être accompagnée des pièces justificatives attestant de l’existence d’un intérêt légitime ainsi que d’un justificatif de paiement de la redevance relative au service n°21 figurant au tableau n°2 du décret Présidentiel n°2022-298 du 28 mars 2022 susmentionné.",
+    "observed_response_sha256": "7322d8179384b16ea6bc813c35e224ec69dcd5e6b0851c61f06fee9cadc50142"
+  },
+  {
+    "id": "rne-arrete-2026-35:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "correct",
+    "reason": "The requested maximum two-day deadline from receipt matches Article 5; no unsupported personal eligibility is asserted.",
+    "official_supporting_passage": "Art. 5 - Le Centre national du registre des entreprises statue sur la demande d’obtention des informations relatives au bénéficiaire effectif dans un délai maximum de deux (2) jours à compter de la date de sa réception. L'intéressé est informé de la suite donnée à sa demande dans ce délai même, par tout moyen laissant une trace écrite. En cas de rejet, la décision est motivée.",
+    "observed_response_sha256": "9520eddc8b942927a775339684cb4c65a5208024c642b7324b41bd72769537ea"
+  },
+  {
+    "id": "interior-passport-guide-ar:guide_scenario:017",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "incorrect",
+    "reason": "The official scenario title includes من أجل. The observed router chooses processing_time despite the conditions/documents question; the reply provides delay/place and omits the requested official section. The expected document is cited correctly.",
+    "official_supporting_passage": "أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\nاستيفاء التحريات اللازمة\nتأكد الحاجة لاستخراج جواز سفر",
+    "observed_response_sha256": "1aafa6d981e131426cd88e422977ec65a46f9cda6ab21fd9ea810275d032c7b0"
+  },
+  {
+    "id": "interior-passport-guide-ar:guide_scenario:018",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "incorrect",
+    "reason": "The official scenario title includes من أجل. The observed router chooses processing_time despite the conditions/documents question; the reply provides delay/place and omits the requested official section. The expected document is cited correctly.",
+    "official_supporting_passage": "تعمير إستمارة الحصول على جواز سفر عادي مقروء آليا وإمضاؤها بصفة شخصية داخل الخانة المعدة للغرض\nنسخة من بطاقة التعريف الوطنية مع الإستظهار بالأصل أو مضمون ولادة بالنسبة للقصر\n04 صور شمسية حسب المواصفات التالية :\nأن تكون خلفية الصورة بيضاء\nأن يكون حجم الصورة 3.5/4.5 صم تقريبا\nشهادة ضياع جواز السفر\nترخيص الولي بالنسبة للقصر مصحوبا بنسخة من بطاقة تعريفه\nما يفيد الدراسة بالنسبة للتلاميذ والطلبة\nوصل خلاص معلوم الطابع الجبائي المستوجب (150 دينارا)\nإثبات تأكد إستخراج جواز سفر بوثيقة تعتمد وتثبت هذا التأكد",
+    "observed_response_sha256": "1aafa6d981e131426cd88e422977ec65a46f9cda6ab21fd9ea810275d032c7b0"
+  },
+  {
+    "id": "interior-passport-guide-ar:guide_scenario:021",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "incorrect",
+    "reason": "The official scenario title includes من أجل. The observed router chooses processing_time despite the conditions/documents question; the reply provides delay/place and omits the requested official section. The expected document is cited correctly.",
+    "official_supporting_passage": "أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\nاستيفاء التحريات اللازمة\nتأكد الحاجة لاستخراج جواز السفر",
+    "observed_response_sha256": "3e45e62664d49bb1cc4e98da431acce2c77661498499594ba3d5c1b2e146cb53"
+  },
+  {
+    "id": "interior-passport-guide-ar:guide_scenario:022",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample or global accuracy estimate",
+    "verdict": "incorrect",
+    "reason": "The official scenario title includes من أجل. The observed router chooses processing_time despite the conditions/documents question; the reply provides delay/place and omits the requested official section. The expected document is cited correctly.",
+    "official_supporting_passage": "تعمير إستمارة الحصول على جواز سفر عادي مقروء آليا وإمضاؤها بصفة شخصية داخل الخانة المعدة للغرض\nنسخة من بطاقة التعريف الوطنية مع الاستظهار بالأصل أو مضمون ولادة بالنسبة للقصر\n04 صور شمسية حسب المواصفات التالية :\nأن تكون خلفية الصورة بيضاء\nأن يكون حجم الصورة 3.5/4.5 صم تقريبا\nشهادة ضياع جواز سفر\nترخيص الولي بالنسبة للقصر مصحوبا بنسخة من بطاقة تعريفه\nما يفيد الدراسة بالنسبة للتلاميذ والطلبة\nما يفيد الإقامة بصفة قانونية بالخارج بالنسبة للمتواجدين بالخارج\nوصل خلاص معلوم الطابع الجبائي المستوجب \n(150 دينارا أو ما يعادلها من العملة الأجنبية)\nإثبات تأكد استخراج جواز سفر بوثيقة تعتمد وتثبت هذا التأكد",
+    "observed_response_sha256": "3e45e62664d49bb1cc4e98da431acce2c77661498499594ba3d5c1b2e146cb53"
+  },
+  {
+    "id": "rne-arrete-2026-35:multi_turn:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed context-loss failures; not a random sample",
+    "verdict": "incorrect",
+    "context_verdict": "failed",
+    "reason": "After a real setup question on access to beneficial-owner information, the follow-up switches to unrelated association/business registration table rows. The context retains business_registration but not the legal subject; it neither preserves the subject nor asks for clarification. Source provenance may be valid while conversational relevance fails.",
+    "official_supporting_passage": "1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes. Chapitre II Procédure d’obtention des informations relatives au bénéficiaire effectif Section première - Procédure d’obtention des informations relatives au bénéficiaire effectif par les autorités compétentes",
+    "observed_response_sha256": "212f266a30e5837fc7674ec42393eee0c7b733b7ec0ac30955350b1b36a40d5e"
+  },
+  {
+    "id": "rne-arrete-2026-35:multi_turn:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed context-loss failures; not a random sample",
+    "verdict": "incorrect",
+    "context_verdict": "failed",
+    "reason": "After a real setup question on access to beneficial-owner information, the follow-up switches to unrelated association/business registration table rows. The context retains business_registration but not the legal subject; it neither preserves the subject nor asks for clarification. Source provenance may be valid while conversational relevance fails.",
+    "official_supporting_passage": "1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes. Chapitre II Procédure d’obtention des informations relatives au bénéficiaire effectif Section première - Procédure d’obtention des informations relatives au bénéficiaire effectif par les autorités compétentes",
+    "observed_response_sha256": "a71a20d01b6cd328ae534792d564b0d30818953141f63ab8d8993d14e544f61d"
+  },
+  {
+    "id": "rne-arrete-2026-35:multi_turn:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed context-loss failures; not a random sample",
+    "verdict": "incorrect",
+    "context_verdict": "failed",
+    "reason": "After a real setup question on access to beneficial-owner information, the follow-up switches to unrelated association/business registration table rows. The context retains business_registration but not the legal subject; it neither preserves the subject nor asks for clarification. Source provenance may be valid while conversational relevance fails.",
+    "official_supporting_passage": "1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes. Chapitre II Procédure d’obtention des informations relatives au bénéficiaire effectif Section première - Procédure d’obtention des informations relatives au bénéficiaire effectif par les autorités compétentes",
+    "observed_response_sha256": "ce0d1bc3461d55573d8dd089462f7dae5256a5b59c04df0c23755edb0bed908f"
+  },
+  {
+    "id": "rne-formalities-procedure-table:formalities_row:059",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample",
+    "verdict": "incorrect",
+    "reason": "Question asks the fee for RNE I 001. The source row states Dix Dinars (10 TND); the reply instead displays creation rows C 001/C 004/C 008 with 20/50 TND and no requested I 001 row. Valid source URL is insufficient.",
+    "official_supporting_passage": "Code procédure: RNE I 001\nNature du service: Inscription d’un nantissement ou de leasing\nGenre d'Entreprise: Personne Morale\nType d entreprise: tout type d'entreprise\nProcédure: Création\nRedevance demandée: Dix Dinars (10 TND)\nDélais: 30 jours à compter de la date d'enregistrement à la recette des finances",
+    "observed_response_sha256": "dc8d79d6a5b338691f9922c6a6e3ebee007b3237d254fc77457bf482e2d22160"
+  },
+  {
+    "id": "rne-formalities-procedure-table:formalities_row:061",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample",
+    "verdict": "incorrect",
+    "reason": "Question asks the fee for RNE I 002. The source row states Dix Dinars (10 TND); the reply instead displays creation rows C 008/C 004/C 007 with 50 TND and no requested I 002 row.",
+    "official_supporting_passage": "Code procédure: RNE I 002\nNature du service: Inscription d’un nantissement ou de leasing\nGenre d'Entreprise: Personne physique\nType d entreprise: tout type d'entreprise\nProcédure: Création\nRedevance demandée: Dix Dinars (10 TND)\nDélais: 30 jours à compter de la date d'enregistrement à la recette des finances",
+    "observed_response_sha256": "0964455eadaf8f71e7d28daa181dc041c08e379371fa3e9f932fe324b1b819fe"
+  },
+  {
+    "id": "interior-passport-guide-fr:dialogue_regression:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive observed successes and failures; not a random sample",
+    "verdict": "correct",
+    "reason": "After a real renewal-in-Tunisia setup, the Derja follow-up retains renewal, records four declared photos, separates photo specifications needing verification, lists the remaining conditional official documents, preserves the FR/AR fee-conflict warning and does not switch to loss.",
+    "official_supporting_passage": null,
+    "observed_response_sha256": "b7c3e19a8f2593aad9c90de3be8ffbce0b2eeb6821d6b53efc83079d9704b22b"
+  },
+  {
+    "id": "rne-decree-beneficial-owners:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incomplete",
+    "reason": "The reply introduces the identification criteria but never supplies the requested capital/voting threshold. The official passage explicitly contains 20 percent; a correct source citation alone does not answer the question.",
+    "official_supporting_passage": "أ- الشخص أو الأشخاص الطبيعيون الذين يمسكون بطريقة مباشرة أو غير مباشرة نسبة تُساوي أو تفوق 20 % م ن رأس المال أو من حقوق الاقتراع ،",
+    "observed_response_sha256": "5133aa35b5aeea6ecc0e77fb157656ec94cadd1d57741b4739f5c92b34800513"
+  },
+  {
+    "id": "rne-decree-beneficial-owners:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "false_refusal",
+    "reason": "The official control-based fallback criterion is present in the corpus. The reply instead withholds an unverified numerical generation. This is a failure to answer an answerable corpus question; the refusal may correctly block a bad generation, so the root cause is not attributed to the verifier.",
+    "official_supporting_passage": "ب - في صورة عدم التأكّد من هوية المستفيد الحقيقي أو المستفيدين الحقيقيين أو عدم التوصل لتحديد هوية المستفيد الحقيقي أو المستفيدين الحقيقيين بعد تطبيق المعيا ، (أ) ر الشخص أو الأشخاص الطبيعيون الذين يمارسون رقابة أو سيطرة بأية طريقة كانت فواقعا أو قانونا على أجهزة التصر أو الإدارة أ و التسيير أو على الجلسة العامة أو على سير عمل الشخص المعنوي ،",
+    "observed_response_sha256": "3f9c47cdfeadf167c3b1b8305c4ae97bae3192896734aa701e0496df12795eb4"
+  },
+  {
+    "id": "rne-decree-beneficial-owners:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "false_refusal",
+    "reason": "The official senior-manager fallback is present in the corpus, but the reply withholds an unverified numerical generation and does not answer. Root cause is not determined from the final reply.",
+    "official_supporting_passage": "ج - في صورة عدم التوصل لمعرفة المستفيد الحقيقي أو المستفيدين الحقيقي ين وفق المعيارين ( أ) (ب) و ، يكون ر المستفيد الحقيقي الشخص الطبيعي الذي يشغل خطة المسي الرئيسي .",
+    "observed_response_sha256": "3f9c47cdfeadf167c3b1b8305c4ae97bae3192896734aa701e0496df12795eb4"
+  },
+  {
+    "id": "rne-decree-beneficial-owners:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "false_refusal",
+    "reason": "The official Article 3 passage names the trust-related persons. The assistant returns an out-of-scope refusal, although this topic is indexed.",
+    "official_supporting_passage": "أ- بالنسبة لصناديق الاستئ مان : مؤسس الترتيب القانوني والأمين أو الأمناء والوصي، عند الاقتضاء، والمستفيدين وأي شخص طبيعي يمارس نهائيا سيطرة فعلية على الترتيب القانوني .",
+    "observed_response_sha256": "000695f7b83c201b86efb7ef930c3a043e4fe16b02964f9a5589833b931e68c3"
+  },
+  {
+    "id": "rne-decree-beneficial-owners:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "The requested declaration trigger (establishing the business relationship or carrying out the operation/transaction) matches Article 3. Arabic phrasing and the generic wording used for the legal text are awkward; this is a requested-fact verdict, not a validated legal translation.",
+    "official_supporting_passage": "وعلى البن وك والمؤسسات المالية ومؤسسات التأمين ومؤسسات الاستثمار والمحامين والخبراء المحاسبين وعدول الإشهاد، عندما يتصرفون بصفة أمين في ترتيب قانوني، أن يصرحوا بصفتهم تلك عند نشأة علاقة العمل أو تنفيذ عملية أو معاملة في هذا الإطار .",
+    "observed_response_sha256": "47596b2313310e9521c3ec131745c5fb127476030aec083fd474b0e8c4082700"
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "The requested scope of the fee decree, payment modalities and refund exception match Articles 1, 5 and 6; the added historical waiver dates also match the separate cited decree-law. The answer is unnecessarily broad, and present applicability is not established.",
+    "official_supporting_passage": "Article premier\nArticle premier - Le montant des redevances pour services rendus par le Centre national du Registre des entreprises sont fixés conformément aux indications des tableaux suivants :",
+    "observed_response_sha256": "8ed69573025e578caf1aaeb60540a2663134872c99611ce91044df6cf951f39e"
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incomplete",
+    "reason": "Instead of the table 1 person-physical column, the reply gives only two modification/transfer rows from the formalities table. It omits the other listed fee services; correct example amounts do not establish complete coverage.",
+    "official_supporting_passage": "Tableau n°1 : Les redevances afférentes aux procédures\nN° du service\nNature du service\nUnité\nRedevance en\ndinars\nle demandeur : personne physique\nRedevance en\ndinars\nle demandeur : personne morale\n1\nImmatriculation principale y compris la déclaration du bénéficiaire ou des bénéficiaires effectifs de la personne morale et la publication au Bulletin officiel du Centre\nProcédure 20 50\n2 Inscription complémentaire Procédure 20 50\n3 Radiation de l’enregistrement Procédure 10 10\n4 Modification ou mise à jour des données du registre Procédure 20 20\n5 Dépôt des états financiers Procédure 20 50\n6 Dépôt de la déclaration du bénéficiaire effectif ou sa modification Procédure ...... 20\n7 Publication au Bulletin officiel du Centre outre les opérations n°1, 2, 3, 4 et 5 Procédure 20 20\n8 Inscription d’un nantissement ou leasing Procédure 10 10\n9 Demande de réservation de dénomination sociale, nom commercial ou enseigne Procédure 30 30\n10 Renouvellement ou modification de la réservation de la dénomination sociale, nom commercial ou enseigne Procédure 10 10",
+    "observed_response_sha256": "ea1955cbdfd8c105cc587a262347f0fafe57fa661224965d3ec0c10dee3391ba"
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incomplete",
+    "reason": "Instead of the table 1 legal-entity column, the reply gives only two modification/capital-increase rows from the formalities table. Most requested fee categories are omitted.",
+    "official_supporting_passage": "Tableau n°1 : Les redevances afférentes aux procédures\nN° du service\nNature du service\nUnité\nRedevance en\ndinars\nle demandeur : personne physique\nRedevance en\ndinars\nle demandeur : personne morale\n1\nImmatriculation principale y compris la déclaration du bénéficiaire ou des bénéficiaires effectifs de la personne morale et la publication au Bulletin officiel du Centre\nProcédure 20 50\n2 Inscription complémentaire Procédure 20 50\n3 Radiation de l’enregistrement Procédure 10 10\n4 Modification ou mise à jour des données du registre Procédure 20 20\n5 Dépôt des états financiers Procédure 20 50\n6 Dépôt de la déclaration du bénéficiaire effectif ou sa modification Procédure ...... 20\n7 Publication au Bulletin officiel du Centre outre les opérations n°1, 2, 3, 4 et 5 Procédure 20 20\n8 Inscription d’un nantissement ou leasing Procédure 10 10\n9 Demande de réservation de dénomination sociale, nom commercial ou enseigne Procédure 30 30\n10 Renouvellement ou modification de la réservation de la dénomination sociale, nom commercial ou enseigne Procédure 10 10",
+    "observed_response_sha256": "572f4a58867a2ef3e2201b666fdecf25c7bf2fddff5834b24c8665ae24a4763d"
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incorrect",
+    "reason": "The reply promises the recovery modalities but renders repeated 5] fragments in place of the payment methods. Article 5 has the actual complete list. This is an unusable answer/formatting failure despite a valid source URL.",
+    "official_supporting_passage": "Art. 5 - Les redevances prévues par le présent décret Présidentiel sont recouvrées selon l’une des modalités suivantes :\n- Paiement électronique,\n- Chèque bancaire ou postal remis directement au Centre national du Registre des entreprises,\n- Virement bancaire ou postal au compte du Centre national du Registre des entreprises,\n- Mandat postal au nom du Centre national du Registre des entreprises,\n- Versement bancaire ou postal direct au compte du Centre national du Registre des entreprises,\n- Paiement en espèce.\nTout montant payé pour service rendu par le Centre national du Registre des entreprises ne peut être remboursé.\nLes montants indûment perçus ou le trop-perçu des redevances, peuvent être remboursés.",
+    "observed_response_sha256": "602dcf16dcf325f08c15b91768247f8f50f7b186d44a1bd8d520821967352edb"
+  },
+  {
+    "id": "rne-decree-2022-298-fees-fr:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incomplete",
+    "reason": "Fallback excerpts show the decree preamble rather than the requested table 3 scope (information requests and remote services).",
+    "official_supporting_passage": "23 Copie conforme à l’original des jugements et décisions judiciaires déposés au registre Document 20 Tableau n°3 : Les redevances afférentes aux demandes d’informations et aux services rendus à distance",
+    "observed_response_sha256": "9876841337a749ca93f4f4ded6b3090879fd808e347438f4a4cf8ce8594008ad"
+  },
+  {
+    "id": "rne-decree-law-2022-18-fr:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incomplete",
+    "reason": "Fallback excerpts are truncated and omit part of the operation list and the expired-operation temporal condition. The official source contains them; partial verbatim evidence is not a complete scoped answer.",
+    "official_supporting_passage": "Le Président de la République, Vu la Constitution, Vu le décret Présidentiel n° 2021-117 du 22 septembre 2021, relatif aux mesures exceptionnelles, Après délibération du Conseil des ministres. Prend le décret-loi dont la teneur suit : Article premier - Il est accordé, à titre exceptionnel, une remise des pénalités de retard prévues par l’article 51 de la loi n° 2018-52 du 29 octobre 2018, relative au Registre national des entreprises, déterminées sur la base de la moitié du montant de la redevance due pour les opérations d’immatriculation, de modification, de radiation, d’insertion de données, de dépôt de documents ou d’actualisation de données ou de renseignements, dont les délais de réalisation étaient échus au 31 décembre 2021. Art. 2 - Bénéficient de la remise des pénalités de retard, les personnes immatriculées ou assujetties à l’obligation d’immatriculation conformément aux dispositions de la loi n° 2018-52 du 29 octobre 2018 relative au Registre national des entreprises, et les personnes immatriculées conformément aux dispositions de la loi n° 95-44 du 2 mai 1995 relative au registre du commerce, telle que modifiée et complétée par la loi n° 2010-15 du 14 avril 2010, lesquelles ont accompli les opérations mentionnées à l’article premier du présent décret-loi, conformément aux conditions et procédures prévues par la loi n° 2018-52 du 29 octobre 2018 précitée, et ce dans un délai de six mois à compter du 1er avril 2022 jusqu’au 30 septembre 2022. Art. 3 - L’application des dispositions du présent décret-loi, ne peut donner lieu à restitution par le Centre national du registre des entreprises des montants payés à titre de pénalités de retard avant la date d’entrée en vigueur du présent décret-loi. Art. 4 - Le présent décret-loi sera publié au Journal officiel de la République tunisienne. Tunis, le 29 mars 2022.",
+    "observed_response_sha256": "47a64255331eb9a302a19fdadbbff99cb5909fe47d6e0df9df87dbfbfef778c3"
+  },
+  {
+    "id": "rne-decree-law-2022-18-fr:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "Beneficiary classes and the explicit historical 1 April to 30 September 2022 completion window match Article 2.",
+    "official_supporting_passage": "Le Président de la République, Vu la Constitution, Vu le décret Présidentiel n° 2021-117 du 22 septembre 2021, relatif aux mesures exceptionnelles, Après délibération du Conseil des ministres. Prend le décret-loi dont la teneur suit : Article premier - Il est accordé, à titre exceptionnel, une remise des pénalités de retard prévues par l’article 51 de la loi n° 2018-52 du 29 octobre 2018, relative au Registre national des entreprises, déterminées sur la base de la moitié du montant de la redevance due pour les opérations d’immatriculation, de modification, de radiation, d’insertion de données, de dépôt de documents ou d’actualisation de données ou de renseignements, dont les délais de réalisation étaient échus au 31 décembre 2021. Art. 2 - Bénéficient de la remise des pénalités de retard, les personnes immatriculées ou assujetties à l’obligation d’immatriculation conformément aux dispositions de la loi n° 2018-52 du 29 octobre 2018 relative au Registre national des entreprises, et les personnes immatriculées conformément aux dispositions de la loi n° 95-44 du 2 mai 1995 relative au registre du commerce, telle que modifiée et complétée par la loi n° 2010-15 du 14 avril 2010, lesquelles ont accompli les opérations mentionnées à l’article premier du présent décret-loi, conformément aux conditions et procédures prévues par la loi n° 2018-52 du 29 octobre 2018 précitée, et ce dans un délai de six mois à compter du 1er avril 2022 jusqu’au 30 septembre 2022. Art. 3 - L’application des dispositions du présent décret-loi, ne peut donner lieu à restitution par le Centre national du registre des entreprises des montants payés à titre de pénalités de retard avant la date d’entrée en vigueur du présent décret-loi. Art. 4 - Le présent décret-loi sera publié au Journal officiel de la République tunisienne. Tunis, le 29 mars 2022.",
+    "observed_response_sha256": "de567e3772f3504c255be52af4144b8bb74b5aef77575bfbd7d56ee1bb88e1fd"
+  },
+  {
+    "id": "rne-decree-law-2022-18-fr:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incomplete",
+    "reason": "Fallback excerpts mention the 31 December 2021 cutoff but truncate before the requested 2022 completion period. The source contains the missing date window.",
+    "official_supporting_passage": "Le Président de la République, Vu la Constitution, Vu le décret Présidentiel n° 2021-117 du 22 septembre 2021, relatif aux mesures exceptionnelles, Après délibération du Conseil des ministres. Prend le décret-loi dont la teneur suit : Article premier - Il est accordé, à titre exceptionnel, une remise des pénalités de retard prévues par l’article 51 de la loi n° 2018-52 du 29 octobre 2018, relative au Registre national des entreprises, déterminées sur la base de la moitié du montant de la redevance due pour les opérations d’immatriculation, de modification, de radiation, d’insertion de données, de dépôt de documents ou d’actualisation de données ou de renseignements, dont les délais de réalisation étaient échus au 31 décembre 2021. Art. 2 - Bénéficient de la remise des pénalités de retard, les personnes immatriculées ou assujetties à l’obligation d’immatriculation conformément aux dispositions de la loi n° 2018-52 du 29 octobre 2018 relative au Registre national des entreprises, et les personnes immatriculées conformément aux dispositions de la loi n° 95-44 du 2 mai 1995 relative au registre du commerce, telle que modifiée et complétée par la loi n° 2010-15 du 14 avril 2010, lesquelles ont accompli les opérations mentionnées à l’article premier du présent décret-loi, conformément aux conditions et procédures prévues par la loi n° 2018-52 du 29 octobre 2018 précitée, et ce dans un délai de six mois à compter du 1er avril 2022 jusqu’au 30 septembre 2022. Art. 3 - L’application des dispositions du présent décret-loi, ne peut donner lieu à restitution par le Centre national du registre des entreprises des montants payés à titre de pénalités de retard avant la date d’entrée en vigueur du présent décret-loi. Art. 4 - Le présent décret-loi sera publié au Journal officiel de la République tunisienne. Tunis, le 29 mars 2022.",
+    "observed_response_sha256": "c7dd8b30388828a24b2dd18440f74665180e0d8a143ab1eee5f0aeb2de9718d6"
+  },
+  {
+    "id": "rne-decree-law-2022-18-fr:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "false_refusal",
+    "reason": "Article 3 explicitly covers non-restitution of previously paid penalties, but the reply withholds an unverified numerical generation. This fails to answer an answerable corpus question; root cause remains undetermined.",
+    "official_supporting_passage": "Le Président de la République, Vu la Constitution, Vu le décret Présidentiel n° 2021-117 du 22 septembre 2021, relatif aux mesures exceptionnelles, Après délibération du Conseil des ministres. Prend le décret-loi dont la teneur suit : Article premier - Il est accordé, à titre exceptionnel, une remise des pénalités de retard prévues par l’article 51 de la loi n° 2018-52 du 29 octobre 2018, relative au Registre national des entreprises, déterminées sur la base de la moitié du montant de la redevance due pour les opérations d’immatriculation, de modification, de radiation, d’insertion de données, de dépôt de documents ou d’actualisation de données ou de renseignements, dont les délais de réalisation étaient échus au 31 décembre 2021. Art. 2 - Bénéficient de la remise des pénalités de retard, les personnes immatriculées ou assujetties à l’obligation d’immatriculation conformément aux dispositions de la loi n° 2018-52 du 29 octobre 2018 relative au Registre national des entreprises, et les personnes immatriculées conformément aux dispositions de la loi n° 95-44 du 2 mai 1995 relative au registre du commerce, telle que modifiée et complétée par la loi n° 2010-15 du 14 avril 2010, lesquelles ont accompli les opérations mentionnées à l’article premier du présent décret-loi, conformément aux conditions et procédures prévues par la loi n° 2018-52 du 29 octobre 2018 précitée, et ce dans un délai de six mois à compter du 1er avril 2022 jusqu’au 30 septembre 2022. Art. 3 - L’application des dispositions du présent décret-loi, ne peut donner lieu à restitution par le Centre national du registre des entreprises des montants payés à titre de pénalités de retard avant la date d’entrée en vigueur du présent décret-loi. Art. 4 - Le présent décret-loi sera publié au Journal officiel de la République tunisienne. Tunis, le 29 mars 2022.",
+    "observed_response_sha256": "bfcb34ca34dae1c25ea733ede4bbaf64e19a0371dbea3b20dede091a0c2f1cc9"
+  },
+  {
+    "id": "rne-decree-law-2022-18-fr:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "The 31 December 2021 expired-operation cutoff and 1 April to 30 September 2022 completion window match the official source.",
+    "official_supporting_passage": "Le Président de la République, Vu la Constitution, Vu le décret Présidentiel n° 2021-117 du 22 septembre 2021, relatif aux mesures exceptionnelles, Après délibération du Conseil des ministres. Prend le décret-loi dont la teneur suit : Article premier - Il est accordé, à titre exceptionnel, une remise des pénalités de retard prévues par l’article 51 de la loi n° 2018-52 du 29 octobre 2018, relative au Registre national des entreprises, déterminées sur la base de la moitié du montant de la redevance due pour les opérations d’immatriculation, de modification, de radiation, d’insertion de données, de dépôt de documents ou d’actualisation de données ou de renseignements, dont les délais de réalisation étaient échus au 31 décembre 2021. Art. 2 - Bénéficient de la remise des pénalités de retard, les personnes immatriculées ou assujetties à l’obligation d’immatriculation conformément aux dispositions de la loi n° 2018-52 du 29 octobre 2018 relative au Registre national des entreprises, et les personnes immatriculées conformément aux dispositions de la loi n° 95-44 du 2 mai 1995 relative au registre du commerce, telle que modifiée et complétée par la loi n° 2010-15 du 14 avril 2010, lesquelles ont accompli les opérations mentionnées à l’article premier du présent décret-loi, conformément aux conditions et procédures prévues par la loi n° 2018-52 du 29 octobre 2018 précitée, et ce dans un délai de six mois à compter du 1er avril 2022 jusqu’au 30 septembre 2022. Art. 3 - L’application des dispositions du présent décret-loi, ne peut donner lieu à restitution par le Centre national du registre des entreprises des montants payés à titre de pénalités de retard avant la date d’entrée en vigueur du présent décret-loi. Art. 4 - Le présent décret-loi sera publié au Journal officiel de la République tunisienne. Tunis, le 29 mars 2022.",
+    "observed_response_sha256": "c0cf52f47152ab5eddc7d66bb528b7e7badadb169fd6ee9194d973612e3f0cc3"
+  },
+  {
+    "id": "rne-form-f001-natural-person-registration:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "The reply confirms the e-mail/mobile requirement, matching the printed mandatory-contact instruction.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "18ec027125d6eeaf6be2a1c7ae37a06ffa3b876b36f40deca44a5ef4638366d1"
+  },
+  {
+    "id": "rne-form-f001-natural-person-registration:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-form-f001-natural-person-registration:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-form-f001-natural-person-registration:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-form-f001-natural-person-registration:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-form-f002-legal-entity-registration:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "The reply confirms the e-mail/mobile requirement, matching the printed mandatory-contact instruction.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "818458f0c2883694181fff3d53db76ae64d5742c071439ab8d4d39495b7a1add"
+  },
+  {
+    "id": "rne-form-f002-legal-entity-registration:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-form-f002-legal-entity-registration:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-form-f002-legal-entity-registration:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-form-f002-legal-entity-registration:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive form-instruction question comparison; not a random sample",
+    "verdict": "unsupported_query_pattern",
+    "reason": "The factual question about the form instructions is routed to form_help and receives only generic welcome/upload guidance. The instruction exists in the indexed form, but this normal-text query pattern is unsupported by the current front-door routing.",
+    "official_supporting_passage": ":هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل",
+    "observed_response_sha256": "e930d0dbf8184ae9a50762cb917dd3ca631d8479bc3f2898581474ee2a1edbc9"
+  },
+  {
+    "id": "rne-decree-name-reservation:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incorrect",
+    "reason": "The reservation purpose is correctly stated, but the extra Arabic sentence says the certificate is delivered within six months. Article 3 gives same-day delivery subject to conditions; six months is its validity period. Correct numbers in the wrong relation are not a correct answer.",
+    "official_supporting_passage": "الفصل الأول تهدف شهادة حجز التسمية الاجتماعية أو الاسم التجاري أو الشارة إلى منع إسناد ذات التسمية الاجتماعية أو الاسم التجاري أو الشارة لأكثر من مؤسسة على معنى القانون عدد 52 لسنة2018 المؤرخ في29 أكتوبر 2018 المتعلق بالسجل الوطني للمؤسسات .",
+    "observed_response_sha256": "b6680fbef0cd0c5a9f1edf443ccc94398e47a802b52453521b8e29119fbee57b"
+  },
+  {
+    "id": "rne-decree-name-reservation:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "unsupported_addition",
+    "reason": "The requested availability-at-issue fact is stated correctly. Additional claims that the name is already registered are not established by the availability passage and blur reservation with registration; their precise legal meaning requires review.",
+    "official_supporting_passage": "تفيد شهادة الحجز أن التسمية الاجتماعية أو الاسم التجاري أو الشارة شاغرة في تاريخ تسليمها بالرجوع إلى التسميات التجارية والأسماء التجارية والشارات المسجلة بالسجل الوطني للمؤسسات .",
+    "observed_response_sha256": "df8828f5b4d3f912deeabd1e3e8365033dde914f308805661c6cf013b50690f7"
+  },
+  {
+    "id": "rne-decree-name-reservation:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incorrect",
+    "reason": "The response adds unrelated residence/bailiff/notification documents and describes RNE C 009 association-network principal registration as part of obtaining a name reservation. The reservation application passage does not support that scope or supporting-document list.",
+    "official_supporting_passage": "الفصل 2 يمكن لكل مؤسسة أو من ينوبها تقديم مطلب إلكتروني أو ورقي عند الاقتضاء وفق أنموذج يوفره المركز للحصول على شهادة حجز التسمية الاجتماعية أو الاسم التجاري أو الشارة .",
+    "observed_response_sha256": "516998b7dded20ea54483242d8100c18cd67fcd83d381a251e7975a521d4c434"
+  },
+  {
+    "id": "rne-decree-name-reservation:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "Same-day delivery after checking Article 2 requirements and the six-month renewable validity match Article 3. The Arabic wording is awkward but the requested timing relation is retained.",
+    "official_supporting_passage": "الفصل 3 يسلم المركز الوطني لسجل المؤسسات شهادة حجز التسمية الاجتماعية أو الاسم التجاري أو الشارة في نفس يوم تقديم المطلب بعد التثبت من استيفائه للموجبا ت المنصوص عليها بالفصل 2 من هذا الأمر الحكومي .",
+    "observed_response_sha256": "28adb907c246232637400591253d98ab1ddef3a452d717ae8a3de329f56b8de3"
+  },
+  {
+    "id": "rne-decree-name-reservation:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "correct",
+    "reason": "Six months from issue, renewable once, matches the official source.",
+    "official_supporting_passage": "تكون شهادة الحجز صالحة لمدة ستة أشهر قابلة للتجديد مرة واحدة ابتداء من تاريخ إصدارها ويمكن خلال هذه المدة تغيير أو تحوير التسمية الاجتماعية أو الاسم التجاري أو الشارة المحجوزة .",
+    "observed_response_sha256": "5d3476a22da10cefb2238038c7750fcce8075b685a90748bf3c21ec14bc7bb62"
+  },
+  {
+    "id": "rne-law-2018-52-ar:direct_factual:001",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incorrect",
+    "reason": "The opening purpose is consistent with Article 1, but the added name-reservation sentence omits the prevention/negation and says reservation is for more than one enterprise. The related name-reservation source says its purpose is to prevent the same name being assigned to more than one enterprise. Another added foreign-enterprise sentence is incomplete.",
+    "official_supporting_passage": "يتعلق بالس جل الوطني للمؤسسات )1 (.\n،عبباسم الش",
+    "observed_response_sha256": "769fbdc729b2496dc710d6ce70aba5842a33e98a07336b417e671618bf770d1e",
+    "additional_supporting_passages": [
+      {
+        "document_id": "rne-decree-name-reservation",
+        "text": "الفصل الأول تهدف شهادة حجز التسمية الاجتماعية أو الاسم التجاري أو الشارة إلى منع إسناد ذات التسمية الاجتماعية أو الاسم التجاري أو الشارة لأكثر من مؤسسة على معنى القانون عدد 52 لسنة2018 المؤرخ في29 أكتوبر 2018 المتعلق بالسجل الوطني للمؤسسات ."
+      }
+    ]
+  },
+  {
+    "id": "rne-law-2018-52-ar:direct_factual:002",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incomplete",
+    "reason": "The first four definitions correspond to source text, but the full Article 2 contains sixteen definitions. The response omits the remaining terms, including branch, legal person, legal arrangement and beneficial owner, without identifying its list as partial.",
+    "official_supporting_passage": "الفصل2\nالفصل2 ي قصد بالمصطلحات التالية على معنى هذا",
+    "observed_response_sha256": "ad4eece4d08ee388c35a41616a0cf8e0e033b9227eaf2ac27f9d78f857201522",
+    "additional_supporting_passages": [
+      {
+        "document_id": "rne-law-2018-52-ar",
+        "locator": "extracted_blocks:16:51",
+        "text": "الفصل2\nالفصل2 ي قصد بالمصطلحات التالية على معنى هذا\nالقانون :\n- السجل الوطني للمؤسسات : قاعدة بيانات عمومية لتجميع المعطيات والمعلومات الخاصة بالمؤسسة ووضعها على ذمة العموم ومؤسسات الدولة المعنية بتلك المعلومات و يعكس السجل الحالة المادية والقانونية للمؤسسة المعنية و . يشار إل يه فيما يلي بعبارة \" السجل \".\n- سجل المؤسسة : ملف خاص بكل مؤسسة تدرج به جميع البيانات والمعلومات والتغييرات اللاحقة والتشطيبات وتدرج به كل العقود والوثائق الواجب إيداعها حسب مقتضيات هذا القانون .\n- النشاط الاقتصادي : كل تعاط متواصل أو متكرر لأعمال الإنتاج أو التداو ل أو التحويل أو المضاربة أو الوساطة أو السمسرة أو إسداء الأعمال أو الخدمات لفائدة الغير بمقابل أو بدونه .\n- المؤسسة : كل شخص يمارس نشاطا صناعيا أو حرفيا أو تجاريا أو أي نشاط مهني حر أو مستقل بمقابل أو يقدم أعمال أو خدمات ربحية أو غير ربحية وتشمل الأشخاص الط بيعيين والمعنويين والترتيبات القانونية والجمعيات .\n1 ( الأعمال التحضيرية :\nمداول م ة جلس نواب الشعب ومصادقته بجلستيه المنعقدتين بتاريخ 27 جويلية و2 أكتوبر 2018 .\nعدد89 الرائد الرسمي للجمهورية التونسية–– 6 نوفمبر2018 صفحة4645\n- فرع المؤسسة : كل وحدة اقتصادية تنتمي قانونا إلى\nالمؤسسة وتعمل تحت إمرتها وتخضع للتسجيل إذا كانت المؤسسة منتصبة خارج البلاد التونسية وللترسيم إذا كانت\nالمؤسسة منتصبة بالبلاد التونسية.\n- الشخص المعنوي : كل ذات لها ذمة مالية مستقلة عن الذمم المالية لأعضائها أو الشركاء أو المساهمين فيها ولو لم تسند لها\nالشخصية المعنو ية بموجب التشريع الجاري به العمل .\n- الترتيب القانوني : صناديق الاستئمان المباشرة وغيرها من الترتيبات القانونية المشابهة بما فيها كل عملية يتولى بمقتضاها\nشخص إحالة أموال أو حقوق أو تأمينات حالة أو مستقبلية لأمين أو عدة أمناء الذين يبقونها منفصلة عن ذممهم ال مالية بغرض التصرف فيها أو إدارتها أو التصرف فيها لفائدة مستفيد واحد\nأو أكثر.\n- المستفيد الحقيقي : هو كل شخص طبيعي يملك أو يمارس رقابة أو سيطرة فعلية نهائية مباشرة أو غير مباشرة على الشخص المعنوي أو الترتيب القانوني أو على هياكل الإدارة أو التصرف\nأو التسيير وهو كل شخص طبيعي تنجز العمليات نيابة عنه ولفائدته عن طريق شخص طبيعي أو معنوي أو ترتيب قانوني وهو كذلك كل شخص طبيعي له صفة شريك أو مساهم أو عضو في شخص معنوي أو في ترتيب قانوني قيمة مساهمته في رأس\nالمال أو حقوق الاقتراع تمكنه من السيطرة الفعلية عليه.\n- الإيد اع : تسليم النسخ القانونية من الوثائق المبينة لوضعية\nالمؤسسة إلى المركز الوطني لسجل المؤسسات ويكون الإيداع الكترونيا أو ورقيا.\n- التسجيل : فاإحداث ملف خاص بالمؤسسة وإسنادها معر\nخاصا بها.\n- الترسيم :إدراج بيانات أو عمليات لاحقة لعملية التسجيل.\n- التعليق :تو قيف وقتي لسجل المؤسسة ويكون إداريا عند عدم تحيين السجل أو إراديا بطلب من الشخص المسجل تبعا\nلتوقف نشاط المؤسسة وقتيا أو نهائيا.\n- التشطيب :إلغاء نهائي لسجل المؤسسة .\n- التحيين : كل عملية تهدف إلى مطابقة بيانات السجل مع\nالوضعية القانونية أو المادية للمؤسسة .\n- الا سم الاجتماعي للشخص المعنوي : الاسم الذي يتخذه الشخص المعنوي للتعريف بنشاطه ويقابل لدى الشخص الطبيعي\nإسمه ولقبه.\n- الاسم التجاري : الاسم الذي تستخدمه المؤسسة في ممارسة نشاطها لتمييزها عن غيرها من المؤسسات ويوقّع به على\nمعاملاتها ووثائقها ."
+      }
+    ]
+  },
+  {
+    "id": "rne-law-2018-52-ar:direct_factual:003",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incorrect",
+    "reason": "The question concerns Article 3 on real-time electronic exchange/interconnection of public databases. The reply instead attributes the creation/personality/headquarters of the Centre to Article 3, confusing it with another provision.",
+    "official_supporting_passage": "الفصل 3\nالفصل 3 يتم وجوبا في إطار تشبيك قواعد البيانات العمومية، التبادل الالكتروني الحيني للمعلومات والبيانات والوثائق بين المركز الوطني لسجل المؤسسات وجميع المؤسسات",
+    "observed_response_sha256": "98056cc98d67ddfb72d24e569748533cb7fc59ecb4de52f2a24a18b3156114f5"
+  },
+  {
+    "id": "rne-law-2018-52-ar:direct_factual:004",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "correct_with_omission",
+    "reason": "The four subregisters and the Article 19 data-model reference match Article 8. The final clause assigning beneficial-owner identification mechanisms/criteria to a government decree is omitted; this is accurate on composition but not a complete exposition of the article.",
+    "official_supporting_passage": "الفصل 8\nالفصل 8 يتكون السجل من السجلات الفرعية التالية :",
+    "observed_response_sha256": "b8332eb827f6fb39f3d57db4f5631f6aa9a57e72f8f70124c0afe8bd463bc3a4",
+    "additional_supporting_passages": [
+      {
+        "document_id": "rne-law-2018-52-ar",
+        "locator": "extracted_blocks:106:118",
+        "text": "الفصل 8\nالفصل 8 يتكون السجل من السجلات الفرعية التالية :\n- سجل تجاري يسجل به التجار والشركات التجارية\nوالمنشآت الدائمة والنيابات التي تستغل فرعا أو وكالة بالبلا د التونسية والترتيبات القانونية والمنشآت العمومية والمؤسسات العمومية التي لا تكتسي صبغة إدارية والأشخاص المعنويون الذين تنص القوانين أو التراتيب الخاصة بهم على وجوب تسجيلهم\nوالحرفيون على معنى التشريع الجاري به العمل المنظم للحرف .\n- سجل مهني يسجل به الشرك ات المهنية وأصحاب المهن المنتصبون لحسابهم الخاص وينشطون بمقابل.\n- سجل الجمعيات وشبكات الجمعيات تسجل به الجمعيات المكونة وفق التشريع الجاري به العمل وتودع به العقود والوثائق\nوالسجلات التي تمسكها الجمعية .\n- سجل المستفيدين الحقيقيين تضبط به قائمة المستفيدين\nالحق يقيين وفق أنموذج معد للغرض يقع تحديد بياناته على ضوء أحكام الفصل19 من هذا القانون.\nوتضبط بمقتضى أمر حكومي آليات ومعايير تحديد المستفيد\nالحقيقي."
+      }
+    ]
+  },
+  {
+    "id": "rne-law-2018-52-ar:direct_factual:005",
+    "reviewer": "Codex source comparison",
+    "selection": "Purposive direct-question source comparison; not a random sample",
+    "verdict": "incorrect",
+    "reason": "The reply invents Article 16 definitions about amendments/changes and presents them in source-like quotation format. Actual Article 16 concerns the rebuttable trader-status presumption and effects against third parties; the invented definition phrase is absent from the extracted law. A valid citation does not ground this content.",
+    "official_supporting_passage": "الفصل16\nالفصل16 يعتبر تسجيل الشخص الطبيعي بالسجل التجاري قرينة بسيطة لثبوت صفة التاجر.",
+    "observed_response_sha256": "f690b0b22e349e0f7c80046ba92214687865739f7a5d0e8f764fc124e0a6fc25",
+    "additional_supporting_passages": [
+      {
+        "document_id": "rne-law-2018-52-ar",
+        "locator": "extracted_blocks:208:215",
+        "text": "الفصل16\nالفصل16 يعتبر تسجيل الشخص الطبيعي بالسجل التجاري قرينة بسيطة لثبوت صفة التاجر.\nغير أن هذه القرينة لا يمكن أن يعارض بها الغير إذا أثبت ما يخالفها ولا يمكنه التمسك بها إذا ثبت علمه بأن الشخص\nالمسجل ليس تاجرا.\nولا يمكن للخاضع للتسج يل أن يعارض الغير بعدم تسجيله .\nولا يجوز للتاجر المسجل الذي يحيل الأصل التجاري أو يسلمه خاصة على وجه الكراء، معارضة الغير بتوقفه عن ممارسة نشاطه، للتفصي من دعاوى المسؤولية المقامة ضده في خصوص الالتزامات التي أبرمها خلفه في استغلال الأصل إلا من\nيوم ترسيم ا لبيان المتعلق بحصول الإحالة أو التسليم، وذلك بقطع النظر عن القواعد الواردة بالفصل234 من المجلة التجارية."
+      }
+    ]
+  }
+]

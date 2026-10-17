@@ -1,0 +1,27 @@
+% Figure 2: ingestion, indexing and retrieval pipeline (ingestion/, rag/, agents/retriever.py, rag/hybrid.py).
+\begin{tikzpicture}[
+  node distance=3mm and 4mm, font=\scriptsize,
+  st/.style={draw=accent, rounded corners=2pt, fill=accent!6, align=center, minimum height=9mm, text width=19mm, inner sep=2pt},
+  q/.style={st, draw=orange!70!black, fill=orange!7},
+  arr/.style={-{Latex[length=1.8mm]}, thick, draw=gray!70!black}]
+  % ingestion row
+  \node[st] (reg) {Source registry\\{\tiny sources.yaml}};
+  \node[st, right=of reg] (pol) {robots.txt and\\AI opt-out check};
+  \node[st, right=of pol] (dl) {Download,\\SHA-256, manifest};
+  \node[st, right=of dl] (ext) {Extraction to\\TextBlocks};
+  \node[st, right=of ext] (chk) {Chunking:\\structure / recursive};
+  \node[st, right=of chk] (emb) {BGE-M3\\1024-d vectors};
+  \node[st, right=of emb] (qd) {Qdrant\\+ payload metadata};
+  \foreach \a/\b in {reg/pol,pol/dl,dl/ext,ext/chk,chk/emb,emb/qd} \draw[arr] (\a) -- (\b);
+  % query row
+  \node[q, below=15mm of reg] (u) {User question\\{\tiny EN, FR, AR, Derja}};
+  \node[q, right=of u] (r) {Intent Router:\\category, intent,\\hints};
+  \node[q, right=of r] (x) {Query expansion\\(FR+AR terms)};
+  \node[q, right=of x] (f) {Dense search\\(category filter)};
+  \node[q, right=of f] (h) {RRF: raw and\\expanded dense\\+ BM25, max\\2 chunks/doc};
+  \node[q, right=of h] (c) {Checklist Builder\\(verbatim sections)\\or Grounded Answer};
+  \node[q, right=of c] (o) {Answer +\\citations\\(URL, reference)};
+  \foreach \a/\b in {u/r,r/x,x/f,f/h,h/c,c/o} \draw[arr] (\a) -- (\b);
+  \draw[arr, dashed] (qd.south) -- ++(0,-3mm) -| (f.north);
+  \draw[arr, dashed] (ext.south) -- ++(0,-6.5mm) -| node[pos=0.25, fill=white, inner sep=1pt, font=\tiny]{full official sections} (c.north);
+\end{tikzpicture}

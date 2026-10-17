@@ -1,0 +1,1184 @@
+{
+ "P01": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 5.8
+ },
+ "P02": {
+  "language": "en",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [
+   "renewal"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "P03": {
+  "language": "ar",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [
+   "renewal"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 8.5
+ },
+ "P04": {
+  "language": "derja",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [
+   "renewal"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "P05": {
+  "language": "derja",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [
+   "renewal"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "P06": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "P07": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "P08": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "passport",
+  "hints": [
+   "abroad"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "P09": {
+  "language": "fr",
+  "intent": "submission_place",
+  "procedure_category": "passport",
+  "hints": [
+   "abroad"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "P10": {
+  "language": "fr",
+  "intent": "processing_time",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "P11": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [
+   "loss"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "P12": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "P13": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "P14": {
+  "language": "ar",
+  "intent": "eligibility",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "P15": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 8294.9
+ },
+ "P16": {
+  "language": "derja",
+  "intent": "processing_time",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "P17": {
+  "language": "en",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "N01": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "national_id",
+  "hints": [
+   "first_time"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "N02": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "national_id",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "N03": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "national_id",
+  "hints": [
+   "modification"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "N04": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "national_id",
+  "hints": [
+   "loss"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "B01": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "birth_certificate",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "Cette procédure n'est pas encore couverte : aucune source officielle n'a pu être intégrée à ma base.",
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "B02": {
+  "language": "ar",
+  "intent": "procedure_info",
+  "procedure_category": "birth_certificate",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "هذا الإجراء غير مشمول بعد: لم يتسنّ إدراج أي مصدر رسمي يخصه في قاعدة معارفي.",
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "B03": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "birth_certificate",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "This procedure is not covered yet: no official source for it could be included in my knowledge base.",
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "B04": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "birth_certificate",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "Cette procédure n'est pas encore couverte : aucune source officielle n'a pu être intégrée à ma base.",
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R01": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R02": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R03": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R04": {
+  "language": "fr",
+  "intent": "processing_time",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R05": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R06": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R07": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "R08": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R09": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "R10": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R11": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "R12": {
+  "language": "derja",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "R13": {
+  "language": "derja",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R14": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R15": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R16": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R17": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R18": {
+  "language": "ar",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "R19": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "R20": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "general",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 2470.8
+ },
+ "R21": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R22": {
+  "language": "ar",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R23": {
+  "language": "fr",
+  "intent": "processing_time",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "R24": {
+  "language": "ar",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R25": {
+  "language": "fr",
+  "intent": "processing_time",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R26": {
+  "language": "derja",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R27": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R28": {
+  "language": "ar",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "يمكنني المساعدة فقط في الإجراءات الإدارية التونسية التي تغطيها مصادري الرسمية (جواز السفر، بطاقة التعريف الوطنية، التسجيل بالسجل الوطني للمؤسسات).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 2299.0
+ },
+ "R29": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.6
+ },
+ "R30": {
+  "language": "fr",
+  "intent": "processing_time",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R31": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R32": {
+  "language": "fr",
+  "intent": "form_help",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "Bonjour ! Je réponds aux questions sur les démarches administratives tunisiennes (passeport, carte d'identité nationale, immatriculation au RNE) uniquement à partir de sources officielles. Posez votre question, ou envoyez une photo/un PDF de formulaire pour vérifier les champs manquants.",
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "R33": {
+  "language": "en",
+  "intent": "form_help",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "Hello! I answer questions about Tunisian administrative procedures (passport, national ID card, company registration with the RNE) using official sources only. Ask your question, or send a photo/PDF of a form to check for missing fields.",
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R34": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "R35": {
+  "language": "en",
+  "intent": "required_documents",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "R36": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "A01": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "A02": {
+  "language": "en",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "I can only help with Tunisian administrative procedures covered by my official sources (passport, national ID card, company registration with the RNE).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 2247.4
+ },
+ "A03": {
+  "language": "derja",
+  "intent": "required_documents",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "O01": {
+  "language": "fr",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "Je ne peux aider que pour les démarches administratives tunisiennes couvertes par mes sources officielles (passeport, carte d'identité nationale, immatriculation au RNE).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 3299.7
+ },
+ "O02": {
+  "language": "en",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "I can only help with Tunisian administrative procedures covered by my official sources (passport, national ID card, company registration with the RNE).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 2959.4
+ },
+ "O03": {
+  "language": "ar",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "يمكنني المساعدة فقط في الإجراءات الإدارية التونسية التي تغطيها مصادري الرسمية (جواز السفر، بطاقة التعريف الوطنية، التسجيل بالسجل الوطني للمؤسسات).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 3210.1
+ },
+ "O04": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "general",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 2807.9
+ },
+ "O05": {
+  "language": "en",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "I can only help with Tunisian administrative procedures covered by my official sources (passport, national ID card, company registration with the RNE).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 3284.6
+ },
+ "M01": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [
+   "renewal"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 4.4
+ },
+ "M02": {
+  "language": "en",
+  "intent": "processing_time",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "M03": {
+  "language": "ar",
+  "intent": "processing_time",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "M04": {
+  "language": "derja",
+  "intent": "processing_time",
+  "procedure_category": "passport",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "M05": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "M06": {
+  "language": "ar",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "M07": {
+  "language": "en",
+  "intent": "processing_time",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "M08": {
+  "language": "derja",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "نجم نعاونك كان في الإجراءات الإدارية التونسية اللي عندي عليها مصادر رسمية (الباسبور، بطاقة التعريف، تسجيل شركة في السجل الوطني للمؤسسات).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 7467.8
+ },
+ "M09": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.7
+ },
+ "M10": {
+  "language": "derja",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.6
+ },
+ "M11": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.6
+ },
+ "M12": {
+  "language": "derja",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "M13": {
+  "language": "en",
+  "intent": "submission_place",
+  "procedure_category": "passport",
+  "hints": [
+   "abroad"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "M14": {
+  "language": "ar",
+  "intent": "submission_place",
+  "procedure_category": "passport",
+  "hints": [
+   "abroad"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "M15": {
+  "language": "derja",
+  "intent": "submission_place",
+  "procedure_category": "passport",
+  "hints": [
+   "abroad"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "H01": {
+  "language": "en",
+  "intent": "required_documents",
+  "procedure_category": "passport",
+  "hints": [
+   "abroad"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 4.4
+ },
+ "H02": {
+  "language": "en",
+  "intent": "processing_time",
+  "procedure_category": "passport",
+  "hints": [
+   "loss"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "H03": {
+  "language": "fr",
+  "intent": "processing_time",
+  "procedure_category": "passport",
+  "hints": [
+   "pilgrimage"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "H04": {
+  "language": "fr",
+  "intent": "required_documents",
+  "procedure_category": "national_id",
+  "hints": [
+   "renewal"
+  ],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "H05": {
+  "language": "en",
+  "intent": "required_documents",
+  "procedure_category": "national_id",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "H06": {
+  "language": "derja",
+  "intent": "required_documents",
+  "procedure_category": "national_id",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "H07": {
+  "language": "ar",
+  "intent": "submission_place",
+  "procedure_category": "national_id",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.2
+ },
+ "H08": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.7
+ },
+ "H09": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 10984.3
+ },
+ "H10": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 3012.3
+ },
+ "H11": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.6
+ },
+ "H12": {
+  "language": "fr",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "H13": {
+  "language": "ar",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "H14": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.3
+ },
+ "H15": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ },
+ "H16": {
+  "language": "en",
+  "intent": "procedure_info",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.5
+ },
+ "H17": {
+  "language": "fr",
+  "intent": "procedure_info",
+  "procedure_category": "general",
+  "hints": [
+   "renewal"
+  ],
+  "next_agent": "answer",
+  "reply": null,
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 2782.8
+ },
+ "H18": {
+  "language": "ar",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "يمكنني المساعدة فقط في الإجراءات الإدارية التونسية التي تغطيها مصادري الرسمية (جواز السفر، بطاقة التعريف الوطنية، التسجيل بالسجل الوطني للمؤسسات).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 3486.5
+ },
+ "H19": {
+  "language": "fr",
+  "intent": "out_of_scope",
+  "procedure_category": "none",
+  "hints": [],
+  "next_agent": "reply",
+  "reply": "Je ne peux aider que pour les démarches administratives tunisiennes couvertes par mes sources officielles (passeport, carte d'identité nationale, immatriculation au RNE).",
+  "method": "llm",
+  "prompt_ref": "intent_router@v1",
+  "router_ms": 3117.9
+ },
+ "H20": {
+  "language": "en",
+  "intent": "fees",
+  "procedure_category": "business_registration",
+  "hints": [],
+  "next_agent": "checklist",
+  "reply": null,
+  "method": "rules",
+  "prompt_ref": null,
+  "router_ms": 0.4
+ }
+}

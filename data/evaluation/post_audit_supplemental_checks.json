@@ -1,0 +1,1748 @@
+{
+  "fee_unit_rate_quotes": [
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:01",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:02",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:03",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:04",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:05",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:06",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:07",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:08",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:09",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:10",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:11",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:12",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:13",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:14",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:15",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:16",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:17",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:18",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:19",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:20",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:21",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:22",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:23",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:24",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:25",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:26",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:27",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:28",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:29",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:30",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:31",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:32",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:33",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:34",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:35",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:36",
+      "official_unit_rate_quote_retained": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:fee_service:37",
+      "official_unit_rate_quote_retained": true
+    }
+  ],
+  "exact_retrieval": [
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:001",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:002",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:003",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:004",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:005",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:007",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:008",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:006",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:009",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:010",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:011",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:012",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:013",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:014",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:015",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:016",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:017",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:018",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:019",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:020",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:021",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:022",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:023",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:024",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:025",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:026",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:027",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:028",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:029",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:030",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:031",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:032",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:033",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:035",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:034",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:036",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:037",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:038",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:039",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:040",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:041",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:042",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:043",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:044",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:045",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:046",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:047",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:048",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:049",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:050",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:051",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:052",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:053",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:054",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:055",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:056",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:057",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:058",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:059",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:060",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:061",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:062",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:063",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:064",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:065",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:066",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:067",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:068",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:069",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:070",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:071",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:072",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:073",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:074",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:075",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:076",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:077",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:078",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:079",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:080",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:081",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:082",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:083",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:084",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:085",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:086",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:087",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:088",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:089",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:090",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:091",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:092",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:093",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:094",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:095",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:096",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:097",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:098",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:099",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:100",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:101",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:102",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:103",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:104",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:105",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:106",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:108",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:107",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:109",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:110",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:111",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:112",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:114",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:113",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:115",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:116",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:117",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:118",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:119",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:120",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:121",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:122",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:123",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:124",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:125",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:126",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:127",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:128",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:129",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:130",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:131",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:132",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:133",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:134",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:135",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:136",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:137",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:138",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:139",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:140",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:141",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:142",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:143",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:144",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:145",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:146",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:147",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:148",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:149",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:150",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:152",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:151",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:153",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:154",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:155",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:156",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:157",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:158",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:159",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:160",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:161",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:162",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:163",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:164",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:165",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:166",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:167",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:168",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:169",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:170",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:171",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:173",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:172",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:174",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:175",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:176",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:177",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:178",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:180",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:179",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:181",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:182",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:183",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:184",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:185",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:186",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:187",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:188",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:189",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row:190",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:001",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:002",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:003",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:004",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:005",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:006",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:007",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:008",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:009",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:010",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:011",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:012",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:013",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:014",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:015",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:016",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:017",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:018",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:019",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:020",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:021",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:022",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:023",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:024",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:025",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:026",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:027",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:028",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:029",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:030",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:031",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:032",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:033",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:034",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:035",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:036",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:037",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:038",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:039",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:040",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:041",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:042",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:043",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:044",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:045",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:046",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:047",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:048",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:049",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:050",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:051",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:052",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:053",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:054",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:055",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:056",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:057",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:058",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:059",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:060",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:061",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:062",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:063",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:064",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:065",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:066",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:067",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:068",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:069",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:070",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:071",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:072",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:073",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:074",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:075",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:076",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:077",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:078",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:079",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:080",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:081",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:082",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:083",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:084",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:085",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:086",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:087",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:088",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:089",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:090",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:091",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:092",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:093",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:094",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:095",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:096",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:097",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:098",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:099",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:100",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:102",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:101",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:103",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:104",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:105",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:106",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:107",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:108",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:109",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:110",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:111",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:112",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:113",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:114",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:115",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:116",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:117",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:119",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:118",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:120",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:121",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:122",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:123",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:124",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:125",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:126",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:127",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:128",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:129",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:130",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:131",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:132",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:133",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:134",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:135",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:136",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:137",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:139",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:138",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:140",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:141",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:142",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:143",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:144",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:145",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:146",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:147",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:148",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:149",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:150",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:151",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:152",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:153",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:154",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:155",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:156",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:157",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:158",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:159",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:160",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:161",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:162",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:163",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:164",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:165",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:166",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:167",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:168",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:169",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:170",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:171",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:172",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:173",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:174",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:175",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:176",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:177",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:178",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:179",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:180",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:181",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:182",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:183",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:184",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:185",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:186",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:187",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:188",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:189",
+      "requested_row_in_retrieval": true
+    },
+    {
+      "id": "rne-formalities-procedure-table:formalities_row_dialogue:190",
+      "requested_row_in_retrieval": true
+    }
+  ],
+  "legal_context": [
+    {
+      "id": "rne-arrete-2026-35:multi_turn:001",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-arrete-2026-35:multi_turn:002",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-arrete-2026-35:multi_turn:003",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:multi_turn:001",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:multi_turn:002",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-2022-298-fees-fr:multi_turn:003",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-beneficial-owners:multi_turn:001",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-beneficial-owners:multi_turn:002",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-beneficial-owners:multi_turn:003",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-law-2022-18-fr:multi_turn:001",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-law-2022-18-fr:multi_turn:002",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-law-2022-18-fr:multi_turn:003",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-name-reservation:multi_turn:001",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-name-reservation:multi_turn:002",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-decree-name-reservation:multi_turn:003",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-law-2018-52-ar:multi_turn:001",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-law-2018-52-ar:multi_turn:002",
+      "subject_preserved": true
+    },
+    {
+      "id": "rne-law-2018-52-ar:multi_turn:003",
+      "subject_preserved": true
+    }
+  ]
+}

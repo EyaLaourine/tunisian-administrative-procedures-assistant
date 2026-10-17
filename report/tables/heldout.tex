@@ -1,0 +1,18 @@
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Development (84)} & \multicolumn{2}{c}{Held-out (20)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Metric & before & after & before & after \\
+\midrule
+Hit@5, dense raw query & 0.732 &  & 0.750 &  \\
+Hit@5, Phase-2 agent retriever & 0.718 &  & 0.562 &  \\
+Hit@5, hybrid + cap (production) & 0.873 &  & 0.750 &  \\
+MRR@5, hybrid + cap (production) & 0.675 &  & 0.531 &  \\
+Citation validity & 147/147 & 145/145 & 31/31 & 31/31 \\
+Unsupported-answer rejection & 0.917 & 1.000 & 0.750 & 0.750 \\
+Faithfulness & 1.000 & 1.000 & 0.938 & 0.938 \\
+Language consistency, strict & 0.798 & 0.821 & 0.700 & 0.800 \\
+Language consistency, assistant text & 0.909 & 0.929 & 0.944 & 1.000 \\
+Verified evidence span present & 0.580 & 0.565 & 0.375 & 0.312 \\
+\bottomrule
+\end{tabular}

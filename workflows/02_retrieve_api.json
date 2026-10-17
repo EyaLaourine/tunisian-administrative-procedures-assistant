@@ -1,0 +1,50 @@
+{
+  "id": "TnaaRetrieveApi1",
+  "name": "02 - Retrieval API (RAG Retriever agent entry point)",
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "nodes": [
+    {
+      "id": "b2f0c1d2-0001-4c1a-9a01-000000000001",
+      "name": "POST /webhook/retrieve",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "5d0c3a8e-6b0e-4f0e-9a51-7a1d2c3b4e01",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "retrieve",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "b2f0c1d2-0002-4c1a-9a01-000000000002",
+      "name": "RAG Retriever (backend)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 0],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/retrieve",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": { "timeout": 120000 }
+      }
+    },
+    {
+      "id": "b2f0c1d2-0003-4c1a-9a01-000000000003",
+      "name": "Return passages",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [520, 0],
+      "parameters": { "respondWith": "allIncomingItems", "options": {} }
+    }
+  ],
+  "connections": {
+    "POST /webhook/retrieve": { "main": [[{ "node": "RAG Retriever (backend)", "type": "main", "index": 0 }]] },
+    "RAG Retriever (backend)": { "main": [[{ "node": "Return passages", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {}
+}

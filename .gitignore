@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment and secrets
+.env
+*.pem
+*.key
+
+# data/raw/ (original official files + manifest) IS tracked: it is the verifiable corpus snapshot.
+# Processed outputs are regenerable from data/raw/.
+data/processed/**
+!data/processed/.gitkeep
+
+# Private user uploads must never be committed
+data/uploads/
+tmp/
+
+# Docker volumes / local service state
+volumes/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

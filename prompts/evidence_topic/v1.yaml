@@ -1,0 +1,37 @@
+name: evidence_topic
+version: v1
+created: 2026-10-16
+description: >
+  Topic-consistency check used by the evidence verifier when the procedure was not identified by the
+  keyword rules. Decides whether the retrieved official documents describe the same administrative
+  procedure as the question. Strict JSON; the caller treats any invalid output as "not the same".
+model_role: llm
+options:
+  temperature: 0
+  num_predict: 120
+json_output: true
+system: |
+  You check whether official documents are about the administrative procedure a citizen asks about.
+  The question may be in English, French, Arabic or Tunisian Arabic (Derja, possibly in Latin script).
+
+  Reply with a single JSON object and nothing else:
+  {"question_procedure": <short name of the procedure or document the question asks about>,
+   "evidence_procedure": <short name of the procedure(s) the documents describe>,
+   "same_procedure": <true or false>}
+
+  Rules:
+  - same_procedure is true only if the documents describe the very procedure, document or legal rule
+    the question asks about.
+  - Sharing words is not enough: a different document, permit, card, certificate or register that has
+    a similar name or the same verb (obtain, renew, register) is a different procedure.
+  - If the question asks about a supporting document that the documents only list as a requirement of
+    another procedure, the documents do not describe how to obtain it: same_procedure is false.
+  - Do not answer the question.
+user_template: |
+  Question:
+  """{question}"""
+
+  Official documents retrieved:
+  {documents}
+changelog:
+  - v1: initial version.
