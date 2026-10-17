@@ -213,3 +213,30 @@ def test_admin_key_is_required_only_when_configured():
     with pytest.raises(HTTPException):
         main.require_admin("wrong")
     main.require_admin("s3cret-value")
+
+
+@needs_corpus
+def test_question_about_a_provision_that_mentions_a_table_selects_that_provision():
+    res = legal("Selon le décret RNE 2022-298, quelle réduction concerne les redevances des procédures du tableau 1 rendues électroniquement ?")
+    assert selected(res)[0] == 4 and "Sont réduites de 50%" in res.text
+    row = legal("Selon le tableau 1 du décret RNE 2022-298, quels tarifs de base et unités sont indiqués pour le service 10 ?")
+    assert "Tableau n°1" in row.text
+
+
+# ------------------------------------------------------------------ printed form instructions
+@needs_corpus
+@pytest.mark.parametrize("question,phrase", [
+    ("RNE : Dans quelle langue faut-il remplir les données selon RNE-F-001_declation_immatriculation_personne_physique ?", "اللغة العربية"),
+    ("RNE : Que dit le formulaire sur les données manquantes selon RNE-F-002_declation_immatriculation_personne_motale ?", "ناقص"),
+    ("What does form F-001 say about false declarations?", "مخالفة للواقع"),
+])
+def test_form_instruction_questions_quote_the_printed_official_text(question, phrase):
+    d = router.route(RouteRequest(text=question, language="fr"))
+    assert d.next_agent == "answer" and d.procedure_category == "business_registration"
+    res = legal(question)
+    assert res.found and phrase in res.text and res.method == "passages_fallback"
+
+
+def test_generic_form_help_still_gets_upload_instructions():
+    d = router.route(RouteRequest(text="Comment vérifier mon formulaire ?", language="fr"))
+    assert d.next_agent == "reply"

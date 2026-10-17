@@ -193,6 +193,12 @@ class IntentRouter:
             intent = "out_of_scope"
 
         nxt = next_agent_for(category, intent)
+        if intent == "form_help":
+            from agents.legal_evidence import identify_form
+            if identify_form(req.text):
+                # A question about what an official form says is answered from its printed text, not with
+                # the upload instructions.
+                category, intent, nxt = "business_registration", "procedure_info", "answer"
         # A question naming an RNE procedure code is answered from the official table row.
         if category == "business_registration" and RNE_CODE.search(req.text):
             nxt = "checklist"

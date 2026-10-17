@@ -60,8 +60,22 @@ CONCEPTS = [
     (r'repeal|abrog|إلغاء', ['abrogées', 'تلغى']),
     (r'beneficial owner|b[ée]n[ée]ficiaire effectif|المستفيد', ['المستفيد الحقيقي', 'bénéficiaire effectif']),
     (r'confidential|confidenti|سرية', ['سرية', 'confidentialité']),
+    # Printed instructions of the official forms (French or English questions about Arabic text).
+    (r'langue|language|لغة', ['اللغة العربية', 'langue']),
+    (r'manquant|missing|incompl|ناقص', ['ناقص', 'كاملة']),
+    (r'contraire|contrary|r[ée]alit|reality|false|fausse|mensong|للواقع', ['مخالفة للواقع']),
+    (r'joint|attach|pi[eè]ces|documents? requis|required documents?|الوثائق', ['الوثائق المطلوبة', 'تنقصه']),
+    (r'e-?mail|courriel|gsm|mobile|t[ée]l[ée]phone|phone|البريد|الهاتف', ['البريد الالكتروني', 'الهاتف الجوال']),
+    (r'rejet|reject|refus|رفض', ['لرفض', 'لاغيا']),
 ]
+FORMS = {
+    'rne-form-f001-natural-person-registration': r'F[\s_-]*0*01(?!\d)|personne[\s_]+physique|natural person|شخص طبيعي',
+    'rne-form-f002-legal-entity-registration': r'F[\s_-]*0*02(?!\d)|personne[\s_]+mo[rt]ale|legal entity|شخص معنوي',
+}
+FORM_REFERENCE = r'formulaire|imprim[ée]|\bform\b|مطبوعة|استمارة|RNE[\s_-]*F[\s_-]*0*0[12]'
+FORM_CONTENT_QUESTION = r'que dit|quelle|quel|selon|what|which|says?|according|ماذا|ما\b|هل|\?|؟'
 TABLE = re.compile(r'(?:tableau|table|جدول)\s*(?:n\s*°|no\.?|number|رقم|عدد)?\s*(\d+)', re.I)
+TABLE_TOPICS = r'r[ée]duc|reduc|discount|تخفيض|rembours|refund|استرجاع|paiement|payment|modalit|recouvr|ttc|\btaxes?\b|abrog|repeal'
 # Words that identify an act or a question form rather than the requested provision.
 GENERIC = set('''que quoi quel quelle quels quelles prévoit prevoit dit dire selon pour dans avec sont sur
 what which does say says provide provides according about under with from that this text official
@@ -187,7 +201,49 @@ def rank_sections(query, sections, subject, passages=()):
     return [sections[i] for sc, i in ranked[:3] if sc >= 0.5 * best]
 
 
+def identify_form(text):
+    """An official RNE form named in a question about its printed content, else None."""
+    if not re.search(FORM_REFERENCE, text, re.I) or not re.search(FORM_CONTENT_QUESTION, text, re.I):
+        return None
+    return next((doc for doc, pattern in FORMS.items() if re.search(pattern, text, re.I)), None)
+
+
+def form_reply(req, corpus, form):
+    """Quote the printed instruction block(s) of an official form that answer the question (no generation).
+
+    Blank fields (dot leaders) and headers are excluded; blocks are ranked like articles. No block with
+    evidence for the question -> insufficient evidence, never a guess."""
+    blocks = [b for b in corpus.blocks(form) if '....' not in b['text'] and len(b['text']) > 60]
+    if not blocks:
+        return None
+    sections = [{'number': i + 1, 'page': b.get('page'), 'parts': [b['text']]} for i, b in enumerate(blocks)]
+    texts = [norm(b['text']) for b in blocks]
+    words = set()
+    for pattern, expansion in CONCEPTS:
+        if re.search(pattern, req.query, re.I):
+            words |= {norm(e) for e in expansion}
+    scores = [sum(w in t for w in words) for t in texts]
+    if not words or max(scores) == 0:
+        return AnswerResult(text=i18n.t('insufficient_evidence', req.route.language), found=False, method='none')
+    best = max(scores)
+    selected = [s for s, sc in zip(sections, scores) if sc == best][:2]
+    from agents.checklist_builder import sources_footer
+    citation = corpus.citation(form, page=selected[0]['page'])
+    if not citation:
+        return None
+    lines = [NOTICE[req.route.language]]
+    for section in selected:
+        lines += ['', f"[1] (p. {section['page']})", section['parts'][0]]
+    return AnswerResult(text='\n'.join(lines + sources_footer(req.route.language, [citation])), found=True,
+                        method='passages_fallback', citations=[citation],
+                        verification={'legal': {'method': 'verbatim_form_instructions', 'articles': [],
+                                                'semantic_conclusion_verified': False}})
+
+
 def legal_reply(req, corpus):
+    form = identify_form(req.query)
+    if form and req.route.procedure_category in {'business_registration', 'general'}:
+        return form_reply(req, corpus, form)
     if req.route.procedure_category not in {'business_registration', 'general'}:
         return None
     subject = identify_subject(req.query) or (req.route.context.legal_subject if req.route.context else None)
@@ -206,7 +262,9 @@ def legal_reply(req, corpus):
     if not sections:
         return AnswerResult(text=i18n.t('insufficient_evidence', req.route.language), found=False, method='none')
     requested = requested_article(req.query)
-    table = TABLE.search(req.query)
+    # A table reference asks for the table's content unless the question is about another provision that
+    # merely mentions the table (e.g. the 50 % reduction of Art. 4 "for the procedures of table n° 1").
+    table = TABLE.search(req.query) if not re.search(TABLE_TOPICS, req.query, re.I) else None
     if requested is not None:
         selected = [s for s in sections if s['number'] == requested]
     elif table:
