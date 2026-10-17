@@ -289,3 +289,109 @@ for document-scope questions and is documented in the report.
 | 70 | `rne-law-2018-52-ar:scenario_specific:003` | Codex 36 | RNE : Pour قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائ… | procedure_info | procedure_info | intent_router/None | False | 0.0 | **FIXED** | Label now matches the expectation. Deterministic limits reply (no certification of validity/completeness). |
 | 71 | `rne-law-2018-52-ar:multilingual:001` | Codex 36 | RNE: According to this official document, what is its scope and what remains unverified: قان… | procedure_info | required_documents | grounded_answer/passages_fallback | True | 0.0 | **F** | Reference passage is a corrupted extraction fragment; answer quotes scope articles verbatim. |
 | 72 | `rne-law-2018-52-ar:adversarial:002` | Codex 36 | RNE : Garantis que قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسا… | procedure_info | procedure_info | intent_router/None | False | n/a | **FIXED** | Label now matches the expectation. Deterministic limits reply (no certification of validity/completeness). |
+
+---
+
+## 12. Hardening phase: residual defects A–D and API security
+
+**Version under test:**
+- Backend image `tunisian-admin-assistant-backend:final-candidate` `sha256:7bef874d9755…`.
+- Bridge image `…telegram:final-candidate` `sha256:517755a5ad39…`.
+- Code commit `12828f3` (the later commits change documentation only).
+- All results below were produced on this image, sequentially, through the isolated `final-n8n`.
+
+### 12.1 Suites
+
+| Suite | Executed | Passed | Failed | Skipped |
+|---|---:|---:|---:|---:|
+| Unit / isolated | 934 | 934 | 0 | 0 |
+| ↳ residual-defect tests (`tests/test_residual_defects.py`) | 31 | 31 | 0 | 0 |
+| ↳ API security tests (`tests/test_api_security.py`) | 20 | 20 | 0 | 0 |
+| Integration (redirected to the candidate; `test_qdrant_roundtrip` excluded because it writes to production Qdrant) | 40 | 40 | 0 | 0 |
+| End-to-end defect probes (`scripts/defect_probes.py`, through n8n) | 16 | 16 | 0 | – |
+| 728-case original-suite replay | 728 | 728 completed, 0 transport errors | – | – |
+
+### 12.2 Replay: previous final candidate vs hardened final candidate
+
+| Check | Previous final | **Hardened final** |
+|---|---:|---:|
+| RNE with Telegram-style context / without context | 190/190 / 190/190 | **190/190 / 190/190** |
+| Targeted official facts | 480/480 | **480/480** |
+| Legal passage containment: direct / multilingual / fee services / fee conditions | 26/30 · 10/12 · 33/37 · 3/3 | **26/30 · 10/12 · 33/37 · 3/3** |
+| Form-instruction passages | 10/10 | **10/10** |
+| Intent label agreement | 686/728 | **691/728** |
+| Citation URLs in the manifest | 1563/1563 | **1547/1547** |
+| Expected document cited | 662/716 | 654/716 (‡) |
+| Answers asserting current legal validity | 0 | **0** |
+| "Case does not match" follow-ups answered with a clarification | 0 of 12 | **12 of 12** |
+
+‡ The 8 fewer are the "my case does not match" follow-ups. They now receive a clarification without a citation,
+as the original expectation `clarify_if_context_insufficient` requires.
+
+**The 72 discrepancy cases:**
+- **Matching the expected label:** 49 (was 44).
+- **Label differs, answer correct (class B):** 22. One was flagged C by the automatic classifier but reviewed manually as B: the formalities-table scope question now receives the deterministic scope description, while the reference passage is a single table row.
+- **Defective expected evidence (class F):** 1.
+- **Classes C, D and E:** 0.
+
+**Routing matrix (90 requests):**
+- Telegram shape: 44 correct and 1 clarification.
+- Web shape: 45 correct.
+- **0 wrong** (was 1: the Arabic duplicate case).
+
+**Multi-turn M1–M10:** all correct (M8 still quotes Art. 5).
+
+### 12.3 Defect probes (end to end, n8n → final candidate): 16/16
+
+| Defect | Probes | Result |
+|---|---|---|
+| A: "my case does not match" | CIN (FR), passport (EN), RNE C 001 (FR), beneficial-owner order (FR), passport (Derja) | 5/5 context-aware clarifications. The context is preserved; only official scenario headings are listed. |
+| B: scope of the formalities table | EN, FR, AR | 3/3 deterministic description computed from the 95 official rows, with the non-applicability statement and the `/formalites/` citation |
+| C: Arabic duplicate wording | Arabic web shape, Arabic Telegram shape, Derja | 3/3 select the official duplicate scenario for residents in Tunisia |
+| D: legal answers | Art. 55 (EN), Art. 16 (AR), authorities (FR), Art. 999, article without an act | 5/5. Header in the user's language with "no official translation"; verbatim key passage; Art. 999 refused; an article without an act triggers a clarification. |
+
+**Defect D, limits:**
+- **Length:** the 90th percentile of legal answers fell from 5,215 to 4,090 characters, but the median rose from
+  2,477 to 2,907 characters (header and key passage). Fee-table answers remain long (up to 6,471 characters).
+- **No translation:** no machine translation of Arabic legal text is provided.
+
+### 12.4 Security tests
+
+- **Unit tests:**
+  - privileged endpoints: disabled without a configured key (403); missing, empty or wrong key → 401; valid key accepted;
+  - agent key on 6 paths;
+  - 413 above the body limit;
+  - bridge header only when configured;
+  - secrets absent from the settings repr;
+  - no credentials in the workflow JSON files.
+- **Live check on a temporary container of the final image:**
+  - `/health` → 200;
+  - `/agents/route` without a key → 401, with a wrong key → 401, with the valid key → 200;
+  - `/retrieve` without a key → 401;
+  - 20 MB body → 413;
+  - key occurrences in the log: 0.
+  - Container removed afterwards.
+- **n8n error responses:** with the candidate backend stopped, the webhook returned structured 503 replies (FR,
+  AR) naming the failed agent. The body validates against the bridge response contract.
+- **Not executed live:** `/ingestion/run` and `/index/run`, because they mutate data. They are covered by
+  TestClient unit tests.
+
+### 12.5 Latency (sequential, 3 runs, medians in seconds)
+
+| Request | Before | After |
+|---|---:|---:|
+| Passport / CIN checklist FR | 0.19 / 0.19 | 0.22 / 0.17 |
+| RNE fee / deadline | 0.08 / 0.08 | 0.08 / 0.06 |
+| Legal article | 0.25 | 0.20 |
+| Multi-turn follow-up | 0.08 | 0.06 |
+| English checklist | 17.45 | 17.11 |
+| PDF / PNG form check | 0.16 / 1.72 | 0.16 / 1.80 |
+| Dossier validation | 0.28 | 0.30 |
+
+### 12.6 Production
+
+Verified untouched after this phase:
+- containers: same images and start times;
+- workflow 03: `versionId 92f81ea7…`;
+- Qdrant: 272/174 points, payloads identical to the snapshot;
+- the unrelated `qdrant` container: unchanged.

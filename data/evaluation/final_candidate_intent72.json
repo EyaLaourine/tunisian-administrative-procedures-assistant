@@ -30,13 +30,13 @@
   "src": "audit +36",
   "q": "Et si mon cas ne correspond pas à ce texte ?",
   "exp": "procedure_info",
-  "act": "required_documents",
-  "agent": "checklist_builder",
+  "act": "procedure_info",
+  "agent": "intent_router",
   "method": null,
-  "doc": true,
-  "cont": 1.0,
-  "cls": "C",
-  "why": "Expected a clarification; the official text of the previous topic is repeated instead (safe, not tailored)."
+  "doc": false,
+  "cont": 0.0,
+  "cls": "FIXED",
+  "why": "Label now matches the expectation. Official passage containment 0.0."
  },
  {
   "id": "interior-national-id-guide-fr:adversarial:002",
@@ -95,13 +95,13 @@
   "src": "audit +36",
   "q": "Et si mon cas ne correspond pas à ce texte ?",
   "exp": "procedure_info",
-  "act": "required_documents",
-  "agent": "checklist_builder",
+  "act": "procedure_info",
+  "agent": "intent_router",
   "method": null,
-  "doc": true,
+  "doc": false,
   "cont": 0.0,
-  "cls": "C",
-  "why": "Expected a clarification; the official text of the previous topic is repeated instead (safe, not tailored)."
+  "cls": "FIXED",
+  "why": "Label now matches the expectation. Official passage containment 0.0."
  },
  {
   "id": "interior-passport-guide-ar:adversarial:002",
@@ -160,13 +160,13 @@
   "src": "audit +36",
   "q": "Et si mon cas ne correspond pas à ce texte ?",
   "exp": "procedure_info",
-  "act": "required_documents",
+  "act": "procedure_info",
   "agent": "intent_router",
   "method": null,
   "doc": false,
   "cont": 0.0,
-  "cls": "A",
-  "why": "A clarification was asked, as expected for an ambiguous follow-up."
+  "cls": "FIXED",
+  "why": "Label now matches the expectation. Official passage containment 0.0."
  },
  {
   "id": "interior-passport-guide-fr:adversarial:002",
@@ -342,13 +342,13 @@
   "src": "Codex 36",
   "q": "Et si mon cas ne correspond pas à ce texte ?",
   "exp": "procedure_info",
-  "act": "fees",
-  "agent": "grounded_answer",
-  "method": "none",
-  "doc": true,
+  "act": "procedure_info",
+  "agent": "intent_router",
+  "method": null,
+  "doc": false,
   "cont": 0.0,
-  "cls": "A",
-  "why": "A clarification was asked, as expected for an ambiguous follow-up."
+  "cls": "FIXED",
+  "why": "Label now matches the expectation. Official passage containment 0.0."
  },
  {
   "id": "rne-decree-2022-298-fees-fr:multilingual:002",
@@ -836,13 +836,13 @@
   "src": "audit +36",
   "q": "Et si mon cas ne correspond pas à ce texte ?",
   "exp": "procedure_info",
-  "act": "fees",
-  "agent": "checklist_builder",
+  "act": "procedure_info",
+  "agent": "intent_router",
   "method": null,
-  "doc": true,
-  "cont": 1.0,
-  "cls": "C",
-  "why": "Expected a clarification; the official text of the previous topic is repeated instead (safe, not tailored)."
+  "doc": false,
+  "cont": 0.0,
+  "cls": "FIXED",
+  "why": "Label now matches the expectation. Official passage containment 0.0."
  },
  {
   "id": "rne-formalities-procedure-table:scenario_specific:003",
@@ -864,11 +864,11 @@
   "exp": "procedure_info",
   "act": "required_documents",
   "agent": "grounded_answer",
-  "method": "llm_grounded",
+  "method": "passages_fallback",
   "doc": true,
-  "cont": 0.0,
-  "cls": "D?",
-  "why": "LLM answer; requires manual review."
+  "cont": 0.23,
+  "cls": "C",
+  "why": "Answer path grounded_answer/passages_fallback; containment 0.23."
  },
  {
   "id": "rne-formalities-procedure-table:adversarial:002",

@@ -1,25 +1,25 @@
 {
  "passport_checklist_fr": {
   "runs_s": [
-   0.19,
+   0.22,
    0.19,
    0.22
   ],
-  "median_s": 0.19,
+  "median_s": 0.22,
   "agent": "checklist_builder"
  },
  "cin_checklist_fr": {
   "runs_s": [
-   0.2,
+   0.17,
    0.19,
-   0.19
+   0.16
   ],
-  "median_s": 0.19,
+  "median_s": 0.17,
   "agent": "checklist_builder"
  },
  "rne_fee": {
   "runs_s": [
-   0.11,
+   0.09,
    0.08,
    0.08
   ],
@@ -28,65 +28,65 @@
  },
  "rne_deadline": {
   "runs_s": [
+   0.06,
    0.08,
-   0.23,
    0.06
   ],
-  "median_s": 0.08,
+  "median_s": 0.06,
   "agent": "checklist_builder"
  },
  "legal_article": {
   "runs_s": [
    0.2,
-   0.25,
+   0.17,
    0.25
   ],
-  "median_s": 0.25,
+  "median_s": 0.2,
   "agent": "grounded_answer"
  },
  "multiturn_followup": {
   "runs_s": [
-   0.08,
+   0.06,
    0.06,
    0.08
   ],
-  "median_s": 0.08,
+  "median_s": 0.06,
   "agent": "checklist_builder"
  },
  "passport_checklist_en": {
   "runs_s": [
-   17.45,
-   17.36,
-   17.56
+   17.11,
+   16.64,
+   17.27
   ],
-  "median_s": 17.45,
+  "median_s": 17.11,
   "agent": "checklist_builder"
  },
  "form_check_pdf": {
   "runs_s": [
    0.17,
    0.16,
-   0.14
+   0.12
   ],
   "median_s": 0.16,
   "agent": "form_helper"
  },
  "form_check_png": {
   "runs_s": [
-   1.7,
-   1.75,
-   1.72
+   1.73,
+   1.8,
+   1.83
   ],
-  "median_s": 1.72,
+  "median_s": 1.8,
   "agent": "form_helper"
  },
  "dossier_pdf": {
   "runs_s": [
-   0.41,
-   0.26,
-   0.28
+   0.38,
+   0.28,
+   0.3
   ],
-  "median_s": 0.28,
+  "median_s": 0.3,
   "agent": "dossier_validator"
  }
 }

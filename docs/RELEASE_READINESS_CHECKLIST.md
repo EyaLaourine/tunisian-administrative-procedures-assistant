@@ -106,3 +106,46 @@ See `POST_FIX_INDEPENDENT_AUDIT.md` §12 for the evidence. In summary:
 - Ollama contention on a 4 GB GPU.
 - `applicability` of every legal text is unverified.
 - No real-photo or handwriting evaluation.
+
+---
+
+## 9. Final candidate (hardened): ordered deployment and rollback plan
+
+This section supersedes the image names of §1–§2 for the final candidate. Every step requires the project
+owner's explicit approval; none has been executed.
+
+**Artefacts:**
+- Git commit: see `docs/FINAL_REGRESSION_RESULTS.md` (header).
+- Images: `tunisian-admin-assistant-backend:final-candidate` and `tunisian-admin-assistant-telegram:final-candidate`.
+- Rollback images:
+  - `…:post-audit-before` = the running production images (backend `8adaf99471c5`, bridge `7eafea6e792d`);
+  - `…:final-candidate-v1` = the previous final candidate.
+
+| # | Step | Command (PowerShell, repository root) | Check |
+|---|---|---|---|
+| 0 | Stop the candidate stacks: they share Ollama and the Qdrant read path. | `docker stop final-candidate final-n8n post-audit-candidate post-audit-n8n` | `docker ps` shows only production |
+| 1 | Back up: Qdrant snapshots (already under `data/evaluation/post_audit_backup/qdrant/`), workflow export, a private copy of `.env` | `docker compose exec n8n n8n export:workflow --all --output=/tmp/wf.json` (Git Bash: prefix `MSYS_NO_PATHCONV=1`) | Files present |
+| 2 | Re-hash the sources against the image | see `FINAL_OPTIMIZATION_REPORT.md` manifest | Identical |
+| 3 | Tag the images | `docker image tag tunisian-admin-assistant-backend:final-candidate tunisian-admin-assistant-backend:latest`; same for `…telegram` | – |
+| 4 | Recreate the backend only (new Compose environment list) | `docker compose up -d --no-deps --no-build backend` | `/health` ok; `docker inspect` shows no `TELEGRAM_BOT_TOKEN` in the backend |
+| 5 | Recreate the bridge only | `docker compose --profile telegram up -d --no-deps --no-build telegram-bridge` | Log shows `telegram_bridge_started`; no `PollingConflict` |
+| 6 | Smoke tests | §4 above, plus: "Et si mon cas ne correspond pas ?" after a CIN question → clarification; "Que couvre le tableau des formalités du RNE ?" → 95 rows; Arabic "نظير" question → duplicate scenario; Art. 55 question → header + Art. 55 | All pass |
+| 7 | Real Telegram acceptance | §5 above (authorised chats only) | Recorded |
+| 8 | Optional security activation | `SECURITY_DEPLOYMENT_GUIDE.md` §3, steps 2–6, one at a time | 401/403 without keys; Telegram still answers |
+
+**Note:** after step 4, `/ingestion/run` and `/index/run` return **403** until `ADMIN_API_KEY` is set. This is
+intended (fail closed). The CLI `python -m ingestion` is unaffected.
+
+**Rollback triggers:** any smoke-test failure, a bridge restart loop, any reply asserting legal validity, a
+source-only RNE reply, Qdrant counts other than 272/174, or a webhook returning errors to legitimate clients.
+
+**Rollback:**
+```powershell
+docker image tag tunisian-admin-assistant-backend:post-audit-before tunisian-admin-assistant-backend:latest
+docker image tag tunisian-admin-assistant-telegram:post-audit-before tunisian-admin-assistant-telegram:latest
+git checkout candidate-baseline -- docker-compose.yml     # restores env_file for the backend if needed
+docker compose up -d --no-deps --no-build backend
+docker compose --profile telegram up -d --no-deps --no-build telegram-bridge
+```
+No Qdrant, corpus or workflow restore is needed: none is changed by these steps. Re-run the smoke tests after
+rolling back.

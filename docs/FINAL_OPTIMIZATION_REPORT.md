@@ -101,3 +101,43 @@ Verified at the end of the work (`FINAL_REGRESSION_RESULTS.md` §9):
 - production containers have the same IDs and start times as before;
 - workflow 03 `versionId` is unchanged;
 - Qdrant payloads are identical to the audit snapshot.
+
+## 8. Hardening phase: residual defects and API security
+
+| Defect | Before | After | Mechanism (no new LLM call) |
+|---|---|---|---|
+| A: "my case does not match" follow-ups | The previous checklist or row was repeated | Context-aware clarification listing only the official scenario headings of the current procedure (or asking which point of the legal text); context preserved; FR/EN/AR/Derja | `IntentRouter.route`: `UNMATCHED_CASE`, `UNMATCHED_REPLY` |
+| B: scope of the RNE formalities table | LLM summary claimed "public establishments and associations" | Description computed from the 95 official rows (counts by service, entity kind, code family), with citation and non-applicability statement | `legal_evidence.table_scope_reply` |
+| C: Arabic duplicate wording (web shape) | First-application scenario | Official duplicate (loss/theft/damage) scenario in both shapes; also "duplicata", "duplicate" | Shared vocabulary in `intent_router` and `dialogue` |
+| D: long, untranslated legal answers | Notice followed by whole articles | Header in the user's language (act, article, original language, explicitly no official translation), then the most relevant verbatim sentence, then the official text. Whole short acts are trimmed to a display budget, with the remaining articles listed by number; explicitly selected articles are never trimmed. | `legal_evidence.render_legal`, `key_passage`, `order_by_relevance` |
+| Regression found by the replay and fixed | – | The budget had hidden Art. 1 (fee tables) for an Arabic scope question; it now applies only to whole short acts | Test `test_ranked_articles_are_never_trimmed_by_the_display_budget` |
+
+**Security (candidate):**
+- privileged endpoints fail closed (`ADMIN_API_KEY`);
+- optional `AGENT_API_KEY` for `/agents/*` and `/retrieve`;
+- a 15 MB request limit (413);
+- an optional `X-Assistant-Key` sent by the bridge, web proxy and CLI;
+- least-privilege Compose environment for the backend.
+
+See `FINAL_SECURITY_REVIEW.md` §5 and `SECURITY_DEPLOYMENT_GUIDE.md`.
+
+**Files modified in this phase:**
+- **Agents and backend:** `agents/legal_evidence.py`, `agents/intent_router.py`, `agents/dialogue.py`, `backend/main.py`, `backend/agents_api.py`, `backend/settings.py`.
+- **Clients:** `telegram_bridge/bridge.py`, `telegram_bridge/__main__.py`, `demo_ui/app.py`, `scripts/demo_ask.py`.
+- **Configuration:** `docker-compose.yml`.
+- **Tests:** `tests/test_residual_defects.py` (new), `tests/test_api_security.py` (new), `tests/test_final_fixes.py` (the admin-key test now expects fail-closed behaviour).
+- **Scripts:** `scripts/defect_probes.py` (new).
+- **Docs:** `docs/SECURITY_DEPLOYMENT_GUIDE.md` (new), the security, regression and release documents, `report/main.tex` and `report/tables/final_regression.tex`.
+
+**Hardened final candidate images:**
+- `tunisian-admin-assistant-backend:final-candidate` `sha256:7bef874d9755…`;
+- `tunisian-admin-assistant-telegram:final-candidate` `sha256:517755a5ad39…`.
+
+**Previous final candidate:** retained as `:final-candidate-v1` (Git tag `final-candidate-v1`).
+
+**n8n contract:** unchanged unless the keys are activated. With activation:
+- workflow 03: optional Header Auth on the webhook, plus `X-Agent-Key` on its 6 HTTP nodes;
+- workflow 02: `X-Agent-Key`;
+- workflow 01: `X-Admin-Key`.
+
+Details are in `SECURITY_DEPLOYMENT_GUIDE.md` §4.
