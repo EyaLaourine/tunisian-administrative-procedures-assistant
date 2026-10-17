@@ -389,11 +389,13 @@ iKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] (figures/rag_pipeline.tex) [2{C:/Users/Ey
 a Laourine/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/U
 sers/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 (figures/agents.tex) [3] (tables/retrieval.tex) [4] (tables/chunks.tex)
-Overfull \hbox (3.0064pt too wide) in paragraph at lines 1--294
+Overfull \hbox (3.0064pt too wide) in paragraph at lines 1--296
  [][] 
 (tables/script_chart.tex) (tables/prompts.tex) (tables/heldout.tex)
-(tables/verification.tex) [5] (tables/final_regression.tex) (main.bbl [6])
-[7] (appendices/prompt_library.tex
+(tables/verification.tex) [5] (tables/final_regression.tex)
+Underfull \hbox (badness 2401) in paragraph at lines 373--373
+[]|\T1/lmr/m/n/8 (+20) birth cer-tifi-cate 4/4; non-
+[6] (main.bbl [7]) [8] (appendices/prompt_library.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 \T1/lmr/m/n/10 (+20) This an-nex re-pro-duces ev-ery prompt tem-plate of the im
 -ple-men-ta-tion \T1/lmr/m/it/10 (+20) ver-ba-tim\T1/lmr/m/n/10 (+20) , as stor
@@ -410,14 +412,14 @@ ntentRouter._llm_classify\T1/lmr/m/n/8 (+20) ):
 Underfull \hbox (badness 1342) in paragraph at lines 16--16
 []|\T1/lmtt/m/n/9 agents/checklist_builder.py \T1/lmr/m/n/8 (+20) (\T1/lmtt/m/n
 /9 _translate\T1/lmr/m/n/8 (+20) ): French of-fi-cial
-[8]
+[9]
 (C:\Users\Eya Laourine\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd)
-[9] [10]
+[10] [11]
 Underfull \hbox (badness 10000) in paragraph at lines 259--260
 \T1/lmr/bx/n/10 (+20) Runtime: \T1/lmtt/m/n/9 agents/verification.py \T1/lmr/m/
 n/10 (+20) (\T1/lmtt/m/n/9 EvidenceVerifier.check_topic\T1/lmr/m/n/10 (+20) ). 
 Dis-abled by de-fault
-[11]
+[12]
 Underfull \hbox (badness 2035) in paragraph at lines 310--311
 []\T1/lmr/bx/n/10 (+20) Model: \T1/lmtt/m/n/9 mistral:latest \T1/lmr/m/n/10 (+2
 0) (Mis-tral 7B In-struct, Q4_K_M); op-tions: \T1/lmtt/m/n/9 temperature=0, num
@@ -427,12 +429,12 @@ Underfull \hbox (badness 2035) in paragraph at lines 352--353
 []\T1/lmr/bx/n/10 (+20) Model: \T1/lmtt/m/n/9 mistral:latest \T1/lmr/m/n/10 (+2
 0) (Mis-tral 7B In-struct, Q4_K_M); op-tions: \T1/lmtt/m/n/9 temperature=0, num
 _predict=900,
-[12]
+[13]
 Underfull \hbox (badness 2035) in paragraph at lines 396--397
 []\T1/lmr/bx/n/10 (+20) Model: \T1/lmtt/m/n/9 mistral:latest \T1/lmr/m/n/10 (+2
 0) (Mis-tral 7B In-struct, Q4_K_M); op-tions: \T1/lmtt/m/n/9 temperature=0, num
 _predict=900,
-[13]) [14] (main.aux) )
+[14]) [15] (main.aux) )
 (see the transcript file for additional information)<C:/Users/Eya Laourine/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Eya Laouri
 ne/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Eya
@@ -462,6 +464,6 @@ fonts/type1/public/lm/lmsy9.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Eya Laourine/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Eya Laourine/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb>
-Output written on main.pdf (14 pages, 627029 bytes).
+Output written on main.pdf (15 pages, 629889 bytes).
 Transcript written on main.log.
 pdflatex: major issue: So far, you have not checked for MiKTeX updates.

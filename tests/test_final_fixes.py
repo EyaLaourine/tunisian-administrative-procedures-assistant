@@ -283,3 +283,12 @@ def test_retrieved_passages_do_not_turn_an_unrelated_article_into_the_answer():
 def test_applicability_question_gets_the_limits_reply(ctx):
     text = "RNE : Pour Formalités, que faut-il vérifier avant d’appliquer ce texte historique à une démarche actuelle ?"
     assert router.route(RouteRequest(text=text, language="fr", context=ctx)).next_agent == "reply"
+
+
+@pytest.mark.parametrize("text", [
+    "كيف أستخرج مضمون ولادة؟",
+    "ما هو دور الصندوق الوطني للضمان الاجتماعي في النفاذ إلى معلومات المستفيد الحقيقي؟",
+])
+def test_arabic_words_sharing_the_guarantee_root_are_not_limits_requests(text):
+    d = router.route(RouteRequest(text=text, language="ar"))
+    assert not (d.reply and "لا يمكنني ضمان" in d.reply)

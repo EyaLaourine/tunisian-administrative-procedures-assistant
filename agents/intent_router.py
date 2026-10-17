@@ -107,7 +107,9 @@ LIMITS_REQUEST = (
     r"|d[ée]duire.{0,80}complet|deduce.{0,80}complete|officiellement complet|officially complete"
     # applicability of a text to the user's current procedure
     r"|v[ée]rifier avant d.appliquer|verify before applying|before applying (?:this|the) text"
-    r"|اضمن|ضمان|مضمون|ساري المفعول|سارية المفعول|سيقبل"
+    # Arabic: explicit guarantee phrasings only ("مضمون ولادة" is a birth certificate, "الضمان الاجتماعي" social
+    # security; neither is a guarantee request).
+    r"|اضمن لي|تضمن لي|هل تضمن|ضمان قبول|ما زال ساري|مازال ساري|ساري المفعول|سارية المفعول|سيقبل ملف|سيتم قبول"
 )
 LIMITS_REPLY = {
     "fr": "Je ne peux garantir ni qu'un texte officiel est toujours en vigueur, ni qu'un dossier sera accepté ou "

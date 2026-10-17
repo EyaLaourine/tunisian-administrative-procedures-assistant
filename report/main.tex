@@ -354,17 +354,37 @@ sessions in Telegram groups.
   \input{tables/final_regression.tex}
 \end{table}
 
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{Evaluation overview by metric and data split (final candidate unless stated; dev.\ and held-out values are from the first evaluation round, whose retrieval code is unchanged).}\label{tab:overview}
+  \begin{tabularx}{\textwidth}{@{}l X X X@{}}
+  \toprule
+  Metric & Development (84) & Held-out (20) & Independent audit replay (728, through n8n) \\
+  \midrule
+  Retrieval Hit@5 / MRR@5 & 0.873 / 0.675 & 0.750 / 0.531 & -- \\
+  Intent routing & 0.819 & 0.950 & 686/728 agree with original labels \\
+  Citation correctness (manifest URL) & 145/145 & 31/31 & 1563/1563 \\
+  Targeted official facts / legal articles & -- & -- & 480/480 facts; 26/30 legal passages; 10/10 form instructions \\
+  Refusal of unsupported requests & 12/12 & 3/4 & birth certificate 4/4; non-existent article refused \\
+  Multi-turn continuity & -- & -- & 10/10 probe sequences keep or reset context correctly \\
+  Multilingual routing (5 variants) & -- & -- & 87/90 scenario probes correct, 2 clarifications, 1 wrong \\
+  Multimodal (official forms) & -- & -- & 8/8 recognised; 6/6 invalid files handled \\
+  \bottomrule
+  \end{tabularx}
+\end{table}
+
 \textbf{Remaining failures.} ``Et si mon cas ne correspond pas~?'' after a CIN, passport or RNE answer
 repeats the official text instead of asking for details; questions about a document's scope receive its
-official content rather than a summary, and the generic LLM path can still summarise a document inaccurately; legal answers are
+official content rather than a summary; legal answers are
 complete articles in their original language (faithful but long, and untranslated for English users); the
 answer to a legal question is only as good as the article selected, which is reliable for explicit article or
-table numbers and heuristic otherwise. Intent labels differ from the original expectations in 72 of 714 text
-cases; all reviewed differences in the legal family leave the answer unchanged because the legal path does not
-use the label. \textbf{Latency} (final candidate alone on the GPU, median of 3): RNE row 0.08\,s, legal
-article 0.24\,s, French checklist 0.2--0.3\,s, English checklist 17.8\,s (translation), PDF form check 0.16\,s,
-image OCR 1.7\,s, dossier 0.3\,s. Running two stacks on the shared GPU made LLM- and embedding-dependent
-requests 10--200 times slower.
+table numbers and heuristic otherwise; one generated summary of a document's scope was inaccurate. Of the 72
+cases whose intent label disagreed on the audited candidate, 44 now agree, 23 differ without changing the
+answer, 3 repeat official text where a clarification was expected, 1 has a defective reference passage and 1 is
+the inaccurate summary. \textbf{Latency} (final candidate alone on the GPU, median of 3): RNE row 0.09\,s,
+follow-up 0.06\,s, legal article 0.27\,s, French checklist 0.20\,s, English checklist 18.3\,s (translation),
+PDF form check 0.17\,s, image OCR 1.75\,s, dossier 0.42\,s. Running two stacks on the shared GPU made
+LLM- and embedding-dependent requests 10--200 times slower.
 
 \textbf{Limits of the evaluation.} Labels were written by the developers and await human review; the
 held-out set is small; targeted span checks cannot detect a correct quotation of the wrong provision, which is
