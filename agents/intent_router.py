@@ -98,6 +98,31 @@ TABLE_SIGNALS = [
     "tasjil", "nsajjel", "sajjel",
 ]
 RNE_CODE = re.compile(r"\bRNE\s*[CIM]\s*\d{3}(?:\.\d+)*", re.I)
+# Requests to guarantee validity, acceptance or completeness, and questions about what the sources cannot
+# establish. Matched on the normalised (lower-case, diacritic-free) text.
+LIMITS_REQUEST = (
+    r"garanti|guarantee|toujours en vigueur|encore en vigueur|still in force|still valid|currently in force"
+    r"|sera accept|will be accepted|sera approuv|will be approved|sans contr[oô]le|without (?:any )?(?:check|control)"
+    r"|d[ée]duire.{0,80}complet|deduce.{0,80}complete|officiellement complet|officially complete"
+    r"|avant d.appliquer|before applying|reste non v[ée]rifi|remains? unverified|what (?:cannot|can't) be verified"
+    r"|اضمن|ضمان|مضمون|ساري المفعول|سارية المفعول|سيقبل|لا يمكن التحقق"
+)
+LIMITS_REPLY = {
+    "fr": "Je ne peux garantir ni qu'un texte officiel est toujours en vigueur, ni qu'un dossier sera accepté ou "
+          "complet : mes sources sont des documents officiels dont l'applicabilité actuelle n'est pas vérifiée, "
+          "et seule l'administration compétente se prononce sur un dossier. Je peux citer ce que disent les textes "
+          "sur un point précis (pièces, frais, délais, article) : posez votre question sur ce point.",
+    "en": "I cannot guarantee that an official text is still in force, nor that a file will be accepted or is "
+          "complete: my sources are official documents whose current applicability is not verified, and only the "
+          "competent administration decides on a file. I can quote what the texts say on a specific point "
+          "(documents, fees, deadlines, an article): please ask about that point.",
+    "ar": "لا يمكنني ضمان أن نصا رسميا ما زال ساري المفعول، ولا أن ملفا سيقبل أو أنه مكتمل: مصادري وثائق رسمية لم "
+          "يتم التحقق من سريانها الحالي، والإدارة المختصة وحدها تبت في الملف. يمكنني نقل ما تنص عليه النصوص بخصوص "
+          "نقطة محددة (الوثائق، المعاليم، الآجال، فصل معين): اطرح سؤالك حول هذه النقطة.",
+    "derja": "ما نجمش نضمنلك اللي نص رسمي مازال ساري، ولا اللي الملف باش يتقبل ولا كامل: المصادر متاعي وثائق رسمية "
+             "ما تثبتناش من سريانها توا، والإدارة وحدها تقرر في الملف. نجم ننقلك شنوة تقول النصوص على نقطة محددة "
+             "(الأوراق، المعاليم، الآجال، فصل): اسألني على النقطة هاذي.",
+}
 COVERED_CATEGORIES = {"passport", "national_id", "business_registration", "general"}
 
 
@@ -161,6 +186,13 @@ class IntentRouter:
         self.llm_fallback = llm_fallback
 
     def route(self, req: RouteRequest) -> RouteDecision:
+        if re.search(LIMITS_REQUEST, _normalize(req.text)):
+            # Validity, acceptance and completeness are never certified: answer deterministically instead of
+            # letting a generator assert them (the corpus marks every text's applicability as unverified).
+            lang = req.language or detect_language(req.text)
+            category = _rule_category(_normalize(req.text)) or "general"
+            return RouteDecision(language=lang, intent="procedure_info", procedure_category=category,
+                                 next_agent="reply", reply=LIMITS_REPLY[lang], method="rules", context=req.context)
         if req.context is not None:
             from agents.dialogue import route_dialogue
             decision = route_dialogue(self,req)

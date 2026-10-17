@@ -210,6 +210,24 @@ shows the cost of a single generic path: before the corrections, RNE follow-ups 
 through one generic retrieve-then-generate agent, which produced source-only replies for all 190 contextual
 RNE questions and contained the official legal passage in 1 of 30 legal questions (Section~\ref{sec:eval}).
 
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{Components classified from the implementation (not from their names).}\label{tab:classes}
+  \begin{tabularx}{\textwidth}{@{}l X l l@{}}
+  \toprule
+  Component & Decision it owns & LLM use & Classification \\
+  \midrule
+  n8n workflow 03 & Branching on file, mode and \code{next\_agent}; error replies & none & orchestrator \\
+  Intent Router & Procedure, intent, hints, next agent, clarification; dialogue state & fallback only & tool-using specialised agent \\
+  RAG Retriever & Which passages are evidence (fusion, exact code key) & none (embeddings) & deterministic service \\
+  Checklist Builder & Which official scenario and sections to quote; conflict warnings & FR$\rightarrow$EN only & LLM-powered component \\
+  Grounded Answer & Extract, generate or refuse, according to the evidence & Mistral 7B & tool-using specialised agent \\
+  Form-Filling Helper & Form identity and field statuses & none & deterministic service \\
+  Dossier Validator & Readiness report; composes three other agents & none & deterministic service \\
+  \bottomrule
+  \end{tabularx}
+\end{table}
+
 \textbf{Prompt engineering.} Prompts are versioned YAML templates (\code{prompts/<name>/<version>.yaml}) with
 input variables, model role, decoding options and output constraints; a registry selects the active version
 and every response records its \code{prompt\_ref}. All templates are reproduced in Annex~\ref{app:prompts}.
