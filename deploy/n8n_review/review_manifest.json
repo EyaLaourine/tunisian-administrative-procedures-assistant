@@ -1,0 +1,522 @@
+{
+  "expected_git_baseline": "a5aef273e7d7d4d888efbb92645f15c219bbf48a",
+  "created_at": "2026-10-17T22:16:11.259526+00:00",
+  "live_unchanged": true,
+  "imported_or_executed": false,
+  "baseline_directory": "tmp/n8n-review/20261017T220611Z",
+  "authority": "repository executable definitions + verified live activation states; functional drift remains explicit",
+  "workflows": [
+    {
+      "workflow_id": "TnaaIngestIndex1",
+      "name": "01 - Official corpus: ingest and index",
+      "backup": "tmp/n8n-review/20261017T220611Z/TnaaIngestIndex1.json",
+      "canonical": "workflows/01_ingest_and_index.json",
+      "candidate": "deploy/n8n_review/candidates/01_ingest_and_index.json",
+      "live_version_id": "509bc3df-7657-40e6-87a9-08806dd4fa39",
+      "live_active_version_id": null,
+      "live_executable_nodes": 5,
+      "repository_executable_nodes": 5,
+      "live_vs_repository": {
+        "added_executable_nodes": [],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [],
+        "connections_equal": true,
+        "settings_equal": true,
+        "active_before": false,
+        "active_after": false,
+        "semantic_equal": false,
+        "semantic_sha256_before": "3ba4eac18464a7a604cb7cd2da1fc0d2bbaf765507d1acac73acd65263de1d78",
+        "semantic_sha256_after": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+      },
+      "live_vs_candidate": {
+        "added_executable_nodes": [],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [
+          {
+            "node": "Manual trigger",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Weekly refresh",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Download official documents",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Build chunks and index (both strategies)",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Run summary",
+            "fields": [
+              "position"
+            ]
+          }
+        ],
+        "connections_equal": true,
+        "settings_equal": true,
+        "active_before": false,
+        "active_after": false,
+        "semantic_equal": false,
+        "semantic_sha256_before": "3ba4eac18464a7a604cb7cd2da1fc0d2bbaf765507d1acac73acd65263de1d78",
+        "semantic_sha256_after": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+      },
+      "repository_with_live_state_vs_candidate": {
+        "added_executable_nodes": [],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [
+          {
+            "node": "Manual trigger",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Weekly refresh",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Download official documents",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Build chunks and index (both strategies)",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Run summary",
+            "fields": [
+              "position"
+            ]
+          }
+        ],
+        "connections_equal": true,
+        "settings_equal": true,
+        "active_before": false,
+        "active_after": false,
+        "semantic_equal": true,
+        "semantic_sha256_before": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4",
+        "semantic_sha256_after": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+      },
+      "validation": {
+        "workflow_id": "TnaaIngestIndex1",
+        "valid": true,
+        "errors": [],
+        "executable_nodes": 5,
+        "sticky_notes": 6,
+        "normalized_runtime_sha256": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+      }
+    },
+    {
+      "workflow_id": "TnaaRetrieveApi1",
+      "name": "02 - Retrieval API (RAG Retriever agent entry point)",
+      "backup": "tmp/n8n-review/20261017T220611Z/TnaaRetrieveApi1.json",
+      "canonical": "workflows/02_retrieve_api.json",
+      "candidate": "deploy/n8n_review/candidates/02_retrieve_api.json",
+      "live_version_id": "0867dd24-169e-4a5a-9f28-248658bf67e8",
+      "live_active_version_id": "0867dd24-169e-4a5a-9f28-248658bf67e8",
+      "live_executable_nodes": 3,
+      "repository_executable_nodes": 3,
+      "live_vs_repository": {
+        "added_executable_nodes": [],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [],
+        "connections_equal": true,
+        "settings_equal": true,
+        "active_before": true,
+        "active_after": false,
+        "semantic_equal": false,
+        "semantic_sha256_before": "0a14bd3062a2c9db8555e3fec7a31a321f4fcbf0d85967c08ee6a84fbdb23b8c",
+        "semantic_sha256_after": "8d726e2d8b011e4e43c4fccf5e8944fb97e3a8620797f96bcab9701d116b52de"
+      },
+      "live_vs_candidate": {
+        "added_executable_nodes": [],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [
+          {
+            "node": "POST /webhook/retrieve",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "RAG Retriever (backend)",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Return passages",
+            "fields": [
+              "position"
+            ]
+          }
+        ],
+        "connections_equal": true,
+        "settings_equal": true,
+        "active_before": true,
+        "active_after": true,
+        "semantic_equal": false,
+        "semantic_sha256_before": "0a14bd3062a2c9db8555e3fec7a31a321f4fcbf0d85967c08ee6a84fbdb23b8c",
+        "semantic_sha256_after": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70"
+      },
+      "repository_with_live_state_vs_candidate": {
+        "added_executable_nodes": [],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [
+          {
+            "node": "POST /webhook/retrieve",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "RAG Retriever (backend)",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Return passages",
+            "fields": [
+              "position"
+            ]
+          }
+        ],
+        "connections_equal": true,
+        "settings_equal": true,
+        "active_before": true,
+        "active_after": true,
+        "semantic_equal": true,
+        "semantic_sha256_before": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70",
+        "semantic_sha256_after": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70"
+      },
+      "validation": {
+        "workflow_id": "TnaaRetrieveApi1",
+        "valid": true,
+        "errors": [],
+        "executable_nodes": 3,
+        "sticky_notes": 4,
+        "normalized_runtime_sha256": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70"
+      }
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "name": "03 - Assistant: multi-agent orchestration (Telegram / HTTP entry point)",
+      "backup": "tmp/n8n-review/20261017T220611Z/TnaaAssistant01.json",
+      "canonical": "workflows/03_assistant_multi_agent.json",
+      "candidate": "deploy/n8n_review/candidates/03_assistant_multi_agent.json",
+      "live_version_id": "92f81ea7-3e60-4564-8c23-4dcc5eba5494",
+      "live_active_version_id": "92f81ea7-3e60-4564-8c23-4dcc5eba5494",
+      "live_executable_nodes": 16,
+      "repository_executable_nodes": 17,
+      "live_vs_repository": {
+        "added_executable_nodes": [
+          "Respond: agent error"
+        ],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [
+          {
+            "node": "Form-Filling Helper",
+            "fields": [
+              "onError"
+            ]
+          },
+          {
+            "node": "Intent Router",
+            "fields": [
+              "onError"
+            ]
+          },
+          {
+            "node": "RAG Retriever",
+            "fields": [
+              "onError"
+            ]
+          },
+          {
+            "node": "Checklist Builder",
+            "fields": [
+              "onError"
+            ]
+          },
+          {
+            "node": "Grounded Answer",
+            "fields": [
+              "onError"
+            ]
+          },
+          {
+            "node": "Dossier Validator",
+            "fields": [
+              "onError"
+            ]
+          }
+        ],
+        "connections_equal": false,
+        "settings_equal": true,
+        "active_before": true,
+        "active_after": false,
+        "semantic_equal": false,
+        "semantic_sha256_before": "3cd31a1b2c62fc9f5a27f624f1919c57f4edb8b65c9a8f5fa52a438ed65dd4f9",
+        "semantic_sha256_after": "b6cde9122a04a06209b2fe9ad26aade2102d1aafbdf39029523b9593122fade7"
+      },
+      "live_vs_candidate": {
+        "added_executable_nodes": [
+          "Respond: agent error"
+        ],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [
+          {
+            "node": "POST /webhook/assistant",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "File attached?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Form-Filling Helper",
+            "fields": [
+              "onError",
+              "position"
+            ]
+          },
+          {
+            "node": "Intent Router",
+            "fields": [
+              "onError",
+              "position"
+            ]
+          },
+          {
+            "node": "Direct reply?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "RAG Retriever",
+            "fields": [
+              "onError",
+              "position"
+            ]
+          },
+          {
+            "node": "Checklist route?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Checklist Builder",
+            "fields": [
+              "onError",
+              "position"
+            ]
+          },
+          {
+            "node": "Grounded Answer",
+            "fields": [
+              "onError",
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: form check",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: direct reply",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: checklist",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: answer",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Dossier mode?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Dossier Validator",
+            "fields": [
+              "onError",
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: dossier check",
+            "fields": [
+              "position"
+            ]
+          }
+        ],
+        "connections_equal": false,
+        "settings_equal": true,
+        "active_before": true,
+        "active_after": true,
+        "semantic_equal": false,
+        "semantic_sha256_before": "3cd31a1b2c62fc9f5a27f624f1919c57f4edb8b65c9a8f5fa52a438ed65dd4f9",
+        "semantic_sha256_after": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9"
+      },
+      "repository_with_live_state_vs_candidate": {
+        "added_executable_nodes": [],
+        "removed_executable_nodes": [],
+        "changed_node_fields": [
+          {
+            "node": "POST /webhook/assistant",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "File attached?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Form-Filling Helper",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Intent Router",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Direct reply?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "RAG Retriever",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Checklist route?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Checklist Builder",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Grounded Answer",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: form check",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: direct reply",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: checklist",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: answer",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Dossier mode?",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Dossier Validator",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: dossier check",
+            "fields": [
+              "position"
+            ]
+          },
+          {
+            "node": "Respond: agent error",
+            "fields": [
+              "position"
+            ]
+          }
+        ],
+        "connections_equal": true,
+        "settings_equal": true,
+        "active_before": true,
+        "active_after": true,
+        "semantic_equal": true,
+        "semantic_sha256_before": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9",
+        "semantic_sha256_after": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9"
+      },
+      "validation": {
+        "workflow_id": "TnaaAssistant01",
+        "valid": true,
+        "errors": [],
+        "executable_nodes": 17,
+        "sticky_notes": 10,
+        "normalized_runtime_sha256": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9"
+      }
+    }
+  ]
+}

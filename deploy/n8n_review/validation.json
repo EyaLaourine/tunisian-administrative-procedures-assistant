@@ -1,0 +1,27 @@
+{
+  "scope": "offline candidates; read-only exports and health; isolated tests",
+  "tests": {
+    "tests": 55,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "warnings": 6,
+  "secret_scan": {
+    "files_scanned": 22,
+    "actual_private_values_compared_in_memory": true,
+    "findings": []
+  },
+  "live_workflows_imported": false,
+  "containers_deployed_or_restarted": false,
+  "workflow_execution": false,
+  "ingestion_or_qdrant_write": false,
+  "telegram_messages_sent": false,
+  "native_candidate_rendering": "not_executed_requires_approval",
+  "credential_interoperability": "not_executed_requires_private_configuration_and_approval",
+  "readiness": "conditional_workflow_application_only",
+  "evidence": [
+    "live_integrity.json",
+    "runtime_integrity.json"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "workflow_id": "TnaaIngestIndex1",
+  "name": "01 - Official corpus: ingest and index",
+  "backup": "tmp/n8n-review/20261017T220611Z/TnaaIngestIndex1.json",
+  "canonical": "workflows/01_ingest_and_index.json",
+  "candidate": "deploy/n8n_review/candidates/01_ingest_and_index.json",
+  "live_version_id": "509bc3df-7657-40e6-87a9-08806dd4fa39",
+  "live_active_version_id": null,
+  "live_executable_nodes": 5,
+  "repository_executable_nodes": 5,
+  "live_vs_repository": {
+    "added_executable_nodes": [],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [],
+    "connections_equal": true,
+    "settings_equal": true,
+    "active_before": false,
+    "active_after": false,
+    "semantic_equal": false,
+    "semantic_sha256_before": "3ba4eac18464a7a604cb7cd2da1fc0d2bbaf765507d1acac73acd65263de1d78",
+    "semantic_sha256_after": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+  },
+  "live_vs_candidate": {
+    "added_executable_nodes": [],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [
+      {
+        "node": "Manual trigger",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Weekly refresh",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Download official documents",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Build chunks and index (both strategies)",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Run summary",
+        "fields": [
+          "position"
+        ]
+      }
+    ],
+    "connections_equal": true,
+    "settings_equal": true,
+    "active_before": false,
+    "active_after": false,
+    "semantic_equal": false,
+    "semantic_sha256_before": "3ba4eac18464a7a604cb7cd2da1fc0d2bbaf765507d1acac73acd65263de1d78",
+    "semantic_sha256_after": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+  },
+  "repository_with_live_state_vs_candidate": {
+    "added_executable_nodes": [],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [
+      {
+        "node": "Manual trigger",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Weekly refresh",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Download official documents",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Build chunks and index (both strategies)",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Run summary",
+        "fields": [
+          "position"
+        ]
+      }
+    ],
+    "connections_equal": true,
+    "settings_equal": true,
+    "active_before": false,
+    "active_after": false,
+    "semantic_equal": true,
+    "semantic_sha256_before": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4",
+    "semantic_sha256_after": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+  },
+  "validation": {
+    "workflow_id": "TnaaIngestIndex1",
+    "valid": true,
+    "errors": [],
+    "executable_nodes": 5,
+    "sticky_notes": 6,
+    "normalized_runtime_sha256": "3809a513b1b7c458dbe35dbacf14a50fdf70bcf09566b1a56d84b0802a166ad4"
+  }
+}

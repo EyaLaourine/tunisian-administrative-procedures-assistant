@@ -1,0 +1,172 @@
+{
+  "backend_calls": [
+    {
+      "workflow_id": "TnaaIngestIndex1",
+      "node_id": "a1f0c1d2-0003-4c1a-9a01-000000000003",
+      "node_name": "Download official documents",
+      "endpoint": "/ingestion/run",
+      "header_name": "X-Admin-Key",
+      "backend_variable": "ADMIN_API_KEY",
+      "enforcement": "disabled without configured admin key; else 401 for missing/invalid header",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Admin",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaIngestIndex1",
+      "node_id": "a1f0c1d2-0004-4c1a-9a01-000000000004",
+      "node_name": "Build chunks and index (both strategies)",
+      "endpoint": "/index/run",
+      "header_name": "X-Admin-Key",
+      "backend_variable": "ADMIN_API_KEY",
+      "enforcement": "disabled without configured admin key; else 401 for missing/invalid header",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Admin",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaRetrieveApi1",
+      "node_id": "b2f0c1d2-0002-4c1a-9a01-000000000002",
+      "node_name": "RAG Retriever (backend)",
+      "endpoint": "/retrieve",
+      "header_name": "X-Agent-Key",
+      "backend_variable": "AGENT_API_KEY",
+      "enforcement": "401 when key configured; open when unset",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Agent",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "node_id": "c3a0c1d2-0003-4c1a-9a01-000000000003",
+      "node_name": "Form-Filling Helper",
+      "endpoint": "/agents/form-check",
+      "header_name": "X-Agent-Key",
+      "backend_variable": "AGENT_API_KEY",
+      "enforcement": "401 when key configured; open when unset",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Agent",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "node_id": "c3a0c1d2-0004-4c1a-9a01-000000000004",
+      "node_name": "Intent Router",
+      "endpoint": "/agents/route",
+      "header_name": "X-Agent-Key",
+      "backend_variable": "AGENT_API_KEY",
+      "enforcement": "401 when key configured; open when unset",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Agent",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "node_id": "c3a0c1d2-0006-4c1a-9a01-000000000006",
+      "node_name": "RAG Retriever",
+      "endpoint": "/agents/retrieve",
+      "header_name": "X-Agent-Key",
+      "backend_variable": "AGENT_API_KEY",
+      "enforcement": "401 when key configured; open when unset",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Agent",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "node_id": "c3a0c1d2-0008-4c1a-9a01-000000000008",
+      "node_name": "Checklist Builder",
+      "endpoint": "/agents/checklist",
+      "header_name": "X-Agent-Key",
+      "backend_variable": "AGENT_API_KEY",
+      "enforcement": "401 when key configured; open when unset",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Agent",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "node_id": "c3a0c1d2-0009-4c1a-9a01-000000000009",
+      "node_name": "Grounded Answer",
+      "endpoint": "/agents/answer",
+      "header_name": "X-Agent-Key",
+      "backend_variable": "AGENT_API_KEY",
+      "enforcement": "401 when key configured; open when unset",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Agent",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "node_id": "c3a0c1d2-0015-4c1a-9a01-000000000015",
+      "node_name": "Dossier Validator",
+      "endpoint": "/agents/dossier-check",
+      "header_name": "X-Agent-Key",
+      "backend_variable": "AGENT_API_KEY",
+      "enforcement": "401 when key configured; open when unset",
+      "credential_type": "httpHeaderAuth",
+      "credential_name": "TNAA Backend Agent",
+      "credential_id": null,
+      "status": "operator_mapping_required_not_enabled",
+      "proposed_http_parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    }
+  ],
+  "webhook_auth": {
+    "workflows": [
+      "TnaaRetrieveApi1",
+      "TnaaAssistant01"
+    ],
+    "header_name": "X-Assistant-Key",
+    "credential_type": "httpHeaderAuth",
+    "credential_name": "TNAA Assistant Entry",
+    "credential_id": null,
+    "proposed_webhook_parameters": {
+      "authentication": "headerAuth"
+    },
+    "status": "separate_approval_and_all_client_readiness_required",
+    "note": "X-Assistant-Key is checked by n8n Header Auth, not by FastAPI. Bridge/web/CLI send ASSISTANT_WEBHOOK_KEY only when configured."
+  }
+}

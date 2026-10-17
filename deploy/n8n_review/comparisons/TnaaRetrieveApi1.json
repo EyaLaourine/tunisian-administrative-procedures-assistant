@@ -1,0 +1,93 @@
+{
+  "workflow_id": "TnaaRetrieveApi1",
+  "name": "02 - Retrieval API (RAG Retriever agent entry point)",
+  "backup": "tmp/n8n-review/20261017T220611Z/TnaaRetrieveApi1.json",
+  "canonical": "workflows/02_retrieve_api.json",
+  "candidate": "deploy/n8n_review/candidates/02_retrieve_api.json",
+  "live_version_id": "0867dd24-169e-4a5a-9f28-248658bf67e8",
+  "live_active_version_id": "0867dd24-169e-4a5a-9f28-248658bf67e8",
+  "live_executable_nodes": 3,
+  "repository_executable_nodes": 3,
+  "live_vs_repository": {
+    "added_executable_nodes": [],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [],
+    "connections_equal": true,
+    "settings_equal": true,
+    "active_before": true,
+    "active_after": false,
+    "semantic_equal": false,
+    "semantic_sha256_before": "0a14bd3062a2c9db8555e3fec7a31a321f4fcbf0d85967c08ee6a84fbdb23b8c",
+    "semantic_sha256_after": "8d726e2d8b011e4e43c4fccf5e8944fb97e3a8620797f96bcab9701d116b52de"
+  },
+  "live_vs_candidate": {
+    "added_executable_nodes": [],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [
+      {
+        "node": "POST /webhook/retrieve",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "RAG Retriever (backend)",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Return passages",
+        "fields": [
+          "position"
+        ]
+      }
+    ],
+    "connections_equal": true,
+    "settings_equal": true,
+    "active_before": true,
+    "active_after": true,
+    "semantic_equal": false,
+    "semantic_sha256_before": "0a14bd3062a2c9db8555e3fec7a31a321f4fcbf0d85967c08ee6a84fbdb23b8c",
+    "semantic_sha256_after": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70"
+  },
+  "repository_with_live_state_vs_candidate": {
+    "added_executable_nodes": [],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [
+      {
+        "node": "POST /webhook/retrieve",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "RAG Retriever (backend)",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Return passages",
+        "fields": [
+          "position"
+        ]
+      }
+    ],
+    "connections_equal": true,
+    "settings_equal": true,
+    "active_before": true,
+    "active_after": true,
+    "semantic_equal": true,
+    "semantic_sha256_before": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70",
+    "semantic_sha256_after": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70"
+  },
+  "validation": {
+    "workflow_id": "TnaaRetrieveApi1",
+    "valid": true,
+    "errors": [],
+    "executable_nodes": 3,
+    "sticky_notes": 4,
+    "normalized_runtime_sha256": "b0d6f5da6d898d592846e749d6ebaa259953b0d2b62d045fea53ed1c87c90f70"
+  }
+}

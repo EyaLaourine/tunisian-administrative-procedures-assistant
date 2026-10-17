@@ -1,0 +1,46 @@
+{
+  "containers": {
+    "tunisian-admin-assistant-backend-1": {
+      "unchanged": true,
+      "health": "healthy"
+    },
+    "final-candidate": {
+      "unchanged": true,
+      "health": "healthy"
+    },
+    "tunisian-admin-assistant-n8n-1": {
+      "unchanged": true,
+      "health": "healthy"
+    },
+    "final-n8n": {
+      "unchanged": true,
+      "health": "running"
+    },
+    "tunisian-admin-telegram-bridge": {
+      "unchanged": true,
+      "health": "healthy"
+    }
+  },
+  "health": {
+    "n8n": {
+      "http_status": 200
+    },
+    "backend": {
+      "http_status": 200
+    }
+  },
+  "project_qdrant_read_only_counts": [
+    {
+      "name": "official_docs_recursive",
+      "points_count": 174,
+      "status": "green"
+    },
+    {
+      "name": "official_docs_structure",
+      "points_count": 272,
+      "status": "green"
+    }
+  ],
+  "qdrant_content_unchanged_claim": false,
+  "note": "Counts alone do not prove payload identity. No collection write or workflow execution was performed."
+}

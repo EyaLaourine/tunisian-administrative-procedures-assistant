@@ -1,0 +1,302 @@
+{
+  "workflow_id": "TnaaAssistant01",
+  "name": "03 - Assistant: multi-agent orchestration (Telegram / HTTP entry point)",
+  "backup": "tmp/n8n-review/20261017T220611Z/TnaaAssistant01.json",
+  "canonical": "workflows/03_assistant_multi_agent.json",
+  "candidate": "deploy/n8n_review/candidates/03_assistant_multi_agent.json",
+  "live_version_id": "92f81ea7-3e60-4564-8c23-4dcc5eba5494",
+  "live_active_version_id": "92f81ea7-3e60-4564-8c23-4dcc5eba5494",
+  "live_executable_nodes": 16,
+  "repository_executable_nodes": 17,
+  "live_vs_repository": {
+    "added_executable_nodes": [
+      "Respond: agent error"
+    ],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [
+      {
+        "node": "Form-Filling Helper",
+        "fields": [
+          "onError"
+        ]
+      },
+      {
+        "node": "Intent Router",
+        "fields": [
+          "onError"
+        ]
+      },
+      {
+        "node": "RAG Retriever",
+        "fields": [
+          "onError"
+        ]
+      },
+      {
+        "node": "Checklist Builder",
+        "fields": [
+          "onError"
+        ]
+      },
+      {
+        "node": "Grounded Answer",
+        "fields": [
+          "onError"
+        ]
+      },
+      {
+        "node": "Dossier Validator",
+        "fields": [
+          "onError"
+        ]
+      }
+    ],
+    "connections_equal": false,
+    "settings_equal": true,
+    "active_before": true,
+    "active_after": false,
+    "semantic_equal": false,
+    "semantic_sha256_before": "3cd31a1b2c62fc9f5a27f624f1919c57f4edb8b65c9a8f5fa52a438ed65dd4f9",
+    "semantic_sha256_after": "b6cde9122a04a06209b2fe9ad26aade2102d1aafbdf39029523b9593122fade7"
+  },
+  "live_vs_candidate": {
+    "added_executable_nodes": [
+      "Respond: agent error"
+    ],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [
+      {
+        "node": "POST /webhook/assistant",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "File attached?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Form-Filling Helper",
+        "fields": [
+          "onError",
+          "position"
+        ]
+      },
+      {
+        "node": "Intent Router",
+        "fields": [
+          "onError",
+          "position"
+        ]
+      },
+      {
+        "node": "Direct reply?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "RAG Retriever",
+        "fields": [
+          "onError",
+          "position"
+        ]
+      },
+      {
+        "node": "Checklist route?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Checklist Builder",
+        "fields": [
+          "onError",
+          "position"
+        ]
+      },
+      {
+        "node": "Grounded Answer",
+        "fields": [
+          "onError",
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: form check",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: direct reply",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: checklist",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: answer",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Dossier mode?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Dossier Validator",
+        "fields": [
+          "onError",
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: dossier check",
+        "fields": [
+          "position"
+        ]
+      }
+    ],
+    "connections_equal": false,
+    "settings_equal": true,
+    "active_before": true,
+    "active_after": true,
+    "semantic_equal": false,
+    "semantic_sha256_before": "3cd31a1b2c62fc9f5a27f624f1919c57f4edb8b65c9a8f5fa52a438ed65dd4f9",
+    "semantic_sha256_after": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9"
+  },
+  "repository_with_live_state_vs_candidate": {
+    "added_executable_nodes": [],
+    "removed_executable_nodes": [],
+    "changed_node_fields": [
+      {
+        "node": "POST /webhook/assistant",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "File attached?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Form-Filling Helper",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Intent Router",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Direct reply?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "RAG Retriever",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Checklist route?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Checklist Builder",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Grounded Answer",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: form check",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: direct reply",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: checklist",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: answer",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Dossier mode?",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Dossier Validator",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: dossier check",
+        "fields": [
+          "position"
+        ]
+      },
+      {
+        "node": "Respond: agent error",
+        "fields": [
+          "position"
+        ]
+      }
+    ],
+    "connections_equal": true,
+    "settings_equal": true,
+    "active_before": true,
+    "active_after": true,
+    "semantic_equal": true,
+    "semantic_sha256_before": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9",
+    "semantic_sha256_after": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9"
+  },
+  "validation": {
+    "workflow_id": "TnaaAssistant01",
+    "valid": true,
+    "errors": [],
+    "executable_nodes": 17,
+    "sticky_notes": 10,
+    "normalized_runtime_sha256": "6bcbd22c0582b5573b312d1622871c453d296fc60dbd2279dfe5df97b21397d9"
+  }
+}
