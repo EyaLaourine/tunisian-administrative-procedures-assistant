@@ -59,13 +59,21 @@ class Settings(BaseSettings):
     # false refusals (docs/EVALUATION.md section 7). Kept for experiments: EVIDENCE_TOPIC_CHECK=true.
     evidence_topic_check: bool = False
 
-    # Optional shared secret for the state-changing endpoints (/ingestion/run, /index/run). When set, callers
-    # must send it in the X-Admin-Key header; when unset, behaviour is unchanged (localhost-only binding).
+    # Shared secret for the privileged, state-changing endpoints (/ingestion/run, /index/run). Fail closed: when
+    # it is not configured these endpoints are disabled (HTTP 403); when configured, callers send X-Admin-Key.
     admin_api_key: str | None = Field(default=None, repr=False)
+    # Optional shared secret for the agent API (/agents/*, /retrieve). When set, every caller (the n8n HTTP nodes)
+    # must send X-Agent-Key, so the assistant webhook cannot be bypassed by calling the backend directly.
+    # Unset by default so that the current n8n workflows keep working until they send the header.
+    agent_api_key: str | None = Field(default=None, repr=False)
+    # Upper bound for any request body (base64 uploads are ~4/3 of the file size plus JSON overhead).
+    max_request_bytes: int = Field(default=15 * 1024 * 1024, gt=0)
 
     # --- Telegram bridge (long polling; the token is only read from the environment / .env) ---
     telegram_bot_token: str | None = Field(default=None, repr=False)
     assistant_webhook_url: str = "http://localhost:5678/webhook/assistant"
+    # Optional key sent as X-Assistant-Key to the n8n assistant webhook (enable Header Auth on the webhook first).
+    assistant_webhook_key: str | None = Field(default=None, repr=False)
 
     def resolve(self, path: Path) -> Path:
         """Resolve a configured path relative to the repository root."""

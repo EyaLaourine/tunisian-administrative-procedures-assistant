@@ -242,7 +242,163 @@ def form_reply(req, corpus, form):
                                                 'semantic_conclusion_verified': False}})
 
 
+LANG_NAME = {'fr': {'ar': 'arabe', 'fr': 'français'}, 'en': {'ar': 'Arabic', 'fr': 'French'},
+             'ar': {'ar': 'العربية', 'fr': 'الفرنسية'}, 'derja': {'ar': 'العربية', 'fr': 'الفرنسية'}}
+HEADER = {
+    'fr': "Source : {act} — {arts}. Le texte officiel est en {lang} et il est cité tel quel ; aucune traduction "
+          "officielle n'est fournie.",
+    'en': "Source: {act} — {arts}. The official text is in {lang} and is quoted as is; no official translation is "
+          "provided.",
+    'ar': "المصدر: {act} — {arts}. النص الرسمي باللغة {lang} ويُنقل كما هو دون ترجمة رسمية.",
+    'derja': "المصدر: {act} — {arts}. النص الرسمي باللغة {lang} ونقلوه كيما هو، من غير ترجمة رسمية.",
+}
+ART_WORD = {'fr': ('article', 'articles'), 'en': ('article', 'articles'), 'ar': ('الفصل', 'الفصول'), 'derja': ('الفصل', 'الفصول')}
+TABLE_WORD = {'fr': 'tableau n°{n}', 'en': 'table no. {n}', 'ar': 'الجدول عدد {n}', 'derja': 'الجدول عدد {n}'}
+KEY_LABEL = {'fr': 'Passage le plus pertinent (formulation officielle) :', 'en': 'Most relevant passage (official wording):',
+             'ar': 'المقطع الأكثر صلة (الصياغة الرسمية):', 'derja': 'المقطع الأقرب لسؤالك (الصياغة الرسمية):'}
+FULL_LABEL = {'fr': 'Texte officiel :', 'en': 'Official text:', 'ar': 'النص الرسمي:', 'derja': 'النص الرسمي:'}
+MORE_LABEL = {'fr': 'Autres articles du même texte, disponibles sur demande (« article N ») : {arts}',
+              'en': 'Other articles of the same text, available on request ("article N"): {arts}',
+              'ar': 'فصول أخرى من نفس النص متاحة عند الطلب («الفصل N»): {arts}',
+              'derja': 'فصول أخرى من نفس النص، اطلبها («الفصل N»): {arts}'}
+FULL_TEXT_BUDGET = 2600  # characters of complete articles shown before the remaining ones are listed by number
+
+
+def _question_words(query, title=''):
+    words = {w for w in re.findall(r'\w+', norm(query)) if len(w) > 3 and not w.isdigit()
+             and w not in GENERIC and w not in title}
+    for pattern, expansion in CONCEPTS:
+        if re.search(pattern, query, re.I):
+            words |= {norm(e) for e in expansion}
+    return words
+
+
+def key_passage(query, sections, title='', limit=420):
+    """The official sentence that shares most informative words with the question (verbatim, or None)."""
+    words = _question_words(query, title)
+    if not words:
+        return None
+    best, best_score = None, 0
+    for s in sections:
+        for sentence in re.split(r'(?<=[.;؛:])\s+|\n', '\n'.join(s['parts'])):
+            sentence = sentence.strip()
+            if len(sentence) < 25:
+                continue
+            score = sum(w in norm(sentence) for w in words)
+            if score > best_score:
+                best, best_score = sentence, score
+    if best is None:
+        return None
+    return best if len(best) <= limit else best[:limit].rsplit(' ', 1)[0] + ' …'
+
+
+def render_legal(req, corpus, subject, selected, citation):
+    """Header in the user's language, the most relevant official sentence, then the complete official text.
+
+    Nothing is translated or paraphrased: the explanation names the act, the article(s) and the language of the
+    official text; every legal statement shown is a verbatim quotation."""
+    from agents.checklist_builder import sources_footer
+    lang = req.route.language
+    act = citation.official_reference or citation.title
+    one, many = ART_WORD[lang]
+    shown, used = [], 0
+    for section in selected:
+        size = len('\n'.join(section['parts']))
+        if shown and used + size > FULL_TEXT_BUDGET:
+            continue
+        shown.append(section)
+        used += size
+    nums = [s['number'] for s in shown]
+    if selected and selected[0].get('table'):
+        arts = f"{one} {nums[0]}, " + TABLE_WORD[lang].format(n=selected[0]['table'])
+    else:
+        arts = f"{one if len(nums) == 1 else many} {', '.join(map(str, nums))}"
+    doc_lang = LANG_NAME[lang].get(citation.language or '', citation.language or '')
+    lines = [HEADER[lang].format(act=act, arts=arts, lang=doc_lang)]
+    title = norm(subject_query(subject)) if subject in SUBJECTS else ''
+    key = key_passage(req.query, shown, title)
+    if key and (len(shown) > 1 or sum(len(' '.join(s['parts'])) for s in shown) > 600):
+        lines += ['', KEY_LABEL[lang], f'« {key} »']
+    lines += ['', FULL_LABEL[lang]]
+    for section in shown:
+        label = f"§ {section['number']}" + (f" — Tableau n°{section['table']}" if section.get('table') else '')
+        lines += ['', f"[1] {label} (p. {section['page']})", '\n'.join(section['parts'])]
+    rest = [s['number'] for s in selected if s not in shown]
+    if rest:
+        lines += ['', MORE_LABEL[lang].format(arts=', '.join(f'§ {n}' for n in rest))]
+    lines += ['', NOTICE[lang]]
+    return '\n'.join(lines + sources_footer(lang, [citation])), [s['number'] for s in shown]
+
+
+def order_by_relevance(query, sections, subject):
+    """Short acts keep all provisions, most relevant first (stable when the question has no informative word)."""
+    texts = [norm(' '.join(s['parts'])) for s in sections]
+    words = _question_words(query, norm(subject_query(subject)))
+    if not words:
+        return sections
+    n = len(sections)
+    idf = {w: math.log((n + 1) / (1 + sum(w in t for t in texts))) for w in words}
+    scores = [sum(idf[w] for w in words if w in t) for t in texts]
+    return [s for _, _, s in sorted(zip(scores, range(n), sections), key=lambda x: (-x[0], x[1]))]
+
+
+# --------------------------------------------------------------------------- RNE formalities table: scope
+TABLE_DOC = 'rne-formalities-procedure-table'
+TABLE_SCOPE_QUESTION = (r'(?:scope|port[ée]e|champ|couvre|covers?|contient|contains?|d[ée]crit|describes?|نطاق|يتضمن|يشمل)'
+                        r'.{0,160}(?:formalit|tableau des proc|procedure table|جدول الإجراءات)'
+                        r'|(?:formalit|procedure table|جدول الإجراءات).{0,160}(?:scope|port[ée]e|champ|couvre|covers?|نطاق)')
+SCOPE_TEXT = {
+    'fr': ("Le document officiel « {title} » ({org}) est un tableau de {rows} procédures du Registre national des "
+           "entreprises. Chaque ligne donne, dans la formulation officielle : le code de procédure, la nature du "
+           "service, le genre et le type d'entreprise, la procédure, la redevance demandée et le délai.\n"
+           "Répartition par nature du service (libellés officiels) :\n{services}\n"
+           "Genre d'entreprise : {kinds}. Familles de codes : {codes}.\n"
+           "Ce tableau ne contient pas de liste des pièces justificatives ; son applicabilité actuelle et son "
+           "application à votre cas ne sont pas vérifiées. Pour une ligne précise, indiquez le code (ex. RNE C 001)."),
+    'en': ("The official document “{title}” ({org}) is a table of {rows} procedures of the National Business "
+           "Register. Each row gives, in the official wording: the procedure code, the nature of the service, the "
+           "entity kind and type, the procedure, the fee requested and the deadline.\n"
+           "Rows by nature of the service (official French labels):\n{services}\n"
+           "Entity kind: {kinds}. Code families: {codes}.\n"
+           "The table contains no list of supporting documents; its current applicability and its application to "
+           "your case are not verified. For a specific row, give the code (e.g. RNE C 001)."),
+    'ar': ("الوثيقة الرسمية «{title}» ({org}) جدول يضم {rows} إجراء خاصا بالسجل الوطني للمؤسسات. يتضمن كل سطر، "
+           "بالصياغة الرسمية: رمز الإجراء، طبيعة الخدمة، صنف ونوع المؤسسة، الإجراء، المعلوم المطلوب والأجل.\n"
+           "التوزيع حسب طبيعة الخدمة (التسميات الرسمية بالفرنسية):\n{services}\n"
+           "صنف المؤسسة: {kinds}. أصناف الرموز: {codes}.\n"
+           "لا يتضمن الجدول قائمة بالوثائق المطلوبة، ولم يتم التحقق من سريانه الحالي ولا من انطباقه على حالتك. "
+           "لسطر معين، اذكر الرمز (مثلا RNE C 001)."),
+}
+SCOPE_TEXT['derja'] = SCOPE_TEXT['ar']
+
+
+def table_scope_reply(req, corpus):
+    """Deterministic description of the formalities table computed from the official rows (no generation)."""
+    rows = [b['text'] for b in corpus.blocks(TABLE_DOC) if b['text'].startswith('Code procédure:')]
+    citation = corpus.citation(TABLE_DOC)
+    if not rows or not citation:
+        return None
+    from collections import Counter
+    from agents.checklist_builder import sources_footer
+
+    def field(name):
+        return Counter(m.group(1).strip() for r in rows if (m := re.search(name + r':\s*(.*)', r)))
+    services = '\n'.join(f'• {label} ({n})' for label, n in field('Nature du service').most_common())
+    kinds = ', '.join(f'{label} ({n})' for label, n in field("Genre d'Entreprise").most_common())
+    codes = ', '.join(f'RNE {k} ({n})' for k, n in Counter(re.search(r'RNE\s*([CIM])', r).group(1) for r in rows).most_common())
+    lang = req.route.language
+    text = SCOPE_TEXT[lang].format(title=citation.title, org=citation.source_organization, rows=len(rows),
+                                   services=services, kinds=kinds, codes=codes)
+    return AnswerResult(text='\n'.join([text] + sources_footer(lang, [citation])), found=True, method='passages_fallback',
+                        citations=[citation], verification={'legal': {'method': 'table_scope_from_official_rows',
+                                                                      'articles': [], 'semantic_conclusion_verified': False}})
+
+
 def legal_reply(req, corpus):
+    if re.search(TABLE_SCOPE_QUESTION, req.query, re.I) and req.route.procedure_category in {'business_registration', 'general'}:
+        result = table_scope_reply(req, corpus)
+        if result is not None:
+            return result
     form = identify_form(req.query)
     if form and req.route.procedure_category in {'business_registration', 'general'}:
         return form_reply(req, corpus, form)
@@ -272,19 +428,16 @@ def legal_reply(req, corpus):
     elif table:
         selected = table_section(sections, int(table[1]))
     elif subject in {'rne-arrete-2026-35', 'rne-decree-beneficial-owners', 'rne-decree-name-reservation', 'rne-decree-law-2022-18-fr'}:
-        # Short texts: retain all substantive provisions, including list qualifications.
-        selected = sections
+        # Short texts: all substantive provisions remain available, the most relevant ones first.
+        selected = order_by_relevance(req.query, sections, subject)
     else:
         selected = rank_sections(req.query, sections, subject, req.passages)
     if not selected:
         return AnswerResult(text=i18n.t('insufficient_evidence', req.route.language), found=False, method='none')
-    from agents.checklist_builder import sources_footer
     citation = corpus.citation(subject, page=selected[0]['page'])
     if not citation:
         return None
-    lines = [NOTICE[req.route.language]]
-    for section in selected:
-        label = f"§ {section['number']}" + (f" — Tableau n°{section['table']}" if section.get('table') else '')
-        lines += ['', f"[1] {label} (p. {section['page']})", '\n'.join(section['parts'])]
-    return AnswerResult(text='\n'.join(lines + sources_footer(req.route.language, [citation])), found=True,
-                        method='passages_fallback', citations=[citation], verification={'legal': {'method': 'unabridged_source_articles', 'articles': [s['number'] for s in selected], 'semantic_conclusion_verified': False}})
+    text, shown = render_legal(req, corpus, subject, selected, citation)
+    return AnswerResult(text=text, found=True, method='passages_fallback', citations=[citation],
+                        verification={'legal': {'method': 'verbatim_source_articles', 'articles': shown,
+                                                'semantic_conclusion_verified': False}})

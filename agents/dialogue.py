@@ -43,7 +43,7 @@ LABELS = {
 APPLICATIONS = {
  'first_time': r'premi[eè]re (?:demande|fois)|first (?:application|time)|awel marra|أول مرة|اول مرة|لأول مرة',
  'renewal': r'renouvel|renew|تجديد|نجدد|يجدد|nejjedd|jadded|\bn?[jg]add?e?d\w*|\bt[ae]?jdid',
- 'loss': r'\b(?:perdue?|perte|vol[ée]e?|lost|stolen|theft|damaged|deterioration|détérioration|d[ée]t[ée]rior[ée]e?|ab[îi]m[ée]e?|dha3\w*|dh?ay+a3\w*|damage|tsre9\w*)\b|ضياع|ضاع|ضيع|ضيّع|سرق|إتلاف|تلف',
+ 'loss': r'\b(?:perdue?|perte|vol[ée]e?|lost|stolen|theft|damaged|deterioration|détérioration|d[ée]t[ée]rior[ée]e?|ab[îi]m[ée]e?|dha3\w*|dh?ay+a3\w*|damage|tsre9\w*|duplicata|duplicate)\b|ضياع|ضاع|ضيع|ضيّع|سرق|إتلاف|تلف|نظير',
  'modification': r'changement|modification|modifier|تغيير|معطيات|n?baddel|update my|\bchang(?:e|ed|ing)\b.{0,30}\b(?:data|details|information|address|name)|\b(?:data|details|information|address|name)\b.{0,30}\bchang',
  'pilgrimage': r'pilgrimage|p[èe]lerinage|\bhajj\b|الحج',
 }

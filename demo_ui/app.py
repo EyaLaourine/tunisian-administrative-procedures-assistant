@@ -84,8 +84,9 @@ def _client(timeout: float = TIMEOUT_SECONDS) -> httpx.Client:
 def forward(payload: dict) -> dict:
     """POST the payload to the n8n webhook; errors are reported without echoing request contents."""
     try:
+        key = os.environ.get("ASSISTANT_WEBHOOK_KEY", "").strip()
         with _client() as c:
-            resp = c.post(N8N_WEBHOOK, json=payload)
+            resp = c.post(N8N_WEBHOOK, json=payload, headers={"X-Assistant-Key": key} if key else {})
     except httpx.HTTPError as exc:
         log.warning("n8n_unreachable", extra={"error": type(exc).__name__})
         raise HTTPException(status_code=502, detail="The n8n workflow is not reachable.") from exc

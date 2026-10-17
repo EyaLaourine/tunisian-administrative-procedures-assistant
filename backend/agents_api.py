@@ -6,7 +6,9 @@ Privacy: request bodies (user questions, uploads) are never logged; only routing
 import logging
 import time
 
-from fastapi import APIRouter, Request
+import hmac
+
+from fastapi import APIRouter, Depends, Header, HTTPException, Request
 from fastapi.concurrency import run_in_threadpool
 
 from agents.answer import GroundedAnswerer
@@ -28,7 +30,15 @@ from agents.schemas import (
 from backend.settings import Settings
 
 log = logging.getLogger(__name__)
-router = APIRouter(prefix="/agents", tags=["agents"])
+def require_agent_key(request: Request, x_agent_key: str | None = Header(default=None)) -> None:
+    """When AGENT_API_KEY is configured, only callers sending it (the n8n HTTP nodes) may use the agents.
+    Unset: open, as before (the port is bound to 127.0.0.1 / the internal Docker network)."""
+    expected = (getattr(request.app.state.settings, "agent_api_key", None) or "").strip()
+    if expected and not (x_agent_key and hmac.compare_digest(x_agent_key.encode(), expected.encode())):
+        raise HTTPException(status_code=401, detail="Missing or invalid X-Agent-Key header.")
+
+
+router = APIRouter(prefix="/agents", tags=["agents"], dependencies=[Depends(require_agent_key)])
 
 
 class Agents:

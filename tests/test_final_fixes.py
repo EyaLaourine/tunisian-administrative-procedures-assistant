@@ -200,12 +200,15 @@ def test_group_language_choice_is_per_member():
 
 
 # ------------------------------------------------------------------ optional admin key on mutating endpoints
-def test_admin_key_is_required_only_when_configured():
+def test_admin_endpoints_fail_closed_and_require_the_configured_key():
+    # Specification changed in the security hardening: privileged endpoints are disabled when no key is set.
     from types import SimpleNamespace
     from fastapi import HTTPException
     import backend.main as main
     main.app.state.settings = SimpleNamespace(admin_api_key=None)
-    main.require_admin(None)  # unset: unchanged behaviour
+    with pytest.raises(HTTPException) as exc:
+        main.require_admin("anything")
+    assert exc.value.status_code == 403
     main.app.state.settings = SimpleNamespace(admin_api_key="s3cret-value")
     with pytest.raises(HTTPException) as exc:
         main.require_admin(None)

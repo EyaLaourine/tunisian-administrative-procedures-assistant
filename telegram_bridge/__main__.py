@@ -39,7 +39,8 @@ def main(argv=None) -> int:
         print('LIVE_CONNECTIVITY_PENDING: TELEGRAM_BOT_TOKEN is not set; '
               'see docs/TELEGRAM_ACTIVATION.md. Backend and n8n are unaffected.', file=sys.stderr)
         return 2
-    bridge = TelegramBridge(settings.telegram_bot_token.strip(), settings.assistant_webhook_url, settings.max_upload_bytes, dialogue_enabled=True)
+    bridge = TelegramBridge(settings.telegram_bot_token.strip(), settings.assistant_webhook_url, settings.max_upload_bytes,
+                            dialogue_enabled=True, webhook_key=settings.assistant_webhook_key)
     bridge.stop = stop
     try:
         bridge.run_forever()

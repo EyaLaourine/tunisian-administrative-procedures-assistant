@@ -62,12 +62,15 @@ def split_message(text: str, limit: int = MAX_MESSAGE_CHARS) -> list[str]:
 
 class TelegramBridge:
     def __init__(self, token: str, webhook_url: str, max_upload_bytes: int,
-                 client: httpx.Client | None = None, webhook_timeout: float = 900.0, dialogue_enabled: bool = False):
+                 client: httpx.Client | None = None, webhook_timeout: float = 900.0, dialogue_enabled: bool = False,
+                 webhook_key: str | None = None):
         if not token or not token.strip():
             raise ValueError("TELEGRAM_BOT_TOKEN is not set")
         self._base = f"{TELEGRAM_API}/bot{token}"
         self._file_base = f"{TELEGRAM_API}/file/bot{token}"
         self.webhook_url = webhook_url
+        # Sent only when configured (n8n Header Auth on the assistant webhook); never logged.
+        self._webhook_headers = {"X-Assistant-Key": webhook_key.strip()} if webhook_key and webhook_key.strip() else {}
         self.max_upload_bytes = max_upload_bytes
         self.client = client or httpx.Client(timeout=POLL_TIMEOUT_SECONDS + 15)
         self.webhook_timeout = webhook_timeout
@@ -314,7 +317,8 @@ class TelegramBridge:
                 if self.stop.is_set() or (cancelled and cancelled.is_set()):
                     return
                 try:
-                    resp = self.client.post(self.webhook_url, json=payload, timeout=self.webhook_timeout)
+                    resp = self.client.post(self.webhook_url, json=payload, timeout=self.webhook_timeout,
+                                            headers=self._webhook_headers)
                     resp.raise_for_status()
                     break
                 except (httpx.TimeoutException, httpx.NetworkError, httpx.HTTPStatusError) as exc:

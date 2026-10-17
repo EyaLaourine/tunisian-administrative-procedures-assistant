@@ -11,6 +11,7 @@ Usage:
 import argparse
 import base64
 import mimetypes
+import os
 import sys
 import time
 from pathlib import Path
@@ -53,7 +54,8 @@ def main() -> int:
     if args.mode:
         payload["mode"] = args.mode
     started = time.perf_counter()
-    resp = httpx.post(args.url, json=payload, timeout=900)
+    key = os.environ.get("ASSISTANT_WEBHOOK_KEY", "").strip()
+    resp = httpx.post(args.url, json=payload, timeout=900, headers={"X-Assistant-Key": key} if key else {})
     elapsed = time.perf_counter() - started
     resp.raise_for_status()
     data = resp.json()

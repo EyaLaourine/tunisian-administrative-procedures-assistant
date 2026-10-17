@@ -79,7 +79,9 @@ HINT_KEYWORDS: dict[str, list[str]] = {
     ],
     "loss": ["perte", "perdu", r"\bvol\b", "volé", "lost", "stolen", "theft", "damaged", "détérioration", "deterioration", "الإتلاف", "تلف", "ضياع", "ضاع", "سرقة", "تسرق", "dha3", "tsre9",
              # stems and spelling variants: détériorée, abîmée, سرقت, ضيّعت, dhaya3t
-             r"\bd[ée]t[ée]rior", r"\bab[îi]m[ée]", "damage", "سرق", "ضيع", "ضيّع", r"\bdh?ay+a3"],
+             r"\bd[ée]t[ée]rior", r"\bab[îi]m[ée]", "damage", "سرق", "ضيع", "ضيّع", r"\bdh?ay+a3",
+             # the official duplicate scenario: "duplicata (pour cause de perte, de vol ou de détérioration)" / "نظير"
+             "نظير", "duplicata", r"\bduplicate\b"],
     "renewal": ["renouvel", "renew", "تجديد", "جدد", "nejjedd", "jadded", r"\bn?[jg]add?e?d", r"\bt[ae]?jdid"],
     "modification": ["changement", "modification", "modifier", "change", "update my", "تغيير", "بدّل", "nbaddel", r"\bbaddel", "معطيات"],
     "first_time": ["première fois", "premiere fois", "first time", "أول مرة", "لأول مرة", "awel marra"],
@@ -111,6 +113,77 @@ LIMITS_REQUEST = (
     # security; neither is a guarantee request).
     r"|اضمن لي|تضمن لي|هل تضمن|ضمان قبول|ما زال ساري|مازال ساري|ساري المفعول|سارية المفعول|سيقبل ملف|سيتم قبول"
 )
+UNMATCHED_CASE = (
+    r"ne correspond pas|ne s.applique pas|mon cas est (?:diff|particul|sp[ée]cial|autre)|ma situation est (?:diff|particul|autre)"
+    r"|does ?n.?t (?:match|apply|fit)|does not (?:match|apply|fit)|my (?:case|situation) is (?:different|special|not)"
+    r"|لا ينطبق|لا تنطبق|لا يتطابق|لا يتوافق|حالتي مختلفة|حالتي خاصة|ما ينطبقش|ما تنطبقش|موش نفس الحالة"
+    r"|ma yentab9ch|mayentab9ch|7alti mokhtalfa|halti mokhtalfa"
+)
+# Distinguishing facts are the official scenario headings of each guide (no exception is invented).
+UNMATCHED_REPLY = {
+    "fr": {
+        "passport": "D'accord. Le guide officiel du passeport distingue : première demande ou renouvellement, "
+                    "changement d'un passeport ordinaire, duplicata après perte, vol ou détérioration, document pour "
+                    "le pèlerinage, et la résidence en Tunisie ou à l'étranger. Laquelle de ces situations est la vôtre ? "
+                    "Décrivez-la sans données personnelles. Si aucune ne correspond, seule l'administration compétente "
+                    "peut vous orienter.",
+        "national_id": "D'accord. Le guide officiel de la carte d'identité distingue : première demande, renouvellement, "
+                       "changement pour modification de données, et changement pour vol, perte ou détérioration. Laquelle "
+                       "correspond à votre situation ? Si aucune ne correspond, adressez-vous à l'administration compétente.",
+        "business_registration": "D'accord. Pour le RNE, précisez le genre d'entreprise (personne physique ou morale), "
+                                 "son type et l'opération (création, modification, radiation, dépôt des états "
+                                 "financiers…), ou le code de procédure (ex. RNE C 001). Je ne peux pas déduire qu'une "
+                                 "ligne s'applique à votre cas sans ces éléments.",
+        "legal": "D'accord. Précisez quel point du texte vous concerne (article, obligation, délai, personne visée), "
+                 "sans données personnelles ; je ne peux pas déduire que ce texte s'applique à votre cas.",
+        "general": "D'accord. Précisez la démarche et votre situation (sans données personnelles) pour que je cherche "
+                   "la section officielle correspondante.",
+    },
+    "en": {
+        "passport": "Understood. The official passport guide distinguishes: first application or renewal, change of an "
+                    "ordinary passport, duplicate after loss, theft or damage, the pilgrimage travel document, and residence "
+                    "in Tunisia or abroad. Which of these is your situation? Describe it without personal data. If none "
+                    "applies, only the competent administration can advise you.",
+        "national_id": "Understood. The official ID-card guide distinguishes: first application, renewal, change for "
+                       "modified data, and change after theft, loss or damage. Which one is your situation? If none "
+                       "applies, please contact the competent administration.",
+        "business_registration": "Understood. For the RNE, please give the entity kind (natural or legal person), its "
+                                 "type and the operation (creation, modification, deregistration, filing of financial "
+                                 "statements…), or the procedure code (e.g. RNE C 001). I cannot infer that a row applies "
+                                 "to your case without these details.",
+        "legal": "Understood. Please say which point of the text concerns you (article, obligation, deadline, person "
+                 "concerned), without personal data; I cannot infer that this text applies to your case.",
+        "general": "Understood. Please describe the procedure and your situation (without personal data) so that I can "
+                   "look for the matching official section.",
+    },
+    "ar": {
+        "passport": "حسنا. يميز الدليل الرسمي لجواز السفر بين: الحصول لأول مرة أو التجديد، تغيير جواز سفر عادي، استخراج "
+                    "نظير بسبب الضياع أو السرقة أو الإتلاف، رخصة الحج، والإقامة بالتراب التونسي أو بالخارج. أي حالة "
+                    "تنطبق عليك؟ صفها دون معطيات شخصية. إن لم تنطبق أي منها فالإدارة المختصة وحدها يمكنها توجيهك.",
+        "national_id": "حسنا. يميز الدليل الرسمي لبطاقة التعريف بين: أول مرة، التجديد، التغيير بسبب تغيير المعطيات، "
+                       "والتغيير بسبب السرقة أو الضياع أو الإتلاف. أي حالة تنطبق عليك؟ إن لم تنطبق أي منها فاتصل بالإدارة المختصة.",
+        "business_registration": "حسنا. بالنسبة للسجل الوطني للمؤسسات، حدد صنف المؤسسة (شخص طبيعي أو معنوي) ونوعها "
+                                 "والعملية (إحداث، تغيير، تشطيب، إيداع القوائم المالية...) أو رمز الإجراء (مثلا RNE C 001). "
+                                 "لا يمكنني افتراض انطباق سطر ما على حالتك دون هذه المعطيات.",
+        "legal": "حسنا. حدد النقطة التي تهمك في النص (الفصل، الواجب، الأجل، الشخص المعني) دون معطيات شخصية؛ لا يمكنني "
+                 "افتراض انطباق هذا النص على حالتك.",
+        "general": "حسنا. صف الإجراء وحالتك دون معطيات شخصية حتى أبحث عن القسم الرسمي المناسب.",
+    },
+    "derja": {
+        "passport": "باهي. الدليل الرسمي متاع الباسبور يفرق بين: أول مرة ولا تجديد، تبديل باسبور عادي، نظير على خاطر "
+                    "ضياع ولا سرقة ولا إتلاف، رخصة الحج، والسكنى في تونس ولا البرّا. شنية الحالة متاعك؟ احكيها من غير "
+                    "معطيات شخصية. كان حتى وحدة ما تنطبق، الإدارة وحدها تنجم توجهك.",
+        "national_id": "باهي. الدليل الرسمي متاع بطاقة التعريف يفرق بين: أول مرة، تجديد، تبديل على خاطر تبدلت "
+                       "المعطيات، وتبديل على خاطر سرقة ولا ضياع ولا إتلاف. شنية الحالة متاعك؟ كان حتى وحدة ما تنطبق، "
+                       "اتصل بالإدارة.",
+        "business_registration": "باهي. للـRNE، قلّي الشخص طبيعي ولا معنوي، نوع المؤسسة والعملية (إحداث، تبديل، "
+                                 "تشطيب، إيداع القوائم المالية...) ولا رمز الإجراء (مثلا RNE C 001). ما نجمش نفترض "
+                                 "اللي سطر ينطبق على حالتك من غير المعطيات هاذي.",
+        "legal": "باهي. قلّي شنية النقطة اللي تهمك في النص (الفصل، الواجب، الأجل، الشخص المعني) من غير معطيات شخصية؛ "
+                 "ما نجمش نفترض اللي النص ينطبق على حالتك.",
+        "general": "باهي. احكيلي على الإجراء وحالتك من غير معطيات شخصية باش نلوج على القسم الرسمي المناسب.",
+    },
+}
 LIMITS_REPLY = {
     "fr": "Je ne peux garantir ni qu'un texte officiel est toujours en vigueur, ni qu'un dossier sera accepté ou "
           "complet : mes sources sont des documents officiels dont l'applicabilité actuelle n'est pas vérifiée, "
@@ -190,6 +263,17 @@ class IntentRouter:
         self.llm_fallback = llm_fallback
 
     def route(self, req: RouteRequest) -> RouteDecision:
+        if re.search(UNMATCHED_CASE, _normalize(req.text)):
+            # "My case does not match": keep the conversation context and ask for the distinguishing facts the
+            # official source uses, instead of repeating the previous answer.
+            lang = req.language or detect_language(req.text)
+            ctx = req.context
+            category = (ctx.category if ctx and ctx.category else None) or _rule_category(_normalize(req.text)) or "general"
+            key = "legal" if ctx and ctx.legal_subject else category
+            reply = UNMATCHED_REPLY[lang].get(key) or UNMATCHED_REPLY[lang]["general"]
+            return RouteDecision(language=lang, intent="procedure_info", procedure_category=category,
+                                 hints=list(ctx.hints) if ctx else [], next_agent="reply", reply=reply,
+                                 method="rules", context=ctx)
         if re.search(LIMITS_REQUEST, _normalize(req.text)):
             # Validity, acceptance and completeness are never certified: answer deterministically instead of
             # letting a generator assert them (the corpus marks every text's applicability as unverified).

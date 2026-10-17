@@ -29,10 +29,25 @@ services:
       context: .
       dockerfile: backend/Dockerfile
     restart: unless-stopped
-    env_file:
-      - path: .env
-        required: false
+    # Least privilege: only the variables the backend reads are passed (no Telegram token, no n8n key).
+    # Defaults equal those of backend/settings.py; values come from .env through Compose interpolation.
     environment:
+      APP_ENV: ${APP_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      QDRANT_API_KEY: ${QDRANT_API_KEY:-}
+      QDRANT_COLLECTION_PREFIX: ${QDRANT_COLLECTION_PREFIX:-official_docs}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-bge-m3}
+      EMBEDDING_DIM: ${EMBEDDING_DIM:-1024}
+      LLM_MODEL: ${LLM_MODEL:-mistral:latest}
+      HTTP_USER_AGENT: ${HTTP_USER_AGENT:-TunisianAdminAssistant-Research/0.1 (academic project)}
+      HTTP_TIMEOUT_SECONDS: ${HTTP_TIMEOUT_SECONDS:-60}
+      MAX_DOWNLOAD_BYTES: ${MAX_DOWNLOAD_BYTES:-52428800}
+      DEFAULT_CRAWL_DELAY_SECONDS: ${DEFAULT_CRAWL_DELAY_SECONDS:-2}
+      MAX_UPLOAD_BYTES: ${MAX_UPLOAD_BYTES:-10485760}
+      # Privileged endpoints are disabled unless ADMIN_API_KEY is set; AGENT_API_KEY is optional (see
+      # docs/SECURITY_DEPLOYMENT_GUIDE.md before enabling it: the n8n HTTP nodes must send X-Agent-Key).
+      ADMIN_API_KEY: ${ADMIN_API_KEY:-}
+      AGENT_API_KEY: ${AGENT_API_KEY:-}
       DATA_DIR: /app/data
       SOURCES_REGISTRY: /app/config/sources.yaml
       EXTRA_CA_DIR: /app/config/certs
@@ -94,6 +109,8 @@ services:
       MAX_UPLOAD_BYTES: ${MAX_UPLOAD_BYTES:-10485760}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
       ASSISTANT_WEBHOOK_URL: http://n8n:5678/webhook/assistant
+      # Optional: sent as X-Assistant-Key once Header Auth is enabled on the n8n assistant webhook.
+      ASSISTANT_WEBHOOK_KEY: ${ASSISTANT_WEBHOOK_KEY:-}
     healthcheck:
       test: ["CMD", "python", "-c", "import pathlib,time; p=pathlib.Path('/tmp/telegram-bridge-health'); exit(0 if p.exists() and time.time()-p.stat().st_mtime<1200 else 1)"]
       interval: 30s

@@ -10,6 +10,7 @@ from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel
 
 from backend.agents_api import Agents
+from backend.agents_api import require_agent_key
 from backend.agents_api import router as agents_router
 from backend.logging_setup import configure_logging
 from backend.settings import get_settings
@@ -76,10 +77,24 @@ class IngestionRequest(BaseModel):
 
 
 def require_admin(x_admin_key: str | None = Header(default=None)) -> None:
-    """Protect state-changing endpoints when ADMIN_API_KEY is configured (constant-time comparison)."""
-    expected = app.state.settings.admin_api_key
-    if expected and not (x_admin_key and hmac.compare_digest(x_admin_key, expected)):
+    """Privileged endpoints fail closed: disabled without ADMIN_API_KEY, otherwise the key is required
+    (constant-time comparison)."""
+    expected = (app.state.settings.admin_api_key or "").strip()
+    if not expected:
+        raise HTTPException(status_code=403, detail="Administrative endpoints are disabled (ADMIN_API_KEY not configured).")
+    if not (x_admin_key and hmac.compare_digest(x_admin_key.encode(), expected.encode())):
         raise HTTPException(status_code=401, detail="Missing or invalid X-Admin-Key header.")
+
+
+@app.middleware("http")
+async def limit_request_size(request, call_next):
+    """Reject oversized bodies before they are read (uploads are also checked again by the agents)."""
+    from fastapi.responses import JSONResponse
+    length = request.headers.get("content-length")
+    limit = app.state.settings.max_request_bytes if hasattr(app.state, "settings") else 15 * 1024 * 1024
+    if length and length.isdigit() and int(length) > limit:
+        return JSONResponse(status_code=413, content={"detail": "Request body too large."})
+    return await call_next(request)
 
 
 @app.post("/ingestion/run", dependencies=[Depends(require_admin)])
@@ -100,7 +115,7 @@ async def index_run() -> dict:
     return {**asdict(report), "collection_points": counts}
 
 
-@app.post("/retrieve", response_model=list[RetrievedPassage])
+@app.post("/retrieve", response_model=list[RetrievedPassage], dependencies=[Depends(require_agent_key)])
 async def retrieve_endpoint(req: RetrievalRequest) -> list[RetrievedPassage]:
     try:
         return await run_in_threadpool(retrieve, req, app.state.settings, app.state.embedder, app.state.store)
