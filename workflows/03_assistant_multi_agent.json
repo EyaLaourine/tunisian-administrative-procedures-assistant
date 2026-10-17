@@ -1,7 +1,7 @@
 {
   "id": "TnaaAssistant01",
   "name": "03 - Assistant: multi-agent orchestration (Telegram / HTTP entry point)",
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -12,13 +12,13 @@
     {
       "id": "c3a0c1d2-0001-4c1a-9a01-000000000001",
       "name": "POST /webhook/assistant",
+      "webhookId": "8f2b6c1e-3d4a-4b5c-9e01-2a3b4c5d6e01",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
         0,
-        200
+        380
       ],
-      "webhookId": "8f2b6c1e-3d4a-4b5c-9e01-2a3b4c5d6e01",
       "parameters": {
         "httpMethod": "POST",
         "path": "assistant",
@@ -32,8 +32,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        220,
-        200
+        280,
+        380
       ],
       "parameters": {
         "conditions": {
@@ -64,9 +64,10 @@
       "name": "Form-Filling Helper",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
       "position": [
-        680,
-        -60
+        920,
+        200
       ],
       "parameters": {
         "method": "POST",
@@ -77,17 +78,17 @@
         "options": {
           "timeout": 300000
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
       "id": "c3a0c1d2-0004-4c1a-9a01-000000000004",
       "name": "Intent Router",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
       "position": [
-        460,
-        300
+        560,
+        560
       ],
       "parameters": {
         "method": "POST",
@@ -98,8 +99,7 @@
         "options": {
           "timeout": 180000
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
       "id": "c3a0c1d2-0005-4c1a-9a01-000000000005",
@@ -107,8 +107,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        680,
-        300
+        840,
+        560
       ],
       "parameters": {
         "conditions": {
@@ -139,9 +139,10 @@
       "name": "RAG Retriever",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
       "position": [
-        900,
-        400
+        1160,
+        720
       ],
       "parameters": {
         "method": "POST",
@@ -152,8 +153,7 @@
         "options": {
           "timeout": 180000
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
       "id": "c3a0c1d2-0007-4c1a-9a01-000000000007",
@@ -161,8 +161,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1120,
-        400
+        1480,
+        720
       ],
       "parameters": {
         "conditions": {
@@ -193,9 +193,10 @@
       "name": "Checklist Builder",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
       "position": [
-        1340,
-        300
+        1800,
+        560
       ],
       "parameters": {
         "method": "POST",
@@ -206,17 +207,17 @@
         "options": {
           "timeout": 600000
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
       "id": "c3a0c1d2-0009-4c1a-9a01-000000000009",
       "name": "Grounded Answer",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
       "position": [
-        1340,
-        500
+        1800,
+        840
       ],
       "parameters": {
         "method": "POST",
@@ -227,8 +228,7 @@
         "options": {
           "timeout": 600000
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
       "id": "c3a0c1d2-0010-4c1a-9a01-000000000010",
@@ -236,8 +236,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        920,
-        -60
+        1320,
+        200
       ],
       "parameters": {
         "respondWith": "json",
@@ -251,8 +251,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        900,
-        200
+        1160,
+        440
       ],
       "parameters": {
         "respondWith": "json",
@@ -266,8 +266,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        1560,
-        300
+        2120,
+        560
       ],
       "parameters": {
         "respondWith": "json",
@@ -281,8 +281,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        1560,
-        500
+        2120,
+        840
       ],
       "parameters": {
         "respondWith": "json",
@@ -296,8 +296,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        460,
-        0
+        560,
+        120
       ],
       "parameters": {
         "conditions": {
@@ -328,9 +328,10 @@
       "name": "Dossier Validator",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
       "position": [
-        680,
-        -220
+        920,
+        -40
       ],
       "parameters": {
         "method": "POST",
@@ -341,8 +342,7 @@
         "options": {
           "timeout": 300000
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
       "id": "c3a0c1d2-0016-4c1a-9a01-000000000016",
@@ -350,8 +350,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        920,
-        -220
+        1320,
+        -40
       ],
       "parameters": {
         "respondWith": "json",
@@ -365,8 +365,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        920,
-        460
+        2120,
+        1260
       ],
       "parameters": {
         "respondWith": "json",
@@ -374,6 +374,166 @@
         "options": {
           "responseCode": 503
         }
+      }
+    },
+    {
+      "id": "3e071f8a-2801-5bc8-9ed2-248dc4166d50",
+      "name": "Guide: 01 · User input",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        70
+      ],
+      "parameters": {
+        "content": "### 01 · Request Entry\nTelegram / HTTP requests enter the assistant webhook.\nFile detection separates document and text requests.",
+        "width": 520,
+        "height": 700,
+        "color": 5
+      }
+    },
+    {
+      "id": "db801a9a-ffe7-5405-8e10-93636f7d4ccb",
+      "name": "Guide: 02 · PDF and dossier",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        500,
+        -280
+      ],
+      "parameters": {
+        "content": "### 02 · Document Processing\nPDF/image uploads → Form Helper or Dossier Validator.\nOnly the competent administration can approve a dossier.",
+        "width": 1040,
+        "height": 640,
+        "color": 2
+      }
+    },
+    {
+      "id": "0ec226ae-52ff-5d69-b29a-9ffaaba8aa96",
+      "name": "Guide: 03 · Orchestration",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        500,
+        400
+      ],
+      "parameters": {
+        "content": "### 03 · Intent Routing\nSelect the procedure and response path.\nReturn clarification directly when needed.",
+        "width": 560,
+        "height": 400,
+        "color": 6
+      }
+    },
+    {
+      "id": "cefc3dd6-c4d3-5910-ab67-e9a9cb464eef",
+      "name": "Guide: Direct response",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        370
+      ],
+      "parameters": {
+        "content": "### Direct Response\nGreeting, clarification or supported refusal.",
+        "width": 460,
+        "height": 180,
+        "color": 5
+      }
+    },
+    {
+      "id": "100058aa-ba37-553a-897e-9e061f33cd74",
+      "name": "Guide: 04 · Routed retrieval",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        570
+      ],
+      "parameters": {
+        "content": "### 04 · Evidence Retrieval\nRetrieve official passages for the selected procedure.\nPass evidence to checklist or grounded-answer services.",
+        "width": 620,
+        "height": 440,
+        "color": 4
+      }
+    },
+    {
+      "id": "73ef7bc1-9c82-5de8-8746-d8b6eb3804b6",
+      "name": "Guide: 05 · Response composition",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        380
+      ],
+      "parameters": {
+        "content": "### 05 · Specialized Agents\nChecklist Builder extracts source-backed requirements.\nGrounded Answer composes a cited response.",
+        "width": 650,
+        "height": 650,
+        "color": 5
+      }
+    },
+    {
+      "id": "8e530284-59f4-5d5c-ba7d-5af612a60424",
+      "name": "Guide: Legal evidence",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        1060
+      ],
+      "parameters": {
+        "content": "### Scope & Limitations\nAssistance does not certify legal completeness.\nEnhanced legal extraction is not deployed in the running backend.",
+        "width": 620,
+        "height": 240,
+        "color": 4
+      }
+    },
+    {
+      "id": "6303eb59-daf3-5e46-9096-4ab56c09906b",
+      "name": "Guide: 06 · Errors and safety",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        1080
+      ],
+      "parameters": {
+        "content": "### 06 · Error Handling\nSix backend error outputs share a sanitized HTTP 503 response.\nAuthentication and validation failures may also appear as 503.",
+        "width": 650,
+        "height": 360,
+        "color": 3
+      }
+    },
+    {
+      "id": "ba9d7eb6-b8c6-5050-9f32-a243195ded16",
+      "name": "Guide: External infrastructure",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        840
+      ],
+      "parameters": {
+        "content": "### Backend Services\nn8n orchestrates; FastAPI runs specialized services.\nLocal models and Qdrant support inference and retrieval.",
+        "width": 1110,
+        "height": 240,
+        "color": 7
+      }
+    },
+    {
+      "id": "a46f7939-572f-54b9-8ca9-cf460c75a6d1",
+      "name": "Guide: Legend and review boundary",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        1140
+      ],
+      "parameters": {
+        "content": "### Reading the Diagram\nColored panels identify stages; wires show execution.\nServices are orchestrated, without autonomous planning.",
+        "width": 1110,
+        "height": 240,
+        "color": 7
       }
     }
   ],

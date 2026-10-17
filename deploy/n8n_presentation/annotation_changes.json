@@ -1,0 +1,582 @@
+[
+  {
+    "workflow_id": "TnaaIngestIndex1",
+    "note_id": "8ce91565-208c-5b53-986e-154fcc3256dd",
+    "note_name": "Guide: 01 · Triggers",
+    "before": {
+      "position": [
+        -80,
+        -60
+      ],
+      "parameters": {
+        "content": "## 01 · Triggers\nManual entry or Monday 03:00 schedule.\n**UNPUBLISHED: schedule is not running.**\nDo not execute during the demonstration.",
+        "width": 360,
+        "height": 620,
+        "color": 5
+      }
+    },
+    "after": {
+      "position": [
+        -80,
+        -60
+      ],
+      "parameters": {
+        "content": "### 01 · Trigger\nManual or scheduled entry point.\nInactive: do not execute during the demonstration.",
+        "width": 360,
+        "height": 620,
+        "color": 5
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaIngestIndex1",
+    "note_id": "1cf049dd-a774-52de-aea8-6c37bb5c3ec7",
+    "note_name": "Guide: 02 · Official acquisition",
+    "before": {
+      "position": [
+        320,
+        -60
+      ],
+      "parameters": {
+        "content": "## 02 · Official acquisition\n**POST /ingestion/run** → FastAPI.\nRegistry approval, robots/AI opt-outs, TLS, type validation and SHA-256 provenance/deduplication.\nReturns counts/results; no new download in this review.",
+        "width": 420,
+        "height": 620,
+        "color": 4
+      }
+    },
+    "after": {
+      "position": [
+        320,
+        -60
+      ],
+      "parameters": {
+        "content": "### 02 · Official Sources\nDownload approved official documents with provenance checks.\nSource policies and document validation remain enforced.",
+        "width": 420,
+        "height": 620,
+        "color": 4
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaIngestIndex1",
+    "note_id": "9d7c3a80-d6b7-5177-82f9-36ffa32b45e5",
+    "note_name": "Guide: 03 · Processing and chunks",
+    "before": {
+      "position": [
+        780,
+        -60
+      ],
+      "parameters": {
+        "content": "## 03 · Processing + two chunkers\n**POST /index/run** → FastAPI.\nPyMuPDF text layer; HTML/table structure; normalization and metadata.\n**Structure-aware** and **recursive** chunks.\nImage-only corpus PDFs are skipped; this ingestion path does not OCR them.",
+        "width": 600,
+        "height": 620,
+        "color": 2
+      }
+    },
+    "after": {
+      "position": [
+        780,
+        -60
+      ],
+      "parameters": {
+        "content": "### 03 · Document Processing\nThe backend extracts text and document structure.\nStructural and recursive chunks prepare the evidence.",
+        "width": 600,
+        "height": 620,
+        "color": 2
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaIngestIndex1",
+    "note_id": "235fbff3-4cbd-53c3-9be9-5987ad81a7a9",
+    "note_name": "Guide: 04 · Embeddings and Qdrant",
+    "before": {
+      "position": [
+        1420,
+        -60
+      ],
+      "parameters": {
+        "content": "## 04 · Inside the indexing request\nOllama **bge-m3**, 1024 dimensions.\n`official_docs_structure` + `official_docs_recursive`.\nVectors + document/page/heading/URL/SHA metadata.\n**Indexing recreates both collections.** No separate executable embedding node.",
+        "width": 430,
+        "height": 620,
+        "color": 4
+      }
+    },
+    "after": {
+      "position": [
+        1420,
+        -60
+      ],
+      "parameters": {
+        "content": "### 04 · Embeddings & Qdrant\nBGE-M3 embeds chunks into two Qdrant collections.\nThese stages run inside the indexing service.",
+        "width": 430,
+        "height": 620,
+        "color": 4
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaIngestIndex1",
+    "note_id": "ad13f9e5-1f43-54a9-a1ce-4b1952c66dfc",
+    "note_name": "Guide: 05 · Runtime summary",
+    "before": {
+      "position": [
+        1890,
+        -60
+      ],
+      "parameters": {
+        "content": "## 05 · Runtime summary\n`ingestion_counts`, `documents_indexed`, `documents_skipped`, `collection_points`.\nValues come from the run, not historical metrics.\nFailures stop the chain; no dedicated error response node.",
+        "width": 430,
+        "height": 620,
+        "color": 5
+      }
+    },
+    "after": {
+      "position": [
+        1890,
+        -60
+      ],
+      "parameters": {
+        "content": "### 05 · Run Summary\nReport ingestion, indexing and collection counts.\nNo live run is required to explain the pipeline.",
+        "width": 430,
+        "height": 620,
+        "color": 5
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaIngestIndex1",
+    "note_id": "15e3219f-1ceb-5869-9c30-9c8351860ee5",
+    "note_name": "Guide: Safety and legend",
+    "before": {
+      "position": [
+        -80,
+        610
+      ],
+      "parameters": {
+        "content": "### Safety gate\nAdmin endpoints require **X-Admin-Key** on the hardened backend; without a configured admin key they fail closed. Credential setup and release require approval. No ingestion, indexing, schedule activation or Qdrant write is authorized by this diagram.\n### Legend · annotations do not execute\n**Icons + wires:** real n8n execution. **Notes:** explanations only.\nBlue = input/answer (closest available to teal); purple = routing; green = knowledge; gold = PDF/processing; red = safety; gray = infrastructure.\nLLM components and deterministic services run **inside FastAPI**; none plans or negotiates autonomously.",
+        "width": 2400,
+        "height": 220,
+        "color": 3
+      }
+    },
+    "after": {
+      "position": [
+        -80,
+        610
+      ],
+      "parameters": {
+        "content": "### Pipeline Safety\nBackend stages: extraction → chunking → embeddings → indexing.\nIndexing recreates collections. Keep this workflow inactive.",
+        "width": 2400,
+        "height": 180,
+        "color": 3
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaRetrieveApi1",
+    "note_id": "79c43674-f411-5539-99ac-0a1f2e9fee58",
+    "note_name": "Guide: 01 · Retrieval request",
+    "before": {
+      "position": [
+        -80,
+        -40
+      ],
+      "parameters": {
+        "content": "## 01 · POST /webhook/retrieve\nIndependent retrieval API.\nBody: `query`, `strategy`, `top_k`, `filters`, `min_score`.\nThis webhook does **not** invoke Intent Router or conversation memory.",
+        "width": 460,
+        "height": 530,
+        "color": 5
+      }
+    },
+    "after": {
+      "position": [
+        -80,
+        -40
+      ],
+      "parameters": {
+        "content": "### 01 · Retrieval Request\nPOST /webhook/retrieve accepts a retrieval query.\nThis entry point is independent of the assistant workflow.",
+        "width": 460,
+        "height": 530,
+        "color": 5
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaRetrieveApi1",
+    "note_id": "420a9704-ecaa-5b2a-ab1c-4997bd4b63ee",
+    "note_name": "Guide: 02 · Dense retrieval backend",
+    "before": {
+      "position": [
+        440,
+        -40
+      ],
+      "parameters": {
+        "content": "## 02 · POST /retrieve\nFastAPI → Ollama **bge-m3** → filtered Qdrant cosine search.\nSelect structure or recursive collection; filter metadata and minimum score.\n**This endpoint is dense retrieval, not workflow 03’s routed hybrid retriever.**\nX-Agent-Key is required only when backend enforcement is enabled.",
+        "width": 600,
+        "height": 530,
+        "color": 4
+      }
+    },
+    "after": {
+      "position": [
+        440,
+        -40
+      ],
+      "parameters": {
+        "content": "### 02 · RAG Retriever\nBGE-M3 embeddings drive filtered, dense Qdrant search.\nThis endpoint returns passages; it does not generate answers.",
+        "width": 600,
+        "height": 530,
+        "color": 4
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaRetrieveApi1",
+    "note_id": "56af7f04-c365-5a33-9326-e9eac85b3a95",
+    "note_name": "Guide: 03 · Evidence response",
+    "before": {
+      "position": [
+        1100,
+        -40
+      ],
+      "parameters": {
+        "content": "## 03 · Return passages\nList of `RetrievedPassage` items: `score`, `text`, `chunk_id`, `citation`.\nCitation: document, URL/SHA, language, page/heading, applicability metadata.\nNo answer generation. HTTP failures currently stop execution; safe error output is a separate future change.",
+        "width": 520,
+        "height": 530,
+        "color": 5
+      }
+    },
+    "after": {
+      "position": [
+        1100,
+        -40
+      ],
+      "parameters": {
+        "content": "### 03 · Grounded Evidence\nReturn ranked passages with official-source citations.\nEvidence supports downstream answers and manual review.",
+        "width": 520,
+        "height": 530,
+        "color": 5
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaRetrieveApi1",
+    "note_id": "60fd5d2c-a2eb-52ce-a5a2-0271b850d1b1",
+    "note_name": "Guide: Relationship and legend",
+    "before": {
+      "position": [
+        -80,
+        540
+      ],
+      "parameters": {
+        "content": "### Separate entry points\nWorkflow 03 calls **/agents/retrieve directly**, not this workflow. Both access the same project Qdrant collections; their retrieval contracts and ranking paths differ. No Execute Workflow node or workflow-to-workflow arrow is implemented.\n### Legend · annotations do not execute\n**Icons + wires:** real n8n execution. **Notes:** explanations only.\nBlue = input/answer (closest available to teal); purple = routing; green = knowledge; gold = PDF/processing; red = safety; gray = infrastructure.\nLLM components and deterministic services run **inside FastAPI**; none plans or negotiates autonomously.",
+        "width": 1700,
+        "height": 280,
+        "color": 7
+      }
+    },
+    "after": {
+      "position": [
+        -80,
+        540
+      ],
+      "parameters": {
+        "content": "### Retrieval Boundary\nWorkflow 03 calls its backend retrieval agent directly.\nThis API uses dense retrieval; it does not orchestrate dialogue.",
+        "width": 1700,
+        "height": 200,
+        "color": 7
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "3e071f8a-2801-5bc8-9ed2-248dc4166d50",
+    "note_name": "Guide: 01 · User input",
+    "before": {
+      "position": [
+        -80,
+        70
+      ],
+      "parameters": {
+        "content": "## 01 · Telegram / HTTP\nExternal bridge → **POST /webhook/assistant**.\nText/language/public context OR PDF/image. Chat/user IDs stay in the bridge; not sent as a session ID to n8n.\n**File attached? true → document path; false → Intent Router.**",
+        "width": 520,
+        "height": 700,
+        "color": 5
+      }
+    },
+    "after": {
+      "position": [
+        -80,
+        70
+      ],
+      "parameters": {
+        "content": "### 01 · Request Entry\nTelegram / HTTP requests enter the assistant webhook.\nFile detection separates document and text requests.",
+        "width": 520,
+        "height": 700,
+        "color": 5
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "db801a9a-ffe7-5405-8e10-93636f7d4ccb",
+    "note_name": "Guide: 02 · PDF and dossier",
+    "before": {
+      "position": [
+        500,
+        -280
+      ],
+      "parameters": {
+        "content": "## 02 · Document assistance · deterministic FastAPI services\n**Dossier mode?** true → `/agents/dossier-check`; false → `/agents/form-check`.\nTyped uploads → PyMuPDF / Tesseract ara+fra, OpenCV alignment and ink checks; official RNE F-001 / F-002 templates. Dossier adds supported requirements and unverifiable items.\nFields are not legal approval; no private upload indexing or field values in logs.",
+        "width": 1040,
+        "height": 640,
+        "color": 2
+      }
+    },
+    "after": {
+      "position": [
+        500,
+        -280
+      ],
+      "parameters": {
+        "content": "### 02 · Document Processing\nPDF/image uploads → Form Helper or Dossier Validator.\nOnly the competent administration can approve a dossier.",
+        "width": 1040,
+        "height": 640,
+        "color": 2
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "0ec226ae-52ff-5d69-b29a-9ffaaba8aa96",
+    "note_name": "Guide: 03 · Orchestration",
+    "before": {
+      "position": [
+        500,
+        400
+      ],
+      "parameters": {
+        "content": "## 03 · Intent routing\n`/agents/route`: rules first; Mistral fallback.\nLanguage, category, public facts → next agent.\n**Direct reply? true → response; false → RAG.**",
+        "width": 560,
+        "height": 400,
+        "color": 6
+      }
+    },
+    "after": {
+      "position": [
+        500,
+        400
+      ],
+      "parameters": {
+        "content": "### 03 · Intent Routing\nSelect the procedure and response path.\nReturn clarification directly when needed.",
+        "width": 560,
+        "height": 400,
+        "color": 6
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "cefc3dd6-c4d3-5910-ab67-e9a9cb464eef",
+    "note_name": "Guide: Direct response",
+    "before": {
+      "position": [
+        1100,
+        370
+      ],
+      "parameters": {
+        "content": "### Direct response\nClarification, greeting or supported refusal.",
+        "width": 460,
+        "height": 180,
+        "color": 5
+      }
+    },
+    "after": {
+      "position": [
+        1100,
+        370
+      ],
+      "parameters": {
+        "content": "### Direct Response\nGreeting, clarification or supported refusal.",
+        "width": 460,
+        "height": 180,
+        "color": 5
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "100058aa-ba37-553a-897e-9e061f33cd74",
+    "note_name": "Guide: 04 · Routed retrieval",
+    "before": {
+      "position": [
+        1100,
+        570
+      ],
+      "parameters": {
+        "content": "## 04 · POST /agents/retrieve\nTyped query + route → passages.\nHybrid raw/expanded BGE-M3 + BM25, RRF fusion and per-document cap. No cross-encoder reranker.\n**Reviewed backend candidate adds exact RNE-code lookup; not in the current production image.**\nChecklist route? true → checklist; false → answer.",
+        "width": 620,
+        "height": 440,
+        "color": 4
+      }
+    },
+    "after": {
+      "position": [
+        1100,
+        570
+      ],
+      "parameters": {
+        "content": "### 04 · Evidence Retrieval\nRetrieve official passages for the selected procedure.\nPass evidence to checklist or grounded-answer services.",
+        "width": 620,
+        "height": 440,
+        "color": 4
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "73ef7bc1-9c82-5de8-8746-d8b6eb3804b6",
+    "note_name": "Guide: 05 · Response composition",
+    "before": {
+      "position": [
+        1760,
+        380
+      ],
+      "parameters": {
+        "content": "## 05 · Specialised composition\n`/agents/checklist`: official sections/rows; optional validated FR→EN translation.\n`/agents/answer`: gated Mistral answer + citation/number checks or source fallback. **Reviewed backend candidate adds deterministic legal extraction.**\nComposeRequest → typed result → original response nodes.",
+        "width": 650,
+        "height": 650,
+        "color": 5
+      }
+    },
+    "after": {
+      "position": [
+        1760,
+        380
+      ],
+      "parameters": {
+        "content": "### 05 · Specialized Agents\nChecklist Builder extracts source-backed requirements.\nGrounded Answer composes a cited response.",
+        "width": 650,
+        "height": 650,
+        "color": 5
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "8e530284-59f4-5d5c-ba7d-5af612a60424",
+    "note_name": "Guide: Legal evidence",
+    "before": {
+      "position": [
+        1100,
+        1060
+      ],
+      "parameters": {
+        "content": "### Candidate legal service · NOT DEPLOYED\nReviewed source/candidate backend: exact articles/tables, source excerpts and limits handling. Production image has no legal_evidence module yet.\nNo legal-validity or dossier-approval certification. Citation-index and numeric checks do **not** prove semantic entailment. Topic checking is configuration-dependent (default off).",
+        "width": 620,
+        "height": 350,
+        "color": 4
+      }
+    },
+    "after": {
+      "position": [
+        1100,
+        1060
+      ],
+      "parameters": {
+        "content": "### Scope & Limitations\nAssistance does not certify legal completeness.\nEnhanced legal extraction is not deployed in the running backend.",
+        "width": 620,
+        "height": 240,
+        "color": 4
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "6303eb59-daf3-5e46-9096-4ab56c09906b",
+    "note_name": "Guide: 06 · Errors and safety",
+    "before": {
+      "position": [
+        1760,
+        1080
+      ],
+      "parameters": {
+        "content": "## 06 · Shared backend-error response\nSix HTTP error outputs → **503 agent_unavailable** + failed_agent; four-language notice. Retains Claude’s repository candidate.\nThis is a **functional addition versus live 16-node workflow**, not a visual-only change. No raw backend error body is returned. Authentication/validation errors also map to 503; review that limitation.",
+        "width": 650,
+        "height": 360,
+        "color": 3
+      }
+    },
+    "after": {
+      "position": [
+        1760,
+        1080
+      ],
+      "parameters": {
+        "content": "### 06 · Error Handling\nSix backend error outputs share a sanitized HTTP 503 response.\nAuthentication and validation failures may also appear as 503.",
+        "width": 650,
+        "height": 360,
+        "color": 3
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "ba9d7eb6-b8c6-5050-9f32-a243195ded16",
+    "note_name": "Guide: External infrastructure",
+    "before": {
+      "position": [
+        -80,
+        840
+      ],
+      "parameters": {
+        "content": "### External / backend-internal · not additional n8n agents\nTelegram long polling and in-memory 30-minute sessions: private chat or group-member isolation in the **candidate bridge**. Production image must be checked separately.\nFastAPI on `backend:8000`; project Qdrant on `qdrant:6333`; local Ollama through `host.docker.internal:11434`.\nNo n8n session database; no workflow 02 call; successful/error/manual execution payload retention remains disabled.",
+        "width": 1110,
+        "height": 320,
+        "color": 7
+      }
+    },
+    "after": {
+      "position": [
+        -80,
+        840
+      ],
+      "parameters": {
+        "content": "### Backend Services\nn8n orchestrates; FastAPI runs specialized services.\nLocal models and Qdrant support inference and retrieval.",
+        "width": 1110,
+        "height": 240,
+        "color": 7
+      }
+    }
+  },
+  {
+    "workflow_id": "TnaaAssistant01",
+    "note_id": "a46f7939-572f-54b9-8ca9-cf460c75a6d1",
+    "note_name": "Guide: Legend and review boundary",
+    "before": {
+      "position": [
+        -80,
+        1220
+      ],
+      "parameters": {
+        "content": "### Legend · annotations do not execute\n**Icons + wires:** real n8n execution. **Notes:** explanations only.\nBlue = input/answer (closest available to teal); purple = routing; green = knowledge; gold = PDF/processing; red = safety; gray = infrastructure.\nLLM components and deterministic services run **inside FastAPI**; none plans or negotiates autonomously.\n\n**Draft for review only.** Live n8n remains unchanged. API keys are configured via Header Auth credentials in a separately coordinated release; no values are stored here.",
+        "width": 1110,
+        "height": 300,
+        "color": 7
+      }
+    },
+    "after": {
+      "position": [
+        -80,
+        1140
+      ],
+      "parameters": {
+        "content": "### Reading the Diagram\nColored panels identify stages; wires show execution.\nServices are orchestrated, without autonomous planning.",
+        "width": 1110,
+        "height": 240,
+        "color": 7
+      }
+    }
+  }
+]

@@ -1,6 +1,6 @@
 # Final n8n demonstration guide
 
-The new layout is an **offline candidate** until explicitly approved and applied. Existing editors are available at [local n8n](http://localhost:5678). Authenticate privately if prompted. Use the three editor links in [architecture](N8N_THREE_WORKFLOW_ARCHITECTURE.md), then **Zoom to Fit**; zoom into sections for readable detail. Do not execute workflow 01 or change publication for presentation.
+The base annotated layout is synchronized and verified; the concise [presentation polish](N8N_PRESENTATION_POLISH.md) is a separate offline proposal awaiting approval. Existing editors are available at [local n8n](http://localhost:5678). Authenticate privately if prompted. Use the three editor links in [architecture](N8N_THREE_WORKFLOW_ARCHITECTURE.md), then **Zoom to Fit**; zoom into sections for readable detail. Do not execute workflow 01 or change publication for presentation.
 
 ## Fifteen-minute demonstration
 

@@ -1,0 +1,189 @@
+{
+  "status": "SYNCHRONIZED_VERIFIED",
+  "approved_code_commit": "c86033c529b140fd52883b3154742030b80e7ccb",
+  "approved_candidates_commit": "6021546a1bb16166b919d92aa75a655d1bbead60",
+  "backups_cli": "tmp/n8n-review/20261017T231419059090Z",
+  "backups_api": "tmp\\n8n-live-release\\20261017T231447Z-second",
+  "final_exports": "C:\\Users\\Eya Laourine\\tunisian-admin-assistant\\tmp\\n8n-review\\20261017T231608959554Z",
+  "workflows": [
+    {
+      "id": "TnaaIngestIndex1",
+      "status": "verified",
+      "backup_sha256": "4f4e8646cdcd9701037c5a3d077769ad2b0d9880d9fa09d7ecb51a41f7fe66f4",
+      "draft_version_id": "db99cce0-57ed-4ead-9545-4b8498892e68",
+      "published_version_id": null,
+      "runtime_publication": {
+        "id": "TnaaIngestIndex1",
+        "published": null,
+        "outbox": null,
+        "triggers": []
+      },
+      "normalized_runtime_equal": true,
+      "full_nodes_layout_equal": true,
+      "executable_nodes": 5,
+      "sticky_notes": 6,
+      "final_export_strict_equal": true,
+      "original_node_ids_preserved": true,
+      "webhook_paths": []
+    },
+    {
+      "id": "TnaaRetrieveApi1",
+      "status": "verified",
+      "backup_sha256": "8409931df1a9b74164151e26c4dc771b19f4b193c7e948d4c61bfed369c0a198",
+      "draft_version_id": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+      "published_version_id": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+      "runtime_publication": {
+        "id": "TnaaRetrieveApi1",
+        "published": {
+          "publishedVersionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34"
+        },
+        "outbox": {
+          "publishedVersionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+          "status": "completed"
+        },
+        "triggers": [
+          {
+            "nodeId": "b2f0c1d2-0001-4c1a-9a01-000000000001",
+            "versionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+            "status": "activated",
+            "triggerKind": "persisted"
+          }
+        ]
+      },
+      "normalized_runtime_equal": true,
+      "full_nodes_layout_equal": true,
+      "executable_nodes": 3,
+      "sticky_notes": 4,
+      "final_export_strict_equal": true,
+      "original_node_ids_preserved": true,
+      "webhook_paths": [
+        "retrieve"
+      ]
+    },
+    {
+      "id": "TnaaAssistant01",
+      "status": "verified",
+      "backup_sha256": "5156c8c5a7935b2a933a2e3052e91359b637caac979f4a99a9cacc1ccb772aa3",
+      "draft_version_id": "21e4283f-f49d-495b-88e6-6c74647b669d",
+      "published_version_id": "21e4283f-f49d-495b-88e6-6c74647b669d",
+      "runtime_publication": {
+        "id": "TnaaAssistant01",
+        "published": {
+          "publishedVersionId": "21e4283f-f49d-495b-88e6-6c74647b669d"
+        },
+        "outbox": {
+          "publishedVersionId": "21e4283f-f49d-495b-88e6-6c74647b669d",
+          "status": "completed"
+        },
+        "triggers": [
+          {
+            "nodeId": "c3a0c1d2-0001-4c1a-9a01-000000000001",
+            "versionId": "21e4283f-f49d-495b-88e6-6c74647b669d",
+            "status": "activated",
+            "triggerKind": "persisted"
+          }
+        ]
+      },
+      "normalized_runtime_equal": true,
+      "full_nodes_layout_equal": true,
+      "executable_nodes": 17,
+      "sticky_notes": 10,
+      "final_export_strict_equal": true,
+      "original_node_ids_preserved": true,
+      "webhook_paths": [
+        "assistant"
+      ]
+    }
+  ],
+  "publication_metadata": [
+    {
+      "id": "TnaaIngestIndex1",
+      "published": null,
+      "outbox": null,
+      "triggers": []
+    },
+    {
+      "id": "TnaaRetrieveApi1",
+      "published": {
+        "publishedVersionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34"
+      },
+      "outbox": {
+        "publishedVersionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+        "status": "completed"
+      },
+      "triggers": [
+        {
+          "nodeId": "b2f0c1d2-0001-4c1a-9a01-000000000001",
+          "versionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+          "status": "activated",
+          "triggerKind": "persisted"
+        }
+      ]
+    },
+    {
+      "id": "TnaaAssistant01",
+      "published": {
+        "publishedVersionId": "21e4283f-f49d-495b-88e6-6c74647b669d"
+      },
+      "outbox": {
+        "publishedVersionId": "21e4283f-f49d-495b-88e6-6c74647b669d",
+        "status": "completed"
+      },
+      "triggers": [
+        {
+          "nodeId": "c3a0c1d2-0001-4c1a-9a01-000000000001",
+          "versionId": "21e4283f-f49d-495b-88e6-6c74647b669d",
+          "status": "activated",
+          "triggerKind": "persisted"
+        }
+      ]
+    }
+  ],
+  "workflow03_success_paths_unchanged": true,
+  "workflow03_error_outputs_verified": 6,
+  "error_response_status": 503,
+  "modifying_requests": 5,
+  "rollbacks": 0,
+  "health_gets": {
+    "n8n": 200,
+    "backend": 200
+  },
+  "containers_unchanged": {
+    "tunisian-admin-assistant-backend-1": true,
+    "tunisian-admin-assistant-n8n-1": true,
+    "tunisian-admin-telegram-bridge": true,
+    "final-candidate": true,
+    "final-n8n": true
+  },
+  "telegram_messages_sent": 0,
+  "ingestion_executions": 0,
+  "qdrant_writes": 0,
+  "credentials_changed": false,
+  "native_rendering": {
+    "TnaaIngestIndex1": {
+      "editor_opened": true,
+      "zoom_to_fit": true,
+      "native_screenshot_visually_inspected": true,
+      "workflow_logic_edited_in_ui": false
+    },
+    "TnaaRetrieveApi1": {
+      "editor_opened": true,
+      "zoom_to_fit": true,
+      "native_screenshot_visually_inspected": true,
+      "workflow_logic_edited_in_ui": false
+    },
+    "TnaaAssistant01": {
+      "editor_opened": true,
+      "zoom_to_fit": true,
+      "native_screenshot_visually_inspected": true,
+      "workflow_logic_edited_in_ui": false
+    }
+  },
+  "workflow03_all_original_output_branches_unchanged": true,
+  "native_rendering_limitations": "Workflow 03 is dense at fit-to-screen zoom; zoom into sections for readable text. Approved notes still include review-time Draft/live-unchanged wording; those exact candidate annotations were not rewritten.",
+  "functional_acceptance_executed": false,
+  "backend_deployed": false,
+  "canonical_workflow_files_modified": false,
+  "git_push_or_merge": false,
+  "post_ui_read_only_api_state_and_versions_unchanged": true
+}

@@ -1,5 +1,7 @@
 # Native n8n visual candidates
 
+Current status: these original candidates were synchronized successfully; see [the second synchronization report](N8N_SECOND_SYNCHRONIZATION_RESULT.md). A separate, note-only presentation polish is now prepared offline and awaits approval: [N8N_PRESENTATION_POLISH.md](N8N_PRESENTATION_POLISH.md). The remaining sections describe the original review stage and its original counts/palette, not permission to apply the new polish.
+
 Offline files: [candidate directory](../deploy/n8n_review/candidates/). Reproduce with `.venv/Scripts/python scripts/n8n_workflow_review.py --prepare --baseline tmp/n8n-review/20261017T220611Z` from the repository root; the private baseline is intentionally not committed. Reviewed candidates themselves are committed and tests can run without these private exports.
 
 | Workflow | Live executable + notes | Candidate executable + notes | Organization |

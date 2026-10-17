@@ -1,0 +1,95 @@
+{
+  "status": "VISUAL_SYNCHRONIZATION_COMPLETE",
+  "workflows": [
+    {
+      "id": "TnaaIngestIndex1",
+      "version_id": "819f02d9-349d-4567-bdeb-ed3f68092b4f",
+      "published_version_id": null,
+      "active": false,
+      "executable_nodes": 5,
+      "sticky_notes": 6,
+      "functional_equivalence": true,
+      "candidate_layout_exact": true,
+      "native_fit_rendering": "verified",
+      "webhook_trigger": []
+    },
+    {
+      "id": "TnaaRetrieveApi1",
+      "version_id": "f4849a5c-a045-4ff3-a757-23912814e11e",
+      "published_version_id": "f4849a5c-a045-4ff3-a757-23912814e11e",
+      "active": true,
+      "executable_nodes": 3,
+      "sticky_notes": 4,
+      "functional_equivalence": true,
+      "candidate_layout_exact": true,
+      "native_fit_rendering": "verified",
+      "webhook_trigger": [
+        {
+          "nodeId": "b2f0c1d2-0001-4c1a-9a01-000000000001",
+          "versionId": "f4849a5c-a045-4ff3-a757-23912814e11e",
+          "status": "activated",
+          "triggerKind": "persisted"
+        }
+      ]
+    },
+    {
+      "id": "TnaaAssistant01",
+      "version_id": "af6ad259-9044-4947-82da-a584a0fce72c",
+      "published_version_id": "af6ad259-9044-4947-82da-a584a0fce72c",
+      "active": true,
+      "executable_nodes": 17,
+      "sticky_notes": 10,
+      "functional_equivalence": true,
+      "candidate_layout_exact": true,
+      "native_fit_rendering": "verified",
+      "webhook_trigger": [
+        {
+          "nodeId": "c3a0c1d2-0001-4c1a-9a01-000000000001",
+          "versionId": "af6ad259-9044-4947-82da-a584a0fce72c",
+          "status": "activated",
+          "triggerKind": "persisted"
+        }
+      ]
+    }
+  ],
+  "backup_directory": "tmp\\n8n-review\\20261017T233138897587Z",
+  "release_directory": "tmp\\n8n-live-release\\20261017T2333Z-presentation",
+  "modifying_api_requests": 5,
+  "errors": [],
+  "rollbacks": [],
+  "webhook_registrations": [
+    {
+      "workflowId": "TnaaRetrieveApi1",
+      "webhookPath": "retrieve",
+      "method": "POST",
+      "node": "POST /webhook/retrieve"
+    },
+    {
+      "workflowId": "TnaaAssistant01",
+      "webhookPath": "assistant",
+      "method": "POST",
+      "node": "POST /webhook/assistant"
+    }
+  ],
+  "tests": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0
+  },
+  "native_rendering": {
+    "all_three_zoom_to_fit": true,
+    "node_or_wire_occlusion_observed": false,
+    "limitations": "At the observed 802x668 viewport, fit view is an overview; zoom in for full annotation text. Existing curved wire crossings remain. Colored panels intentionally surround nodes."
+  },
+  "restrictions": {
+    "backend_deployed": false,
+    "telegram_deployed": false,
+    "containers_restarted": false,
+    "security_enforcement_changed": false,
+    "ingestion_executed": false,
+    "qdrant_written": false,
+    "telegram_messages_sent": false,
+    "functional_acceptance_tests_run": false,
+    "pushed_or_merged": false
+  }
+}

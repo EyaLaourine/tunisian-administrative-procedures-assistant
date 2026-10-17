@@ -1,0 +1,751 @@
+{
+  "updatedAt": "2026-10-17T23:15:39.804Z",
+  "createdAt": "2026-10-15T21:55:45.961Z",
+  "id": "TnaaAssistant01",
+  "name": "03 - Assistant: multi-agent orchestration (Telegram / HTTP entry point)",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "id": "c3a0c1d2-0001-4c1a-9a01-000000000001",
+      "name": "POST /webhook/assistant",
+      "webhookId": "8f2b6c1e-3d4a-4b5c-9e01-2a3b4c5d6e01",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        380
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "assistant",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0002-4c1a-9a01-000000000002",
+      "name": "File attached?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        280,
+        380
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d1e2f3a4-0001-4000-8000-000000000001",
+              "leftValue": "={{ $json.body.file ? 'yes' : 'no' }}",
+              "rightValue": "yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0003-4c1a-9a01-000000000003",
+      "name": "Form-Filling Helper",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "position": [
+        920,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/agents/form-check",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ filename: $json.body.file.filename || 'upload', mime_type: $json.body.file.mime_type, data_b64: $json.body.file.data_b64, caption: $json.body.caption || null, language: $json.body.language || null }) }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "c3a0c1d2-0004-4c1a-9a01-000000000004",
+      "name": "Intent Router",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "position": [
+        560,
+        560
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/agents/route",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: $json.body.text, language: $json.body.language || null, context: $json.body.context || null }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      }
+    },
+    {
+      "id": "c3a0c1d2-0005-4c1a-9a01-000000000005",
+      "name": "Direct reply?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        840,
+        560
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d1e2f3a4-0002-4000-8000-000000000002",
+              "leftValue": "={{ $json.next_agent }}",
+              "rightValue": "reply",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0006-4c1a-9a01-000000000006",
+      "name": "RAG Retriever",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "position": [
+        1160,
+        720
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/agents/retrieve",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $('POST /webhook/assistant').item.json.body.text, route: $json, top_k: 8 }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      }
+    },
+    {
+      "id": "c3a0c1d2-0007-4c1a-9a01-000000000007",
+      "name": "Checklist route?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        720
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d1e2f3a4-0003-4000-8000-000000000003",
+              "leftValue": "={{ $('Intent Router').item.json.next_agent }}",
+              "rightValue": "checklist",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0008-4c1a-9a01-000000000008",
+      "name": "Checklist Builder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "position": [
+        1800,
+        560
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/agents/checklist",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $('POST /webhook/assistant').item.json.body.text, route: $('Intent Router').item.json, passages: $json.passages }) }}",
+        "options": {
+          "timeout": 600000
+        }
+      }
+    },
+    {
+      "id": "c3a0c1d2-0009-4c1a-9a01-000000000009",
+      "name": "Grounded Answer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "position": [
+        1800,
+        840
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/agents/answer",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $('POST /webhook/assistant').item.json.body.text, route: $('Intent Router').item.json, passages: $json.passages }) }}",
+        "options": {
+          "timeout": 600000
+        }
+      }
+    },
+    {
+      "id": "c3a0c1d2-0010-4c1a-9a01-000000000010",
+      "name": "Respond: form check",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        200
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'form_helper', recognised: $json.recognised, form_doc_id: $json.form_doc_id, missing: $json.missing, error: $json.error, form_url: $json.form_url, language: $('POST /webhook/assistant').item.json.body.language || null }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0011-4c1a-9a01-000000000011",
+      "name": "Respond: direct reply",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1160,
+        440
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: $json.reply, agent: 'intent_router', route: $json, context: $json.context || null }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0012-4c1a-9a01-000000000012",
+      "name": "Respond: checklist",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2120,
+        560
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'checklist_builder', route: $('Intent Router').item.json, context: $('Intent Router').item.json.context || null, found: $json.found, doc_id: $json.doc_id, warnings: $json.warnings, translation: $json.translation, citations: $json.citations }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0013-4c1a-9a01-000000000013",
+      "name": "Respond: answer",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2120,
+        840
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'grounded_answer', route: $('Intent Router').item.json, context: $('Intent Router').item.json.context || null, found: $json.found, method: $json.method, prompt_ref: $json.prompt_ref, citations: $json.citations }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0014-4c1a-9a01-000000000014",
+      "name": "Dossier mode?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        120
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d1e2f3a4-0004-4000-8000-000000000004",
+              "leftValue": "={{ ($json.body.mode || '') === 'dossier' ? 'yes' : 'no' }}",
+              "rightValue": "yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c3a0c1d2-0015-4c1a-9a01-000000000015",
+      "name": "Dossier Validator",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "position": [
+        920,
+        -40
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/agents/dossier-check",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ filename: $json.body.file.filename || 'upload', mime_type: $json.body.file.mime_type, data_b64: $json.body.file.data_b64, caption: $json.body.caption || null, language: $json.body.language || null }) }}",
+        "options": {
+          "timeout": 300000
+        }
+      }
+    },
+    {
+      "id": "c3a0c1d2-0016-4c1a-9a01-000000000016",
+      "name": "Respond: dossier check",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        -40
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: $json.text, agent: 'dossier_validator', recognised: $json.recognized, form_doc_id: $json.form_type ? $json.form_type.doc_id : null, form_url: $json.form_type ? $json.form_type.url : null, missing: $json.missing_fields, error: $json.error, language: $('POST /webhook/assistant').item.json.body.language || null, citations: $json.source_references, report: { form_fields: { filled: $json.filled_fields, missing: $json.missing_fields, unreadable: $json.unreadable_fields, cannot_verify: $json.unverifiable_fields, details: $json.recognized_fields }, dossier: { official_checklist_available: $json.official_checklist_available, official_requirements: $json.official_requirements, requirements_not_verified: $json.requirements_not_verified, completeness_certified: false }, readiness_summary: $json.readiness_summary, limitations: $json.limitations } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d1e2f3a4-00ee-4000-8000-0000000000ee",
+      "name": "Respond: agent error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2120,
+        1260
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: ({ en: 'The assistant is temporarily unavailable. Please try again later.', fr: \"L'assistant est temporairement indisponible. Veuillez réessayer plus tard.\", ar: 'المساعد غير متاح مؤقتا. يرجى المحاولة لاحقا.', derja: 'المساعد موش متوفر توا، عاود جرب بعد شوية.' })[$('POST /webhook/assistant').item.json.body.language] || \"L'assistant est temporairement indisponible. Veuillez réessayer plus tard.\", agent: 'orchestrator', error: 'agent_unavailable', failed_agent: $prevNode.name }) }}",
+        "options": {
+          "responseCode": 503
+        }
+      }
+    },
+    {
+      "id": "3e071f8a-2801-5bc8-9ed2-248dc4166d50",
+      "name": "Guide: 01 · User input",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        70
+      ],
+      "parameters": {
+        "content": "### 01 · Request Entry\nTelegram / HTTP requests enter the assistant webhook.\nFile detection separates document and text requests.",
+        "width": 520,
+        "height": 700,
+        "color": 5
+      }
+    },
+    {
+      "id": "db801a9a-ffe7-5405-8e10-93636f7d4ccb",
+      "name": "Guide: 02 · PDF and dossier",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        500,
+        -280
+      ],
+      "parameters": {
+        "content": "### 02 · Document Processing\nPDF/image uploads → Form Helper or Dossier Validator.\nOnly the competent administration can approve a dossier.",
+        "width": 1040,
+        "height": 640,
+        "color": 2
+      }
+    },
+    {
+      "id": "0ec226ae-52ff-5d69-b29a-9ffaaba8aa96",
+      "name": "Guide: 03 · Orchestration",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        500,
+        400
+      ],
+      "parameters": {
+        "content": "### 03 · Intent Routing\nSelect the procedure and response path.\nReturn clarification directly when needed.",
+        "width": 560,
+        "height": 400,
+        "color": 6
+      }
+    },
+    {
+      "id": "cefc3dd6-c4d3-5910-ab67-e9a9cb464eef",
+      "name": "Guide: Direct response",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        370
+      ],
+      "parameters": {
+        "content": "### Direct Response\nGreeting, clarification or supported refusal.",
+        "width": 460,
+        "height": 180,
+        "color": 5
+      }
+    },
+    {
+      "id": "100058aa-ba37-553a-897e-9e061f33cd74",
+      "name": "Guide: 04 · Routed retrieval",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        570
+      ],
+      "parameters": {
+        "content": "### 04 · Evidence Retrieval\nRetrieve official passages for the selected procedure.\nPass evidence to checklist or grounded-answer services.",
+        "width": 620,
+        "height": 440,
+        "color": 4
+      }
+    },
+    {
+      "id": "73ef7bc1-9c82-5de8-8746-d8b6eb3804b6",
+      "name": "Guide: 05 · Response composition",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        380
+      ],
+      "parameters": {
+        "content": "### 05 · Specialized Agents\nChecklist Builder extracts source-backed requirements.\nGrounded Answer composes a cited response.",
+        "width": 650,
+        "height": 650,
+        "color": 5
+      }
+    },
+    {
+      "id": "8e530284-59f4-5d5c-ba7d-5af612a60424",
+      "name": "Guide: Legal evidence",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        1060
+      ],
+      "parameters": {
+        "content": "### Scope & Limitations\nAssistance does not certify legal completeness.\nEnhanced legal extraction is not deployed in the running backend.",
+        "width": 620,
+        "height": 240,
+        "color": 4
+      }
+    },
+    {
+      "id": "6303eb59-daf3-5e46-9096-4ab56c09906b",
+      "name": "Guide: 06 · Errors and safety",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        1080
+      ],
+      "parameters": {
+        "content": "### 06 · Error Handling\nSix backend error outputs share a sanitized HTTP 503 response.\nAuthentication and validation failures may also appear as 503.",
+        "width": 650,
+        "height": 360,
+        "color": 3
+      }
+    },
+    {
+      "id": "ba9d7eb6-b8c6-5050-9f32-a243195ded16",
+      "name": "Guide: External infrastructure",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        840
+      ],
+      "parameters": {
+        "content": "### Backend Services\nn8n orchestrates; FastAPI runs specialized services.\nLocal models and Qdrant support inference and retrieval.",
+        "width": 1110,
+        "height": 240,
+        "color": 7
+      }
+    },
+    {
+      "id": "a46f7939-572f-54b9-8ca9-cf460c75a6d1",
+      "name": "Guide: Legend and review boundary",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        1140
+      ],
+      "parameters": {
+        "content": "### Reading the Diagram\nColored panels identify stages; wires show execution.\nServices are orchestrated, without autonomous planning.",
+        "width": 1110,
+        "height": 240,
+        "color": 7
+      }
+    }
+  ],
+  "connections": {
+    "POST /webhook/assistant": {
+      "main": [
+        [
+          {
+            "node": "File attached?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "File attached?": {
+      "main": [
+        [
+          {
+            "node": "Dossier mode?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Intent Router",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form-Filling Helper": {
+      "main": [
+        [
+          {
+            "node": "Respond: form check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Intent Router": {
+      "main": [
+        [
+          {
+            "node": "Direct reply?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Direct reply?": {
+      "main": [
+        [
+          {
+            "node": "Respond: direct reply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RAG Retriever",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RAG Retriever": {
+      "main": [
+        [
+          {
+            "node": "Checklist route?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checklist route?": {
+      "main": [
+        [
+          {
+            "node": "Checklist Builder",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Grounded Answer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checklist Builder": {
+      "main": [
+        [
+          {
+            "node": "Respond: checklist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grounded Answer": {
+      "main": [
+        [
+          {
+            "node": "Respond: answer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dossier mode?": {
+      "main": [
+        [
+          {
+            "node": "Dossier Validator",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Form-Filling Helper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dossier Validator": {
+      "main": [
+        [
+          {
+            "node": "Respond: dossier check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond: agent error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "21e4283f-f49d-495b-88e6-6c74647b669d",
+  "activeVersionId": "21e4283f-f49d-495b-88e6-6c74647b669d",
+  "versionCounter": 5,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}

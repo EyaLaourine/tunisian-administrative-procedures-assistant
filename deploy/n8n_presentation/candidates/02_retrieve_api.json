@@ -1,0 +1,167 @@
+{
+  "updatedAt": "2026-10-17T23:15:30.876Z",
+  "createdAt": "2026-10-15T21:07:45.681Z",
+  "id": "TnaaRetrieveApi1",
+  "name": "02 - Retrieval API (RAG Retriever agent entry point)",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "id": "b2f0c1d2-0001-4c1a-9a01-000000000001",
+      "name": "POST /webhook/retrieve",
+      "webhookId": "5d0c3a8e-6b0e-4f0e-9a51-7a1d2c3b4e01",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        240
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "retrieve",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "b2f0c1d2-0002-4c1a-9a01-000000000002",
+      "name": "RAG Retriever (backend)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        600,
+        240
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/retrieve",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "b2f0c1d2-0003-4c1a-9a01-000000000003",
+      "name": "Return passages",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1260,
+        240
+      ],
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      }
+    },
+    {
+      "id": "79c43674-f411-5539-99ac-0a1f2e9fee58",
+      "name": "Guide: 01 · Retrieval request",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -40
+      ],
+      "parameters": {
+        "content": "### 01 · Retrieval Request\nPOST /webhook/retrieve accepts a retrieval query.\nThis entry point is independent of the assistant workflow.",
+        "width": 460,
+        "height": 530,
+        "color": 5
+      }
+    },
+    {
+      "id": "420a9704-ecaa-5b2a-ab1c-4997bd4b63ee",
+      "name": "Guide: 02 · Dense retrieval backend",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        440,
+        -40
+      ],
+      "parameters": {
+        "content": "### 02 · RAG Retriever\nBGE-M3 embeddings drive filtered, dense Qdrant search.\nThis endpoint returns passages; it does not generate answers.",
+        "width": 600,
+        "height": 530,
+        "color": 4
+      }
+    },
+    {
+      "id": "56af7f04-c365-5a33-9326-e9eac85b3a95",
+      "name": "Guide: 03 · Evidence response",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        -40
+      ],
+      "parameters": {
+        "content": "### 03 · Grounded Evidence\nReturn ranked passages with official-source citations.\nEvidence supports downstream answers and manual review.",
+        "width": 520,
+        "height": 530,
+        "color": 5
+      }
+    },
+    {
+      "id": "60fd5d2c-a2eb-52ce-a5a2-0271b850d1b1",
+      "name": "Guide: Relationship and legend",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        540
+      ],
+      "parameters": {
+        "content": "### Retrieval Boundary\nWorkflow 03 calls its backend retrieval agent directly.\nThis API uses dense retrieval; it does not orchestrate dialogue.",
+        "width": 1700,
+        "height": 200,
+        "color": 7
+      }
+    }
+  ],
+  "connections": {
+    "POST /webhook/retrieve": {
+      "main": [
+        [
+          {
+            "node": "RAG Retriever (backend)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RAG Retriever (backend)": {
+      "main": [
+        [
+          {
+            "node": "Return passages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+  "activeVersionId": "e3ec782c-8186-45b5-9862-8ffd27df0b34",
+  "versionCounter": 2,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
+}
