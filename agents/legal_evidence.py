@@ -190,9 +190,11 @@ def rank_sections(query, sections, subject, passages=()):
     scores = []
     for s, text in zip(sections, texts):
         score = sum(idf[w] for w in words if w in text)
-        # Retrieved passages of the same act corroborate an article (cross-language questions).
-        score += sum(0.5 for p in passages if p.citation.doc_id == subject
-                     and any(norm(part) in norm(p.text) for part in s['parts'] if len(part) > 45))
+        # Retrieved passages of the same act only break ties between articles that already have evidence
+        # for the question; they must not turn an unrelated article into a candidate.
+        if score > 0:
+            score += sum(0.5 for p in passages if p.citation.doc_id == subject
+                         and any(norm(part) in norm(p.text) for part in s['parts'] if len(part) > 45))
         scores.append(score)
     best = max(scores, default=0)
     if best <= 0:

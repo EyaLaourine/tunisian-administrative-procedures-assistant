@@ -265,3 +265,21 @@ def test_requests_to_certify_validity_or_completeness_get_the_limits_reply(text,
 ])
 def test_ordinary_questions_are_not_caught_by_the_limits_rule(text):
     assert router.route(RouteRequest(text=text, language="fr")).next_agent != "reply"
+
+
+@needs_corpus
+def test_retrieved_passages_do_not_turn_an_unrelated_article_into_the_answer():
+    from types import SimpleNamespace
+    from agents.legal_evidence import rank_sections
+    subject = "rne-decree-2022-298-fees-fr"
+    secs = articles(corpus.blocks(subject))
+    art5 = " ".join(next(s for s in secs if s["number"] == 5)["parts"])
+    passages = [SimpleNamespace(citation=SimpleNamespace(doc_id=subject), text=art5)]
+    chosen = rank_sections("Que prévoit le décret Présidentiel 2022-298 pour les redevances RNE ?", secs, subject, passages)
+    assert [s["number"] for s in chosen] == [1]
+
+
+@pytest.mark.parametrize("ctx", [None, DialogueContext()])
+def test_applicability_question_gets_the_limits_reply(ctx):
+    text = "RNE : Pour Formalités, que faut-il vérifier avant d’appliquer ce texte historique à une démarche actuelle ?"
+    assert router.route(RouteRequest(text=text, language="fr", context=ctx)).next_agent == "reply"

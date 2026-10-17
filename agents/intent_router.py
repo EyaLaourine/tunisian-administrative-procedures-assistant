@@ -105,6 +105,8 @@ LIMITS_REQUEST = (
     r"garanti|guarantee|toujours en vigueur|encore en vigueur|still in force|still valid|currently in force"
     r"|sera accept|will be accepted|sera approuv|will be approved|sans contr[oô]le|without (?:any )?(?:check|control)"
     r"|d[ée]duire.{0,80}complet|deduce.{0,80}complete|officiellement complet|officially complete"
+    # applicability of a text to the user's current procedure
+    r"|v[ée]rifier avant d.appliquer|verify before applying|before applying (?:this|the) text"
     r"|اضمن|ضمان|مضمون|ساري المفعول|سارية المفعول|سيقبل"
 )
 LIMITS_REPLY = {

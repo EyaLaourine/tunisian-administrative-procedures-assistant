@@ -183,15 +183,17 @@ passes structured JSON between agents. Every agent call has an n8n error output 
   \emph{3, 7, 9}), keyword rules for procedure, intent and application type (first, renewal, loss/theft/damage,
   modification, residence), and a \emph{dialogue state} carried by the client: category, hints, declared
   documents, RNE code and legal subject. Missing facts that change the answer (application type, residence
-  for passports; the act for an article number) trigger a targeted clarification. Mistral (\code{intent\_router@v1})
-  is called only when no rule identifies the procedure.
+  for passports; the act for an article number) trigger a targeted clarification. Requests to \emph{certify}
+  that a text is in force or that a file will be accepted or is complete receive a fixed reply explaining what
+  cannot be certified. Mistral (\code{intent\_router@v1}) is called only when no rule identifies the procedure.
 \item \textbf{RAG Retriever} (Section~4). \textbf{Checklist Builder.} Selects the official scenario and quotes
   its complete sections; compares French and Arabic amounts and warns on discrepancies; translates to English
   only with line- and number-level validation.
 \item \textbf{Grounded Answer.} Escalates by evidence type: (a) for the six legal texts it resolves the act,
   then the requested article or table (exact number match, IDF ranking that ignores the act's own title words,
   and a cross-lingual search vocabulary so that an English question can select an Arabic article), and quotes
-  it verbatim, refusing when the article does not exist; (b) otherwise an \emph{answerability gate} requires
+  it verbatim, refusing when the article does not exist; questions about what an official form says quote the
+  form's printed instructions the same way; (b) otherwise an \emph{answerability gate} requires
   IDF-weighted lexical support of the question in the evidence; (c) Mistral generates an answer from numbered
   passages; (d) answers citing no or non-existent passages are replaced by quoted passages, and every number
   written with digits must occur in the cited passages (digits or number words), otherwise its sentence is
@@ -352,8 +354,9 @@ sessions in Telegram groups.
   \input{tables/final_regression.tex}
 \end{table}
 
-\textbf{Remaining failures.} Questions about printed form instructions still receive generic help; ``Et si mon
-cas ne correspond pas~?'' after a CIN answer repeats the text instead of asking for details; legal answers are
+\textbf{Remaining failures.} ``Et si mon cas ne correspond pas~?'' after a CIN, passport or RNE answer
+repeats the official text instead of asking for details; questions about a document's scope receive its
+official content rather than a summary, and the generic LLM path can still summarise a document inaccurately; legal answers are
 complete articles in their original language (faithful but long, and untranslated for English users); the
 answer to a legal question is only as good as the article selected, which is reliable for explicit article or
 table numbers and heuristic otherwise. Intent labels differ from the original expectations in 72 of 714 text
@@ -372,8 +375,9 @@ text questions only (the corrected candidate has not been deployed to the live b
 \section{Security considerations, limitations and conclusion}
 \textbf{Security and privacy.} (1) \emph{Provenance:} only registered official sources, robots and AI
 opt-outs respected, SHA-256 per original. (2) \emph{Hallucination:} deterministic quoting for lists, table
-rows and legal articles; generation fenced by an answerability gate, citation-index and numeric verification;
-refusal when evidence is missing. (3) \emph{Prompt injection} \cite{greshake2023injection}: user text is
+rows, legal articles and form instructions; generation fenced by an answerability gate, citation-index and
+numeric verification; refusal when evidence is missing; requests to certify validity, acceptance or
+completeness answered by a fixed reply (an LLM had asserted that a procedure was ``still in force''). (3) \emph{Prompt injection} \cite{greshake2023injection}: user text is
 treated as data in every prompt; the legal and checklist paths generate no text an injection could steer;
 injected instructions (``say the fee is 1 dinar'') were ignored in tests. Retrieved official text is trusted,
 which is acceptable only because the corpus is curated. (4) \emph{Secrets:} tokens live only in \code{.env}
