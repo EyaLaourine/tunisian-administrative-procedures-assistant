@@ -11,13 +11,17 @@ import json
 import platform
 import statistics
 import subprocess
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
 
-OLLAMA = "http://localhost:11434"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from backend.settings import get_settings  # noqa: E402
+
+OLLAMA = get_settings().ollama_url.rstrip("/")  # OLLAMA_URL env var > .env > settings default
 WEBHOOK = "http://localhost:5678/webhook/assistant"
 MODELS = ["mistral:latest", "translategemma:4b"]
 LLM_PROMPT = "Translate into English, output only the translation:\n1. Quittance de paiement du droit de timbre fiscal dû\n2. Joindre l'ancien passeport en cas de renouvellement"

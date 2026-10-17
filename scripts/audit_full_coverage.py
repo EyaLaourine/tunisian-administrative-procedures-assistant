@@ -96,7 +96,7 @@ def live_snapshot():
     services = [{k: x.get(k) for k in ['Service', 'ID', 'Image', 'State', 'Health']} for x in map(json.loads, docker.stdout.splitlines()) if x]
     health = {}
     with httpx.Client(timeout=15) as h:
-        for key, url in [('backend', 'http://localhost:8000/health'), ('n8n', 'http://localhost:5678/healthz'), ('ollama', 'http://localhost:11434/api/tags')]:
+        for key, url in [('backend', 'http://localhost:8000/health'), ('n8n', 'http://localhost:5678/healthz'), ('ollama', f"{settings.ollama_url.rstrip('/')}/api/tags")]:
             try:
                 r = h.get(url)
                 health[key] = {'status': r.status_code, 'body': r.json()}

@@ -22,7 +22,9 @@ class Settings(BaseSettings):
     qdrant_api_key: str | None = None
     qdrant_collection_prefix: str = "official_docs"
 
-    ollama_url: str = "http://localhost:11434"
+    # Host-side default; containers always get OLLAMA_URL from docker-compose (host.docker.internal).
+    # 127.0.0.1 rather than localhost: Ollama listens on IPv4 loopback only, and localhost tries ::1 first.
+    ollama_url: str = "http://127.0.0.1:11434"
     embedding_model: str = "bge-m3"
     embedding_dim: int = 1024
     llm_model: str = "mistral:latest"
