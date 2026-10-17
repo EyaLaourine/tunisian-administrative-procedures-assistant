@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "tests": 30,
+  "passed": [
+    "unauthenticated workflow GET rejected",
+    "installed DTO accepts neutral payload",
+    "installed DTO rejects id",
+    "installed DTO rejects active",
+    "installed DTO rejects versionId",
+    "installed DTO rejects activeVersionId",
+    "installed DTO rejects createdAt",
+    "installed DTO rejects projectId",
+    "installed DTO rejects missing required name",
+    "creation preserves explicit node IDs",
+    "inactive update remains unpublished",
+    "PUT preserves workflow ID",
+    "PUT preserves all submitted node IDs",
+    "PUT preserves connections",
+    "PUT preserves credential reference",
+    "PUT preserves webhook path",
+    "draft save keeps old publication",
+    "old webhook response survives draft update",
+    "explicit publish selects exact saved version",
+    "published snapshot matches candidate graph",
+    "automatic republication supported with sufficient scope",
+    "missing publish scope returns 403 after draft save",
+    "403 publication failure leaves previous webhook response live",
+    "rollback restores original graph and publication",
+    "HTTP rejects read-only active field",
+    "PUT missing ID does not create workflow",
+    "real n8n error branch does not intercept successful upstream",
+    "real n8n maps upstream 401 to sanitized 503",
+    "real n8n maps upstream 429 to sanitized 503",
+    "real n8n maps upstream 503 to sanitized 503"
+  ],
+  "observations": [
+    {
+      "test": "read_only_active",
+      "status": 400
+    }
+  ],
+  "fixture_only": true,
+  "external_network": false,
+  "live_requests": 0,
+  "publication_convergence": "polled fixture webhook, bounded 35s",
+  "checked_at": "2026-10-17T22:38:06.551030+00:00",
+  "image_id": "sha256:fdce8f852ac7abbb2f31a53170bc3c2eeec45c37c0692a99f2d6c11b3822cd98",
+  "fixture_sha256": "a4b533e15632d49318dcacd2550d96ffd9258c37ff40e0bab28cbe23ff9b4e62",
+  "production_n8n_identity_unchanged": true,
+  "host_ports": false,
+  "production_mounts": false,
+  "disposable_container_removed": true
+}

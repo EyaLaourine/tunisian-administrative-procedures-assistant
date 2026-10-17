@@ -52,8 +52,26 @@ def executable(workflow):
     return [n for n in workflow['nodes'] if n['type'] != STICKY]
 
 
+def normalize_export_metadata(workflow):
+    """Normalize only observed empty root export/history metadata in n8n 2.41.3.
+
+    Version names/descriptions and non-null source lineage remain significant.
+    Unknown keys, incomplete objects and nested lookalikes are never discarded.
+    """
+    result = deepcopy(workflow)
+    if 'sourceWorkflowId' in result and result['sourceWorkflowId'] is None:
+        del result['sourceWorkflowId']
+    if 'versionMetadata' in result and (
+        result['versionMetadata'] is None
+        or result['versionMetadata'] == {'name': None, 'description': None}
+    ):
+        del result['versionMetadata']
+    return result
+
+
 def semantic(workflow):
     """Exclude view/server bookkeeping, retain runtime values and ordered branch outputs."""
+    workflow = normalize_export_metadata(workflow)
     nodes = []
     for original in executable(workflow):
         node = {k:deepcopy(v) for k,v in original.items() if k not in {'position', 'notes', 'notesInFlow'}}

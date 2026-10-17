@@ -1,0 +1,66 @@
+{
+  "scope": "STRICTLY_OFFLINE",
+  "tests": {
+    "tests": 117,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "dependency_warnings": 6,
+  "captured_case": {
+    "old_comparison_equal": false,
+    "corrected_comparison_equal": true,
+    "full_mocked_release_verified_without_rollback_or_publish": true
+  },
+  "candidate_checks": [
+    {
+      "file": "deploy/n8n_review/candidates/01_ingest_and_index.json",
+      "approved_bytes_unchanged": true,
+      "graph_valid": true
+    },
+    {
+      "file": "deploy/n8n_review/candidates/02_retrieve_api.json",
+      "approved_bytes_unchanged": true,
+      "graph_valid": true
+    },
+    {
+      "file": "deploy/n8n_review/candidates/03_assistant_multi_agent.json",
+      "approved_bytes_unchanged": true,
+      "graph_valid": true
+    }
+  ],
+  "python_compilation": "passed",
+  "node_fixture_syntax": "passed_not_executed",
+  "live_requests": 0,
+  "docker_commands": 0,
+  "credential_files_accessed": false,
+  "new_sync_attempt": false,
+  "private_captures_excluded": true,
+  "committed_file_inventory": [
+    "deploy/n8n_review/live_integrity.json",
+    "deploy/n8n_review/api_investigation.json",
+    "deploy/n8n_review/api_sandbox_results.json",
+    "deploy/n8n_review/synchronization_result.json",
+    "deploy/n8n_review/normalization_evidence.json",
+    "deploy/n8n_review/offline_normalization_validation.json",
+    "docs/N8N_API_VALIDATION_RESULTS.md",
+    "docs/N8N_AUTHENTICATED_API_UPDATE.md",
+    "docs/N8N_FINAL_SYNC_ATTEMPT.md",
+    "docs/N8N_SYNCHRONIZATION_RESULT.md",
+    "docs/N8N_OFFLINE_NORMALIZATION_FIX.md",
+    "scripts/n8n_workflow_review.py",
+    "scripts/n8n_api_plan.py",
+    "scripts/n8n_controlled_sync.py",
+    "scripts/run_n8n_api_sandbox.py",
+    "tests/n8n_api_sandbox.cjs",
+    "tests/test_n8n_api_plan.py",
+    "tests/test_n8n_controlled_sync.py",
+    "tests/test_n8n_export_normalization.py"
+  ],
+  "readiness": "conditional_on_new_approval_and_fresh_preflight",
+  "secret_scan": {
+    "credential_patterns": 0,
+    "private_files_staged": 0,
+    "note": "Scans source/reports only; no DPAPI decryption or private key access."
+  }
+}

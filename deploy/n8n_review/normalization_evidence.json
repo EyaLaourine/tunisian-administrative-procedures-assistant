@@ -1,0 +1,26 @@
+{
+  "scope": "OFFLINE_ONLY",
+  "version": "n8n 2.41.3 captured artifacts",
+  "candidate_path": "deploy/n8n_review/candidates/01_ingest_and_index.json",
+  "candidate_sha256": "bcf8c36af8a1415a2b74ff91529059ad6b14fe2c374671f89f6737c3bace7c52",
+  "captured_export_path": "tmp/n8n-live-release/20261017T225152Z/export-after-TnaaIngestIndex1.json",
+  "captured_export_sha256": "70ff81cd6fabe5fd38d3fe0222c93726fa15c551b9283e903a243f438c9c3ceb",
+  "captured_draft_sha256": "3eeef84665a387352397ea23ed83816bea9b9155b20f108c29e3bad08ccb9af1",
+  "captured_metadata_projection": {
+    "versionMetadata": {
+      "name": null,
+      "description": null
+    },
+    "sourceWorkflowId": null
+  },
+  "candidate_full_nodes_connections_settings_equal": true,
+  "corrected_candidate_export_equal": true,
+  "corrected_draft_export_equal": true,
+  "draft_cli_versions_equal": true,
+  "root_metadata_semantics": {
+    "versionMetadata": "exported workflow-history version name and description; non-null labels retained",
+    "sourceWorkflowId": "workflow lineage reference; only null is omitted"
+  },
+  "production_calls_this_task": 0,
+  "raw_artifacts_committed": false
+}

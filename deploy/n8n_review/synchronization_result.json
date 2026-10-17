@@ -1,0 +1,99 @@
+{
+  "status": "STOPPED_AFTER_VERIFIED_ROLLBACK",
+  "release_directory": "tmp\\n8n-live-release\\20261017T225152Z",
+  "fresh_before_cli_backups": "tmp/n8n-review/20261017T224927121512Z",
+  "final_read_only_exports": "C:\\Users\\Eya Laourine\\tunisian-admin-assistant\\tmp\\n8n-review\\20261017T225339956378Z",
+  "workflows": [
+    {
+      "id": "TnaaIngestIndex1",
+      "executable_nodes": 5,
+      "sticky_notes": 0,
+      "active": false,
+      "draft_version_id": "fb8306c5-14a0-44e0-9f21-de7ed1892fe9",
+      "published_version_id": null,
+      "original_content_restored_or_untouched": true,
+      "write_attempted": true
+    },
+    {
+      "id": "TnaaRetrieveApi1",
+      "executable_nodes": 3,
+      "sticky_notes": 0,
+      "active": true,
+      "draft_version_id": "0867dd24-169e-4a5a-9f28-248658bf67e8",
+      "published_version_id": "0867dd24-169e-4a5a-9f28-248658bf67e8",
+      "original_content_restored_or_untouched": true,
+      "write_attempted": false
+    },
+    {
+      "id": "TnaaAssistant01",
+      "executable_nodes": 16,
+      "sticky_notes": 0,
+      "active": true,
+      "draft_version_id": "92f81ea7-3e60-4564-8c23-4dcc5eba5494",
+      "published_version_id": "92f81ea7-3e60-4564-8c23-4dcc5eba5494",
+      "original_content_restored_or_untouched": true,
+      "write_attempted": false
+    }
+  ],
+  "publication_metadata": [
+    {
+      "id": "TnaaIngestIndex1",
+      "published": null,
+      "outbox": null,
+      "triggers": []
+    },
+    {
+      "id": "TnaaRetrieveApi1",
+      "published": {
+        "publishedVersionId": "0867dd24-169e-4a5a-9f28-248658bf67e8"
+      },
+      "outbox": null,
+      "triggers": [
+        {
+          "nodeId": "b2f0c1d2-0001-4c1a-9a01-000000000001",
+          "versionId": "0867dd24-169e-4a5a-9f28-248658bf67e8",
+          "status": "activated",
+          "triggerKind": "persisted"
+        }
+      ]
+    },
+    {
+      "id": "TnaaAssistant01",
+      "published": {
+        "publishedVersionId": "92f81ea7-3e60-4564-8c23-4dcc5eba5494"
+      },
+      "outbox": null,
+      "triggers": [
+        {
+          "nodeId": "c3a0c1d2-0001-4c1a-9a01-000000000001",
+          "versionId": "92f81ea7-3e60-4564-8c23-4dcc5eba5494",
+          "status": "activated",
+          "triggerKind": "persisted"
+        }
+      ]
+    }
+  ],
+  "failure": "normalizer_did_not_account_for_server_managed_versionMetadata_and_null_sourceWorkflowId",
+  "live_http_writes": 2,
+  "publishes": 0,
+  "rollbacks_verified": [
+    "TnaaIngestIndex1"
+  ],
+  "next_workflows_updated": false,
+  "api_key_exposed": false,
+  "ingestion_executed": false,
+  "qdrant_writes": false,
+  "telegram_messages_sent": false,
+  "containers_deployed_or_restarted": false,
+  "safe_health_gets": {
+    "n8n": 200,
+    "backend": 200
+  },
+  "focused_pytest": {
+    "passed": 76,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 6
+  },
+  "container_identity_start_image_restart_checks": "unchanged for production backend/n8n/bridge and existing final candidate backend/n8n"
+}

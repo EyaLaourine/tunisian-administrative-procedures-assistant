@@ -1,0 +1,70 @@
+{
+  "checked_at": "2026-10-17T22:36:14.450646+00:00",
+  "version": "2.41.3",
+  "supported_base_url": "http://localhost:5678/api/v1",
+  "read_without_key_status": 401,
+  "api_docs_status": 200,
+  "existing_public_api_key_records": 0,
+  "usable_local_key_found": false,
+  "key_values_read_or_printed": false,
+  "live_modifying_http_requests": 0,
+  "installed_source_evidence": [
+    {
+      "installed_path": "n8n/dist/public-api/v1/controllers/workflows.public.controller.js",
+      "sha256": "a2bda5a4dd5d9f55c32edd11b4adc080b982ef8ef5b5bb07ba1ea1af6ea0b417"
+    },
+    {
+      "installed_path": "n8n/dist/workflows/workflow.service.js",
+      "sha256": "530f38e7ddac686188daa89b5a60cf42a79ed80cbaf4515fcd91b04a74882bc0"
+    },
+    {
+      "installed_path": "n8n/dist/workflow-helpers.js",
+      "sha256": "b8ef44e82402a65e5e36f1f92a6f169d4dd56a25aaadf98f2339d25cae0c1a47"
+    },
+    {
+      "installed_path": "n8n/dist/services/api-key-auth.strategy.js",
+      "sha256": "ac727853f667a3a486d3ef3e700f46a1a07f40a808555add08b10bec529a57d2"
+    },
+    {
+      "installed_path": "n8n/dist/workflows/workflow-entity-mapper.js",
+      "sha256": "cfbd946c1bdda9a4f681927b7effe16315ffee92a490e88e2d1e5a9fa3e8ad19"
+    }
+  ],
+  "authentication": "X-N8N-API-KEY",
+  "required_future_api_key_scopes": [
+    "workflow:read",
+    "workflow:update",
+    "workflow:activate"
+  ],
+  "required_project_permissions": [
+    "workflow:read",
+    "workflow:update",
+    "workflow:publish"
+  ],
+  "publication_service_default": true,
+  "public_update_compare_and_swap": false,
+  "public_update_forceSave": true,
+  "production_key_configuration_modified": false,
+  "candidate_installed_dto_validation": [
+    {
+      "workflow_id": "TnaaIngestIndex1",
+      "valid": true,
+      "parsed_structure_identical": true
+    },
+    {
+      "workflow_id": "TnaaRetrieveApi1",
+      "valid": true,
+      "parsed_structure_identical": true
+    },
+    {
+      "workflow_id": "TnaaAssistant01",
+      "valid": true,
+      "parsed_structure_identical": true
+    }
+  ],
+  "latest_read_only_live_export": "tmp/n8n-review/20261017T223757699329Z",
+  "live_drift_detected": false,
+  "offline_update_rollback_plan": "tmp/n8n-api-review/plan.json",
+  "publication_service_effective_from_installed_defaults": true,
+  "publication_application": "outbox/applier; activeVersionId alone is not runtime convergence proof"
+}
