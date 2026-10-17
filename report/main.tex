@@ -381,9 +381,9 @@ answer to a legal question is only as good as the article selected, which is rel
 table numbers and heuristic otherwise; one generated summary of a document's scope was inaccurate. Of the 72
 cases whose intent label disagreed on the audited candidate, 44 now agree, 23 differ without changing the
 answer, 3 repeat official text where a clarification was expected, 1 has a defective reference passage and 1 is
-the inaccurate summary. \textbf{Latency} (final candidate alone on the GPU, median of 3): RNE row 0.09\,s,
-follow-up 0.06\,s, legal article 0.27\,s, French checklist 0.20\,s, English checklist 18.3\,s (translation),
-PDF form check 0.17\,s, image OCR 1.75\,s, dossier 0.42\,s. Running two stacks on the shared GPU made
+the inaccurate summary. \textbf{Latency} (final candidate alone on the GPU, median of 3): RNE row 0.08\,s,
+follow-up 0.08\,s, legal article 0.25\,s, French checklist 0.19\,s, English checklist 17.5\,s (translation),
+PDF form check 0.16\,s, image OCR 1.72\,s, dossier 0.28\,s. Running two stacks on the shared GPU made
 LLM- and embedding-dependent requests 10--200 times slower.
 
 \textbf{Limits of the evaluation.} Labels were written by the developers and await human review; the

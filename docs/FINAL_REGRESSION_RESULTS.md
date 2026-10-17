@@ -1,8 +1,8 @@
 # Final regression results: final candidate (2026-10-17)
 
 All results below were **executed** on the final candidate: backend image
-`tunisian-admin-assistant-backend:final-candidate` `sha256:c4c2362a7427…`, bridge image `…telegram:final-candidate`
-`sha256:8e07af5912e7…`, repository commit `4763ece`.
+`tunisian-admin-assistant-backend:final-candidate` `sha256:48f35b80acf6…`, bridge image `…telegram:final-candidate`
+`sha256:98c1cb668f8d…`, repository commit `6e52f9c`.
 
 - **How requests were sent:** through an isolated n8n instance (`final-n8n`, 127.0.0.1:5680) whose workflow is
   the repository definition with its six backend URLs pointed to `final-candidate` (127.0.0.1:8002).
@@ -35,8 +35,8 @@ All results below were **executed** on the final candidate: backend image
 
 | Suite | Executed | Passed | Failed | Notes |
 |---|---:|---:|---:|---|
-| Unit / isolated | 881 | 881 | 0 | 821 baseline tests and 60 new tests in `tests/test_final_fixes.py`. Before this cycle: 821/821. |
-| Integration (redirected to the final candidate) | 40 | 40 | 0 | 0 errors, 0 skipped, 338 s. `test_demo_ui` and `test_integration_services` use production or shared endpoints. |
+| Unit / isolated | 883 | 883 | 0 | 821 baseline tests and 62 new tests in `tests/test_final_fixes.py`. Before this cycle: 821/821. |
+| Integration (redirected to the final candidate) | 40 | 40 | 0 | 0 errors, 0 skipped, 373 s. `test_demo_ui` and `test_integration_services` use production or shared endpoints. |
 | `test_qdrant_roundtrip` | 0 | – | – | **Not run, by rule** (it mutates production Qdrant) |
 
 ## 3. Full original-suite replay: before / after (728 n8n-stage cases, 0 transport errors)
@@ -59,16 +59,16 @@ All results below were **executed** on the final candidate: backend image
 | Corrupt / unsupported uploads handled safely; completeness never certified | 6/6 | 6/6 | **6/6** |
 | Uncovered birth-certificate requests refused | 4/4 | 4/4 | **4/4** |
 
-† The decrease is intentional. 28 requests to certify validity, acceptance or completeness, or to say what to
+† The decrease is intentional. 36 requests to certify validity, acceptance or completeness, or to say what to
 verify before applying a text, now receive the deterministic limits reply. That reply cites no document,
 because it refuses to certify. Previously these requests got a checklist or legal excerpt (which cited the
 document), and in the formalities case an LLM answer that asserted validity.
 
 **Latency per group (median / p95, s):**
-- RNE rows: 0.12 / 0.20 (no context), 0.16 / 0.34 (with context).
-- Guide scenarios: 0.44 / 0.80.
-- Legal direct questions: 0.39 / 19.8. The p95 includes non-legal LLM answers in the same group.
-- Uploads: 6.6 / 21.9.
+- RNE rows: 0.08 / 0.12 (no context), 0.11 / 0.17 (with context).
+- Guide scenarios: 0.34 / 0.44.
+- Direct factual questions: 0.28 / 0.47.
+- Uploads: 4.3 / 21.5.
 
 ## 4. CIN and passport routing matrix (45 questions × 2 request shapes = 90 requests)
 
@@ -157,16 +157,16 @@ The backend was restarted and was healthy afterwards.
 
 | Operation | Runs | Median |
 |---|---|---:|
-| Passport checklist FR | 0.19, 0.20, 0.22 | 0.20 |
-| CIN checklist FR | 0.19, 0.22, 0.20 | 0.20 |
-| RNE fee | 0.09, 0.08, 0.14 | 0.09 |
-| RNE deadline | 0.09, 0.09, 0.11 | 0.09 |
-| Legal article (Art. 16) | 0.28, 0.27, 0.23 | 0.27 |
-| Multi-turn follow-up | 0.06, 0.06, 0.08 | 0.06 |
-| Passport checklist EN (translation) | 17.77, 19.36, 18.34 | 18.34 |
-| Form check PDF | 0.17, 0.19, 0.12 | 0.17 |
-| Form check PNG (OCR) | 1.69, 1.75, 1.84 | 1.75 |
-| Dossier validation PDF | 0.47, 0.42, 0.31 | 0.42 |
+| Passport checklist FR | 0.19, 0.19, 0.22 | 0.19 |
+| CIN checklist FR | 0.20, 0.19, 0.19 | 0.19 |
+| RNE fee | 0.11, 0.08, 0.08 | 0.08 |
+| RNE deadline | 0.08, 0.23, 0.06 | 0.08 |
+| Legal article (Art. 16) | 0.20, 0.25, 0.25 | 0.25 |
+| Multi-turn follow-up | 0.08, 0.06, 0.08 | 0.08 |
+| Passport checklist EN (translation) | 17.45, 17.36, 17.56 | 17.45 |
+| Form check PDF | 0.17, 0.16, 0.14 | 0.16 |
+| Form check PNG (OCR) | 1.70, 1.75, 1.72 | 1.72 |
+| Dossier validation PDF | 0.41, 0.26, 0.28 | 0.28 |
 
 **Contention:** under concurrent production and candidate load (measured in the independent post-fix audit),
 LLM- and embedding-dependent requests were 10–200× slower. No uncontrolled load test was run.
