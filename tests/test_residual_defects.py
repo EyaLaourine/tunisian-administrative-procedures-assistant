@@ -145,3 +145,19 @@ def test_ambiguous_article_reference_and_follow_up_still_behave():
     ctx = DialogueContext(category="business_registration", legal_subject="rne-decree-name-reservation")
     d = router.route(RouteRequest(text="Et l'article 3 ?", language="fr", context=ctx))
     assert d.next_agent == "answer" and d.context.legal_subject == "rne-decree-name-reservation"
+
+
+@needs_corpus
+def test_ranked_articles_are_never_trimmed_by_the_display_budget():
+    # Art. 1 (fee tables, > 4,000 characters) must stay in full when ranking selects it (scope question in Arabic).
+    from agents.legal_evidence import articles, render_legal
+    subject = "rne-decree-2022-298-fees-fr"
+    secs = {s["number"]: s for s in articles(corpus.blocks(subject))}
+    selected = [secs[7], secs[6], secs[1]]  # the ranking observed through n8n for the Arabic scope question
+    route = RouteDecision(language="ar", intent="procedure_info", procedure_category="business_registration",
+                          next_agent="answer", method="rules")
+    req = ComposeRequest(query="RNE: ما نطاق هذا النص الرسمي: Décret Présidentiel n° 2022-298 ?", route=route, passages=[])
+    text, shown = render_legal(req, corpus, subject, selected, corpus.citation(subject), budget=False)
+    assert shown == [7, 6, 1] and "Article premier - Le montant des redevances" in text and "Tableau n°3" in text
+    _, trimmed = render_legal(req, corpus, subject, selected, corpus.citation(subject), budget=True)
+    assert trimmed == [7, 6]  # the budget only applies to whole short acts, where trimmed articles are listed

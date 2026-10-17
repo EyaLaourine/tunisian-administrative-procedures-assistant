@@ -292,7 +292,7 @@ def key_passage(query, sections, title='', limit=420):
     return best if len(best) <= limit else best[:limit].rsplit(' ', 1)[0] + ' …'
 
 
-def render_legal(req, corpus, subject, selected, citation):
+def render_legal(req, corpus, subject, selected, citation, budget=True):
     """Header in the user's language, the most relevant official sentence, then the complete official text.
 
     Nothing is translated or paraphrased: the explanation names the act, the article(s) and the language of the
@@ -304,7 +304,7 @@ def render_legal(req, corpus, subject, selected, citation):
     shown, used = [], 0
     for section in selected:
         size = len('\n'.join(section['parts']))
-        if shown and used + size > FULL_TEXT_BUDGET:
+        if budget and shown and used + size > FULL_TEXT_BUDGET:
             continue
         shown.append(section)
         used += size
@@ -423,13 +423,15 @@ def legal_reply(req, corpus):
     # A table reference asks for the table's content unless the question is about another provision that
     # merely mentions the table (e.g. the 50 % reduction of Art. 4 "for the procedures of table n° 1").
     table = TABLE.search(req.query) if not re.search(TABLE_TOPICS, req.query, re.I) else None
+    whole_act = False
     if requested is not None:
         selected = [s for s in sections if s['number'] == requested]
     elif table:
         selected = table_section(sections, int(table[1]))
     elif subject in {'rne-arrete-2026-35', 'rne-decree-beneficial-owners', 'rne-decree-name-reservation', 'rne-decree-law-2022-18-fr'}:
-        # Short texts: all substantive provisions remain available, the most relevant ones first.
-        selected = order_by_relevance(req.query, sections, subject)
+        # Short texts: all substantive provisions remain available, the most relevant ones first; only this case
+        # is trimmed to a display budget (the rest are listed by number).
+        selected, whole_act = order_by_relevance(req.query, sections, subject), True
     else:
         selected = rank_sections(req.query, sections, subject, req.passages)
     if not selected:
@@ -437,7 +439,7 @@ def legal_reply(req, corpus):
     citation = corpus.citation(subject, page=selected[0]['page'])
     if not citation:
         return None
-    text, shown = render_legal(req, corpus, subject, selected, citation)
+    text, shown = render_legal(req, corpus, subject, selected, citation, budget=whole_act)
     return AnswerResult(text=text, found=True, method='passages_fallback', citations=[citation],
                         verification={'legal': {'method': 'verbatim_source_articles', 'articles': shown,
                                                 'semantic_conclusion_verified': False}})

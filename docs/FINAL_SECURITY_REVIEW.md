@@ -50,3 +50,34 @@
   (standard Ollama behaviour).
 - **Real Telegram behaviour of the corrected candidate:** not verified. The live bot still runs the production
   bridge image.
+
+## 5. Hardening phase (commit `1068cb3`, backend image `final-candidate` `sha256:a5d54ce540e0…`)
+
+This phase **supersedes S3 above**: privileged endpoints are now **fail closed**. The deployment steps are in
+`docs/SECURITY_DEPLOYMENT_GUIDE.md`.
+
+| # | Control | Implementation | Verification |
+|---|---|---|---|
+| H1 | **Privileged endpoints fail closed** | `/ingestion/run` and `/index/run` return 403 unless `ADMIN_API_KEY` is configured, then 401 without the correct `X-Admin-Key` (constant-time comparison) | Unit tests (disabled → 403; missing, empty or wrong key → 401; valid key accepted). Not called live: they mutate data. |
+| H2 | **No bypass of the webhook through the backend** | Optional `AGENT_API_KEY`: `/agents/*` and `/retrieve` require `X-Agent-Key`. Off by default so the current workflows keep working. | Unit tests for 6 paths. **Live test on a temporary container of the final image:** no key → 401, wrong key → 401, valid key → 200, `/retrieve` without key → 401, `/health` public → 200. The key never appeared in the log. |
+| H3 | **Request-size limit** | Middleware rejects bodies above `MAX_REQUEST_BYTES` (15 MB) with 413 before parsing | Unit test; live 20 MB body → 413 |
+| H4 | **Webhook authentication ready on every client** | Bridge, web proxy and CLI send `X-Assistant-Key` only when `ASSISTANT_WEBHOOK_KEY` is set | Unit test (header absent without key, present with key) |
+| H5 | **Least privilege in Compose** | The backend gets an explicit variable list; `env_file: .env` was removed from the backend service | `docker compose config --format json` (names only): the backend has no `TELEGRAM_BOT_TOKEN` or `N8N_ENCRYPTION_KEY` |
+| H6 | **No secrets in settings repr or workflow JSON** | `repr=False` on all keys | Unit tests |
+
+**Qdrant investigation (read-only).** The exposed container `qdrant` belongs to the unrelated Compose project
+`rag-finance-pipeline`:
+- network `rag-finance-pipeline_default`;
+- `0.0.0.0:6333–6334` on IPv4 and IPv6;
+- no API key; an unauthenticated `GET /collections` → 200.
+
+It is **not reachable from this project's network**, and the project backend uses
+`tunisian-admin-assistant-qdrant-1` (loopback 127.0.0.1:6343, no key). Nothing was modified. The remediation
+plan, which requires approval, is in `SECURITY_DEPLOYMENT_GUIDE.md` §5.
+
+**Still requiring approval:**
+- deploying the hardened images and the Compose change;
+- setting keys;
+- n8n Header Auth and agent-key headers on the live workflows;
+- Qdrant authentication;
+- the unrelated Qdrant container.
