@@ -196,15 +196,15 @@ Also check that replies arrive only once (no duplicate poller) and that messages
 
 ## 9. Warnings and remaining risks (not deployment blockers)
 
-1. **`post-audit-candidate` (old test container) exposes unguarded admin endpoints.** It runs image
+1. **RESOLVED after deployment (section 11): `post-audit-candidate` exposed unguarded admin endpoints.** It ran image
    `post-audit-final` (`7254fcf…`), where `/ingestion/run` and `/index/run` have **no** dependencies (verified
    statically; no request sent).
-   - It is published on `127.0.0.1:8001`, mounts the **production** `data/` directory, and its `QDRANT_URL` is
-     `http://qdrant:6333`, which is the production Qdrant on the shared network. It also holds `TELEGRAM_BOT_TOKEN`.
-   - A local POST to `127.0.0.1:8001/index/run` would rebuild production collections, the same incident as above.
-   - Recommendation, as soon as you approve (this phase forbids removing the six old containers):
-     `docker rm -f post-audit-candidate`, and the other five test containers afterwards.
-   - `rc-candidate` and `final-candidate` are guarded (`require_admin`).
+   - It was published on `127.0.0.1:8001` and mounted the production `data/` directory, **read-only**. (Corrected:
+     an earlier version of this report omitted that the mount was read-only.)
+   - Its `QDRANT_URL` was `http://qdrant:6333`, which is the production Qdrant on the shared network. A local POST to
+     `127.0.0.1:8001/index/run` could therefore have rebuilt production collections.
+   - It also held the production `.env` values, including `TELEGRAM_BOT_TOKEN` and `N8N_ENCRYPTION_KEY`.
+   - It was removed with approval at 10:58:25 UTC.
 2. **Rollback image is vulnerable.** `backend:rollback-20261018` (`8adaf99`) has unguarded admin endpoints. A
    rollback would restore availability but reintroduce the vulnerability.
    - No verified network or proxy control exists yet.
@@ -219,3 +219,48 @@ Also check that replies arrive only once (no duplicate poller) and that messages
 
 None performed; none required. The procedure is in `docs/PRODUCTION_BACKUP_AND_PREFLIGHT.md`, section 7, subject to
 warning 2.
+
+## 11. Post-deployment security: removal of `post-audit-candidate` (approved)
+
+**Pre-removal checks**
+
+| Check | Result |
+|---|---|
+| Identity | container `21f7dccf98fa08d3705110c93556ff0b55abdcc7460b62a0c41fb4e63f092660`; image `tunisian-admin-assistant-backend:post-audit-final` (`sha256:7254fcf2…`); no Compose labels; restart policy `no` |
+| Ports, network | `127.0.0.1:8001 → 8000`; `tunisian-admin-assistant_internal` (IP 172.19.0.6, no alias) |
+| Mounts | bind mounts, all read-only: `tunisian-admin-assistant\data`, `\config` and `\prompts`. These are shared production resources and were left untouched; no volume was involved. |
+| Not production | production backend is `981da8424bc9…` (alias `backend`) and the bridge is `d8877372e84d…`; this container had neither alias |
+| No production dependency | no production container's configuration or the Compose file references it. Production n8n uses `BACKEND_URL=http://backend:8000`. Its only non-health caller was the test container `post-audit-n8n` (172.19.0.7), last request 2026-10-17 15:32 UTC; 0 requests in the last 2 hours. |
+| Production health before | backend, bridge, n8n and Qdrant healthy; 0 restarts |
+
+**Action** (10:58:25 UTC; only this container; no `compose down`; no volume or image removed):
+
+```bash
+docker stop post-audit-candidate && docker rm post-audit-candidate
+```
+
+**Post-removal verification**
+- Port 8001: no listener (`curl` returns 000), and no container publishes 8001.
+- Backend `/health`: `{"status":"ok","qdrant":true,"ollama":true,"manifest_records":14}`.
+- All 4 production containers are healthy, with unchanged start times and 0 restarts.
+- Exactly 1 Telegram bridge container is running.
+- n8n `/healthz` returns 200, and Qdrant `/readyz` returns 200.
+- Qdrant: 272 / 174 points; only the two official collections.
+- The image `post-audit-final` is kept.
+
+**Audit of the five remaining test containers** (static checks only; no admin requests; nothing modified)
+
+| Container | Image | Host port | Unguarded admin routes | Production secrets in environment | Production access |
+|---|---|---|---|---|---|
+| `rc-candidate` | `backend:rc-20261018b` | 127.0.0.1:8003 | no (`require_admin`, no key, so 403) | none | reads production Qdrant (`qdrant:6333`); read-only mounts of the worktree `data/config/prompts` |
+| `final-candidate` | `backend:final-candidate` | 127.0.0.1:8002 | no (`require_admin`, no key, so 403) | none | reads production Qdrant; read-only mounts of the production `data/config/prompts` |
+| `rc-n8n` | `n8n 2.41.3` | 127.0.0.1:5681 | n/a | none (own encryption key) | workflows call `rc-candidate:8000` only; no admin paths |
+| `final-n8n` | `n8n 2.41.3` | 127.0.0.1:5680 | n/a | none | workflows call `final-candidate:8000` only; no admin paths |
+| `post-audit-n8n` | `n8n 2.41.3` | 127.0.0.1:5679 | n/a | none | workflow calls `post-audit-candidate:8000`, which no longer exists, so its webhook now fails (test-only, harmless) |
+
+No remaining test container exposes unprotected administrative endpoints or holds production credentials.
+
+**Residual low risk:** the two candidate backends serve unauthenticated, read-only `/agents/*` and `/retrieve` on
+loopback ports 8002 and 8003, against production Qdrant. They are left in place as instructed. Recommendation: remove
+all five when the release is accepted:
+`docker rm -f rc-candidate rc-n8n final-candidate final-n8n post-audit-n8n`.
