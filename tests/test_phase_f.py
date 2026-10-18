@@ -213,14 +213,15 @@ def test_d4_article_question_after_a_code_still_asks_for_the_act(router):
 
 
 # ---------------------------------------------------------------- D5: form download
-def test_d5_passport_form_download_is_declared_unavailable(router, answerer, corpus):
+def test_d5_passport_form_download_gives_the_verified_official_link(router, answerer, corpus):
+    # Phase G stored the official file (manual import), so the link is now verified.
     q = TURNS["D5"]["observed_input"]
     (d, ctx), = chain(router, [q], DialogueContext(category="passport", hints=["renewal"], residence="tunisia", language="fr"))
     assert d.next_agent == "answer" and d.procedure_category == "passport" and ctx.hints == ["renewal"]
     r = answerer.answer(ComposeRequest(query=q, route=d, passages=[]))
     record = corpus.records()["interior-passport-application-form"]
-    assert record.file_path is None                                   # not in the verified corpus
-    assert r.text == t("form_download_unavailable", "fr") and record.url not in r.text and not r.found
+    assert record.file_path and record.url in r.text and r.found
+    assert [c.doc_id for c in r.citations] == [record.doc_id] and t("form_download_unavailable", "fr") not in r.text
 
 
 @pytest.mark.parametrize("q,form", [("Où télécharger le formulaire F-001 ?", F001),
@@ -231,11 +232,12 @@ def test_d5_verified_rne_form_download_link(router, answerer, corpus, q, form):
     assert r.found and corpus.records()[form].url in r.text and r.citations[0].doc_id == form
 
 
-def test_d5_cin_has_no_downloadable_form(router, answerer):
+def test_d5_cin_form_download_gives_the_verified_official_link(router, answerer, corpus):
     q = "Où télécharger le formulaire de la carte d'identité ?"
     (d, _), = chain(router, [q])
     r = answerer.answer(ComposeRequest(query=q, route=d, passages=[]))
-    assert r.text == t("form_download_none", "fr")
+    record = corpus.records()["interior-national-id-application-form"]
+    assert r.found and record.url in r.text and [c.doc_id for c in r.citations] == [record.doc_id]
 
 
 # ---------------------------------------------------------------- D6: unrecognised PDFs

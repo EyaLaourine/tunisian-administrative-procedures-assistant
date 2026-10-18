@@ -183,6 +183,20 @@ sources:
     language: ar
     publication_date: null
 
+  - doc_id: interior-national-id-application-form
+    status: approved
+    source_organization: Ministère de l'Intérieur
+    url: https://services.interieur.gov.tn/uploads/imprimes/01.pdf
+    listing_url: https://services.interieur.gov.tn/
+    title: بطاقة التعريف الوطنية
+    document_type: official_form
+    procedure_category: national_id
+    language: unknown
+    publication_date: null
+    notes: >-
+      Listed under "مطبوعات على الخط" (online printable forms). robots.txt disallows automated
+      retrieval of this file; it can only be added with ingestion.manual_import.
+
   - doc_id: interior-passport-application-form
     status: approved
     source_organization: Ministère de l'Intérieur

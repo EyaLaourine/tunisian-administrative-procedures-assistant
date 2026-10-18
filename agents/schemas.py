@@ -124,6 +124,7 @@ class FormCheckRequest(BaseModel):
 class FormField(BaseModel):
     label: str
     status: Literal["filled", "empty", "not_found"]
+    role: Literal["required", "optional", "conditional", "administration"] = "required"
 
 
 class FormCheckResult(BaseModel):
@@ -135,5 +136,6 @@ class FormCheckResult(BaseModel):
     form_url: str | None = None
     match_score: float | None = None
     fields: list[FormField] = Field(default_factory=list)
-    missing: list[str] = Field(default_factory=list)
+    missing: list[str] = Field(default_factory=list)  # empty required applicant fields
+    if_applicable: list[str] = Field(default_factory=list)  # empty conditional fields
     error: str | None = None

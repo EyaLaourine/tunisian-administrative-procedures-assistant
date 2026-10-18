@@ -218,10 +218,30 @@ STRINGS: dict[str, dict[str, str]] = {
         "ar": "تم التعرف على المطبوعة: {title}", "derja": "عرفت المطبوعة: {title}",
     },
     "form_unknown": {
-        "en": "I could not match this file to an official form in my knowledge base, so I cannot check its fields. Supported forms: RNE F-001 (registration of a natural person) and RNE F-002 (registration of a legal entity).",
-        "fr": "Je n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs. Formulaires pris en charge : RNE F-001 (immatriculation d'une personne physique) et RNE F-002 (immatriculation d'une personne morale).",
-        "ar": "لم أتمكن من مطابقة هذا الملف مع مطبوعة رسمية في قاعدة معارفي، لذا لا يمكنني التثبت من خاناتها. المطبوعات المدعومة: RNE F-001 (تسجيل شخص طبيعي) وRNE F-002 (تسجيل شخص معنوي).",
-        "derja": "ما نجمتش نعرف المطبوعة هاذي من المطبوعات الرسمية اللي عندي، معناها ما نجمش نثبّت في الخانات. المطبوعات اللي نعرفها: RNE F-001 (تسجيل شخص طبيعي) وRNE F-002 (تسجيل شخص معنوي).",
+        "en": "I could not match this file to an official form in my knowledge base, so I cannot check its fields. Supported forms: {forms}.",
+        "fr": "Je n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs. Formulaires pris en charge : {forms}.",
+        "ar": "لم أتمكن من مطابقة هذا الملف مع مطبوعة رسمية في قاعدة معارفي، لذا لا يمكنني التثبت من خاناتها. المطبوعات المدعومة: {forms}.",
+        "derja": "ما نجمتش نعرف المطبوعة هاذي من المطبوعات الرسمية اللي عندي، معناها ما نجمش نثبّت في الخانات. المطبوعات اللي نعرفها: {forms}.",
+    },
+    "form_if_applicable": {
+        "en": "Empty fields to fill in only if they apply to you", "fr": "Champs vides à remplir seulement s'ils vous concernent",
+        "ar": "خانات فارغة تُعمَّر عند الاقتضاء فقط", "derja": "خانات فارغين تعمّرهم كان إذا يخصّوك",
+    },
+    "form_required_complete": {
+        "en": "Every applicant field I located appears to be filled in.",
+        "fr": "Tous les champs du demandeur localisés semblent remplis.",
+        "ar": "كل خانات الطالب التي تم تحديدها تبدو معمّرة.", "derja": "الخانات متاعك الكل اللي لقيتهم يظهر معمّرين.",
+    },
+    "form_not_checked": {
+        "en": "Not checked automatically (boxes, check boxes and signature); check them yourself",
+        "fr": "Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même",
+        "ar": "لا يتم التثبت منها آليا (الخانات المربعة والعلامات والإمضاء)؛ يرجى التثبت منها بنفسك",
+        "derja": "ما نثبّتش فيهم أوتوماتيكيا (المربعات والعلامات والإمضاء)؛ ثبّت فيهم بروحك",
+    },
+    "form_admin_skipped": {
+        "en": "{n} fields reserved for the administration were ignored.",
+        "fr": "{n} champs réservés à l'administration ont été ignorés.",
+        "ar": "تم تجاهل {n} خانة خاصة بالإدارة.", "derja": "خلّيت {n} خانات متاع الإدارة، ما تعمّرهمش.",
     },
     "form_missing": {
         "en": "Fields that look empty", "fr": "Champs qui semblent vides",
@@ -311,6 +331,30 @@ STRINGS: dict[str, dict[str, str]] = {
 }
 
 SOURCE_LANGUAGE_LABEL = {"fr": "FR", "ar": "AR", "en": "EN", "mixed": "AR/FR", "unknown": "?"}
+
+
+# Names of the official forms supported by the Form-Filling Helper (agents/form_helper.py).
+FORM_NAMES = {
+    "rne-form-f001-natural-person-registration": {
+        "en": "RNE F-001 (registration of a natural person)", "fr": "RNE F-001 (immatriculation d'une personne physique)",
+        "ar": "RNE F-001 (تسجيل شخص طبيعي)", "derja": "RNE F-001 (تسجيل شخص طبيعي)"},
+    "rne-form-f002-legal-entity-registration": {
+        "en": "RNE F-002 (registration of a legal entity)", "fr": "RNE F-002 (immatriculation d'une personne morale)",
+        "ar": "RNE F-002 (تسجيل شخص معنوي)", "derja": "RNE F-002 (تسجيل شخص معنوي)"},
+    "interior-national-id-application-form": {
+        "en": "national identity card application (Ministry of the Interior)",
+        "fr": "demande de carte d'identité nationale (ministère de l'Intérieur)",
+        "ar": "مطلب بطاقة التعريف الوطنية (وزارة الداخلية)", "derja": "مطلب بطاقة التعريف الوطنية (وزارة الداخلية)"},
+    "interior-passport-application-form": {
+        "en": "ordinary passport application (Ministry of the Interior)",
+        "fr": "demande de passeport ordinaire (ministère de l'Intérieur)",
+        "ar": "مطلب جواز سفر عادي (وزارة الداخلية)", "derja": "مطلب جواز سفر عادي (وزارة الداخلية)"},
+}
+
+
+def form_name(doc_id: str, lang: str, fallback: str) -> str:
+    names = FORM_NAMES.get(doc_id)
+    return (names.get(lang) or names["fr"]) if names else fallback
 
 
 def t(key: str, lang: str, **values: str) -> str:

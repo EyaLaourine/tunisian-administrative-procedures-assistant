@@ -24,7 +24,7 @@ import cv2
 import fitz
 import numpy as np
 
-from agents import i18n
+from agents import form_roles, i18n
 from agents.corpus import Corpus
 from agents.schemas import FormCheckRequest, FormCheckResult, FormField
 
@@ -68,6 +68,7 @@ class TemplateField:
     label_tokens: frozenset[str]
     page: int
     region: tuple[float, float, float, float]  # union of the dot-leader boxes
+    role: str = "required"  # see agents.form_roles
 
 
 def norm_token(token: str) -> str:
@@ -173,6 +174,7 @@ class Template:
     fields: list[TemplateField]
     words: list[Word]  # every word printed on the blank official form
     path: str = ""  # official PDF, rendered to compare ink with scanned uploads
+    unchecked: tuple[str, ...] = ()  # printed items outside dot leaders (boxes, signature)
 
 
 def _clean_label(text: str) -> str:
@@ -307,7 +309,7 @@ def check_ink(template: Template, image: bytes, homography: np.ndarray) -> list[
     dot-leader band: extra ink means that something was written on the line."""
     upload = cv2.imdecode(np.frombuffer(image, np.uint8), cv2.IMREAD_GRAYSCALE)
     if upload is None:
-        return [FormField(label=f.label, status="not_found") for f in template.fields]
+        return [FormField(label=f.label, status="not_found", role=f.role) for f in template.fields]
     # Compare at the upload's own resolution (pixels per template point), within sane bounds.
     scale = float(np.clip(1 / np.sqrt(abs(np.linalg.det(homography[:2, :2]))), 1.0, 4.0))
     blank = _render_gray(template.path, scale)
@@ -315,16 +317,19 @@ def check_ink(template: Template, image: bytes, homography: np.ndarray) -> list[
     warped = cv2.warpPerspective(upload, to_blank, (blank.shape[1], blank.shape[0]), borderValue=255)
     out = []
     for f in template.fields:
+        if f.page != 0:  # only the first page is aligned and compared
+            out.append(FormField(label=f.label, status="not_found", role=f.role))
+            continue
         x0, y0, x1, y1 = f.region
         top = y0 - (y1 - y0) * 0.4  # the dotted line and the space just above it
         r0, r1 = int(top * scale), int(y1 * scale)
         c0, c1 = int(x0 * scale), int(x1 * scale)
         if r1 - r0 < 2 or c1 - c0 < 4:
-            out.append(FormField(label=f.label, status="not_found"))
+            out.append(FormField(label=f.label, status="not_found", role=f.role))
             continue
         mine = float((warped[r0:r1, c0:c1] < INK_THRESHOLD).mean())
         ref = float((blank[r0:r1, c0:c1] < INK_THRESHOLD).mean())
-        out.append(FormField(label=f.label, status="filled" if mine - ref > INK_DELTA else "empty"))
+        out.append(FormField(label=f.label, status="filled" if mine - ref > INK_DELTA else "empty", role=f.role))
     return out
 
 
@@ -336,7 +341,7 @@ def check_geometric(template: Template, words: list[Word], tolerance: float = 3.
         # Values are typed or written on the dotted line, or slightly above it.
         top = y0 - (y1 - y0) * 0.3
         filled = any(w.page == f.page and x0 <= _center(w)[0] <= x1 and top <= _center(w)[1] <= y1 for w in added)
-        out.append(FormField(label=f.label, status="filled" if filled else "empty"))
+        out.append(FormField(label=f.label, status="filled" if filled else "empty", role=f.role))
     return out
 
 
@@ -351,10 +356,10 @@ def check_lines(fields: list[TemplateField], words: list[Word]) -> list[FormFiel
             if score > best_score:
                 best, best_score = ln, score
         if best is None or best_score < MIN_LINE_MATCH:
-            out.append(FormField(label=f.label, status="not_found"))
+            out.append(FormField(label=f.label, status="not_found", role=f.role))
             continue
         extra = [t for t in best if t not in f.label_tokens and len(t) > 1]
-        out.append(FormField(label=f.label, status="filled" if extra else "empty"))
+        out.append(FormField(label=f.label, status="filled" if extra else "empty", role=f.role))
     return out
 
 
@@ -373,7 +378,8 @@ class FormHelper:
             if path.exists():
                 template = _template_for(str(path), path.stat().st_mtime)
                 if template.fields:
-                    out[rec.doc_id] = template
+                    fields, unchecked = form_roles.assign(rec.doc_id, rec.sha256, template.fields, template.words, norm_token)
+                    out[rec.doc_id] = Template(fields, template.words, template.path, unchecked)
         return out
 
     def check(self, req: FormCheckRequest, default_language: str = "fr") -> FormCheckResult:
@@ -417,7 +423,11 @@ class FormHelper:
             log.info("form_unrecognised", extra={"fields": {"closest_template": closest[3],
                                                             "closest_overall": round(closest[2], 3),
                                                             "threshold": MIN_MATCH, "method": method}})
-            return FormCheckResult(text=i18n.t("form_unknown", lang), recognised=False, method=method,
+            records = self.corpus.records()
+            names = [i18n.form_name(d, lang, records[d].title) for d in sorted(templates)]
+            joiner = {"en": " and ", "fr": " et "}.get(lang, " و")
+            forms = ", ".join(names[:-1]) + joiner + names[-1] if len(names) > 1 else "".join(names)
+            return FormCheckResult(text=i18n.t("form_unknown", lang, forms=forms), recognised=False, method=method,
                                    match_score=round(best_score, 3))
 
         template = templates[best_id]
@@ -435,8 +445,11 @@ class FormHelper:
                 checked = check_lines(template.fields, words)
         del page_image
         rec = self.corpus.records()[best_id]
-        missing = [f.label for f in checked if f.status == "empty"]
-        unlocated = [f.label for f in checked if f.status == "not_found"]
+        # Administration-only fields are never reported; optional ones are not reported when empty.
+        applicant = [f for f in checked if f.role != "administration"]
+        missing = [f.label for f in applicant if f.status == "empty" and f.role == "required"]
+        if_applicable = [f.label for f in applicant if f.status == "empty" and f.role == "conditional"]
+        unlocated = [f.label for f in applicant if f.status == "not_found" and f.role in ("required", "conditional")]
         lines = [f"📝 {i18n.t('form_identified', lang, title=rec.title)}", ""]
         if missing:
             lines.append(f"❗ {i18n.t('form_missing', lang)}:")
@@ -444,12 +457,20 @@ class FormHelper:
         if unlocated:
             lines += ["", f"❔ {i18n.t('form_unreadable', lang)}:"] + [f"• {m}" for m in unlocated]
         if not missing and not unlocated:
-            lines.append(f"✅ {i18n.t('form_complete', lang)}")
+            key = "form_required_complete" if if_applicable or len(applicant) < len(checked) else "form_complete"
+            lines.append(f"✅ {i18n.t(key, lang)}")
+        if if_applicable:
+            lines += ["", f"🔸 {i18n.t('form_if_applicable', lang)}:"] + [f"• {m}" for m in if_applicable]
+        if template.unchecked:
+            lines += ["", f"👁 {i18n.t('form_not_checked', lang)}:"] + [f"• {m}" for m in template.unchecked]
+        if len(applicant) < len(checked):
+            lines += ["", f"🏛 {i18n.t('form_admin_skipped', lang, n=str(len(checked) - len(applicant)))}"]
         lines += ["", f"ℹ️ {i18n.t('form_heuristic', lang, method='PDF' if method == 'text_layer' else 'OCR')}",
                   "", f"📚 {i18n.t('sources', lang)}:", f"[1] {rec.title} ({rec.source_organization})\n{rec.url}"]
         return FormCheckResult(
             text="\n".join(lines), recognised=True, method=method, form_doc_id=best_id, form_title=rec.title,
             form_url=rec.url, match_score=round(best_score, 3), fields=checked, missing=missing,
+            if_applicable=if_applicable,
         )
 
     def _extract(self, data: bytes, mime: str) -> tuple[list[Word], str, set[str], bytes | None]:
