@@ -10,3 +10,4 @@ active:
   translate_items: v1
   evidence_topic: v1
   dialogue_understanding: v3
+  language_identification: v1

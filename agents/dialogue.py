@@ -150,6 +150,12 @@ def understand(text, state, llm=None, prompts=None):
     if q.strip(' .?!') in {'tunisie','tunisia','tounes','tunis','تونس'}:
         residence = 'tunisia'
     if app:
+        previous = next((h for h in state.hints if h in APPLICATIONS), None)
+        if previous and previous != app:
+            # A different application type (renewal -> duplicate, first time -> renewal) is a different procedure:
+            # documents declared for the previous one are not carried over unless the user declares them again.
+            state.declared_items = []
+            state.pending_intent = None
         state.hints = [h for h in state.hints if h not in APPLICATIONS] + [app]
     if residence:
         state.residence = residence
@@ -230,6 +236,10 @@ def personalize(result, state, language):
     from agents import i18n
     if result.translation and result.translation.get('validated'):
         out += ['',i18n.t('machine_translation',language,source=i18n.SOURCE_LANGUAGE_LABEL.get(result.source_language,result.source_language))]
+    elif language == 'derja' and result.source_language == 'ar':
+        out += ['',i18n.t('official_msa',language)]
+    elif result.source_language and result.source_language != {'derja':'ar'}.get(language,language):
+        out += ['',i18n.t('original_language',language,source=i18n.SOURCE_LANGUAGE_LABEL.get(result.source_language,result.source_language))]
     for warning in result.warnings:
         out += ['',warning]
     result.text = '\n'.join(out + sources_footer(language,result.citations))
@@ -249,7 +259,10 @@ def route_dialogue(router, req):
         # Possession of a supporting birth certificate does not switch an existing passport procedure.
         inventory = re.search(POSSESSION,normalize(req.text)) or re.search(NEGATIVE,normalize(req.text))
         if not (explicit in {'birth_certificate','national_id'} and state.category and inventory):
-            state = DialogueContext(category=explicit)
+            # New procedure: procedure-specific state (declared documents, hints, intents, legal subject) is
+            # dropped; facts about the person and the conversation (residence, language) are kept.
+            state = DialogueContext(category=explicit, residence=state.residence, language=state.language,
+                                    preferred_language=state.preferred_language)
     if not state.category or state.category not in {'passport','national_id','business_registration'}:
         return None
     state, remaining, facts = understand(req.text,state,router.llm,router.prompts)
@@ -283,10 +296,7 @@ def route_dialogue(router, req):
     if state.declared_items and intent == 'required_documents':
         intent = 'remaining_documents'
     state.pending_intent = intent
-    language = req.language
-    if language is None:
-        from agents.language import detect_language
-        language = detect_language(req.text)
+    language = router.language(req)
     if state.category == 'business_registration' and contextual and not explicit and not state.rne_code and not state.legal_subject:
         from agents.legal_evidence import CLARIFY
         return RouteDecision(language=language, intent=intent, procedure_category=state.category, next_agent='reply',

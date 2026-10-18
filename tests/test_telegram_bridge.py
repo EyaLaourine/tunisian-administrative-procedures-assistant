@@ -583,7 +583,7 @@ def test_latest_routed_procedure_is_retained_for_followup(pair, stale):
     assert server.payloads[-1]['language'] == 'fr'
     assert server.payloads[-1]['text'].endswith('Procedure context: passport')
     assert 'birth certificate' not in server.payloads[-1]['text']
-    assert set(bridge.sessions[1]) <= {'seen','language','procedure'}
+    assert set(bridge.sessions[1]) <= {'seen','language','conv_language','procedure'}
 
 
 def test_unvalidated_route_category_is_not_retained(pair):

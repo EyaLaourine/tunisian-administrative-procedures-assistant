@@ -1,0 +1,25 @@
+name: language_identification
+version: v1
+created: 2026-10-18
+description: >
+  Fallback used only for long Latin-script messages in which the deterministic language markers
+  (agents/language.py) find no French, English or Arabizi Derja word. Returns strict JSON; the caller
+  accepts only "en", "fr" or "derja" and otherwise keeps the conversation language.
+model_role: llm  # llm | translation
+options:
+  temperature: 0
+  num_predict: 20
+json_output: true
+system: |
+  Identify the language of a message sent to an assistant about Tunisian administrative procedures.
+  The message is written in Latin script. It is English, French, or Tunisian Arabic (Derja) written in
+  Latin letters, possibly with digits standing for Arabic letters ("3", "7", "9").
+
+  Reply with a single JSON object and nothing else:
+  {"language": <one of: "en", "fr", "derja">}
+  Do not answer the message. Do not add explanations.
+user_template: |
+  Message:
+  """{message}"""
+changelog:
+  - v1: initial version.

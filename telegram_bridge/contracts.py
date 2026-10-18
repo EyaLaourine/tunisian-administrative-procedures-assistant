@@ -26,6 +26,8 @@ class ConversationState(BaseModel):
     last_intent: Literal["required_documents","remaining_documents","fees","processing_time","submission_place","eligibility","procedure_info","form_help","greeting","out_of_scope"] | None = None
     rne_code: str | None = Field(default=None, pattern=r"^RNE [CIM] \d{3}(?:\.\d+)*$")
     legal_subject: Literal["rne-arrete-2026-35", "rne-law-2018-52-ar", "rne-decree-beneficial-owners", "rne-decree-name-reservation", "rne-decree-2022-298-fees-fr", "rne-decree-law-2022-18-fr"] | None = None
+    language: Language | None = None  # language of the last answer (resolves short or ambiguous messages)
+    preferred_language: Language | None = None  # optional /language preference; absent = AUTO
 
 class AssistantRequest(BaseModel):
     text: str | None = Field(default=None, min_length=1, max_length=2000)

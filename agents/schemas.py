@@ -33,6 +33,10 @@ class DialogueContext(BaseModel):
     last_intent: Intent | None = None
     rne_code: str | None = Field(default=None, pattern=r"^RNE [CIM] \d{3}(?:\.\d+)*$")
     legal_subject: Literal["rne-arrete-2026-35", "rne-law-2018-52-ar", "rne-decree-beneficial-owners", "rne-decree-name-reservation", "rne-decree-2022-298-fees-fr", "rne-decree-law-2022-18-fr"] | None = None
+    # Conversation language (set by the router on every turn) and the user's optional menu preference.
+    # Both only resolve short or ambiguous messages; a clearly written message is answered in its own language.
+    language: Language | None = None
+    preferred_language: Language | None = None
 
 
 class RouteRequest(BaseModel):

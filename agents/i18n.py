@@ -45,6 +45,12 @@ STRINGS: dict[str, dict[str, str]] = {
         "ar": "ترجمة آلية للنص الرسمي ({source})؛ النص الرسمي هو المعتمد.",
         "derja": "ترجمة أوتوماتيكية للنص الرسمي ({source})؛ النص الرسمي هو اللي يتعمل بيه.",
     },
+    "official_msa": {
+        "en": "The official text is quoted as published, in Modern Standard Arabic.",
+        "fr": "Le texte officiel est cité tel quel, en arabe standard.",
+        "ar": "النص الرسمي منقول كما نُشر.",
+        "derja": "النص الرسمي مكتوب بالعربية الفصحى، نقلناه كيما هو باش ما يتبدلّش معناه.",
+    },
     "original_language": {
         "en": "Quoted in the original language of the official document ({source}).",
         "fr": "Cité dans la langue originale du document officiel ({source}).",

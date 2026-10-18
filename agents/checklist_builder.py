@@ -380,6 +380,9 @@ class ChecklistBuilder:
             out.append(f"ℹ️ {i18n.t('machine_translation', lang, source=label)}")
         elif result.source_language != TARGET_LANGUAGE[lang]:
             out.append(f"ℹ️ {i18n.t('original_language', lang, source=label)}")
+        elif lang == "derja" and result.source_language == "ar":
+            # Derja explanations around the official Modern Standard Arabic text, which is never rewritten.
+            out.append(f"ℹ️ {i18n.t('official_msa', lang)}")
         if result.alternatives and route.intent != "eligibility":
             out.append("")
             out.append(f"↪️ {i18n.t('other_cases', lang)}: " + " | ".join(a.rstrip(".") for a in result.alternatives[:6]))

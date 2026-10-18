@@ -106,6 +106,14 @@ class TelegramBridge:
             session["seen"] = now
             return session
 
+    @staticmethod
+    def display_language(session: dict, telegram_code: str | None = None) -> str:
+        """Language for menus and bridge-side messages: the optional /language preference, else the language of
+        the last answer (AUTO), else the Telegram client language, else French. Answers themselves always follow
+        the language the backend resolved for the current message."""
+        return (session.get("language") or session.get("conv_language")
+                or TELEGRAM_LANGUAGES.get((telegram_code or "")[:2]) or "fr")
+
     def cancel_request(self, chat_id: int) -> None:
         with self._state_lock:
             pending = self.inflight.get(chat_id)
@@ -123,7 +131,7 @@ class TelegramBridge:
         skey = self.session_key(message)
         with self._state_lock:
             if skey in self.inflight or len(self.inflight) >= 2:
-                lang = self.session(skey).get("language", "fr")
+                lang = self.display_language(self.session(skey))
                 self.safe_send(chat_id, BUSY[lang], navigation(lang))
                 return
             cancelled = threading.Event()
@@ -202,9 +210,10 @@ class TelegramBridge:
                      **({"reply_markup": reply_markup} if reply_markup and index == len(parts) - 1 else {}))
 
     # ------------------------------------------------------------------ message handling
-    def build_payload(self, message: dict) -> dict | None:
-        """Translates a Telegram message into the n8n assistant webhook payload."""
-        user_lang = TELEGRAM_LANGUAGES.get(((message.get("from") or {}).get("language_code") or "")[:2])
+    def build_payload(self, message: dict, language: str | None = None) -> dict | None:
+        """Translates a Telegram message into the n8n assistant webhook payload. Text messages carry no language:
+        the backend detects it per message (AUTO). Uploads without a caption carry the display language."""
+        user_lang = language or TELEGRAM_LANGUAGES.get(((message.get("from") or {}).get("language_code") or "")[:2])
         if message.get("text"):
             text = message["text"].strip()
             payload = {"text": text}
@@ -242,10 +251,10 @@ class TelegramBridge:
         chat_id = message["chat"]["id"]
         if self.stop.is_set() or (cancelled and cancelled.is_set()):
             return
-        user_lang = TELEGRAM_LANGUAGES.get(((message.get("from") or {}).get("language_code") or "")[:2], "fr")
         skey = self.session_key(message)
         session = self.session(skey)
-        user_lang = session.get("language", user_lang)
+        preference = session.get("language")  # optional /language choice; absent = AUTO
+        user_lang = self.display_language(session, (message.get("from") or {}).get("language_code"))
         command = (message.get("text") or "").split(" ", 1)[0].split("@")[0]
         if command.startswith("/"):
             command = command[1:]
@@ -281,7 +290,7 @@ class TelegramBridge:
         kind = "text" if message.get("text") else "file"
         try:
             try:
-                payload = self.build_payload(message)
+                payload = self.build_payload(message, user_lang)
             except ValueError:
                 payload = None
             if payload is None:
@@ -291,14 +300,21 @@ class TelegramBridge:
             if payload.get("file") and upload_mode == "dossier":
                 payload["mode"] = "dossier"
             if command in PROCEDURES:
+                # The menu command is sent as fixed English text; answer in the user's display language instead.
                 payload["language"] = user_lang
-            elif session.get("language"):
-                payload["language"] = session["language"]
+            elif preference and not self.dialogue_enabled:
+                payload["language"] = preference  # without dialogue context the preference can only be forced
             if payload.get("text"):
                 if self.dialogue_enabled:
                     context = dict(session.get("dialogue") or {})
                     if command in PROCEDURES:
                         context = {"category": PROCEDURES[command].replace(" ","_")}
+                    # Conversation language and optional preference resolve short or ambiguous messages only.
+                    if session.get("conv_language"):
+                        context["language"] = session["conv_language"]
+                    context.pop("preferred_language", None)
+                    if preference:
+                        context["preferred_language"] = preference
                     payload["context"] = context
                 if len(payload["text"]) > 2000:
                     self.send_text(chat_id, TEXT[user_lang]["long"], navigation(user_lang))
@@ -342,8 +358,15 @@ class TelegramBridge:
                     if self.sessions.get(skey) is session and not (cancelled and cancelled.is_set()):
                         session["dialogue"] = result.context.model_dump(exclude_none=True)
             detected = result.language or result.route.get("language")
-            if not session.get("language") and detected in TEXT:
+            menu_lang = user_lang
+            if detected in TEXT:
+                # Explanations added here follow the answer's language; menus keep an explicit preference.
                 user_lang = detected
+                menu_lang = preference or detected
+                if payload.get("text"):
+                    with self._state_lock:
+                        if self.sessions.get(skey) is session and not (cancelled and cancelled.is_set()):
+                            session["conv_language"] = detected
             text = result.text
             if result.agent == "dossier_validator":
                 text = render_dossier(result, user_lang)
@@ -369,7 +392,7 @@ class TelegramBridge:
                 text += "\n" + ERROR_TEXT.get(user_lang, ERROR_TEXT["ar"])
             if cancelled and cancelled.is_set():
                 return
-            self.send_text(chat_id, text, navigation(user_lang))
+            self.send_text(chat_id, text, navigation(menu_lang))
             log.info("telegram_message_answered", extra={"fields": {
                 "kind": kind, "ms": round((time.perf_counter() - started) * 1000),
                 "agent": (resp.json() or {}).get("agent")}})
@@ -413,9 +436,12 @@ class TelegramBridge:
                 chat_id = msg["chat"]["id"]
                 skey = self.session_key(msg, callback.get("from", {}))
                 session = self.session(skey)
-                lang = session.get("language", TELEGRAM_LANGUAGES.get(
-                    (callback.get("from", {}).get("language_code") or "")[:2], "fr"))
-                if action == "language" and value in TEXT:
+                lang = self.display_language(session, callback.get("from", {}).get("language_code"))
+                if action == "language" and value == "auto":
+                    session.pop("language", None)
+                    lang = self.display_language(session, callback.get("from", {}).get("language_code"))
+                    self.safe_send(chat_id, TEXT[lang]["auto_selected"], keyboard(lang))
+                elif action == "language" and value in TEXT:
                     session["language"] = value
                     self.safe_send(chat_id, TEXT[value]["selected"], keyboard(value))
                 elif action == "procedure" and value in PROCEDURES:

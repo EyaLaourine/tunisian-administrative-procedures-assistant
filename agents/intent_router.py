@@ -10,7 +10,7 @@ import re
 import unicodedata
 
 from agents import i18n
-from agents.language import detect_language
+from agents.language import detect_language, resolve_language
 from agents.llm import LLMError, OllamaChatClient
 from agents.prompts import PromptLibrary
 from agents.schemas import RouteDecision, RouteRequest
@@ -270,11 +270,29 @@ class IntentRouter:
         self.prompts = prompts
         self.llm_fallback = llm_fallback
 
+    def language(self, req: RouteRequest) -> str:
+        """Response language of this message (AUTO mode, see agents/language.py); computed once per request."""
+        cached = getattr(req, "_resolved_language", None)
+        if cached is None:
+            cached = resolve_language(req.text, req.language, req.context, self.llm if self.llm_fallback else None,
+                                      self.prompts)
+            object.__setattr__(req, "_resolved_language", cached)
+        return cached[0]
+
     def route(self, req: RouteRequest) -> RouteDecision:
+        decision = self._route(req)
+        if decision.context is not None:
+            # The conversation language travels in the dialogue context (passed through unchanged by n8n), so a
+            # later short answer such as "oui" or "في تونس" keeps it. A None context still means "unchanged".
+            decision.context.language = decision.language
+            decision.context.preferred_language = req.context.preferred_language if req.context else None
+        return decision
+
+    def _route(self, req: RouteRequest) -> RouteDecision:
         if re.search(UNMATCHED_CASE, _normalize(req.text)):
             # "My case does not match": keep the conversation context and ask for the distinguishing facts the
             # official source uses, instead of repeating the previous answer.
-            lang = req.language or detect_language(req.text)
+            lang = self.language(req)
             ctx = req.context
             category = (ctx.category if ctx and ctx.category else None) or _rule_category(_normalize(req.text)) or "general"
             key = "legal" if ctx and ctx.legal_subject else category
@@ -285,12 +303,12 @@ class IntentRouter:
         if re.search(LIMITS_REQUEST, _normalize(req.text)):
             # Validity, acceptance and completeness are never certified: answer deterministically instead of
             # letting a generator assert them (the corpus marks every text's applicability as unverified).
-            lang = req.language or detect_language(req.text)
+            lang = self.language(req)
             category = _rule_category(_normalize(req.text)) or "general"
             return RouteDecision(language=lang, intent="procedure_info", procedure_category=category,
                                  next_agent="reply", reply=LIMITS_REPLY[lang], method="rules", context=req.context)
         if re.search(UNCOVERED_PROCEDURE, _normalize(req.text)) and _rule_category(_normalize(req.text)) is None:
-            lang = req.language or detect_language(req.text)
+            lang = self.language(req)
             return RouteDecision(language=lang, intent="out_of_scope", procedure_category="none", next_agent="reply",
                                  reply=_reply_text("none", "out_of_scope", lang), method="rules", context=req.context)
         if req.context is not None:
@@ -298,7 +316,7 @@ class IntentRouter:
             decision = route_dialogue(self,req)
             if decision is not None:
                 return decision
-        lang = req.language or detect_language(req.text)
+        lang = self.language(req)
         text = _normalize(req.text)
         hints = [h for h, kws in HINT_KEYWORDS.items() if _hits(text, kws)]
         category = _rule_category(text)

@@ -3,37 +3,37 @@ TEXT = {
 'en': {
 'welcome': 'Welcome! I help with passports, birth certificates (coverage limited), business registration, document checklists and official form checks. Guidance uses available official sources and does not replace the competent administration.',
 'help': 'Choose a procedure or ask a question. Commands: /start /help /language /procedures /passport /birth_certificate /business /checklist /form_check /privacy /cancel. For a checklist, describe first application or renewal, residence and relevant circumstances without identifying yourself.',
-'choose': 'Choose a procedure:', 'language': 'Choose your response language:',
+'choose': 'Choose a procedure:', 'language': 'Auto (default): I answer in the language of each message. You can also set a preferred language:',
 'form': 'Send a PDF, JPEG or PNG, or a Telegram photo (up to {mb} MB). Use a redacted copy where possible. I flag potentially missing fields on supported official forms; this is not official approval or a legal validity check.',
 'privacy': 'Uploads are processed temporarily in memory, never indexed into the public knowledge base and never saved by this assistant. Telegram also processes messages under its own policies. Session preferences expire after 30 minutes. Avoid sending identity numbers or other unnecessary personal details.',
-'cancel': 'Interaction cancelled. Session preferences cleared.', 'selected': 'Language selected.',
+'cancel': 'Interaction cancelled. Session preferences cleared.', 'selected': 'Preferred language saved. Menus use it, and so do very short messages; a question written in another language is still answered in that language. Choose Auto to remove the preference.',
 'checklist': 'Which procedure? Include first application or renewal and whether you live in Tunisia or abroad. Do not send identity details.',
 'passport': 'Passport', 'birth_certificate': 'Birth certificate', 'business': 'Business registration'},
 'fr': {
 'welcome': 'Bienvenue ! Passeports, actes de naissance (couverture limitée), création d’entreprise, listes de pièces et vérification de formulaires officiels. Ces indications reposent sur les sources officielles disponibles et ne remplacent pas l’administration compétente.',
 'help': 'Choisissez une démarche ou posez une question. Commandes : /start /help /language /procedures /passport /birth_certificate /business /checklist /form_check /privacy /cancel. Précisez votre situation sans données personnelles.',
-'choose': 'Choisissez une démarche :', 'language': 'Choisissez la langue :',
+'choose': 'Choisissez une démarche :', 'language': 'Auto (par défaut) : je réponds dans la langue de chaque message. Vous pouvez aussi choisir une langue préférée :',
 'form': 'Envoyez un PDF, JPEG, PNG ou une photo Telegram (maximum {mb} Mo), de préférence anonymisé. Les champs potentiellement manquants sont signalés sur les formulaires reconnus. Ce contrôle ne constitue ni approbation officielle ni validation juridique.',
 'privacy': 'Les fichiers sont traités temporairement en mémoire, sans enregistrement ni ajout à la base publique. Telegram traite également les messages selon ses règles. Les préférences expirent après 30 minutes. Évitez les numéros d’identité et les données personnelles inutiles.',
-'cancel': 'Interaction annulée. Préférences effacées.', 'selected': 'Langue sélectionnée.',
+'cancel': 'Interaction annulée. Préférences effacées.', 'selected': 'Langue préférée enregistrée. Elle sert aux menus et aux messages très courts ; une question écrite dans une autre langue reçoit toujours une réponse dans cette langue. Choisissez Auto pour revenir au mode automatique.',
 'checklist': 'Quelle démarche ? Précisez première demande ou renouvellement et résidence en Tunisie ou à l’étranger, sans données d’identité.',
 'passport': 'Passeport', 'birth_certificate': 'Acte de naissance', 'business': 'Création d’entreprise'},
 'ar': {
 'welcome': 'مرحبا! أساعد في إجراءات جواز السفر ومضمون الولادة (تغطية محدودة) وتسجيل المؤسسات وقوائم الوثائق وفحص المطبوعات الرسمية. الإرشادات حسب المصادر الرسمية المتاحة ولا تعوض الإدارة المختصة.',
 'help': 'اختر إجراء أو اطرح سؤالك. الأوامر: /start /help /language /procedures /passport /birth_certificate /business /checklist /form_check /privacy /cancel. وضح حالتك دون بيانات شخصية.',
-'choose': 'اختر الإجراء:', 'language': 'اختر لغة الإجابة:',
+'choose': 'اختر الإجراء:', 'language': 'Auto (افتراضي): أجيب بلغة كل رسالة. يمكنك أيضا اختيار لغة مفضلة:',
 'form': 'أرسل PDF أو JPEG أو PNG أو صورة Telegram (حتى {mb} ميغابايت). يفضل إخفاء البيانات الشخصية. ننبه إلى الحقول المحتمل نقصها في المطبوعات المعروفة فقط. الفحص ليس موافقة رسمية أو إثباتا للصلاحية القانونية.',
 'privacy': 'تعالج الملفات مؤقتا في الذاكرة ولا تحفظ ولا تضاف إلى قاعدة المعرفة العامة. تعالج Telegram الرسائل حسب سياستها أيضا. تحذف تفضيلات الجلسة بعد 30 دقيقة. تجنب أرقام الهوية والبيانات غير الضرورية.',
-'cancel': 'تم إلغاء التفاعل ومسح التفضيلات.', 'selected': 'تم اختيار اللغة.',
+'cancel': 'تم إلغاء التفاعل ومسح التفضيلات.', 'selected': 'تم حفظ اللغة المفضلة. تستعمل في القوائم وفي الرسائل القصيرة جدا، أما السؤال المكتوب بلغة أخرى فتكون الإجابة عنه بلغته. اختر Auto للرجوع إلى الوضع التلقائي.',
 'checklist': 'ما الإجراء؟ وضح طلب أول مرة أو تجديد والإقامة في تونس أو بالخارج، دون بيانات الهوية.',
 'passport': 'جواز السفر', 'birth_certificate': 'مضمون ولادة', 'business': 'تسجيل مؤسسة'},
 'derja': {
 'welcome': 'عسلامة! نعاونك في الباسبور ومضمون الولادة (التغطية محدودة) وتسجيل الشركات وقائمة الأوراق وتفقد المطبوعات الرسمية. المعلومات حسب المصادر الرسمية المتوفرة وما تعوضش الإدارة المعنية.',
 'help': 'اختار إجراء ولا اسأل بالعربي ولا باللاتيني. الأوامر: /start /help /language /procedures /passport /birth_certificate /business /checklist /form_check /privacy /cancel.',
-'choose': 'اختار الإجراء:', 'language': 'اختار اللغة:',
+'choose': 'اختار الإجراء:', 'language': 'Auto (بالأساس): نجاوبك باللغة اللي تكتب بيها كل ميساج. تنجم زادة تختار لغة تحبها:',
 'form': 'ابعث PDF ولا JPEG ولا PNG ولا تصويرة Telegram (حتى {mb} ميغابايت). غطي المعطيات الشخصية كي تنجم. نتفقدوا الخانات اللي يمكن ناقصة في المطبوعات المعروفة. هذا موش قبول رسمي ولا إثبات قانوني.',
 'privacy': 'الملفات تتعالج وقتيا في الذاكرة، ما تتخزنش وما تدخلش لقاعدة المعرفة العامة. Telegram زادة تعالج الرسائل حسب سياستها. تفضيلات الجلسة تتمسح بعد 30 دقيقة. ما تبعثش أرقام الهوية ولا معطيات موش لازمة.',
-'cancel': 'تلغى التفاعل وتمسحت التفضيلات.', 'selected': 'تبدلت اللغة.',
+'cancel': 'تلغى التفاعل وتمسحت التفضيلات.', 'selected': 'سجّلت اللغة اللي تحبها. نستعملها في القوائم وفي الميساجات القصيرة برشا، أما كان تكتب سؤال بلغة أخرى نجاوبك بيها. اختار Auto باش ترجع للوضع الأوتوماتيكي.',
 'checklist': 'شنوة الإجراء؟ أول مرة ولا تجديد؟ ساكن في تونس ولا البرّا؟ ما تبعثش معطيات الهوية.',
 'passport': 'باسبور', 'birth_certificate': 'مضمون ولادة', 'business': 'تسجيل شركة'}
 }
@@ -86,6 +86,15 @@ EXTRA = {
 for language, strings in EXTRA.items():
     TEXT[language].update(strings)
 
+AUTO_SELECTED = {
+    "en": "Automatic language: I answer in the language of each message.",
+    "fr": "Langue automatique : je réponds dans la langue de chaque message.",
+    "ar": "اللغة التلقائية: أجيب بلغة كل رسالة.",
+    "derja": "اللغة أوتوماتيكية: نجاوبك باللغة اللي تكتب بيها كل ميساج.",
+}
+for language, note in AUTO_SELECTED.items():
+    TEXT[language]["auto_selected"] = note
+
 
 def button(label, data):
     return {"text": label, "callback_data": data}
@@ -110,7 +119,7 @@ def navigation(lang):
 
 def language_keyboard(lang="en"):
     rows = [[button(title, "language:" + code)] for code, title in
-            [("en", "English"), ("fr", "Français"), ("ar", "العربية"), ("derja", "تونسي / Derja")]]
+            [("auto", "Auto 🌐"), ("en", "English"), ("fr", "Français"), ("ar", "العربية"), ("derja", "تونسي / Derja")]]
     return {"inline_keyboard": rows + [[button(TEXT[lang]["back"], "menu:main")]]}
 
 BUSY = {
