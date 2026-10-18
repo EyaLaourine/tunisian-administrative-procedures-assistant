@@ -4,7 +4,7 @@ The hardened backend (final-candidate, rc-20261018b) disables /ingestion/run and
 and then requires the X-Admin-Key header. Workflow 01 sends no header, so it fails with HTTP 403 at its first node.
 The patch changes only the two HTTP Request nodes: authentication through an n8n Header Auth credential (the key
 value lives in the credential, never in the workflow). Node IDs, names, URLs, bodies, options, connections, notes and
-settings are unchanged. The credential ID below is a placeholder to map to the real credential created privately.
+settings are unchanged. The credential ID is the one created in production n8n on 2026-10-18 (TnaaAdminKeyCred).
 
 usage: python deploy/proposed/make_workflow_01_admin_key.py
 """
@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "workflows" / "01_ingest_and_index.json"
 OUT = ROOT / "deploy" / "proposed" / "01_ingest_and_index_admin_key.json"
-CREDENTIAL = {"httpHeaderAuth": {"id": "TnaaAdminHeaderAuth", "name": "TNAA Backend Admin"}}
+CREDENTIAL = {"httpHeaderAuth": {"id": "TnaaAdminKeyCred", "name": "TNAA Backend Admin"}}
 TARGETS = {"Download official documents", "Build chunks and index (both strategies)"}
 
 

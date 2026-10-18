@@ -10,7 +10,8 @@ import json
 import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-EXPECTED = os.environ.get("ADMIN_API_KEY", "")
+_key_file = os.environ.get("ADMIN_API_KEY_FILE")
+EXPECTED = open(_key_file, encoding="utf-8").read().strip() if _key_file else os.environ.get("ADMIN_API_KEY", "")
 BODIES = {"/ingestion/run": {"counts": {"downloaded": 0, "unchanged": 12}, "results": []},
           "/index/run": {"documents_indexed": ["fixture"], "documents_skipped": {}, "collection_points": {"structure": 0, "recursive": 0},
                          "chunks_per_strategy": {}}}
