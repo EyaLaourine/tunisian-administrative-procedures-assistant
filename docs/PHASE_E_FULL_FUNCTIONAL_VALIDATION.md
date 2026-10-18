@@ -79,7 +79,7 @@ Production was not modified; no deployment, restart, ingestion, indexing, produc
 | `agents/checklist_builder.py` | `_attach_fee_warning()` on both paths |
 | `agents/dialogue.py` | CIN ambiguity clarification and `cin_application` strings; "première carte" counts as first issuance |
 | `agents/form_helper.py`, `agents/i18n.py` | Localized file-error reasons |
-| `tests/test_phase_e.py` (new) | 51 tests: A2, CIN routing and content, RNE routing, context switches, form routing without LLM, localized errors |
+| `tests/test_phase_e.py` (new) | 52 tests: A2, CIN routing and content, RNE routing, context switches, form routing without LLM, localized errors |
 | `tests/test_conversational_understanding.py` | A1 expectations (expression language; conversation language kept) and the observed-defect test |
 
 Not changed: Telegram bridge code, n8n workflows, prompts, configuration, data, Qdrant and Ollama models.
