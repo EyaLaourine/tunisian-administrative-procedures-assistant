@@ -37,8 +37,8 @@ class GroundedAnswerer:
 
     def answer(self, req: ComposeRequest) -> AnswerResult:
         if self.corpus is not None:
-            from agents.legal_evidence import legal_reply
-            result = legal_reply(req, self.corpus)
+            from agents.legal_evidence import download_reply, legal_reply
+            result = download_reply(req, self.corpus) or legal_reply(req, self.corpus)
             if result is not None:
                 return result
         lang = req.route.language

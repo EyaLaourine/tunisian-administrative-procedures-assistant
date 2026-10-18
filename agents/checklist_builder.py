@@ -268,6 +268,7 @@ class ChecklistBuilder:
         lang, route = req.route.language, req.route
         # A requested procedure code that is not in the official table must not be answered with other rows.
         asked = RNE_CODE_QUERY.search(req.query)
+        asked_codes = list(dict.fromkeys(re.sub(r"\s+", "", m).upper() for m in RNE_CODE_QUERY.findall(req.query)))
         if asked:
             compact = re.sub(r"\s+", "", asked.group(1)).upper()
             code = f"RNE {compact[0]} {compact[1:]}"
@@ -282,9 +283,10 @@ class ChecklistBuilder:
         # Table rows in retrieval order (retrieval matches exact codes and company types); the
         # keyword heuristic is only a fallback when no table row was retrieved.
         if asked:
-            # Exact identity takes precedence over vector similarity and company-name overlap.
-            wanted = re.sub(r"\s+", "", code).upper()
-            rows = [row for row in table if re.sub(r"\s+", "", row.splitlines()[0].split(":", 1)[-1]).upper() == wanted]
+            # Exact identity takes precedence over vector similarity and company-name overlap. Several codes (one
+            # legal form with several official rows) are quoted in the order given.
+            rows = [row for c in asked_codes for row in table
+                    if re.sub(r"\s+", "", row.splitlines()[0].split(":", 1)[-1]).upper() == "RNE" + c]
             top = []  # Do not append unrelated legal extracts to a code-specific answer.
         else:
             rows = self._retrieved_rows(top) or self._rank_rne_rows(req.query, req.passages)
@@ -316,6 +318,11 @@ class ChecklistBuilder:
                 lines.extend(_localize_row(row, lang))
         forms = [r for r in self.corpus.records().values()
                  if r.procedure_category.value == "business_registration" and r.document_type.value == "official_form"]
+        # Only the declaration form of the quoted rows' kind: F-001 natural person, F-002 legal entity.
+        kinds = {("physique" if "Genre d'Entreprise: Personne physique" in row else "morale") for row in rows}
+        if len(kinds) == 1:
+            wanted_form = "rne-form-f001" if kinds == {"physique"} else "rne-form-f002"
+            forms = [r for r in forms if r.doc_id.startswith(wanted_form)] or forms
         if forms:
             lines += ["", f"📝 {i18n.t('official_forms', lang)}:"]
             for f in sorted(forms, key=lambda r: r.doc_id):

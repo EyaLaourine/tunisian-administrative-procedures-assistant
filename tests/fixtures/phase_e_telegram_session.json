@@ -1,0 +1,37 @@
+{
+ "source": "Phase E manual Telegram acceptance session, 2026-10-18 15:30-16:04 UTC (production backend rc-20261018-e).",
+ "evidence_legend": {
+  "observed_input": "exact user message quoted by the owner in the Phase F defect report",
+  "observed_output": "bot behaviour as described by the owner (the full reply text is not stored anywhere)",
+  "logged": "exact routing metadata from the production backend log at that time (no message text is logged)",
+  "mapping": "the association between a quoted message and a log line is INFERRED from order, category, intent and language",
+  "expected": "inferred expectation from the owner's requirement, not observed"
+ },
+ "turns": [
+  {"id": "D1", "context_before": "CIN first issuance (logged 15:33:54 national_id/required_documents -> checklist interior-national-id-guide-fr; the message text was not quoted)",
+   "observed_input": "قداش تاخو وقت؟", "observed_output": "the fees section",
+   "logged": {"ts": "15:34:34", "language": "derja", "category": "national_id", "intent": "fees", "next": "checklist", "doc": "interior-national-id-guide-fr"},
+   "expected": {"language": "derja", "category": "national_id", "intent": "processing_time", "section": "delay"}},
+  {"id": "D2", "observed_input": "Je veux immatriculer une entreprise en Tunisie",
+   "observed_output": "registration procedures for associations and foreign association branches",
+   "logged": {"ts": "15:35:01", "language": "fr", "category": "business_registration", "intent": "procedure_info", "next": "answer", "answer_method": "llm_grounded", "answer_ms": 96946},
+   "expected": {"next": "reply", "asks": "legal form"}},
+  {"id": "D3a", "observed_input": "Que contient le formulaire F-001 ?", "observed_output": "no relevant information found",
+   "logged": {"ts": "15:37:52", "language": "fr", "category": "business_registration", "intent": "procedure_info", "next": "answer", "answer_method": "none"},
+   "expected": {"next": "answer", "content": "verbatim printed overview of RNE F-001"}},
+  {"id": "D3b", "observed_input": "Et le formulaire F-002 ?", "observed_output": "generic clarification unrelated to the form",
+   "logged": {"ts": "15:38:10", "language": "fr", "category": "business_registration", "intent": "form_help", "next": "reply"},
+   "expected": {"next": "answer", "content": "verbatim printed overview of RNE F-002"}},
+  {"id": "D4", "observed_input": "Quels sont les frais ?", "observed_output": "a generic 50 TND registration fee",
+   "logged": {"ts": "15:40:45", "language": "fr", "category": "business_registration", "intent": "fees", "next": "answer", "answer_method": "llm_grounded"},
+   "expected": {"without_legal_form": "ask the legal form", "after_SARL": "official row RNE C 012 with its fee"}},
+  {"id": "D5", "observed_input": "Où télécharger le formulaire de passeport ?",
+   "observed_output": "asked whether the procedure is a renewal, then answered with the submission location",
+   "logged": {"ts": "15:43:40", "language": "fr", "category": "passport", "intent": "submission_place", "next": "reply"},
+   "expected": {"next": "answer", "content": "no verified download link (the official file is not in the verified corpus)"}},
+  {"id": "D6", "observed_input": "01.pdf and 02.pdf (contents unknown)", "observed_output": "not recognised",
+   "logged": [{"ts": "16:03:29", "mime": "application/pdf", "method": "text_layer", "words": 287, "recognised": false},
+              {"ts": "16:03:41", "mime": "application/pdf", "method": "text_layer", "words": 423, "recognised": false}],
+   "expected": {"recognised": false, "message": "names the supported forms (RNE F-001, F-002); cause not verifiable without the files"}}
+ ]
+}

@@ -236,7 +236,7 @@ def test_cin_arabic_user_gets_french_official_text_with_note(builder, corpus):
 
 # ---------------------------------------------------------------- RNE routing
 @pytest.mark.parametrize("text,intent,nxt", [
-    ("Comment immatriculer une SARL au RNE ?", "procedure_info", "answer"),
+    ("Comment immatriculer une SARL au RNE ?", "procedure_info", "checklist"),  # Phase F: official table row C 012
     ("Que contient le formulaire F-001 ?", "procedure_info", "answer"),
     ("Que contient le formulaire F-002 ?", "procedure_info", "answer"),
     ("Quelles pièces pour l'immatriculation d'une personne physique au RNE ?", "required_documents", "checklist"),

@@ -47,6 +47,10 @@ INTENT_KEYWORDS: dict[str, list[str]] = {
     "processing_time": [
         "délai", "delai", "combien de temps", "durée", "duree", "how long", "processing time",
         "how many days", r"\bأجل\b(?!\s+(?:السرقة|الضياع|الإتلاف))", "آجال", "مدة", "وقتاش", "wa9tech", "waqtech", "قداش ياخو", "9adech ya5o",
+        # "how long does it take": Derja (masculine/feminine verb), Arabizi, MSA, plus explicit words for time.
+        r"\b(?:ي|ت)(?:اخو|اخذ|اخذو|ستحق)\s+(?:في\s+)?(?:ال)?وقت", r"\bقداش\s+(?:من\s+)?(?:ال)?وقت", r"\b(?:ال)?وقت\s+(?:ي|ت)(?:اخو|اخذ)",
+        r"\b(?:y|t)(?:a|e)?(?:kh|5)(?:ou|o|o?u)\b.{0,15}\bwa9t", r"\bwa9t\b", r"\bwaqt\b", "يستغرق", "تستغرق",
+        "كم من الوقت", "كم يوما", "how many weeks", "how much time", "combien de jours", "combien de semaines",
     ],
     "fees": [
         "prix", "frais", "coût", "cout", "combien", "tarif", "timbre", "redevance", r"\bfees?\b",
@@ -220,9 +224,15 @@ def _hits(text: str, patterns: list[str]) -> int:
     return sum(1 for p in patterns if re.search(p if p.startswith(r"\b") else re.escape(p), text))
 
 
-def _rule_category(text: str) -> str | None:
+def _rule_category(text: str, raw: str | None = None) -> str | None:
     from agents.legal_evidence import identify_subject
+    from agents.rne_registration import COMPANY, REGISTRATION, detect_legal_form
     if identify_subject(text) or RNE_CODE.search(text):
+        return 'business_registration'
+    # `raw` keeps capitals so that the acronym "SA" is told apart from the French possessive "sa".
+    if re.search(REGISTRATION, text) and (detect_legal_form(raw or text) or re.search(COMPANY, text)):
+        # Registering a company or a legal form ("immatriculer une association", "nheb na3mel chirka") is an RNE
+        # procedure; the legal form is asked for when it is not given.
         return 'business_registration'
     scores = {c: _hits(text, kws) for c, kws in CATEGORY_KEYWORDS.items()}
     # Birth certificates are listed as supporting documents of other procedures; another
@@ -311,6 +321,13 @@ class IntentRouter:
         if stripped != req.text:
             # "merci, et pour les frais ?" is routed as "et pour les frais ?" (not as a greeting).
             req = req.model_copy(update={"text": stripped})
+        from agents.legal_evidence import FORM_DOWNLOAD
+        if re.search(FORM_DOWNLOAD, _normalize(req.text)):
+            category = (_rule_category(_normalize(req.text)) or (req.context.category if req.context else None)
+                        or "general")
+            return RouteDecision(language=self.language(req), intent="procedure_info", procedure_category=category,
+                                 next_agent="answer", method="rules", context=req.context,
+                                 retrieval_query=req.text[:2000])
         if re.search(UNMATCHED_CASE, _normalize(req.text)):
             # "My case does not match": keep the conversation context and ask for the distinguishing facts the
             # official source uses, instead of repeating the previous answer.
@@ -341,7 +358,7 @@ class IntentRouter:
         lang = self.language(req)
         text = _normalize(req.text)
         hints = [h for h, kws in HINT_KEYWORDS.items() if _hits(text, kws)]
-        category = _rule_category(text)
+        category = _rule_category(text, req.text)
         intent = _rule_intent(text)
         method, prompt_ref = "rules", None
 
@@ -380,11 +397,22 @@ class IntentRouter:
         if category == "business_registration" and RNE_CODE.search(req.text):
             nxt = "checklist"
         elif category == "business_registration":
-            from agents.legal_evidence import identify_subject
+            from agents.legal_evidence import TABLE_SCOPE_QUESTION, identify_form, identify_subject, requested_article
+            from agents.rne_registration import QUESTION as RNE_FORM_QUESTION, codes_for, detect_legal_form, is_registration_question
             if identify_subject(req.text):
                 nxt = 'answer'
-            elif nxt == 'checklist' and not _hits(text, TABLE_SIGNALS):
-                nxt = 'answer'
+            elif nxt != "reply" and not identify_form(req.text) and requested_article(req.text) is None:
+                legal_form = detect_legal_form(req.text)
+                if legal_form:
+                    # The legal form selects the official creation row(s) of the RNE table.
+                    return RouteDecision(language=lang, intent=intent, procedure_category=category, hints=hints,
+                                         next_agent="checklist", method=method, prompt_ref=prompt_ref,
+                                         retrieval_query=(" ".join(codes_for(legal_form)) + "\n" + req.text)[:2000])
+                if is_registration_question(req.text, intent) and not re.search(TABLE_SCOPE_QUESTION, req.text, re.I):
+                    return RouteDecision(language=lang, intent=intent, procedure_category=category, hints=hints,
+                                         next_agent="reply", reply=RNE_FORM_QUESTION[lang], method="rules")
+                if nxt == 'checklist' and not _hits(text, TABLE_SIGNALS):
+                    nxt = 'answer'
         return RouteDecision(
             language=lang, intent=intent, procedure_category=category, hints=hints, next_agent=nxt,
             reply=_reply_text(category, intent, lang) if nxt == "reply" else None,

@@ -218,10 +218,10 @@ STRINGS: dict[str, dict[str, str]] = {
         "ar": "تم التعرف على المطبوعة: {title}", "derja": "عرفت المطبوعة: {title}",
     },
     "form_unknown": {
-        "en": "I could not match this file to an official form in my knowledge base, so I cannot check its fields.",
-        "fr": "Je n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs.",
-        "ar": "لم أتمكن من مطابقة هذا الملف مع مطبوعة رسمية في قاعدة معارفي، لذا لا يمكنني التثبت من خاناتها.",
-        "derja": "ما نجمتش نعرف المطبوعة هاذي من المطبوعات الرسمية اللي عندي، معناها ما نجمش نثبّت في الخانات.",
+        "en": "I could not match this file to an official form in my knowledge base, so I cannot check its fields. Supported forms: RNE F-001 (registration of a natural person) and RNE F-002 (registration of a legal entity).",
+        "fr": "Je n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs. Formulaires pris en charge : RNE F-001 (immatriculation d'une personne physique) et RNE F-002 (immatriculation d'une personne morale).",
+        "ar": "لم أتمكن من مطابقة هذا الملف مع مطبوعة رسمية في قاعدة معارفي، لذا لا يمكنني التثبت من خاناتها. المطبوعات المدعومة: RNE F-001 (تسجيل شخص طبيعي) وRNE F-002 (تسجيل شخص معنوي).",
+        "derja": "ما نجمتش نعرف المطبوعة هاذي من المطبوعات الرسمية اللي عندي، معناها ما نجمش نثبّت في الخانات. المطبوعات اللي نعرفها: RNE F-001 (تسجيل شخص طبيعي) وRNE F-002 (تسجيل شخص معنوي).",
     },
     "form_missing": {
         "en": "Fields that look empty", "fr": "Champs qui semblent vides",
@@ -244,6 +244,36 @@ STRINGS: dict[str, dict[str, str]] = {
     "form_error": {
         "en": "I could not read this file: {reason}", "fr": "Je n'ai pas pu lire ce fichier : {reason}",
         "ar": "تعذرت قراءة هذا الملف: {reason}", "derja": "ما نجمتش نقرا الملف هذا: {reason}",
+    },
+    "form_overview": {
+        "en": "Printed content of the official form (quoted as printed):",
+        "fr": "Contenu imprimé du formulaire officiel (cité tel quel) :",
+        "ar": "المحتوى المطبوع للمطبوعة الرسمية (منقول كما هو):",
+        "derja": "شنوة مكتوب في المطبوعة الرسمية (منقول كيما هو):",
+    },
+    "form_fields": {"en": "Fields to fill in", "fr": "Champs à remplir", "ar": "الخانات المطلوب تعميرها",
+                    "derja": "الخانات اللي لازم تعمّرها"},
+    "form_printed_text": {"en": "Printed instructions and options", "fr": "Mentions et options imprimées",
+                          "ar": "التعليمات والخيارات المطبوعة", "derja": "التعليمات والخيارات المكتوبة"},
+    "form_section_unavailable": {
+        "en": "The indexed text of this official form does not contain a passage that answers that specific question; I will not guess. Here is what the form contains:",
+        "fr": "Le texte indexé de ce formulaire officiel ne contient pas de passage qui réponde à cette question précise ; je préfère ne pas deviner. Voici ce que contient le formulaire :",
+        "ar": "النص المفهرس لهذه المطبوعة الرسمية لا يتضمن فقرة تجيب عن هذا السؤال بالتحديد، ولن أخمن. هذا ما تحتويه المطبوعة:",
+        "derja": "النص اللي عندي من المطبوعة هاذي ما فيهش جواب على السؤال هذا بالضبط، وما نحبش نخمّن. هاو شنوة فيها:",
+    },
+    "form_download_available": {"en": "Official download link", "fr": "Lien officiel de téléchargement",
+                                "ar": "رابط التحميل الرسمي", "derja": "الرابط الرسمي باش تحمّلها"},
+    "form_download_unavailable": {
+        "en": "No verified download link for this form is available in my official sources: the official file could not be retrieved and verified. Please obtain the form from the competent administration.",
+        "fr": "Aucun lien de téléchargement vérifié de ce formulaire n'est disponible dans mes sources officielles : le fichier officiel n'a pas pu être récupéré et vérifié. Procurez-vous le formulaire auprès de l'administration compétente.",
+        "ar": "لا يتوفر في مصادري الرسمية رابط تحميل موثّق لهذه المطبوعة: لم يكن ممكنا جلب الملف الرسمي والتحقق منه. يرجى الحصول على المطبوعة من الإدارة المعنية.",
+        "derja": "ما عنديش في المصادر الرسمية رابط تحميل مثبّت للمطبوعة هاذي: ما نجمناش نجيبو الملف الرسمي ونثبتو فيه. خوذ المطبوعة من الإدارة المعنية.",
+    },
+    "form_download_none": {
+        "en": "My official sources do not contain a downloadable form for this procedure.",
+        "fr": "Mes sources officielles ne contiennent pas de formulaire téléchargeable pour cette démarche.",
+        "ar": "مصادري الرسمية لا تتضمن مطبوعة قابلة للتحميل لهذا الإجراء.",
+        "derja": "المصادر الرسمية اللي عندي ما فيهاش مطبوعة تتحمّل للإجراء هذا.",
     },
     "reason_unreadable_pdf": {
         "en": "the PDF is damaged or unreadable", "fr": "le PDF est endommagé ou illisible",

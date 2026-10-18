@@ -412,6 +412,11 @@ class FormHelper:
             if not eligible:
                 best_id = None
         if best_id is None or best_score < MIN_MATCH:
+            # Metadata only (no file content): lets an unrecognised upload be diagnosed later (near miss vs other form).
+            closest = max(ranking, key=lambda r: r[2]) if ranking else (False, 0.0, 0.0, None)
+            log.info("form_unrecognised", extra={"fields": {"closest_template": closest[3],
+                                                            "closest_overall": round(closest[2], 3),
+                                                            "threshold": MIN_MATCH, "method": method}})
             return FormCheckResult(text=i18n.t("form_unknown", lang), recognised=False, method=method,
                                    match_score=round(best_score, 3))
 

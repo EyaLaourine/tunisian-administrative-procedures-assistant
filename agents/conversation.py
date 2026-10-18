@@ -167,9 +167,14 @@ def pending_question(context, language: str) -> str | None:
     if context.category == "national_id":
         from agents.dialogue import APPLICATIONS, UI
         return None if any(h in APPLICATIONS for h in context.hints) else UI[language]["cin_application"]
-    if context.category == "business_registration" and not context.rne_code and not context.legal_subject:
+    if context.category == "business_registration" and not context.legal_subject:
+        if context.pending_intent in {"fees", "processing_time", "required_documents"}:
+            if context.rne_code:
+                return None
+            from agents.rne_registration import QUESTION
+            return QUESTION[language]  # the pending question is the legal form of the business
         from agents.legal_evidence import CLARIFY
-        return CLARIFY[language]
+        return CLARIFY[language]  # the pending question is which legal act (an article was asked without one)
     return None
 
 

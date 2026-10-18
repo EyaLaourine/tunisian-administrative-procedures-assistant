@@ -76,8 +76,14 @@ FORMS = {
     'rne-form-f001-natural-person-registration': r'F[\s_-]*0*01(?!\d)|personne[\s_]+physique|natural person|شخص طبيعي',
     'rne-form-f002-legal-entity-registration': r'F[\s_-]*0*02(?!\d)|personne[\s_]+mo[rt]ale|legal entity|شخص معنوي',
 }
-FORM_REFERENCE = r'formulaire|imprim[ée]|\bform\b|مطبوعة|استمارة|RNE[\s_-]*F[\s_-]*0*0[12]'
-FORM_CONTENT_QUESTION = r'que dit|quelle|quel|selon|what|which|says?|according|ماذا|ما\b|هل|\?|؟'
+FORM_REFERENCE = r'formulaire|imprim[ée]|\bform\b|مطبوعة|استمارة|RNE[\s_-]*F[\s_-]*0*0[12]|\bF[\s_-]*0*0[12]\b'
+FORM_CONTENT_QUESTION = r'que dit|quelle|quel|selon|what|which|says?|according|ماذا|ما\b|هل|\?|؟|^\s*(?:et|and|w|و)\b|contien|contenu|contain'
+# A generic question about what the form contains (answered with the printed overview of the form).
+FORM_GENERIC = (r'contien|contenu|contain|content|what(?:\'s| is) (?:in|on)|qu.y a|champs|fields|sections|rubriques|'
+                r'خانات|محتوى|يحتوي|تحتوي|تتضمن|شنوة فيه|شنوة فيها|\bfih\b|\bfiha\b|^\s*(?:et|and|w|و)\b')
+# Download / link of an official form.
+FORM_DOWNLOAD = (r'(?=.*(?:t[ée]l[ée]charg|telecharg|download|تحميل|نحمل|نحمّل|\bnhabet\b|\bn7abet\b|\blien\b|\blink\b|'
+                 r'رابط|\burl\b))(?=.*(?:formulaire|imprim[ée]|\bform\b|استمارة|إستمارة|مطبوعة|\bF[\s_-]*0*0[12]\b))')
 TABLE = re.compile(r'(?:tableau|table|جدول)\s*(?:n\s*°|no\.?|number|رقم|عدد)?\s*(\d+)', re.I)
 TABLE_TOPICS = r'r[ée]duc|reduc|discount|تخفيض|rembours|refund|استرجاع|paiement|payment|modalit|recouvr|ttc|\btaxes?\b|abrog|repeal'
 # Words that identify an act or a question form rather than the requested provision.
@@ -214,6 +220,62 @@ def identify_form(text):
     return next((doc for doc, pattern in FORMS.items() if re.search(pattern, text, re.I)), None)
 
 
+_FORM_NOISE = re.compile(r'@|www\.|\+216|نهج|\brue\b|^\s*\d+\s*/\s*\d+\s*$|عدد الصفحات|نسخة|:\s*مرجع|^تص\w*ح بتسجيل', re.I)
+_FIELD_LABEL = re.compile(r'^(.*?)\s*:\s*[.\s/]{4,}')
+
+
+def form_overview(req, corpus, form, specific=False):
+    """Printed content of an official form, quoted verbatim: title lines, the labels of the fields to fill in and the
+    printed instructions/options. The extraction is the complete one-page official form."""
+    from agents.checklist_builder import sources_footer
+    blocks = corpus.blocks(form)
+    citation = corpus.citation(form)
+    if not blocks or not citation:
+        return None
+    lang = req.route.language
+    titles = [b['text'] for b in blocks if re.search(r'DÉCLARATION|RNE F 00', b['text'])]
+    labels = []
+    for b in blocks:
+        m = _FIELD_LABEL.match(b['text'])
+        if '....' in b['text'] and m and m.group(1).strip() and m.group(1).strip() not in labels:
+            labels.append(m.group(1).strip())
+    printed = [b['text'] for b in blocks if '....' not in b['text'] and b['text'] not in titles
+               and len(b['text']) >= 20 and not _FORM_NOISE.search(b['text'])]
+    lines = [i18n.t('form_section_unavailable', lang)] if specific else []
+    lines += [i18n.t('form_overview', lang), *[f'• {t}' for t in titles],
+              '', f"{i18n.t('form_fields', lang)}:", *[f'• {label}' for label in labels],
+              '', f"{i18n.t('form_printed_text', lang)}:", *[f'• {t}' for t in printed]]
+    return AnswerResult(text='\n'.join(lines + sources_footer(lang, [citation])), found=True,
+                        method='passages_fallback', citations=[citation],
+                        verification={'legal': {'method': 'verbatim_form_overview', 'articles': [],
+                                                'semantic_conclusion_verified': False}})
+
+
+def download_reply(req, corpus):
+    """Download link of an official form, only from the verified corpus manifest (a record with a stored file);
+    otherwise state that no verified link is available. Never a guessed URL."""
+    if not re.search(FORM_DOWNLOAD, req.query.lower()):
+        return None
+    from agents.checklist_builder import sources_footer
+    lang, category = req.route.language, req.route.procedure_category
+    forms = [r for r in corpus.records().values() if r.document_type.value == 'official_form']
+    named = [r for r in forms if r.doc_id in FORMS and re.search(FORMS[r.doc_id], req.query, re.I)]
+    wanted = named or [r for r in forms if r.procedure_category.value == category]
+    if not wanted:
+        return AnswerResult(text=i18n.t('form_download_none', lang), found=False, method='none')
+    lines, cites = [], []
+    for rec in sorted(wanted, key=lambda r: r.doc_id):
+        if rec.file_path:
+            lines.append(f"{i18n.t('form_download_available', lang)}: {rec.title}\n{rec.url}")
+            c = corpus.citation(rec.doc_id)
+            if c:
+                cites.append(c)
+        else:
+            lines.append(i18n.t('form_download_unavailable', lang))
+    return AnswerResult(text='\n\n'.join(lines) + ('\n' + '\n'.join(sources_footer(lang, cites)) if cites else ''),
+                        found=bool(cites), method='passages_fallback' if cites else 'none', citations=cites)
+
+
 def form_reply(req, corpus, form):
     """Quote the printed instruction block(s) of an official form that answer the question (no generation).
 
@@ -230,7 +292,11 @@ def form_reply(req, corpus, form):
             words |= {norm(e) for e in expansion}
     scores = [sum(w in t for w in words) for t in texts]
     if not words or max(scores) == 0:
-        return AnswerResult(text=i18n.t('insufficient_evidence', req.route.language), found=False, method='none')
+        # Nothing printed on the form matches a specific question: give the form's printed overview (verbatim),
+        # stating the limitation when the question was specific. Never a guess.
+        specific = bool(words) or not re.search(FORM_GENERIC, req.query, re.I)
+        return form_overview(req, corpus, form, specific=specific) or AnswerResult(
+            text=i18n.t('insufficient_evidence', req.route.language), found=False, method='none')
     best = max(scores)
     selected = [s for s, sc in zip(sections, scores) if sc == best][:2]
     from agents.checklist_builder import sources_footer

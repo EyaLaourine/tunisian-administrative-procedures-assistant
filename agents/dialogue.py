@@ -265,7 +265,7 @@ def route_dialogue(router, req):
     from agents.schemas import RouteDecision
     state = req.context.model_copy(deep=True)
     text = _normalize(req.text)
-    explicit = _rule_category(text)
+    explicit = _rule_category(text, req.text)
     direct_intent = _rule_intent(text)
     if not explicit and _hits(text,GREETING_KEYWORDS) and len(text.split()) <= 6:
         return None
@@ -278,6 +278,11 @@ def route_dialogue(router, req):
             state = DialogueContext(category=explicit, residence=state.residence, language=state.language,
                                     preferred_language=state.preferred_language)
     if not state.category or state.category not in {'passport','national_id','business_registration'}:
+        return None
+    from agents.legal_evidence import identify_form
+    if identify_form(req.text):
+        # A question about an official form's printed content ("Et le formulaire F-002 ?") is answered from the
+        # form itself, never with the legal-act clarification of the RNE dialogue.
         return None
     state, remaining, facts = understand(req.text,state,router.llm,router.prompts)
     from agents.legal_evidence import identify_subject, subject_query
@@ -295,6 +300,15 @@ def route_dialogue(router, req):
         # A newly named procedure replaces a previous subject, even within RNE.
         state.rne_code = None
         state.legal_subject = None
+    # RNE registration: the legal form selects the official creation row(s) of the RNE table. A single row is
+    # remembered as rne_code (a context field every client keeps); a family of rows is quoted as qualified options.
+    from agents.rne_registration import QUESTION as RNE_FORM_QUESTION, codes_for, detect_legal_form, is_registration_question
+    legal_form = detect_legal_form(req.text) if state.category == 'business_registration' and not code and not subject else None
+    if legal_form:
+        codes = codes_for(legal_form)
+        state.rne_code = codes[0] if len(codes) == 1 else None
+        state.legal_subject = None
+        facts = True
     contextual = bool(re.search(r'^(et |and |what about|w |و|وماذا|وإذا)',text))
     from agents.legal_evidence import requested_article
     if requested_article(req.text) is not None and state.category == 'business_registration':
@@ -311,7 +325,18 @@ def route_dialogue(router, req):
         intent = 'remaining_documents'
     state.pending_intent = intent
     language = router.language(req)
-    if state.category == 'business_registration' and contextual and not explicit and not state.rne_code and not state.legal_subject:
+    from agents.legal_evidence import TABLE_SCOPE_QUESTION
+    if (state.category == 'business_registration' and not state.rne_code and not state.legal_subject and not legal_form
+            and requested_article(req.text) is None and not re.search(TABLE_SCOPE_QUESTION, req.text, re.I)
+            and is_registration_question(req.text, intent)):
+        # Fees, deadlines and the procedure depend on the legal form: ask instead of choosing a table row (or an
+        # association procedure) because it happened to be retrieved.
+        state.pending_intent = 'required_documents' if intent == 'procedure_info' else intent
+        return RouteDecision(language=language, intent=intent, procedure_category=state.category, next_agent='reply',
+                             reply=RNE_FORM_QUESTION[language], method='rules', context=state)
+    article_without_act = requested_article(req.text) is not None and not state.legal_subject
+    if state.category == 'business_registration' and (article_without_act or (contextual and not explicit and not state.rne_code and not state.legal_subject)):
+        # An article number needs its act: a procedure code (table row) is not an act, so ask which text is meant.
         from agents.legal_evidence import CLARIFY
         return RouteDecision(language=language, intent=intent, procedure_category=state.category, next_agent='reply',
                              reply=CLARIFY[language], method='rules', context=state)
@@ -333,7 +358,8 @@ def route_dialogue(router, req):
     if intent == 'procedure_info' or (focus and not remaining):
         nxt = 'answer'
         intent = 'procedure_info'
-    if state.category == 'business_registration' and state.rne_code:
+    registration_codes = codes_for(legal_form) if legal_form else ()
+    if state.category == 'business_registration' and (state.rne_code or registration_codes):
         nxt = 'checklist'
     elif state.legal_subject:
         nxt = 'answer'
@@ -344,6 +370,8 @@ def route_dialogue(router, req):
         query = req.text + '\n' + query
     if state.rne_code:
         query = state.rne_code + '\n' + query
+    elif registration_codes:
+        query = ' '.join(registration_codes) + '\n' + query
     if state.legal_subject:
         query = subject_query(state.legal_subject) + '\n' + query
     return RouteDecision(language=language,intent=intent,procedure_category=state.category,hints=state.hints,
