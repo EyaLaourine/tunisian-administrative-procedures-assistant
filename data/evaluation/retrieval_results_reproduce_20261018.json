@@ -1,0 +1,7792 @@
+{
+ "dense_structure": {
+  "overall": {
+   "n": 71,
+   "recall@1": 0.465,
+   "recall@3": 0.676,
+   "recall@5": 0.718,
+   "mrr@5": 0.575,
+   "hit@5": 0.732,
+   "latency_ms_median": 363.2,
+   "latency_ms_p95": 406.4
+  },
+  "by_language": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.556,
+    "recall@3": 0.778,
+    "recall@5": 0.778,
+    "mrr@5": 0.648,
+    "hit@5": 0.778,
+    "latency_ms_median": 370.0,
+    "latency_ms_p95": 377.3
+   },
+   "derja": {
+    "n": 12,
+    "recall@1": 0.167,
+    "recall@3": 0.167,
+    "recall@5": 0.333,
+    "mrr@5": 0.2,
+    "hit@5": 0.333,
+    "latency_ms_median": 377.5,
+    "latency_ms_p95": 418.9
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.429,
+    "recall@3": 0.786,
+    "recall@5": 0.786,
+    "mrr@5": 0.595,
+    "hit@5": 0.81,
+    "latency_ms_median": 365.3,
+    "latency_ms_p95": 395.8
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.586,
+    "recall@3": 0.776,
+    "recall@5": 0.81,
+    "mrr@5": 0.693,
+    "hit@5": 0.828,
+    "latency_ms_median": 357.5,
+    "latency_ms_p95": 397.8
+   }
+  },
+  "by_category": {
+   "business_registration": {
+    "n": 42,
+    "recall@1": 0.357,
+    "recall@3": 0.595,
+    "recall@5": 0.643,
+    "mrr@5": 0.479,
+    "hit@5": 0.643,
+    "latency_ms_median": 370.1,
+    "latency_ms_p95": 406.4
+   },
+   "national_id": {
+    "n": 4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 1.0,
+    "hit@5": 1.0,
+    "latency_ms_median": 318.9,
+    "latency_ms_p95": 332.9
+   },
+   "passport": {
+    "n": 25,
+    "recall@1": 0.56,
+    "recall@3": 0.76,
+    "recall@5": 0.8,
+    "mrr@5": 0.668,
+    "hit@5": 0.84,
+    "latency_ms_median": 339.8,
+    "latency_ms_p95": 387.8
+   }
+  },
+  "by_query_script": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.556,
+    "recall@3": 0.778,
+    "recall@5": 0.778,
+    "mrr@5": 0.648,
+    "hit@5": 0.778,
+    "latency_ms_median": 370.0,
+    "latency_ms_p95": 377.3
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.5,
+    "recall@3": 0.5,
+    "recall@5": 0.75,
+    "mrr@5": 0.55,
+    "hit@5": 0.75,
+    "latency_ms_median": 349.1,
+    "latency_ms_p95": 368.5
+   },
+   "derja-latin": {
+    "n": 8,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.125,
+    "mrr@5": 0.025,
+    "hit@5": 0.125,
+    "latency_ms_median": 381.1,
+    "latency_ms_p95": 388.5
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.429,
+    "recall@3": 0.786,
+    "recall@5": 0.786,
+    "mrr@5": 0.595,
+    "hit@5": 0.81,
+    "latency_ms_median": 365.3,
+    "latency_ms_p95": 395.8
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.586,
+    "recall@3": 0.776,
+    "recall@5": 0.81,
+    "mrr@5": 0.693,
+    "hit@5": 0.828,
+    "latency_ms_median": 357.5,
+    "latency_ms_p95": 397.8
+   }
+  },
+  "parallel_by_language": {
+   "ar": {
+    "n": 7,
+    "recall@1": 0.571,
+    "recall@3": 0.714,
+    "recall@5": 0.714,
+    "mrr@5": 0.619,
+    "hit@5": 0.714,
+    "latency_ms_median": 363.0,
+    "latency_ms_p95": 377.3
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.5,
+    "recall@3": 0.5,
+    "recall@5": 0.75,
+    "mrr@5": 0.55,
+    "hit@5": 0.75,
+    "latency_ms_median": 349.1,
+    "latency_ms_p95": 368.5
+   },
+   "derja-latin": {
+    "n": 7,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "mrr@5": 0.0,
+    "hit@5": 0.0,
+    "latency_ms_median": 382.6,
+    "latency_ms_p95": 388.5
+   },
+   "en": {
+    "n": 7,
+    "recall@1": 0.714,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.857,
+    "hit@5": 1.0,
+    "latency_ms_median": 370.0,
+    "latency_ms_p95": 380.2
+   },
+   "fr": {
+    "n": 7,
+    "recall@1": 0.571,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.786,
+    "hit@5": 1.0,
+    "latency_ms_median": 349.7,
+    "latency_ms_p95": 378.5
+   }
+  },
+  "by_parallel_group": {
+   "abroad_submission_place": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 0.75,
+    "recall@5": 0.75,
+    "mrr@5": 0.75,
+    "hit@5": 0.75,
+    "latency_ms_median": 378.9,
+    "latency_ms_p95": 387.8
+   },
+   "beneficial_owner_threshold": {
+    "n": 4,
+    "recall@1": 0.25,
+    "recall@3": 0.75,
+    "recall@5": 0.75,
+    "mrr@5": 0.458,
+    "hit@5": 0.75,
+    "latency_ms_median": 370.6,
+    "latency_ms_p95": 378.5
+   },
+   "late_penalty": {
+    "n": 4,
+    "recall@1": 0.0,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "mrr@5": 0.25,
+    "hit@5": 0.5,
+    "latency_ms_median": 379.9,
+    "latency_ms_p95": 380.2
+   },
+   "name_reservation_validity": {
+    "n": 5,
+    "recall@1": 0.8,
+    "recall@3": 0.8,
+    "recall@5": 0.8,
+    "mrr@5": 0.8,
+    "hit@5": 0.8,
+    "latency_ms_median": 325.0,
+    "latency_ms_p95": 375.3
+   },
+   "passport_delay": {
+    "n": 5,
+    "recall@1": 0.2,
+    "recall@3": 0.6,
+    "recall@5": 0.6,
+    "mrr@5": 0.4,
+    "hit@5": 0.6,
+    "latency_ms_median": 345.6,
+    "latency_ms_p95": 368.5
+   },
+   "renew_documents": {
+    "n": 5,
+    "recall@1": 0.6,
+    "recall@3": 0.6,
+    "recall@5": 0.8,
+    "mrr@5": 0.64,
+    "hit@5": 0.8,
+    "latency_ms_median": 349.7,
+    "latency_ms_p95": 352.0
+   },
+   "sarl_fee": {
+    "n": 5,
+    "recall@1": 0.6,
+    "recall@3": 0.6,
+    "recall@5": 0.6,
+    "mrr@5": 0.6,
+    "hit@5": 0.6,
+    "latency_ms_median": 382.6,
+    "latency_ms_p95": 388.0
+   }
+  },
+  "rows": [
+   {
+    "id": "P01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 293.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 312.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 352.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     5
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "rne-law-2018-52-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 329.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "P05",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 541.7,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "P06",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     3,
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 289.7,
+    "recall@1": 0.0,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P07",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     3,
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 329.2,
+    "recall@1": 0.0,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P08",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 295.2,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P09",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 339.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P10",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 309.2,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P11",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 310.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P12",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 315.7,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P13",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 363.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 371.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P15",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 315.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P16",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 319.7,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "P17",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 336.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N01",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 304.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N02",
+    "language": "en",
+    "category": "national_id",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 332.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N03",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 304.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N04",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 367.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R01",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 351.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R02",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 309.3,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R03",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 365.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R04",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 336.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 377.6,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R06",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 447.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R07",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-form-f002-legal-entity-registration",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 363.0,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R08",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 370.0,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 406.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "R10",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 363.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 395.8,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "R12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 418.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R13",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 382.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R14",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 357.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R15",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 370.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R16",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 418.7,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R17",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 353.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R18",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 370.0,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R19",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 382.9,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R20",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 358.4,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R21",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 406.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R22",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-law-2022-18-fr",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 374.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R23",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-arrete-2026-35",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 354.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R24",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 293.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R25",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 324.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R26",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 325.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R27",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 354.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R28",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 325.4,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "R29",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-beneficial-owners",
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-beneficial-owners"
+    ],
+    "latency_ms": 362.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R30",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 368.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R31",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 385.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R32",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 397.8,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R33",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 371.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "A01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 368.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "A03",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     5
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-decree-beneficial-owners",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 326.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "M01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 349.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 345.6,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 377.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 368.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 388.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M06",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 363.0,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M07",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 378.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M08",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-decree-beneficial-owners",
+     "rne-law-2018-52-ar",
+     "rne-decree-beneficial-owners"
+    ],
+    "latency_ms": 375.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-decree-beneficial-owners",
+     "rne-arrete-2026-35",
+     "rne-decree-name-reservation",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 378.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M10",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-2022-298-fees-fr",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 384.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 380.2,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 379.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M13",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 370.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 387.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M15",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 388.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   }
+  ],
+  "latency_comparable": true
+ },
+ "dense_recursive": {
+  "overall": {
+   "n": 71,
+   "recall@1": 0.528,
+   "recall@3": 0.725,
+   "recall@5": 0.803,
+   "mrr@5": 0.642,
+   "hit@5": 0.817,
+   "latency_ms_median": 365.9,
+   "latency_ms_p95": 438.6
+  },
+  "by_language": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.444,
+    "recall@3": 0.778,
+    "recall@5": 0.778,
+    "mrr@5": 0.611,
+    "hit@5": 0.778,
+    "latency_ms_median": 385.9,
+    "latency_ms_p95": 413.9
+   },
+   "derja": {
+    "n": 12,
+    "recall@1": 0.417,
+    "recall@3": 0.583,
+    "recall@5": 0.667,
+    "mrr@5": 0.507,
+    "hit@5": 0.667,
+    "latency_ms_median": 372.9,
+    "latency_ms_p95": 392.9
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.476,
+    "recall@3": 0.762,
+    "recall@5": 0.786,
+    "mrr@5": 0.607,
+    "hit@5": 0.81,
+    "latency_ms_median": 363.2,
+    "latency_ms_p95": 413.2
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.638,
+    "recall@3": 0.741,
+    "recall@5": 0.879,
+    "mrr@5": 0.732,
+    "hit@5": 0.897,
+    "latency_ms_median": 361.8,
+    "latency_ms_p95": 410.9
+   }
+  },
+  "by_category": {
+   "business_registration": {
+    "n": 42,
+    "recall@1": 0.452,
+    "recall@3": 0.643,
+    "recall@5": 0.714,
+    "mrr@5": 0.556,
+    "hit@5": 0.714,
+    "latency_ms_median": 373.2,
+    "latency_ms_p95": 413.9
+   },
+   "national_id": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.875,
+    "hit@5": 1.0,
+    "latency_ms_median": 415.8,
+    "latency_ms_p95": 438.6
+   },
+   "passport": {
+    "n": 25,
+    "recall@1": 0.62,
+    "recall@3": 0.82,
+    "recall@5": 0.92,
+    "mrr@5": 0.748,
+    "hit@5": 0.96,
+    "latency_ms_median": 351.7,
+    "latency_ms_p95": 397.5
+   }
+  },
+  "by_query_script": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.444,
+    "recall@3": 0.778,
+    "recall@5": 0.778,
+    "mrr@5": 0.611,
+    "hit@5": 0.778,
+    "latency_ms_median": 385.9,
+    "latency_ms_p95": 413.9
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 0.75,
+    "recall@5": 1.0,
+    "mrr@5": 0.812,
+    "hit@5": 1.0,
+    "latency_ms_median": 364.8,
+    "latency_ms_p95": 370.6
+   },
+   "derja-latin": {
+    "n": 8,
+    "recall@1": 0.25,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "mrr@5": 0.354,
+    "hit@5": 0.5,
+    "latency_ms_median": 380.9,
+    "latency_ms_p95": 392.9
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.476,
+    "recall@3": 0.762,
+    "recall@5": 0.786,
+    "mrr@5": 0.607,
+    "hit@5": 0.81,
+    "latency_ms_median": 363.2,
+    "latency_ms_p95": 413.2
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.638,
+    "recall@3": 0.741,
+    "recall@5": 0.879,
+    "mrr@5": 0.732,
+    "hit@5": 0.897,
+    "latency_ms_median": 361.8,
+    "latency_ms_p95": 410.9
+   }
+  },
+  "parallel_by_language": {
+   "ar": {
+    "n": 7,
+    "recall@1": 0.429,
+    "recall@3": 0.714,
+    "recall@5": 0.714,
+    "mrr@5": 0.571,
+    "hit@5": 0.714,
+    "latency_ms_median": 388.3,
+    "latency_ms_p95": 413.9
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 0.75,
+    "recall@5": 1.0,
+    "mrr@5": 0.812,
+    "hit@5": 1.0,
+    "latency_ms_median": 364.8,
+    "latency_ms_p95": 370.6
+   },
+   "derja-latin": {
+    "n": 7,
+    "recall@1": 0.286,
+    "recall@3": 0.429,
+    "recall@5": 0.429,
+    "mrr@5": 0.333,
+    "hit@5": 0.429,
+    "latency_ms_median": 382.0,
+    "latency_ms_p95": 392.9
+   },
+   "en": {
+    "n": 7,
+    "recall@1": 0.857,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.905,
+    "hit@5": 1.0,
+    "latency_ms_median": 393.6,
+    "latency_ms_p95": 413.2
+   },
+   "fr": {
+    "n": 7,
+    "recall@1": 0.571,
+    "recall@3": 0.857,
+    "recall@5": 1.0,
+    "mrr@5": 0.743,
+    "hit@5": 1.0,
+    "latency_ms_median": 344.3,
+    "latency_ms_p95": 391.6
+   }
+  },
+  "by_parallel_group": {
+   "abroad_submission_place": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.833,
+    "hit@5": 1.0,
+    "latency_ms_median": 379.3,
+    "latency_ms_p95": 392.9
+   },
+   "beneficial_owner_threshold": {
+    "n": 4,
+    "recall@1": 0.25,
+    "recall@3": 0.75,
+    "recall@5": 0.75,
+    "mrr@5": 0.5,
+    "hit@5": 0.75,
+    "latency_ms_median": 465.9,
+    "latency_ms_p95": 606.2
+   },
+   "late_penalty": {
+    "n": 4,
+    "recall@1": 0.25,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "mrr@5": 0.375,
+    "hit@5": 0.5,
+    "latency_ms_median": 354.3,
+    "latency_ms_p95": 355.2
+   },
+   "name_reservation_validity": {
+    "n": 5,
+    "recall@1": 0.8,
+    "recall@3": 0.8,
+    "recall@5": 0.8,
+    "mrr@5": 0.8,
+    "hit@5": 0.8,
+    "latency_ms_median": 379.8,
+    "latency_ms_p95": 404.2
+   },
+   "passport_delay": {
+    "n": 5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 1.0,
+    "hit@5": 1.0,
+    "latency_ms_median": 370.6,
+    "latency_ms_p95": 382.0
+   },
+   "renew_documents": {
+    "n": 5,
+    "recall@1": 0.0,
+    "recall@3": 0.4,
+    "recall@5": 0.8,
+    "mrr@5": 0.257,
+    "hit@5": 0.8,
+    "latency_ms_median": 323.2,
+    "latency_ms_p95": 338.9
+   },
+   "sarl_fee": {
+    "n": 5,
+    "recall@1": 0.8,
+    "recall@3": 0.8,
+    "recall@5": 0.8,
+    "mrr@5": 0.8,
+    "hit@5": 0.8,
+    "latency_ms_median": 391.6,
+    "latency_ms_p95": 393.6
+   }
+  },
+  "rows": [
+   {
+    "id": "P01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 314.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 322.8,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 338.9,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 311.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "P05",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-form-f001-natural-person-registration",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 399.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "P06",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     1,
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 348.4,
+    "recall@1": 0.5,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P07",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     4,
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 397.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.5,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "P08",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 391.1,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P09",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 393.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P10",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 344.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P11",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 361.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P12",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 330.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P13",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 326.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 342.8,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P15",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 410.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P16",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "rne-form-f001-natural-person-registration",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 382.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P17",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 351.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N01",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 355.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N02",
+    "language": "en",
+    "category": "national_id",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 438.6,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "N03",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 553.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N04",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 392.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R01",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 391.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R02",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 330.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R03",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 328.1,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R04",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 321.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration"
+    ],
+    "latency_ms": 338.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R06",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 355.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R07",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 381.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "R08",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 362.1,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 365.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "R10",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 358.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 378.7,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 358.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R13",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 384.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R14",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 386.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R15",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 442.7,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R16",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 384.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R17",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 349.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R18",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 388.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R19",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 337.2,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R20",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 371.4,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "R21",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 363.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R22",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-law-2022-18-fr",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 385.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R23",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 375.1,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R24",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 404.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R25",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-formalities-procedure-table",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 376.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R26",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 375.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R27",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 344.7,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "R28",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 625.2,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R29",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 606.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R30",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 375.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R31",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     5
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 381.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "R32",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 340.7,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R33",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-form-f002-legal-entity-registration",
+     "rne-arrete-2026-35",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 367.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "A01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 305.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "A03",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 355.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     5
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 323.2,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "M02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 395.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 353.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 370.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 393.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M06",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 413.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M07",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 413.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M08",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-beneficial-owners",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 379.8,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-decree-beneficial-owners",
+     "rne-arrete-2026-35",
+     "rne-decree-name-reservation",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 325.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M10",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 318.0,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 355.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 353.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M13",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 320.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 365.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M15",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "rne-decree-name-reservation",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 392.9,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   }
+  ],
+  "latency_comparable": true
+ },
+ "hybridcap2_structure": {
+  "overall": {
+   "n": 71,
+   "recall@1": 0.549,
+   "recall@3": 0.782,
+   "recall@5": 0.859,
+   "mrr@5": 0.675,
+   "hit@5": 0.873,
+   "latency_ms_median": 400.1,
+   "latency_ms_p95": 461.4
+  },
+  "by_language": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.667,
+    "recall@3": 0.889,
+    "recall@5": 1.0,
+    "mrr@5": 0.806,
+    "hit@5": 1.0,
+    "latency_ms_median": 394.1,
+    "latency_ms_p95": 410.6
+   },
+   "derja": {
+    "n": 12,
+    "recall@1": 0.5,
+    "recall@3": 0.75,
+    "recall@5": 0.833,
+    "mrr@5": 0.618,
+    "hit@5": 0.833,
+    "latency_ms_median": 407.4,
+    "latency_ms_p95": 437.8
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.524,
+    "recall@3": 0.762,
+    "recall@5": 0.833,
+    "mrr@5": 0.656,
+    "hit@5": 0.857,
+    "latency_ms_median": 401.4,
+    "latency_ms_p95": 428.9
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.552,
+    "recall@3": 0.776,
+    "recall@5": 0.845,
+    "mrr@5": 0.672,
+    "hit@5": 0.862,
+    "latency_ms_median": 390.8,
+    "latency_ms_p95": 461.1
+   }
+  },
+  "by_category": {
+   "business_registration": {
+    "n": 42,
+    "recall@1": 0.5,
+    "recall@3": 0.714,
+    "recall@5": 0.81,
+    "mrr@5": 0.618,
+    "hit@5": 0.81,
+    "latency_ms_median": 394.2,
+    "latency_ms_p95": 437.7
+   },
+   "national_id": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.875,
+    "hit@5": 1.0,
+    "latency_ms_median": 343.5,
+    "latency_ms_p95": 347.4
+   },
+   "passport": {
+    "n": 25,
+    "recall@1": 0.6,
+    "recall@3": 0.86,
+    "recall@5": 0.92,
+    "mrr@5": 0.74,
+    "hit@5": 0.96,
+    "latency_ms_median": 405.1,
+    "latency_ms_p95": 461.4
+   }
+  },
+  "by_query_script": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.667,
+    "recall@3": 0.889,
+    "recall@5": 1.0,
+    "mrr@5": 0.806,
+    "hit@5": 1.0,
+    "latency_ms_median": 394.1,
+    "latency_ms_p95": 410.6
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.5,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.708,
+    "hit@5": 1.0,
+    "latency_ms_median": 399.6,
+    "latency_ms_p95": 400.1
+   },
+   "derja-latin": {
+    "n": 8,
+    "recall@1": 0.5,
+    "recall@3": 0.625,
+    "recall@5": 0.75,
+    "mrr@5": 0.573,
+    "hit@5": 0.75,
+    "latency_ms_median": 415.4,
+    "latency_ms_p95": 437.8
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.524,
+    "recall@3": 0.762,
+    "recall@5": 0.833,
+    "mrr@5": 0.656,
+    "hit@5": 0.857,
+    "latency_ms_median": 401.4,
+    "latency_ms_p95": 428.9
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.552,
+    "recall@3": 0.776,
+    "recall@5": 0.845,
+    "mrr@5": 0.672,
+    "hit@5": 0.862,
+    "latency_ms_median": 390.8,
+    "latency_ms_p95": 461.1
+   }
+  },
+  "parallel_by_language": {
+   "ar": {
+    "n": 7,
+    "recall@1": 0.714,
+    "recall@3": 0.857,
+    "recall@5": 1.0,
+    "mrr@5": 0.821,
+    "hit@5": 1.0,
+    "latency_ms_median": 394.1,
+    "latency_ms_p95": 403.9
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.5,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.708,
+    "hit@5": 1.0,
+    "latency_ms_median": 399.6,
+    "latency_ms_p95": 400.1
+   },
+   "derja-latin": {
+    "n": 7,
+    "recall@1": 0.571,
+    "recall@3": 0.571,
+    "recall@5": 0.714,
+    "mrr@5": 0.607,
+    "hit@5": 0.714,
+    "latency_ms_median": 419.5,
+    "latency_ms_p95": 437.8
+   },
+   "en": {
+    "n": 7,
+    "recall@1": 0.571,
+    "recall@3": 0.857,
+    "recall@5": 1.0,
+    "mrr@5": 0.719,
+    "hit@5": 1.0,
+    "latency_ms_median": 393.7,
+    "latency_ms_p95": 428.4
+   },
+   "fr": {
+    "n": 7,
+    "recall@1": 0.429,
+    "recall@3": 0.857,
+    "recall@5": 1.0,
+    "mrr@5": 0.631,
+    "hit@5": 1.0,
+    "latency_ms_median": 387.3,
+    "latency_ms_p95": 437.7
+   }
+  },
+  "by_parallel_group": {
+   "abroad_submission_place": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.875,
+    "hit@5": 1.0,
+    "latency_ms_median": 424.2,
+    "latency_ms_p95": 437.8
+   },
+   "beneficial_owner_threshold": {
+    "n": 4,
+    "recall@1": 0.25,
+    "recall@3": 0.25,
+    "recall@5": 0.75,
+    "mrr@5": 0.375,
+    "hit@5": 0.75,
+    "latency_ms_median": 390.5,
+    "latency_ms_p95": 393.7
+   },
+   "late_penalty": {
+    "n": 4,
+    "recall@1": 0.25,
+    "recall@3": 0.5,
+    "recall@5": 0.75,
+    "mrr@5": 0.383,
+    "hit@5": 0.75,
+    "latency_ms_median": 369.7,
+    "latency_ms_p95": 382.7
+   },
+   "name_reservation_validity": {
+    "n": 5,
+    "recall@1": 0.8,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.867,
+    "hit@5": 1.0,
+    "latency_ms_median": 403.9,
+    "latency_ms_p95": 414.3
+   },
+   "passport_delay": {
+    "n": 5,
+    "recall@1": 0.4,
+    "recall@3": 0.8,
+    "recall@5": 1.0,
+    "mrr@5": 0.65,
+    "hit@5": 1.0,
+    "latency_ms_median": 394.1,
+    "latency_ms_p95": 411.2
+   },
+   "renew_documents": {
+    "n": 5,
+    "recall@1": 0.6,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.733,
+    "hit@5": 1.0,
+    "latency_ms_median": 400.1,
+    "latency_ms_p95": 400.4
+   },
+   "sarl_fee": {
+    "n": 5,
+    "recall@1": 0.8,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.9,
+    "hit@5": 1.0,
+    "latency_ms_median": 399.2,
+    "latency_ms_p95": 400.1
+   }
+  },
+  "rows": [
+   {
+    "id": "P01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 510.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 387.8,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 400.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 400.1,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P05",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 461.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P06",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     null,
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 422.7,
+    "recall@1": 0.0,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P07",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     null,
+     4
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 406.1,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.5,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "P08",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 405.1,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P09",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 461.1,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P10",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 379.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P11",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 431.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P12",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 404.8,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "P13",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 385.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 461.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P15",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 407.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P16",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 411.2,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "P17",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 359.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N01",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 339.7,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "N02",
+    "language": "en",
+    "category": "national_id",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 308.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N03",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 347.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N04",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 417.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R01",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 400.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R02",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-form-f001-natural-person-registration"
+    ],
+    "latency_ms": 418.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R03",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 411.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R04",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 389.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-form-f001-natural-person-registration"
+    ],
+    "latency_ms": 440.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R06",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-form-f001-natural-person-registration"
+    ],
+    "latency_ms": 437.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R07",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f002-legal-entity-registration",
+     "rne-form-f001-natural-person-registration",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 386.7,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R08",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 392.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 383.0,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R10",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 484.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-form-f002-legal-entity-registration",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 403.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 399.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R13",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 434.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R14",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 387.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R15",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 357.1,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "R16",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-form-f002-legal-entity-registration",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 362.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R17",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-form-f002-legal-entity-registration",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 299.0,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R18",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 356.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R19",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 382.7,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "R20",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 390.8,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R21",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 428.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R22",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 389.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R23",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 418.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R24",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-form-f001-natural-person-registration",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 403.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R25",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-name-reservation",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 437.7,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "R26",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 414.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R27",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-name-reservation",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 417.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R28",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-decree-beneficial-owners",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 382.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "R29",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-beneficial-owners",
+     "rne-formalities-procedure-table",
+     "rne-decree-beneficial-owners",
+     "rne-form-f001-natural-person-registration",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 393.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R30",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 414.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R31",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 394.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R32",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 359.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R33",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-formalities-procedure-table",
+     "rne-form-f002-legal-entity-registration",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 357.6,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "A01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 353.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "A03",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 342.1,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "M01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 330.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 428.4,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 394.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 392.6,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 381.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M06",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 391.6,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "M07",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 401.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M08",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-form-f002-legal-entity-registration",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 403.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-beneficial-owners",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 387.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "M10",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 419.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     5
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-form-f001-natural-person-registration",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 478.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.2
+   },
+   {
+    "id": "M12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 344.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M13",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 346.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 410.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M15",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 437.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   }
+  ],
+  "latency_comparable": true
+ },
+ "hybridcap2_recursive": {
+  "overall": {
+   "n": 71,
+   "recall@1": 0.507,
+   "recall@3": 0.711,
+   "recall@5": 0.768,
+   "mrr@5": 0.613,
+   "hit@5": 0.775,
+   "latency_ms_median": 400.7,
+   "latency_ms_p95": 458.9
+  },
+  "by_language": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.667,
+    "recall@3": 0.778,
+    "recall@5": 0.889,
+    "mrr@5": 0.75,
+    "hit@5": 0.889,
+    "latency_ms_median": 397.5,
+    "latency_ms_p95": 445.2
+   },
+   "derja": {
+    "n": 12,
+    "recall@1": 0.583,
+    "recall@3": 0.75,
+    "recall@5": 0.75,
+    "mrr@5": 0.653,
+    "hit@5": 0.75,
+    "latency_ms_median": 402.2,
+    "latency_ms_p95": 458.9
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.333,
+    "recall@3": 0.619,
+    "recall@5": 0.762,
+    "mrr@5": 0.48,
+    "hit@5": 0.762,
+    "latency_ms_median": 403.3,
+    "latency_ms_p95": 444.9
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.552,
+    "recall@3": 0.741,
+    "recall@5": 0.741,
+    "mrr@5": 0.649,
+    "hit@5": 0.759,
+    "latency_ms_median": 399.4,
+    "latency_ms_p95": 458.1
+   }
+  },
+  "by_category": {
+   "business_registration": {
+    "n": 42,
+    "recall@1": 0.476,
+    "recall@3": 0.595,
+    "recall@5": 0.69,
+    "mrr@5": 0.552,
+    "hit@5": 0.69,
+    "latency_ms_median": 410.5,
+    "latency_ms_p95": 458.9
+   },
+   "national_id": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.875,
+    "hit@5": 1.0,
+    "latency_ms_median": 380.9,
+    "latency_ms_p95": 386.5
+   },
+   "passport": {
+    "n": 25,
+    "recall@1": 0.52,
+    "recall@3": 0.86,
+    "recall@5": 0.86,
+    "mrr@5": 0.673,
+    "hit@5": 0.88,
+    "latency_ms_median": 392.0,
+    "latency_ms_p95": 448.4
+   }
+  },
+  "by_query_script": {
+   "ar": {
+    "n": 9,
+    "recall@1": 0.667,
+    "recall@3": 0.778,
+    "recall@5": 0.889,
+    "mrr@5": 0.75,
+    "hit@5": 0.889,
+    "latency_ms_median": 397.5,
+    "latency_ms_p95": 445.2
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 0.75,
+    "recall@5": 0.75,
+    "mrr@5": 0.75,
+    "hit@5": 0.75,
+    "latency_ms_median": 388.9,
+    "latency_ms_p95": 398.6
+   },
+   "derja-latin": {
+    "n": 8,
+    "recall@1": 0.5,
+    "recall@3": 0.75,
+    "recall@5": 0.75,
+    "mrr@5": 0.604,
+    "hit@5": 0.75,
+    "latency_ms_median": 409.2,
+    "latency_ms_p95": 458.9
+   },
+   "en": {
+    "n": 21,
+    "recall@1": 0.333,
+    "recall@3": 0.619,
+    "recall@5": 0.762,
+    "mrr@5": 0.48,
+    "hit@5": 0.762,
+    "latency_ms_median": 403.3,
+    "latency_ms_p95": 444.9
+   },
+   "fr": {
+    "n": 29,
+    "recall@1": 0.552,
+    "recall@3": 0.741,
+    "recall@5": 0.741,
+    "mrr@5": 0.649,
+    "hit@5": 0.759,
+    "latency_ms_median": 399.4,
+    "latency_ms_p95": 458.1
+   }
+  },
+  "parallel_by_language": {
+   "ar": {
+    "n": 7,
+    "recall@1": 0.714,
+    "recall@3": 0.714,
+    "recall@5": 0.857,
+    "mrr@5": 0.75,
+    "hit@5": 0.857,
+    "latency_ms_median": 391.2,
+    "latency_ms_p95": 400.7
+   },
+   "derja": {
+    "n": 4,
+    "recall@1": 0.75,
+    "recall@3": 0.75,
+    "recall@5": 0.75,
+    "mrr@5": 0.75,
+    "hit@5": 0.75,
+    "latency_ms_median": 388.9,
+    "latency_ms_p95": 398.6
+   },
+   "derja-latin": {
+    "n": 7,
+    "recall@1": 0.571,
+    "recall@3": 0.714,
+    "recall@5": 0.714,
+    "mrr@5": 0.643,
+    "hit@5": 0.714,
+    "latency_ms_median": 405.8,
+    "latency_ms_p95": 458.9
+   },
+   "en": {
+    "n": 7,
+    "recall@1": 0.571,
+    "recall@3": 0.714,
+    "recall@5": 1.0,
+    "mrr@5": 0.69,
+    "hit@5": 1.0,
+    "latency_ms_median": 392.6,
+    "latency_ms_p95": 401.2
+   },
+   "fr": {
+    "n": 7,
+    "recall@1": 0.429,
+    "recall@3": 0.857,
+    "recall@5": 0.857,
+    "mrr@5": 0.619,
+    "hit@5": 0.857,
+    "latency_ms_median": 390.1,
+    "latency_ms_p95": 399.4
+   }
+  },
+  "by_parallel_group": {
+   "abroad_submission_place": {
+    "n": 4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 1.0,
+    "hit@5": 1.0,
+    "latency_ms_median": 396.0,
+    "latency_ms_p95": 399.4
+   },
+   "beneficial_owner_threshold": {
+    "n": 4,
+    "recall@1": 0.5,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "mrr@5": 0.5,
+    "hit@5": 0.5,
+    "latency_ms_median": 425.6,
+    "latency_ms_p95": 445.3
+   },
+   "late_penalty": {
+    "n": 4,
+    "recall@1": 0.5,
+    "recall@3": 0.5,
+    "recall@5": 0.75,
+    "mrr@5": 0.562,
+    "hit@5": 0.75,
+    "latency_ms_median": 393.8,
+    "latency_ms_p95": 397.5
+   },
+   "name_reservation_validity": {
+    "n": 5,
+    "recall@1": 0.6,
+    "recall@3": 0.8,
+    "recall@5": 1.0,
+    "mrr@5": 0.75,
+    "hit@5": 1.0,
+    "latency_ms_median": 364.4,
+    "latency_ms_p95": 392.6
+   },
+   "passport_delay": {
+    "n": 5,
+    "recall@1": 0.8,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr@5": 0.9,
+    "hit@5": 1.0,
+    "latency_ms_median": 379.1,
+    "latency_ms_p95": 380.5
+   },
+   "renew_documents": {
+    "n": 5,
+    "recall@1": 0.0,
+    "recall@3": 0.6,
+    "recall@5": 0.6,
+    "mrr@5": 0.233,
+    "hit@5": 0.6,
+    "latency_ms_median": 388.9,
+    "latency_ms_p95": 392.0
+   },
+   "sarl_fee": {
+    "n": 5,
+    "recall@1": 0.8,
+    "recall@3": 0.8,
+    "recall@5": 1.0,
+    "mrr@5": 0.85,
+    "hit@5": 1.0,
+    "latency_ms_median": 424.0,
+    "latency_ms_p95": 426.6
+   }
+  },
+  "rows": [
+   {
+    "id": "P01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 379.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 388.9,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 326.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "P04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 398.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "P05",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 388.3,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P06",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     2,
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 398.1,
+    "recall@1": 0.0,
+    "recall@3": 0.5,
+    "recall@5": 0.5,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P07",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "conflicting",
+    "ranks": [
+     null,
+     null
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 380.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "P08",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 403.7,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "P09",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 399.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P10",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 374.3,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P11",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 458.1,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P12",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 412.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P13",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 455.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 445.2,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "P15",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 410.8,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P16",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 382.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "P17",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 448.4,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "N01",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 544.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N02",
+    "language": "en",
+    "category": "national_id",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 386.5,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "N03",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 356.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "N04",
+    "language": "fr",
+    "category": "national_id",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-national-id-guide-fr",
+     "interior-national-id-guide-fr"
+    ],
+    "latency_ms": 375.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R01",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-form-f001-natural-person-registration",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 367.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R02",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 383.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R03",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 433.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R04",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-arrete-2026-35",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 352.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-form-f001-natural-person-registration",
+     "rne-law-2018-52-ar",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 403.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R06",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-form-f001-natural-person-registration",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 442.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R07",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 430.1,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R08",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 415.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 408.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R10",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 404.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 433.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 426.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R13",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-form-f001-natural-person-registration",
+     "rne-form-f002-legal-entity-registration"
+    ],
+    "latency_ms": 458.9,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R14",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 417.4,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R15",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 429.5,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R16",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 444.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "R17",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 424.3,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "R18",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 397.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R19",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 390.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R20",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 327.4,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R21",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-arrete-2026-35"
+    ],
+    "latency_ms": 329.6,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R22",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 423.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R23",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 365.8,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R24",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 334.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R25",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     2
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-decree-name-reservation",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 364.4,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.5
+   },
+   {
+    "id": "R26",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-form-f001-natural-person-registration"
+    ],
+    "latency_ms": 328.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R27",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 371.4,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R28",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-beneficial-owners",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-decree-beneficial-owners",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 450.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R29",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-beneficial-owners",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-name-reservation",
+     "rne-arrete-2026-35",
+     "rne-decree-beneficial-owners"
+    ],
+    "latency_ms": 401.2,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R30",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 438.3,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "R31",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 510.1,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R32",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-arrete-2026-35",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 402.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "R33",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "-",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 508.0,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "A01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 358.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "A03",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "-",
+    "answerability": "ambiguous",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 417.2,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "M01",
+    "language": "fr",
+    "category": "passport",
+    "query_script": "fr",
+    "parallel_group": "renew_documents",
+    "answerability": "answerable",
+    "ranks": [
+     3
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 392.0,
+    "recall@1": 0.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.3333333333333333
+   },
+   {
+    "id": "M02",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 380.5,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M03",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 373.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M04",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja",
+    "parallel_group": "passport_delay",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 379.1,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M05",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr"
+    ],
+    "latency_ms": 424.0,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M06",
+    "language": "ar",
+    "category": "business_registration",
+    "query_script": "ar",
+    "parallel_group": "sarl_fee",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-name-reservation",
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 391.2,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "M07",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation"
+    ],
+    "latency_ms": 392.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "M08",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "name_reservation_validity",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-form-f001-natural-person-registration"
+    ],
+    "latency_ms": 412.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M09",
+    "language": "fr",
+    "category": "business_registration",
+    "query_script": "fr",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-arrete-2026-35",
+     "rne-arrete-2026-35",
+     "rne-decree-2022-298-fees-fr",
+     "rne-decree-2022-298-fees-fr",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 445.3,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M10",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "beneficial_owner_threshold",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-decree-name-reservation",
+     "rne-law-2018-52-ar",
+     "rne-law-2018-52-ar",
+     "rne-decree-beneficial-owners",
+     "rne-formalities-procedure-table"
+    ],
+    "latency_ms": 405.8,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M11",
+    "language": "en",
+    "category": "business_registration",
+    "query_script": "en",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     4
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr",
+     "rne-formalities-procedure-table",
+     "rne-decree-law-2022-18-fr"
+    ],
+    "latency_ms": 375.9,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 0.25
+   },
+   {
+    "id": "M12",
+    "language": "derja",
+    "category": "business_registration",
+    "query_script": "derja-latin",
+    "parallel_group": "late_penalty",
+    "answerability": "answerable",
+    "ranks": [
+     null
+    ],
+    "retrieved_docs": [
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar",
+     "rne-formalities-procedure-table",
+     "rne-law-2018-52-ar"
+    ],
+    "latency_ms": 467.6,
+    "recall@1": 0.0,
+    "recall@3": 0.0,
+    "recall@5": 0.0,
+    "hit@5": 0.0,
+    "mrr@5": 0.0
+   },
+   {
+    "id": "M13",
+    "language": "en",
+    "category": "passport",
+    "query_script": "en",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar"
+    ],
+    "latency_ms": 392.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M14",
+    "language": "ar",
+    "category": "passport",
+    "query_script": "ar",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 400.7,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   },
+   {
+    "id": "M15",
+    "language": "derja",
+    "category": "passport",
+    "query_script": "derja-latin",
+    "parallel_group": "abroad_submission_place",
+    "answerability": "answerable",
+    "ranks": [
+     1
+    ],
+    "retrieved_docs": [
+     "interior-passport-guide-ar",
+     "interior-passport-guide-ar",
+     "interior-passport-guide-fr",
+     "interior-passport-guide-fr"
+    ],
+    "latency_ms": 349.6,
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "hit@5": 1.0,
+    "mrr@5": 1.0
+   }
+  ],
+  "latency_comparable": true
+ }
+}

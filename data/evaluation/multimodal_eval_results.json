@@ -1,0 +1,370 @@
+{
+ "base": "http://127.0.0.1:8002",
+ "at": "2026-10-18T05:19:59.287438+00:00",
+ "records": [
+  {
+   "id": "M01",
+   "desc": "Official blank F-001 (PDF)",
+   "mime": "application/pdf",
+   "expect": "recognised, all fields empty",
+   "bytes": 1285514,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.08,
+    "recognised": true,
+    "form_doc_id": "rne-form-f001-natural-person-registration",
+    "method": "text_layer",
+    "fields": 7,
+    "filled": 0,
+    "empty": 7,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.29,
+    "recognized": true,
+    "missing_fields": 7,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M02",
+   "desc": "Official blank F-002 (PDF)",
+   "mime": "application/pdf",
+   "expect": "recognised, all fields empty",
+   "bytes": 1408098,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.07,
+    "recognised": true,
+    "form_doc_id": "rne-form-f002-legal-entity-registration",
+    "method": "text_layer",
+    "fields": 8,
+    "filled": 0,
+    "empty": 8,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.15,
+    "recognized": true,
+    "missing_fields": 8,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M03",
+   "desc": "F-001 with 3 fields filled ('placeholder', synthetic)",
+   "mime": "application/pdf",
+   "expect": "3 filled",
+   "bytes": 1285791,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.06,
+    "recognised": true,
+    "form_doc_id": "rne-form-f001-natural-person-registration",
+    "method": "text_layer",
+    "fields": 7,
+    "filled": 3,
+    "empty": 4,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.15,
+    "recognized": true,
+    "missing_fields": 4,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M04",
+   "desc": "F-002 with 5 fields filled ('placeholder', synthetic)",
+   "mime": "application/pdf",
+   "expect": "5 filled",
+   "bytes": 1408731,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.07,
+    "recognised": true,
+    "form_doc_id": "rne-form-f002-legal-entity-registration",
+    "method": "text_layer",
+    "fields": 8,
+    "filled": 5,
+    "empty": 3,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.15,
+    "recognized": true,
+    "missing_fields": 3,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M05",
+   "desc": "F-001 blank rendered to PNG (200 dpi)",
+   "mime": "image/png",
+   "expect": "recognised via OCR",
+   "bytes": 765382,
+   "form-check": {
+    "status": 200,
+    "seconds": 2.16,
+    "recognised": true,
+    "form_doc_id": "rne-form-f001-natural-person-registration",
+    "method": "ocr_ink",
+    "fields": 7,
+    "filled": 0,
+    "empty": 7,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 2.58,
+    "recognized": true,
+    "missing_fields": 7,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M05b",
+   "desc": "F-001 with 3 filled fields rendered to PNG (200 dpi)",
+   "mime": "image/png",
+   "expect": "3 filled via OCR + ink",
+   "bytes": 781692,
+   "form-check": {
+    "status": 200,
+    "seconds": 2.19,
+    "recognised": true,
+    "form_doc_id": "rne-form-f001-natural-person-registration",
+    "method": "ocr_ink",
+    "fields": 7,
+    "filled": 3,
+    "empty": 4,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 2.35,
+    "recognized": true,
+    "missing_fields": 4,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M06",
+   "desc": "F-001 with 3 filled fields rendered to JPEG, rotated 3 degrees",
+   "mime": "image/jpeg",
+   "expect": "3 filled via OCR + deskew",
+   "bytes": 554456,
+   "form-check": {
+    "status": 200,
+    "seconds": 2.11,
+    "recognised": true,
+    "form_doc_id": "rne-form-f001-natural-person-registration",
+    "method": "ocr_ink",
+    "fields": 7,
+    "filled": 3,
+    "empty": 4,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 2.46,
+    "recognized": true,
+    "missing_fields": 4,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M07",
+   "desc": "F-002 blank rendered to JPEG (150 dpi)",
+   "mime": "image/jpeg",
+   "expect": "recognised via OCR",
+   "bytes": 400715,
+   "form-check": {
+    "status": 200,
+    "seconds": 2.17,
+    "recognised": true,
+    "form_doc_id": "rne-form-f002-legal-entity-registration",
+    "method": "ocr_ink",
+    "fields": 8,
+    "filled": 0,
+    "empty": 8,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 2.39,
+    "recognized": true,
+    "missing_fields": 8,
+    "official_checklist_available": false,
+    "requirements": 4,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M08",
+   "desc": "Corrupt PDF (first 5 KB of F-001)",
+   "mime": "application/pdf",
+   "expect": "safe error",
+   "bytes": 5000,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.01,
+    "recognised": false,
+    "form_doc_id": null,
+    "method": "ocr",
+    "fields": 0,
+    "filled": 0,
+    "empty": 0,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.01,
+    "recognized": false,
+    "missing_fields": 0,
+    "official_checklist_available": false,
+    "requirements": 0,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M09",
+   "desc": "Plain text declared as PDF",
+   "mime": "application/pdf",
+   "expect": "safe error",
+   "bytes": 24,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.0,
+    "recognised": false,
+    "form_doc_id": null,
+    "method": null,
+    "fields": 0,
+    "filled": 0,
+    "empty": 0,
+    "unreadable": 0,
+    "error": "unreadable PDF"
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.0,
+    "recognized": false,
+    "missing_fields": 0,
+    "official_checklist_available": false,
+    "requirements": 0,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M10",
+   "desc": "Unsupported type (text/plain)",
+   "mime": "text/plain",
+   "expect": "unsupported",
+   "bytes": 24,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.0,
+    "recognised": false,
+    "form_doc_id": null,
+    "method": null,
+    "fields": 0,
+    "filled": 0,
+    "empty": 0,
+    "unreadable": 0,
+    "error": "unsupported file type text/plain"
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.0,
+    "recognized": false,
+    "missing_fields": 0,
+    "official_checklist_available": false,
+    "requirements": 0,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M11",
+   "desc": "Oversized upload (11 MB of zeros declared as PNG)",
+   "mime": "image/png",
+   "expect": "rejected (size)",
+   "bytes": 11534336,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.19,
+    "recognised": false,
+    "form_doc_id": null,
+    "method": null,
+    "fields": 0,
+    "filled": 0,
+    "empty": 0,
+    "unreadable": 0,
+    "error": "file larger than 10 MB"
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.19,
+    "recognized": false,
+    "missing_fields": 0,
+    "official_checklist_available": false,
+    "requirements": 0,
+    "completeness_certified": null
+   }
+  },
+  {
+   "id": "M12",
+   "desc": "Unrelated one-page PDF (neutral text)",
+   "mime": "application/pdf",
+   "expect": "not recognised",
+   "bytes": 1574,
+   "form-check": {
+    "status": 200,
+    "seconds": 0.02,
+    "recognised": false,
+    "form_doc_id": null,
+    "method": "text_layer",
+    "fields": 0,
+    "filled": 0,
+    "empty": 0,
+    "unreadable": 0,
+    "error": null
+   },
+   "dossier-check": {
+    "status": 200,
+    "seconds": 0.01,
+    "recognized": false,
+    "missing_fields": 0,
+    "official_checklist_available": false,
+    "requirements": 0,
+    "completeness_certified": null
+   }
+  }
+ ]
+}

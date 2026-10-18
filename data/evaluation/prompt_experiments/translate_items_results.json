@@ -1,0 +1,308 @@
+{
+ "records": [
+  {
+   "doc_id": "interior-passport-guide-fr",
+   "scenario_index": 0,
+   "title": "Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.",
+   "lines": 18,
+   "source": "1. Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n2. Le demandeur doit :\n3. Etre de nationalité tunisienne ,\n4. Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.\n5. Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n6. Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n7. 4 photos avec les caractéristiques suivantes :\n8. fond blanc\n9. format 3.5/4.5 cm\n10. Justificatif de scolarisation pour les élèves et les étudiants.\n11. Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n12. Quittance de paiement du droit de timbre fiscal dû:\n13. De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n14. De 60 dinars pour les autres.\n15. Joindre l'ancien passeport en cas de renouvellement,\n16. Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n17. Poste de la police ou de la garde nationale territorialement compétent\n18. Dans les 15 jours à compter de la date de dépôt du dossier",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Obtaining a passport for the first time or renewing it for Tunisian residents within Tunisian territory.\n2. The applicant must:\n3. Be of Tunisian nationality,\n4. Be free from any restrictions indicated by Law No. 75-40 of May 14, 1975, concerning passports and travel documents, and subsequent legislation.\n5. Complete a machine-readable passport application form, fill it out, and sign in the designated area.\n6. Copy of the National Identity Card, with presentation of the original, or a birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. White background\n9. Size 3.5/4.5 cm\n10. Proof of enrollment for students and learners.\n11. Authorization from a guardian for minors, accompanied by a copy of their National Identity Card.\n12. Receipt for payment of the applicable tax stamp fee:\n13. 20 dinars for students, learners, and children under 6 years of age,\n14. 60 dinars for others.\n15. Submit the old passport if renewing.\n16. Submit a standard paper application if the applicant wishes to keep their old passport.\n17. The local police or National Guard post.\n18. Within 15 days from the date of submitting the application.",
+    "seconds": 27.92,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": false,
+    "accepted": false
+   },
+   "v1": {
+    "text": "1. Obtaining a passport for the first time or renewing it for Tunisians residing in Tunisia.\n2. The applicant must:\n3. Be of Tunisian nationality,\n4. Be free from the prohibitions indicated by Law No. 75-40 of 14/05/1975 relating to passports and travel documents and subsequent texts.\n5. A machine-readable ordinary passport application form, to be filled in and signed in the designated box.\n6. Copy of the National Identity Card with presentation of the original or a birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. white background\n9. 3.5/4.5 cm format\n10. Proof of enrollment for students and pupils.\n11. Authorization from the guardian for minors accompanied by a copy of their National Identity Card.\n12. Receipt for payment of the applicable tax stamp fee:\n13. 20 dinars for students, pupils and children under 6 years of age,\n14. 60 dinars for others.\n15. Attach the old passport in case of renewal,\n16. Present a standard paper application in case the applicant wishes to keep the old passport.\n17. Police or National Guard post territorially competent\n18. Within 15 days from the date of filing the application",
+    "seconds": 16.75,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-passport-guide-fr",
+   "scenario_index": 1,
+   "title": "Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents à l’étranger.",
+   "lines": 19,
+   "source": "1. Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents à l’étranger.\n2. Le demandeur doit :\n3. Etre de nationalité tunisienne ,\n4. Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.\n5. Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n6. Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n7. 4 photos avec les caractéristiques suivantes :\n8. fond blanc\n9. format 3.5/4.5 cm\n10. Justificatif de scolarisation pour les élèves et les étudiants.\n11. Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n12. Quittance de paiement du droit de timbre fiscal dû:\n13. De 25 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n14. De 80 dinars pour les autres.\n15. Joindre l'ancien passeport en cas de renouvellement,\n16. Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n17. Tout document prouvant la résidence réglementaire à l'étranger.\n18. Ambassade ou consulat ou représentation diplomatique de la Tunisie\n19. Dans les 15 jours à compter de la date de dépôt de la demande",
+   "B0": {
+    "text": "1. Obtaining a passport for the first time or renewing it for Tunisians residing abroad.\n2. The applicant must:\n3. Be of Tunisian nationality,\n4. Be free from any restrictions indicated by Law No. 75-40 of May 14, 1975, relating to passports and travel documents and subsequent texts.\n5. Complete a machine-readable passport application form, fill it out, and sign in the designated area.\n6. Copy of the National Identity Card, with the original or a birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. White background\n9. Size 3.5/4.5 cm\n10. Proof of enrollment for students and learners.\n11. Authorization from a guardian for minors, accompanied by a copy of their National Identity Card.\n12. Receipt for payment of the applicable tax stamp fee:\n13. 25 dinars for students, learners, and children under 6 years of age,\n14. 80 dinars for others.\n15. Attach the old passport if renewing,\n16. Submit a standard paper application if the applicant wishes to keep their old passport.\n17. Any document proving regular residency abroad.\n18. The Tunisian Embassy or Consulate or diplomatic representation.\n19. Within 15 days from the date of application submission.",
+    "seconds": 17.28,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": false,
+    "accepted": false
+   },
+   "v1": {
+    "text": "1. Obtaining a passport for the first time or renewing it for Tunisians residing abroad.\n2. The applicant must:\n3. Be of Tunisian nationality,\n4. Be free from the prohibitions indicated by Law No. 75-40 of 14/05/1975 relating to passports and travel documents and subsequent texts.\n5. A machine-readable ordinary passport application form, to be filled in and signed in the designated area.\n6. Copy of National Identity Card with presentation of the original or birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. white background\n9. 3.5/4.5 cm format\n10. Proof of enrollment for students and pupils.\n11. Authorization from the guardian for minors accompanied by a copy of their National Identity Card.\n12. Receipt for payment of the applicable tax stamp fee:\n13. 25 dinars for students, pupils and children under 6 years of age,\n14. 80 dinars for others.\n15. Attach the old passport in case of renewal,\n16. Submit a regular paper application in case the applicant wishes to keep the old passport.\n17. Any document proving regular residence abroad.\n18. Tunisian Embassy or Consulate or diplomatic representation\n19. Within 15 days from the date of application submission.",
+    "seconds": 17.6,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-passport-guide-fr",
+   "scenario_index": 2,
+   "title": "Changement d’un passeport ordinaire pour les Tunisiens résidents sur le territoire Tunisien.",
+   "lines": 18,
+   "source": "1. Changement d’un passeport ordinaire pour les Tunisiens résidents sur le territoire Tunisien.\n2. Changement d'un élément de l'identité,\n3. Ou passeport non valable à l'utilisation (vétuste, altéré ou pages achevées),\n4. Le demandeur doit être libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyage et les textes subséquents.\n5. Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n6. Le passeport à changer,\n7. Copie de la carte d'identité nationale avec présentation de l'originale ou un Extrait de naissance pour les mineurs.\n8. 4 photos avec les caractéristiques suivantes :\n9. fond blanc\n10. format 3.5/4.5 cm\n11. Autorisation du tuteur, accompagnée d'une copie de sa carte d'identité, pour les mineurs.\n12. Justificatif de scolarisation pour les élèves et les étudiants.\n13. Quittance de paiement du droit de timbre fiscal dû:\n14. De 25 dinars pour les élèves, les étudiants et les enfants âgés de moins de 6 ans,\n15. De 150 dinars en cas de passeports vétustes ou altérés,\n16. De 80 dinars pour les autres.\n17. Poste de la police ou de la garde nationale territorialement compétent\n18. Dans les 15 jours à compter de la date de dépôt du dossier",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Replacement of a standard passport for Tunisian residents residing in Tunisia.\n2. Replacement of an identity document,\n3. Or an invalid passport (worn, altered, or with completed pages),\n4. The applicant must be free from the restrictions indicated in Law No. 75-40 of May 14, 1975, concerning passports and travel documents, and subsequent legislation.\n5. A machine-readable passport application form, to be filled out and signed in the designated area.\n6. The passport to be replaced,\n7. Copy of the national identity card, with the original presented or a birth certificate for minors.\n8. 4 photos with the following characteristics:\n9. White background\n10. Size 3.5/4.5 cm\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and university students.\n13. Receipt for payment of the applicable tax stamp fee:\n14. 25 dinars for students, university students, and children under 6 years of age,\n15. 150 dinars in the case of worn or damaged passports,\n16. 80 dinars for others.\n17. Police or National Guard post with territorial jurisdiction\n18. Within 15 days from the date of submission of the application.",
+    "seconds": 18.07,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": false,
+    "accepted": false
+   },
+   "v1": {
+    "text": "1. Replacement of a regular passport for Tunisians residing in Tunisia.\n2. Replacement of an identity document,\n3. Or an invalid passport (worn, altered or pages completed),\n4. The applicant must be free from the prohibitions indicated by Law No. 75-40 of 14/05/1975 relating to passports and travel documents and subsequent texts.\n5. A machine-readable passport application form, to be filled in and signed in the designated box.\n6. The passport to be replaced,\n7. Copy of the national identity card with presentation of the original or a birth certificate for minors.\n8. 4 photos with the following characteristics:\n9. White background\n10. 3.5/4.5 cm format\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and learners.\n13. Receipt for payment of the applicable tax stamp fee:\n14. 25 dinars for students, learners and children under 6 years of age,\n15. 150 dinars in case of worn or damaged passports,\n16. 80 dinars for others.\n17. Police or National Guard post territorially competent\n18. Within 15 days from the date of submission of the application",
+    "seconds": 16.95,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-passport-guide-fr",
+   "scenario_index": 3,
+   "title": "Changement d’un passeport ordinaire pour les Tunisiens résidents à l’étranger.",
+   "lines": 19,
+   "source": "1. Changement d’un passeport ordinaire pour les Tunisiens résidents à l’étranger.\n2. Changement d'un élément de l'identité,\n3. Ou passeport non valable à l'utilisation (vétuste, altéré ou pages achevées),\n4. Le demandeur doit être libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyage et les textes subséquents.\n5. Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n6. Le passeport à changer,\n7. Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n8. 4 photos avec les caractéristiques suivantes :\n9. fond blanc\n10. format 3.5/4.5 cm\n11. Autorisation du tuteur, accompagnée d'une copie de sa carte d'identité, pour les mineurs.\n12. Justificatif de scolarisation pour les élèves et les étudiants.\n13. Tout document prouvant la résidence réglementaire à l'étranger,\n14. Quittance de paiement du droit de timbre fiscal dû:\n15. L'équivalent en devises de 25 dinars Tunisiens pour les élèves, étudiants et les enfants âgés de moins de de 6 ans,\n16. L'équivalent en devises de 150 dinars Tunisiens pour les passeports vétustes ou altérés,\n17. L'équivalent en devises de 80 dinars Tunisiens pour les autres.\n18. Ambassade ou consulat concerné\n19. Dans les 15 jours à compter de la date de dépôt du dossier",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Replacement of a standard passport for Tunisians residing abroad.\n2. Replacement of an identity document,\n3. Or an invalid passport (worn, altered, or with completed pages),\n4. The applicant must be free from the prohibitions indicated in Law No. 75-40 of May 14, 1975, concerning passports and travel documents, and subsequent texts.\n5. A machine-readable passport application form, to be filled out and signed in the designated area.\n6. The passport to be replaced,\n7. Copy of the National Identity Card, with the original or birth certificate for minors.\n8. 4 photos with the following characteristics:\n9. White background\n10. Size 3.5/4.5 cm\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and learners.\n13. Any document proving regular residency abroad,\n14. Receipt for payment of the applicable tax stamp fee:\n15. The equivalent in foreign currency of 25 Tunisian dinars for students, learners, and children under 6 years of age,\n16. The equivalent in foreign currency of 150 Tunisian dinars for worn or damaged passports,\n17. The equivalent in foreign currency of 80 Tunisian dinars for others.\n18. The relevant embassy or consulate.\n19. Within 15 days from the date of submission of the application.",
+    "seconds": 19.39,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": false,
+    "accepted": false
+   },
+   "v1": {
+    "text": "1. Replacement of a standard passport for Tunisians residing abroad.\n2. Replacement of an identity document,\n3. Or an invalid passport (worn, altered or completed pages),\n4. The applicant must be free from the prohibitions indicated by Law No. 75-40 of 14/05/1975 relating to passports and travel documents and subsequent texts.\n5. A machine-readable passport application form, to be filled in and signed in the designated box.\n6. The passport to be replaced,\n7. Copy of the National Identity Card with presentation of the original or birth certificate for minors.\n8. 4 photos with the following characteristics:\n9. White background\n10. 3.5/4.5 cm format\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and pupils.\n13. Any document proving regular residence abroad,\n14. Receipt for payment of the due tax stamp fee:\n15. The equivalent in foreign currency of 25 Tunisian dinars for students, pupils and children under 6 years of age,\n16. The equivalent in foreign currency of 150 Tunisian dinars for worn or damaged passports,\n17. The equivalent in foreign currency of 80 Tunisian dinars for others.\n18. The relevant embassy or consulate\n19. Within 15 days from the date of submission of the application",
+    "seconds": 18.43,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-passport-guide-fr",
+   "scenario_index": 4,
+   "title": "Obtention d’un duplicata du passeport (pour cause de perte, de vol ou de détérioration) pour les Tunisiens résidents sur le territoire Tunisien.",
+   "lines": 17,
+   "source": "1. Obtention d’un duplicata du passeport (pour cause de perte, de vol ou de détérioration) pour les Tunisiens résidents sur le territoire Tunisien.\n2. Le demandeur doit être libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975\n3. relative aux passeports et aux documents de voyages et les textes subséquents,\n4. Accomplissement des enquêtes nécessaires.\n5. Nécessité d'obtention d'un duplicata du passeport.\n6. Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n7. Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n8. 4 photos avec les caractéristiques suivantes :\n9. fond blanc\n10. format 3.5/4.5 cm\n11. Attestation de déclaration de perte du passeport,\n12. Autorisation du tuteur, accompagnée d'une copie de sa carte d'identité, pour les mineurs.\n13. Justificatif de scolarisation pour les élèves et les étudiants.\n14. Quittance de paiement du droit de timbre fiscal dû (150 dinars),\n15. Tout document prouvant la nécessité d'obtention d'un duplicata du passeport.\n16. Poste de la police ou de la garde nationale territorialement compétent\n17. Après l'accomplissement de l'enquête et des procédures nécessaires",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Obtaining a copy of a passport (due to loss, theft, or damage) for Tunisian residents within Tunisian territory.\n2. The applicant must be free from the restrictions indicated in Law No. 75-40 of May 14, 1975,\n    relating to passports and travel documents, and subsequent texts.\n3. Completion of necessary investigations.\n4. Need to obtain a copy of a passport.\n5. A machine-readable passport application form, to be filled out and signed in the designated area.\n6. Copy of National Identity Card with presentation of the original or birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. White background\n9. 3.5/4.5 cm format\n10. Proof of passport loss declaration.\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and learners.\n13. Receipt for payment of the applicable tax stamp fee (150 dinars).\n14. Any document proving the need to obtain a copy of a passport.\n15. Local police or National Guard post with jurisdiction.\n16. After completion of the necessary investigation and procedures.",
+    "seconds": 16.02,
+    "truncated": false,
+    "error": null,
+    "structure_valid": false,
+    "numbers_preserved": false,
+    "accepted": false
+   },
+   "v1": {
+    "text": "1. Obtaining a copy of the passport (due to loss, theft, or damage) for Tunisians residing in Tunisian territory.\n2. The applicant must be free from the restrictions indicated by Law No. 75-40 of 14/05/1975\nrelative to passports and travel documents and subsequent texts,\n3. Carrying out the necessary investigations.\n4. Need to obtain a copy of the passport.\n5. A machine-readable passport application form, to be filled out and signed in the designated area.\n6. Copy of the National Identity Card with presentation of the original or birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. white background\n9. 3.5/4.5 cm format\n10. Proof of passport loss declaration,\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and pupils.\n13. Receipt for payment of the due tax stamp fee (150 dinars),\n14. Any document proving the need to obtain a copy of the passport.\n15. Police or National Guard post territorially competent\n16. After the completion of the necessary investigation and procedures",
+    "seconds": 15.56,
+    "truncated": false,
+    "error": null,
+    "structure_valid": false,
+    "numbers_preserved": false,
+    "accepted": false
+   }
+  },
+  {
+   "doc_id": "interior-passport-guide-fr",
+   "scenario_index": 5,
+   "title": "Obtention d’un duplicata du passeport (pour cause de perte, de vol ou de détérioration) pour les Tunisiens résidents à l’étranger.",
+   "lines": 17,
+   "source": "1. Obtention d’un duplicata du passeport (pour cause de perte, de vol ou de détérioration) pour les Tunisiens résidents à l’étranger.\n2. Le demandeur doit être libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents,\n3. Accomplissement des enquêtes nécessaires.\n4. Nécessité d'obtention d'un duplicata du passeport.\n5. Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n6. Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n7. 4 photos avec les caractéristiques suivantes :\n8. fond blanc\n9. format 3.5/4.5 cm\n10. Attestation de déclaration de perte du passeport,\n11. Autorisation du tuteur, accompagnée d'une copie de sa carte d'identité, pour les mineurs.\n12. Justificatif de scolarisation pour les élèves et les étudiants.\n13. Pièce prouvant la résidence réglementaire à l'étranger,\n14. Quittance de paiement du droit de timbre fiscal dû (150 dinars ou l'équivalent en devises),\n15. Tout document prouvant la nécessité d'obtention d'un duplicata du passeport.\n16. Ambassade ou consulat ou représentant diplomatique\n17. Après l'accomplissement de l'enquête et des procédures nécessaires",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Obtaining a copy of a passport (due to loss, theft, or damage) for Tunisians residing abroad.\n2. The applicant must be free from the restrictions indicated in Law No. 75-40 of May 14, 1975, concerning passports and travel documents, and subsequent texts.\n3. Completion of necessary investigations.\n4. Need to obtain a copy of a passport.\n5. A machine-readable passport application form, to be filled out and signed in the designated area.\n6. Copy of the National Identity Card, with presentation of the original or birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. White background\n9. 3.5/4.5 cm format\n10. Proof of passport loss declaration.\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and university students.\n13. Document proving regular residency abroad.\n14. Receipt for payment of the required tax stamp fee (150 dinars or equivalent in foreign currency).\n15. Any document proving the need to obtain a copy of a passport.\n16. Embassy or consulate or diplomatic representative.\n17. After the completion of the necessary investigation and procedures.",
+    "seconds": 17.02,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": false,
+    "accepted": false
+   },
+   "v1": {
+    "text": "1. Obtaining a copy of the passport (due to loss, theft, or damage) for Tunisians residing abroad.\n2. The applicant must be free from the restrictions indicated by Law No. 75-40 of 14/05/1975 relating to passports and travel documents and subsequent texts.\n3. Carrying out the necessary investigations.\n4. Need to obtain a copy of the passport.\n5. A machine-readable passport application form, to be filled out and signed in the designated box.\n6. Copy of the National Identity Card with presentation of the original or birth certificate for minors.\n7. 4 photos with the following characteristics:\n8. white background\n9. 3.5/4.5 cm format\n10. Proof of passport loss declaration,\n11. Authorization from the guardian, accompanied by a copy of their identity card, for minors.\n12. Proof of enrollment for students and pupils.\n13. Document proving regular residence abroad,\n14. Receipt for payment of the due tax stamp fee (150 dinars or the equivalent in currency),\n15. Any document proving the need to obtain a copy of the passport.\n16. Embassy or consulate or diplomatic representative\n17. After the completion of the necessary investigation and procedures",
+    "seconds": 16.06,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-passport-guide-fr",
+   "scenario_index": 6,
+   "title": "Document de voyage pour le pélerinage.",
+   "lines": 9,
+   "source": "1. Document de voyage pour le pélerinage.\n2. Le bénéficiaire du document doit figurer sur la liste finale des pèlerins établie par l'autorité compétente.\n3. La liste sus-indiquée doit être transmise à la direction des frontières et des étrangers.\n4. Le bénéficiaire doit être libre des interdictions indiquées par la loi n° 75-40 du 14 mai 1975 relative aux passeports et aux documents de voyage et les textes subséquents.\n5. Copie de la carte nationale d'identité.\n6. 04 photos d'identité.\n7. Pour le district de Tunis : direction des frontières et des étrangers (Bourse du travail à Tunis).\n8. Pour les autres gouvernorats : secteur de la sûreté nationale ou lieux affectés à cet effet.\n9. Immédiatement ou dans les 24 heures à compter de la date du dépôt du dossier",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Pilgrimage travel document.\n2. The person named on the document must be included in the final list of pilgrims established by the competent authority.\n3. The aforementioned list must be submitted to the Border and Immigration Department.\n4. The person must be free from the prohibitions indicated in Law No. 75-40 of May 14, 1975, concerning passports and travel documents, and subsequent legislation.\n5. Copy of national identity card.\n6. 4 identity photos.\n7. For the Tunis district: Border and Immigration Department (Labor Exchange in Tunis).\n8. For other governorates: National Security sector or designated locations.\n9. Immediately or within 24 hours of the date of submission of the application.",
+    "seconds": 9.64,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   },
+   "v1": {
+    "text": "1. Travel document for the pilgrimage.\n2. The beneficiary of the document must be listed on the final list of pilgrims established by the competent authority.\n3. The above-mentioned list must be submitted to the Directorate of Borders and Foreigners.\n4. The beneficiary must be free from the prohibitions indicated by Law No. 75-40 of May 14, 1975 relating to passports and travel documents and subsequent texts.\n5. Copy of national identity card.\n6. 04 identity photos.\n7. For the Tunis district: Directorate of Borders and Foreigners (Tunis Labour Exchange).\n8. For other governorates: National Security sector or designated locations.\n9. Immediately or within 24 hours from the date of submission of the application.",
+    "seconds": 9.35,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-national-id-guide-fr",
+   "scenario_index": 0,
+   "title": "Obtention de la carte d’identité nationale pour la première fois",
+   "lines": 16,
+   "source": "1. Obtention de la carte d’identité nationale pour la première fois\n2. Remplir l'imprimé administratif et le signer\n3. Atteindre l'âge légal (18 ans),\n4. Etre de nationalité tunisienne,\n5. Imprimé administratif à remplir\n6. Extrait de naissance établi des registres originaux d'état civil datant de 3 mois au plus,\n7. Attestation prouvant la nationalité tunisienne,\n8. Attestation de résidence,\n9. Attestation de travail ou de présence scolaire ou universitaire,\n10. 3 photos d'identité de l'intéressé du format 3⁄4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle 1/10 montrant le visage et les yeux,\n11. Quittance de paiement du droit de timbre fiscal dû,\n12. Deux exemplaires de la copie de la carte de résidence et de la carte consulaire pour les résidents à l'étranger,\n13. Autorisation du tuteur légal signée, légalisée et motivée pour l'obtention de la carte d'identité nationale (raison professionnelle, éducative, sportive ou physique) et ce pour les mineurs de moins de 18 ans,\n14. Certificat indiquant le groupe sanguin (facultatif).\n15. Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n16. Dans les 15 jours à partir de la date de dépôt de la demande",
+   "B0": {
+    "text": "1. Obtaining the national identity card for the first time\n2. Completing and signing the administrative form\n3. Reaching the legal age (18 years)\n4. Being of Tunisian nationality\n5. Administrative form to be completed\n6. Birth certificate issued from the original civil registry, no more than 3 months old\n7. Proof of Tunisian nationality\n8. Proof of residence\n9. Proof of employment or school/university attendance\n10. 3 passport-sized photos of the applicant, facing forward, on a white or light-colored background, at a scale of 1/10, showing the face and eyes\n11. Receipt for payment of the applicable tax stamp fee\n12. Two copies of the residence card and consular card for residents abroad\n13. Legal guardian's authorization, signed, legalized, and justified for obtaining the national identity card (professional, educational, sporting, or medical reasons), for minors under 18 years of age\n14. Certificate indicating blood group (optional)\n15. Police or National Guard post in the applicant's place of residence\n16. Within 15 days from the date of application submission",
+    "seconds": 13.92,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": false,
+    "accepted": false
+   },
+   "v1": {
+    "text": "1. Obtaining the national identity card for the first time\n2. Filling out the administrative form and signing it\n3. Reaching the legal age (18 years),\n4. Being of Tunisian nationality,\n5. Administrative form to be filled\n6. Birth certificate issued from the original civil registry, dating no more than 3 months,\n7. Proof of Tunisian nationality,\n8. Proof of residence,\n9. Proof of employment or school/university attendance,\n10. 3 identity photos of the applicant, in a 3/4 cm format, taken front-on, on a white or light-colored background, at a scale of 1/10, showing the face and eyes,\n11. Receipt of payment of the due tax stamp fee,\n12. Two copies of the residence card and consular card for residents abroad,\n13. Legal guardian's authorization, signed, legalized and justified, for obtaining the national identity card (professional, educational, sporting or medical reasons), and this for minors under 18 years of age,\n14. Certificate indicating the blood group (optional).\n15. Police or National Guard post in the applicant's place of residence\n16. Within 15 days from the date of application submission",
+    "seconds": 15.35,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-national-id-guide-fr",
+   "scenario_index": 1,
+   "title": "Renouvellement de la carte d’identité par une carte d’identité nationale",
+   "lines": 10,
+   "source": "1. Renouvellement de la carte d’identité par une carte d’identité nationale\n2. Chaque citoyen tunisien doit renouveler sa carte d'identité par une carte d'identité nationale\n3. Remplir l'imprimé administratif et le signer\n4. Extrait de naissance datant de 3 mois au plus,\n5. 3 photos d'identité de l'intéressé du format 3⁄4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle 1/10 montrant le visage et les yeux,\n6. Copie de la carte à renouveler avec présentation de l'originale qui doit être remise aux services compétents lors de l'obtention de la nouvelle carte,\n7. Pièce prouvant le changement des éléments de l'état civil, de la résidence ou de la profession, le cas échéant,\n8. Quittance de paiement du droit de timbre fiscal dû.\n9. Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n10. Dans les 15 jours à compter de la date de dépôt du dossier",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Replacement of an identity card with a national identity card.\n2. Every Tunisian citizen must renew their identity card with a national identity card.\n3. Complete the administrative form and sign it.\n4. Birth certificate no more than 3 months old.\n5. 3 identity photos of the applicant, 3/4 cm in size, taken front-on with a white or light-colored background, and at a 1/10 scale, showing the face and eyes.\n6. Copy of the identity card to be renewed, along with the original, which must be submitted to the relevant authorities upon obtaining the new card.\n7. Document proving changes in civil status, residence, or profession, if applicable.\n8. Receipt for payment of the applicable tax stamp fee.\n9. Police station or National Guard station in the applicant's place of residence.\n10. Within 15 days from the date of submission of the application.",
+    "seconds": 12.62,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   },
+   "v1": {
+    "text": "1. Replacement of the ID card with a national ID card\n2. Every Tunisian citizen must renew their ID card with a national ID card\n3. Fill out the administrative form and sign it\n4. Birth certificate no more than 3 months old,\n5. 3 identity photos of the applicant in a 3/4 cm format, taken frontally on a white or light-colored background and at a scale of 1/10, showing the face and eyes,\n6. Copy of the ID card to be renewed, with presentation of the original, which must be handed over to the competent authorities upon obtaining the new card,\n7. Document proving the change in civil status, residence or profession, if applicable,\n8. Receipt for payment of the applicable tax stamp fee.\n9. Police or National Guard post in the applicant's place of residence\n10. Within 15 days from the date of submission of the application",
+    "seconds": 11.03,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-national-id-guide-fr",
+   "scenario_index": 2,
+   "title": "Changement de la carte d’identité nationale pour modification de données.",
+   "lines": 18,
+   "source": "1. Changement de la carte d’identité nationale pour modification de données.\n2. Changement:\n3. de l'un des éléments de l'état civil inscrit sur la carte,\n4. du lieu de résidence,\n5. de la profession ou des autres données inscrites sur la carte.\n6. Remplir l'imprimé administratif et le signer\n7. La carte à changer,\n8. L'attestation ou la pièce motivant le changement :\n9. Extrait de naissance indiquant le nouveau nom en cas de changement du nom de famille\n10. Extrait de naissance ou copie de l'acte de mariage pour la femme mariée,\n11. Une copie du jugement de divorce ou un extrait de naissance indiquant le divorce pour la femme divorcée,\n12. Certificat de décès ou extrait de décès de l'époux (pour la veuve ),\n13. Attestation prouvant le lieu de résidence en cas de changement de résidence ,\n14. Attestation de travail indiquant la nouvelle profession en cas de changement de profession,\n15. Trois photos d'identité de l'intéressé de format 3/4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle de 1/10 montrant le visage et les yeux,\n16. Quittance de paiement du droit de timbre fiscal dû.\n17. Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n18. Dans les 15 jours à compter de la date de dépôt du dossier",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1.  Change of national identity card for data modification.\n2.  Change:\n3.  of one of the elements recorded on the civil status card,\n4.  of the place of residence,\n5.  of the profession or other data recorded on the card.\n6.  Complete the administrative form and sign it.\n7.  The card to be changed,\n8.  The document or justification for the change:\n9.  Birth certificate indicating the new surname in case of surname change.\n10. Birth certificate or copy of the marriage certificate for the married woman,\n11. Copy of the divorce decree or birth certificate indicating the divorce for the divorced woman,\n12. Death certificate or death certificate of the spouse (for the widow),\n13. Proof of residence in case of change of residence,\n14. Proof of employment indicating the new profession in case of change of profession,\n15. Three 3/4 cm size photographs of the individual, taken front-on, on a white or light-colored background, at a 1/10 scale, showing the face and eyes,\n16. Receipt for payment of the applicable tax stamp fee.\n17. Police or National Guard post of the applicant's place of residence.\n18. Within 15 days from the date of filing the application.",
+    "seconds": 17.19,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   },
+   "v1": {
+    "text": "1. Change national identity card for data modification.\n2. Change:\n3. one of the elements of the civil status recorded on the card,\n4. the place of residence,\n5. the profession or other data recorded on the card.\n6. Complete the administrative form and sign it\n7. The card to be changed,\n8. The certificate or document justifying the change:\n9. Birth certificate indicating the new surname in case of surname change\n10. Birth certificate or copy of the marriage certificate for the married woman,\n11. A copy of the divorce decree or birth certificate indicating the divorce for the divorced woman,\n12. Death certificate or death certificate of the spouse (for the widow),\n13. Certificate proving the place of residence in case of change of residence,\n14. Employment certificate indicating the new profession in case of change of profession,\n15. Three 3/4 cm size photos of the applicant taken frontally on a white or light colored background and at a scale of 1/10 showing the face and eyes,\n16. Receipt for payment of the due tax stamp fee.\n17. Police or National Guard post of the applicant's place of residence\n18. Within 15 days from the date of filing the application",
+    "seconds": 15.86,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  },
+  {
+   "doc_id": "interior-national-id-guide-fr",
+   "scenario_index": 3,
+   "title": "Changement de la carte d’identité nationale pour cause de vol, de perte ou de détérioration.",
+   "lines": 8,
+   "source": "1. Changement de la carte d’identité nationale pour cause de vol, de perte ou de détérioration.\n2. Perte de la carte d'identité nationale\n3. Remplir l'imprimé administratif et le signer\n4. Attestation de déclaration de perte,\n5. Trois photos d'identité de l'intéressé de format 3/4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle de 1/10 montrant les le visage et les yeux,\n6. Timbre fiscal de 25 dinars.\n7. Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n8. Dans les 15 jours à compter de la date de dépôt du dossier",
+   "B0": {
+    "text": "Here's the translation of the French text into English:\n\n1. Replacement of the national identity card due to theft, loss, or damage.\n2. Loss of the national identity card.\n3. Completing the administrative form and signing it.\n4. Proof of loss declaration.\n5. Three 3/4 cm size photographs of the applicant, taken from the front, on a white or light-colored background, and at a 1/10 scale, showing the face and eyes.\n6. A tax stamp of 25 dinars.\n7. The police station or national guard station of the applicant's place of residence.\n8. Within 15 days from the date of filing the application.",
+    "seconds": 8.38,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   },
+   "v1": {
+    "text": "1. Replacement of the national identity card due to theft, loss, or damage.\n2. Loss of the national identity card\n3. Complete the administrative form and sign it\n4. Proof of loss declaration,\n5. Three 3/4 cm size identity photos of the applicant, taken front-on, on a white or light-colored background, at a 1/10 scale, showing the face and eyes,\n6. 25 dinar tax stamp.\n7. Police or national guard station at the applicant's place of residence\n8. Within 15 days from the date of filing the application",
+    "seconds": 7.23,
+    "truncated": false,
+    "error": null,
+    "structure_valid": true,
+    "numbers_preserved": true,
+    "accepted": true
+   }
+  }
+ ],
+ "summary": {
+  "B0": {
+   "n": 11,
+   "structure_valid": 10,
+   "accepted_by_production_validator": 4,
+   "truncated": 0,
+   "median_seconds": 17.02
+  },
+  "v1": {
+   "n": 11,
+   "structure_valid": 10,
+   "accepted_by_production_validator": 10,
+   "truncated": 0,
+   "median_seconds": 15.86
+  }
+ },
+ "config": {
+  "ollama_version": "0.40.4",
+  "models": {
+   "translategemma:4b": "6d2c3b38bc4a",
+   "mistral:latest": "6577803aa9a0"
+  },
+  "started_at": "2026-10-18T00:29:48.636064+00:00",
+  "llm_model": "mistral:latest",
+  "translation_model": "translategemma:4b",
+  "limit": null,
+  "wall_seconds": 337.7,
+  "note": "B0 = controlled baseline written 2026-10-18 for this experiment; not a historical prompt."
+ }
+}

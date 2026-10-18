@@ -1,0 +1,2549 @@
+{
+ "records": [
+  {
+   "id": "P01",
+   "language": "fr",
+   "question": "Quelles pièces fournir pour une première demande de passeport ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 3.46,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 3.05,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P02",
+   "language": "en",
+   "question": "What documents are needed to renew a Tunisian passport?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 3.65,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 2.9,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P03",
+   "language": "ar",
+   "question": "ما هي الوثائق المطلوبة لتجديد جواز السفر؟",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 2.9,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 2.4,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P04",
+   "language": "derja",
+   "question": "شنوة الأوراق اللازمة باش نجدد الباسبور؟",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 2.91,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 2.41,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P05",
+   "language": "derja",
+   "question": "chnowa el wra9 eli lezmin bech nejjedd el passbor?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.48,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"none\"}",
+    "seconds": 2.88,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": false,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "P06",
+   "language": "fr",
+   "question": "Quel est le montant du timbre fiscal pour un passeport en Tunisie ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.62,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"fees\"}",
+    "seconds": 3.0,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P07",
+   "language": "en",
+   "question": "Is the passport stamp duty for students 20 or 25 dinars?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.69,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"fees\"}",
+    "seconds": 2.99,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P08",
+   "language": "en",
+   "question": "How much is the passport stamp duty for Tunisians living abroad?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.25,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"fees\"}",
+    "seconds": 2.99,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P09",
+   "language": "fr",
+   "question": "Où déposer le dossier de passeport quand on réside à l'étranger ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "submission_place"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"submission_place\"\n}",
+    "seconds": 3.98,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"submission_place\"}",
+    "seconds": 3.28,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P10",
+   "language": "fr",
+   "question": "Quel est le délai d'obtention d'un passeport ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"processing_time\"\n}",
+    "seconds": 3.89,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"processing_time\"}",
+    "seconds": 3.04,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P11",
+   "language": "fr",
+   "question": "J'ai perdu mon passeport, quelles pièces dois-je fournir ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 3.98,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 3.14,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P12",
+   "language": "en",
+   "question": "What is the stamp duty for a duplicate passport after loss?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.26,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"fees\"}",
+    "seconds": 2.69,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P13",
+   "language": "fr",
+   "question": "Quelles sont les caractéristiques des photos pour le passeport ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n  }",
+    "seconds": 4.08,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.24,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "P14",
+   "language": "ar",
+   "question": "ما هي شروط الحصول على جواز السفر؟",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "eligibility"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.98,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"eligibility\"}",
+    "seconds": 2.35,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P15",
+   "language": "fr",
+   "question": "Quelles pièces pour le document de voyage du pèlerinage ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 3.33,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 2.99,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "P16",
+   "language": "derja",
+   "question": "9adech ya5ou wa9t el passbor?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"greeting\"\n}",
+    "seconds": 3.51,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"none\"}",
+    "seconds": 2.62,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": false,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "P17",
+   "language": "en",
+   "question": "Can a minor get a passport? What extra document is required?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.52,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"eligibility\"}",
+    "seconds": 3.11,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "N01",
+   "language": "fr",
+   "question": "Quelles pièces pour obtenir la carte d'identité nationale pour la première fois ?",
+   "expected": {
+    "procedure_category": "national_id",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"national_id\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 4.15,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"national_id\", \"intent\": \"required_documents\"}",
+    "seconds": 3.35,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "N02",
+   "language": "en",
+   "question": "At what age must I get a national ID card?",
+   "expected": {
+    "procedure_category": "national_id",
+    "intent": "eligibility"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"national_id\",\n  \"intent\": \"eligibility\"\n}",
+    "seconds": 3.89,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"national_id\", \"intent\": \"eligibility\"}",
+    "seconds": 3.01,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "N03",
+   "language": "fr",
+   "question": "Que faut-il pour changer la carte d'identité après un mariage ?",
+   "expected": {
+    "procedure_category": "national_id",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"national_id\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.17,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"national_id\",\n \"intent\": \"procedure_info\"}",
+    "seconds": 3.66,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "N04",
+   "language": "fr",
+   "question": "Combien coûte le timbre pour remplacer une carte d'identité perdue ?",
+   "expected": {
+    "procedure_category": "national_id",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"national_id\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.76,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"national_id\", \"intent\": \"fees\"}",
+    "seconds": 3.31,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "B01",
+   "language": "fr",
+   "question": "Comment obtenir un extrait de naissance ?",
+   "expected": {
+    "procedure_category": "birth_certificate",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"birth_certificate\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.02,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"birth_certificate\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.13,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "B02",
+   "language": "ar",
+   "question": "كيف أستخرج مضمون ولادة؟",
+   "expected": {
+    "procedure_category": "birth_certificate",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"birth_certificate\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.47,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"birth_certificate\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.5,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "B03",
+   "language": "en",
+   "question": "How much does a birth certificate cost?",
+   "expected": {
+    "procedure_category": "birth_certificate",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"birth_certificate\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.78,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"birth_certificate\", \"intent\": \"fees\"}",
+    "seconds": 3.23,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "B04",
+   "language": "derja",
+   "question": "kifech nekhou madhmoun wleda?",
+   "expected": {
+    "procedure_category": "birth_certificate",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"greeting\"\n}",
+    "seconds": 3.35,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 2.88,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R01",
+   "language": "fr",
+   "question": "Combien coûte l'immatriculation d'une SARL ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 4.09,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 4.29,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R02",
+   "language": "fr",
+   "question": "Quels sont les frais d'immatriculation d'une SUARL ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 4.14,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 3.4,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R03",
+   "language": "en",
+   "question": "What is the registration fee for a public limited company (SA)?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.84,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 3.41,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R04",
+   "language": "fr",
+   "question": "Quel est le délai pour immatriculer une SARL ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"processing_time\"\n}",
+    "seconds": 4.18,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"processing_time\"}",
+    "seconds": 17.04,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R05",
+   "language": "en",
+   "question": "How much does it cost to register as a sole trader (commerçant)?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 15.51,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 15.04,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R06",
+   "language": "fr",
+   "question": "Combien coûte l'immatriculation d'un artisan au RNE ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 16.46,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 16.48,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R07",
+   "language": "fr",
+   "question": "À quoi correspond le code RNE M 004.03 ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 14.93,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 13.67,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R08",
+   "language": "en",
+   "question": "What is procedure code RNE C 025?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 2.99,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 2.8,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R09",
+   "language": "fr",
+   "question": "Combien coûte le transfert du siège social d'une société ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 4.19,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 3.12,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R10",
+   "language": "fr",
+   "question": "Combien coûte la radiation d'une société du registre ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.92,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 2.93,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R11",
+   "language": "en",
+   "question": "What is the fee for filing a company's financial statements with the RNE?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 4.02,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 3.09,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R12",
+   "language": "derja",
+   "question": "قداش يكلف تسجيل شركة SARL؟",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.29,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 3.44,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R13",
+   "language": "derja",
+   "question": "nheb nsajjel charika SUARL, 9adech el ma3loum?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.14,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.53,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R14",
+   "language": "fr",
+   "question": "Quel est le montant de la redevance pour un extrait du registre de l'entreprise ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 4.08,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 17.0,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R15",
+   "language": "fr",
+   "question": "Y a-t-il une réduction des redevances du RNE pour les procédures faites en ligne ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 12.74,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 13.65,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R16",
+   "language": "en",
+   "question": "How can RNE fees be paid?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 14.03,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 13.98,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R17",
+   "language": "en",
+   "question": "Can fees paid to the RNE be refunded?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 13.09,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 13.66,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R18",
+   "language": "ar",
+   "question": "ما هي غرامة التأخير في التسجيل بالسجل الوطني للمؤسسات؟",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 13.12,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 2.61,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R19",
+   "language": "fr",
+   "question": "Quelle est la pénalité de retard pour une immatriculation tardive au RNE ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.36,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"processing_time\"}",
+    "seconds": 3.61,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R20",
+   "language": "fr",
+   "question": "Que prévoit le décret-loi n° 2022-18 ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n  }",
+    "seconds": 3.87,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"general\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.22,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R21",
+   "language": "en",
+   "question": "Until when could companies benefit from the 2022 waiver of RNE late penalties?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n  }",
+    "seconds": 4.31,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.48,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R22",
+   "language": "ar",
+   "question": "ما هي العقوبة على من تقاعس عن إتمام التسجيل بالسجل الوطني للمؤسسات؟",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.19,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 2.46,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R23",
+   "language": "fr",
+   "question": "Dans quel délai peut-on contester une décision du Centre national du registre des entreprises ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.55,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\",\n \"intent\": \"processing_time\"}",
+    "seconds": 3.27,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R24",
+   "language": "ar",
+   "question": "كم تدوم صلاحية شهادة حجز التسمية الاجتماعية؟",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n  }",
+    "seconds": 2.97,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"general\", \"intent\": \"processing_time\"}",
+    "seconds": 2.18,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R25",
+   "language": "fr",
+   "question": "Combien de temps est valable le certificat de réservation de la dénomination sociale ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"processing_time\"\n}",
+    "seconds": 3.65,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"processing_time\"}",
+    "seconds": 3.43,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R26",
+   "language": "derja",
+   "question": "قداش تقعد صالحة شهادة حجز الاسم التجاري؟",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 2.98,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 2.52,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R27",
+   "language": "en",
+   "question": "When is the trade name reservation certificate issued?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.35,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.24,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R28",
+   "language": "ar",
+   "question": "من يعتبر مستفيدا حقيقيا من الشخص المعنوي؟",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"eligibility\",\n  \"message\": \"Who is actually eligible for the service?\"\n}",
+    "seconds": 3.93,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 2.39,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R29",
+   "language": "en",
+   "question": "What shareholding threshold makes someone a beneficial owner?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.1,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.09,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R30",
+   "language": "fr",
+   "question": "Dans quel délai le RNE statue-t-il sur une demande d'informations sur le bénéficiaire effectif ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 2.99,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"processing_time\"}",
+    "seconds": 2.64,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R31",
+   "language": "fr",
+   "question": "Quelles informations sur le bénéficiaire effectif le public peut-il obtenir ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.32,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"eligibility\"}",
+    "seconds": 3.43,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R32",
+   "language": "fr",
+   "question": "Quel formulaire remplir pour l'immatriculation d'une personne morale ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "form_help"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.22,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.46,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R33",
+   "language": "en",
+   "question": "Which form do I use to register as a natural person with the RNE?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "form_help"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.11,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.49,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "R34",
+   "language": "fr",
+   "question": "Quelles pièces fournir pour créer une SARL ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 4.23,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"required_documents\"}",
+    "seconds": 3.52,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R35",
+   "language": "en",
+   "question": "What documents are required to register an SUARL?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 3.82,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"required_documents\"}",
+    "seconds": 3.25,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "R36",
+   "language": "fr",
+   "question": "Quel est le montant de la redevance du code RNE C 014 ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.7,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 3.21,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "A01",
+   "language": "fr",
+   "question": "passeport",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.41,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"none\"}",
+    "seconds": 2.43,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": false,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "A02",
+   "language": "en",
+   "question": "How much does it cost?",
+   "expected": {
+    "procedure_category": null,
+    "intent": null
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"fees\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.27,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": false,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"fees\"}",
+    "seconds": 2.58,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "A03",
+   "language": "derja",
+   "question": "nheb na3mel charika",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"none\",\n  \"intent\": \"out_of_scope\"\n}",
+    "seconds": 3.68,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 2.8,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "O01",
+   "language": "fr",
+   "question": "Quelle est la météo à Tunis demain ?",
+   "expected": {
+    "procedure_category": "none",
+    "intent": "out_of_scope"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"none\",\n  \"intent\": \"out_of_scope\"\n}",
+    "seconds": 3.56,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 3.27,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "O02",
+   "language": "en",
+   "question": "Recommend a good restaurant in Sousse",
+   "expected": {
+    "procedure_category": "none",
+    "intent": "out_of_scope"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"none\",\n  \"intent\": \"out_of_scope\"\n}",
+    "seconds": 3.53,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 2.94,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "O03",
+   "language": "ar",
+   "question": "ما هي عاصمة اليابان؟",
+   "expected": {
+    "procedure_category": "none",
+    "intent": "out_of_scope"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"none\",\n  \"intent\": \"greeting\"\n}",
+    "seconds": 3.58,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 3.22,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "O04",
+   "language": "fr",
+   "question": "Comment obtenir un permis de conduire ?",
+   "expected": {
+    "procedure_category": "none",
+    "intent": "out_of_scope"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.51,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"general\", \"intent\": \"procedure_info\"}",
+    "seconds": 2.96,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "O05",
+   "language": "en",
+   "question": "How do I apply for a Tunisian visa as a foreigner?",
+   "expected": {
+    "procedure_category": "none",
+    "intent": "out_of_scope"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.51,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 3.07,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "M01",
+   "language": "fr",
+   "question": "Quelles pièces fournir pour renouveler un passeport ?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "required_documents"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"required_documents\"\n}",
+    "seconds": 3.97,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 3.22,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "M02",
+   "language": "en",
+   "question": "How long does it take to get a passport?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"processing_time\"\n}",
+    "seconds": 3.48,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"processing_time\"}",
+    "seconds": 2.97,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "M03",
+   "language": "ar",
+   "question": "ما هو أجل الحصول على جواز السفر؟",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.97,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"procedure_info\"}",
+    "seconds": 3.31,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M04",
+   "language": "derja",
+   "question": "قداش ياخو وقت باش نخرج الباسبور؟",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "processing_time"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.13,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"none\"}",
+    "seconds": 2.09,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": false,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M05",
+   "language": "en",
+   "question": "How much does it cost to register an SARL?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"fees\"\n}",
+    "seconds": 3.02,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 2.85,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "M06",
+   "language": "ar",
+   "question": "ما هو معلوم تسجيل شركة ذات مسؤولية محدودة بالسجل الوطني للمؤسسات؟",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.16,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"procedure_info\"}",
+    "seconds": 2.5,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M07",
+   "language": "en",
+   "question": "How long is a trade name reservation certificate valid?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"processing_time\"\n}",
+    "seconds": 3.23,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"processing_time\"}",
+    "seconds": 3.06,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M08",
+   "language": "derja",
+   "question": "9adech tab9a s7i7a chhedet 7ajz el esm?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.5,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 3.26,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M09",
+   "language": "fr",
+   "question": "Quel seuil de participation définit le bénéficiaire effectif ?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"out_of_scope\"\n}",
+    "seconds": 3.99,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 3.24,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M10",
+   "language": "derja",
+   "question": "chkoun yet7seb moustafid 7a9i9i fel charika?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "procedure_info"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.8,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"none\", \"intent\": \"out_of_scope\"}",
+    "seconds": 3.36,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M11",
+   "language": "en",
+   "question": "What is the late registration penalty at the RNE?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"general\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.53,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": false,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"fees\"}",
+    "seconds": 3.08,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "M12",
+   "language": "derja",
+   "question": "9adech el khtiya ki nfout el ajal mta3 tasjil fel RNE?",
+   "expected": {
+    "procedure_category": "business_registration",
+    "intent": "fees"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"business_registration\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 4.2,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"business_registration\", \"intent\": \"processing_time\"}",
+    "seconds": 3.07,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  },
+  {
+   "id": "M13",
+   "language": "en",
+   "question": "Where do I submit a passport application if I live abroad?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "submission_place"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"submission_place\"\n  }",
+    "seconds": 3.68,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"submission_place\"}",
+    "seconds": 3.04,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "M14",
+   "language": "ar",
+   "question": "أين أودع ملف جواز السفر إذا كنت مقيما بالخارج؟",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "submission_place"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 2.92,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"submission_place\"}",
+    "seconds": 2.38,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": true
+   }
+  },
+  {
+   "id": "M15",
+   "language": "derja",
+   "question": "win nhot dossier el passbor ki nkoun 3ayech barra?",
+   "expected": {
+    "procedure_category": "passport",
+    "intent": "submission_place"
+   },
+   "B0": {
+    "text": "{\n  \"procedure_category\": \"passport\",\n  \"intent\": \"procedure_info\"\n}",
+    "seconds": 3.55,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   },
+   "v1": {
+    "text": "{\"procedure_category\": \"passport\", \"intent\": \"required_documents\"}",
+    "seconds": 3.32,
+    "truncated": false,
+    "error": null,
+    "json_valid": true,
+    "enum_valid": true,
+    "category_ok": true,
+    "intent_ok": false
+   }
+  }
+ ],
+ "summary": {
+  "B0": {
+   "all": {
+    "n": 84,
+    "json_valid": 1.0,
+    "enum_valid": 0.988,
+    "category_accuracy": 0.714,
+    "intent_accuracy": 0.619,
+    "both_correct": 0.452,
+    "median_seconds": 3.7
+   },
+   "ar": {
+    "n": 11,
+    "json_valid": 1.0,
+    "enum_valid": 1.0,
+    "category_accuracy": 0.818,
+    "intent_accuracy": 0.364,
+    "both_correct": 0.273,
+    "median_seconds": 3.58
+   },
+   "derja": {
+    "n": 13,
+    "json_valid": 1.0,
+    "enum_valid": 1.0,
+    "category_accuracy": 0.692,
+    "intent_accuracy": 0.308,
+    "both_correct": 0.154,
+    "median_seconds": 3.51
+   },
+   "en": {
+    "n": 26,
+    "json_valid": 1.0,
+    "enum_valid": 0.962,
+    "category_accuracy": 0.654,
+    "intent_accuracy": 0.731,
+    "both_correct": 0.5,
+    "median_seconds": 3.59
+   },
+   "fr": {
+    "n": 34,
+    "json_valid": 1.0,
+    "enum_valid": 1.0,
+    "category_accuracy": 0.735,
+    "intent_accuracy": 0.735,
+    "both_correct": 0.588,
+    "median_seconds": 3.98
+   }
+  },
+  "v1": {
+   "all": {
+    "n": 84,
+    "json_valid": 1.0,
+    "enum_valid": 0.952,
+    "category_accuracy": 0.881,
+    "intent_accuracy": 0.655,
+    "both_correct": 0.643,
+    "median_seconds": 3.12
+   },
+   "ar": {
+    "n": 11,
+    "json_valid": 1.0,
+    "enum_valid": 1.0,
+    "category_accuracy": 0.818,
+    "intent_accuracy": 0.545,
+    "both_correct": 0.545,
+    "median_seconds": 2.46
+   },
+   "derja": {
+    "n": 13,
+    "json_valid": 1.0,
+    "enum_valid": 0.769,
+    "category_accuracy": 0.692,
+    "intent_accuracy": 0.231,
+    "both_correct": 0.231,
+    "median_seconds": 2.88
+   },
+   "en": {
+    "n": 26,
+    "json_valid": 1.0,
+    "enum_valid": 1.0,
+    "category_accuracy": 0.962,
+    "intent_accuracy": 0.808,
+    "both_correct": 0.808,
+    "median_seconds": 3.08
+   },
+   "fr": {
+    "n": 34,
+    "json_valid": 1.0,
+    "enum_valid": 0.971,
+    "category_accuracy": 0.912,
+    "intent_accuracy": 0.735,
+    "both_correct": 0.706,
+    "median_seconds": 3.27
+   }
+  }
+ },
+ "config": {
+  "ollama_version": "0.40.4",
+  "models": {
+   "translategemma:4b": "6d2c3b38bc4a",
+   "mistral:latest": "6577803aa9a0"
+  },
+  "started_at": "2026-10-18T00:11:21.353347+00:00",
+  "llm_model": "mistral:latest",
+  "translation_model": "translategemma:4b",
+  "limit": null,
+  "wall_seconds": 733.9,
+  "note": "B0 = controlled baseline written 2026-10-18 for this experiment; not a historical prompt."
+ }
+}
