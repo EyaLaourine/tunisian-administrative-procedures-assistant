@@ -166,7 +166,8 @@ table row, or a legal article whose boundaries are located in the text (Section~
 
 % ---------------------------------------------------------------------------
 \section{Multi-agent architecture and n8n orchestration}\label{sec:agents}
-Workflow 03 (Fig.~\ref{fig:agents}, 17 nodes) receives every request from the Telegram bridge, the web
+Three n8n workflows are deployed: 01 (download and index, 5 nodes, inactive, admin-key endpoints), 02 (a dense
+retrieval API, 3 nodes) and 03 (Fig.~\ref{fig:agents}, 17 nodes), which receives every request from the Telegram bridge, the web
 fallback or the CLI, branches on the presence of a file, the dossier mode and the router's decision, and
 passes structured JSON between agents. Every agent call has an n8n error output leading to a structured
 \code{503} reply naming the failed agent; clients retry and then show a localised error.
@@ -236,8 +237,10 @@ and every response records its \code{prompt\_ref}. All templates are reproduced 
 Iterations were measured (Table~\ref{tab:prompts}): \code{grounded\_answer} v1$\rightarrow$v2 raised the
 token limit after an Arabic answer was cut and raised acceptance from 0.667 to 0.750 and language consistency
 to 1.000, but verbatim evidence fell from 3/11 to 1/11 as the model paraphrased more; v3 (quote before
-explaining) reached only 2/11 at +28\,\% latency and was \emph{not adopted}. The dialogue extractor went
-through three versions to obtain short, schema-constrained JSON in which every fact quotes the user's words.
+explaining) reached only 2/11 at +28\,\% latency and was \emph{not adopted}. Controlled experiments on identical inputs (Annex~\ref{app:prompt_experiments}) measured every other key prompt:
+the router prompt raised category accuracy from 0.714 (labelled technique-free baseline) to 0.881 on 84 questions
+but not Derja intent; the dialogue extractor's versions removed 15 invented scenario facts (v1$\rightarrow$v2) and
+made 18/18 outputs schema-valid (v3); the translation prompt raised validator-accepted checklists from 4/11 to 10/11.
 The conclusion of these experiments was architectural: for legal text, no prompt version made a 7B model's
 paraphrase reliable, so legal answers are now extracted rather than generated.
 
@@ -411,8 +414,8 @@ configured; an optional agent key prevents bypassing the webhook through direct 
 without the key, 200 with it); bodies above 15\,MB are rejected (413); the bridge, web page and CLI can send a
 webhook key; the backend receives an explicit list of variables instead of the whole \code{.env}.
 \textbf{Remaining risks:} production still runs the previous images; activating webhook and agent keys
-requires changing the live n8n workflows; the project's vector database has no API key (loopback only); an
-unrelated vector database container of another project listens on all interfaces without authentication.
+requires changing the live n8n workflows; the project's vector database has no API key (loopback only). The local Ollama server and another project's
+vector database, previously reachable from the local network, were restricted to loopback on 18 October.
 These changes require the owner's approval and were documented, not executed.
 
 \textbf{Limitations.} A small corpus (12 documents) whose legal currency is unverified; no official RNE list of
@@ -436,5 +439,6 @@ and the fix that worked was architectural (extract, do not paraphrase) rather th
 \normalsize
 \appendix
 \input{appendices/prompt_library.tex}
+\input{appendices/prompt_experiments.tex}
 
 \end{document}

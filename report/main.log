@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.12)  17 OCT 2026 21:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.12)  18 OCT 2026 06:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1209,15 +1209,15 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 TeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Eya Laourine/AppData/Local/Progr
 ams/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 (figures/agents.tex) [3] (tables/retrieval.tex) [4] (tables/chunks.tex)
-Overfull \hbox (3.0064pt too wide) in paragraph at lines 1--296
+Overfull \hbox (3.0064pt too wide) in paragraph at lines 1--299
  [][] 
  []
 
-Package pgfplots info on input line 306: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 309: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 (tables/script_chart.tex) (tables/prompts.tex) (tables/heldout.tex)
 (tables/verification.tex) [5] (tables/final_regression.tex)
-Underfull \hbox (badness 2401) in paragraph at lines 373--373
+Underfull \hbox (badness 2401) in paragraph at lines 376--376
 []|\T1/lmr/m/n/8 (+20) birth cer-tifi-cate 4/4; non-
  []
 
@@ -1297,20 +1297,41 @@ Underfull \hbox (badness 2035) in paragraph at lines 396--397
 _predict=900,
  []
 
-[14]) [15] (main.aux)
+[14]) (appendices/prompt_experiments.tex
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/lmtt/m/n/9 grounded_answer \T1/lmr/m/n/8 (+20) v1$\OMS/lmsy/m/n/8 !$\T1/
+lmr/m/n/8 (+20) v2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/lmr/m/n/8 (+20) 12 dev ques-tions,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/lmr/m/n/8 (+20) 84 dev ques-tions,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/lmtt/m/n/9 dialogue_understanding
+ []
+
+) [15] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B6E64FE416C5AE9074E1BFF8FE09AAAC;2974.
+(rerunfilecheck)             Checksum: 01F895A7B6FC497F024532F1877A6A05;3180.
  ) 
 Here is how much of TeX's memory you used:
- 38482 strings out of 467871
- 886016 string characters out of 5414951
- 1417944 words of memory out of 5000000
- 66358 multiletter control sequences out of 15000+600000
- 721201 words of font info for 241 fonts, out of 8000000 for 9000
+ 38493 strings out of 467871
+ 886100 string characters out of 5414951
+ 1419326 words of memory out of 5000000
+ 66363 multiletter control sequences out of 15000+600000
+ 721285 words of font info for 242 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,21n,94p,1003b,2393s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
@@ -1336,15 +1357,16 @@ nts/type1/public/lm/lmri9.pfb><C:/Users/Eya Laourine/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Eya Laourine/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Users/Eya Laourine/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/Eya Laourine/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Eya Laourine/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/Eya Laou
-rine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/E
-ya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/U
-sers/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb
->
-Output written on main.pdf (15 pages, 631164 bytes).
+/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/Eya Laourine/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Eya Laou
+rine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/Ey
+a Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/U
+sers/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb
+><C:/Users/Eya Laourine/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmt
+t9.pfb>
+Output written on main.pdf (15 pages, 640111 bytes).
 PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
- 53885 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 398 PDF objects out of 1000 (max. 8388607)
+ 74 named destinations out of 1000 (max. 500000)
+ 53893 words of extra memory for PDF output out of 61914 (max. 10000000)
 
