@@ -712,3 +712,123 @@ docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull nev
    - the RNE upstream change has not been reviewed;
    - key backups are DPAPI-only;
    - Qdrant has no API key.
+
+
+## 16. Phases F + G: real Telegram fixes and Interior CIN/passport forms (backend + data, 2026-10-18)
+
+**Verdict: PHASES F + G DEPLOYED — ALL PRODUCTION CHECKS PASSED**
+
+- **Release:** image built from commit `3d84557` (branch `fix/phase-g`), which contains the Phase F commits `ccd1cdc` and `476daff`. Branches were not pushed or merged.
+- **Design and validation:** `docs/PHASE_F_REAL_TELEGRAM_REGRESSION.md` and `docs/PHASE_G_INTERIOR_FORMS.md`.
+- **Outcome:** no rollback was needed.
+
+### Preflight (all gates passed; repeated at 18:55 UTC)
+
+- **Production before:** backend `rc-20261018-e` `sha256:69d7a7faab1b…`, healthy, 0 restarts, 14 manifest records.
+- **Candidate image:** `rc-20261018-g` `sha256:4d79b517a8902e093d32ac9821eba594942de1b928a10d976fb346c27d735d86`.
+  - Revision label `3d8455733a22`.
+  - 66/66 image files hash-identical to the commit; no secret-like files.
+  - `/ingestion/run` and `/index/run` fail closed.
+- **Data:** production `manifest.json` and `sources.yaml` were byte-identical to the pre-Phase G commit, and prompts were identical.
+- **Change set:** exactly four items, `config/sources.yaml`, `data/raw/manifest.json` and the two template folders.
+- **Candidate manifest:** 15 records, every file hash and size verified, both new entries consistent with the registry.
+- **Services:**
+  - WF01 inactive (`5193fd21`), WF02 (`f4849a5c`) and WF03 (`af6ad259`) published;
+  - one bridge container, 0 polling conflicts;
+  - Qdrant 272/174 points.
+- **Wording review:**
+  - administration fields are never reported;
+  - conditional fields are labelled "if applicable";
+  - signature and checkboxes are listed for manual checking;
+  - the bridge's "no legal validity" notice appears in FR, EN, AR and Derja;
+  - no field is called legally mandatory, and form validity is not asserted.
+- **Backup** at `C:\Users\Eya Laourine\tna-backups\phaseG-20261018T182136Z\` (owner and SYSTEM only):
+  - `data-config-prompts.tar`, 128 files, SHA-256 `cc5186678f29…`, identical to the Phase E archive; it extracts identical to production;
+  - compose file, service and image states, redacted backend inspect, workflow states, Qdrant metadata, `rollback.txt`, `SHA256SUMS`.
+  - The first permission change on the backup left its files unreadable. They were reset to inherit the folder ACL (owner and SYSTEM), and the checksums were verified afterwards.
+
+### Deployment
+
+| Time (UTC) | Step |
+|---|---|
+| 19:09:06 | `docker tag …:rc-20261018-g …:latest`; `docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull never backend` → container `fa3fe6bd1c59`, healthy, 14 records |
+| 19:09–20:16 local | Paused: auto mode refused the file copies ("Production Deploy"). The backend ran Phase G code with Phase E data, which is equivalent to the Phase F behaviour. |
+| 19:16–19:17 | Template folders copied, hashes verified; `sources.yaml` and then `manifest.json` written to `.tmp` and renamed. `/health` → 15 records (manifest reloaded on mtime, no restart). |
+| 19:17:30–19:22:49 | Production verification |
+
+Image first, then data: the Phase E code never ran with the new forms.
+
+| Item | Before | After |
+|---|---|---|
+| Backend | `rc-20261018-e` `69d7a7faab1b`, container `629c78df05ac` | `rc-20261018-g` `4d79b517a890`, container `fa3fe6bd1c59` |
+| `config/sources.yaml` | 14 approved entries | + `interior-national-id-application-form` (= `3d84557`) |
+| `data/raw/manifest.json` | 14 records, passport form without file | 15 records (= `3d84557`) |
+| `data/raw/interior-national-id-application-form/1ccece129f68_01.pdf` | – | sha256 `1ccece12…d2fe63` |
+| `data/raw/interior-passport-application-form/7e667ead4386_02.pdf` | – | sha256 `7e667ead…98168d` |
+| Bridge, n8n, Qdrant, Ollama, prompts, RNE templates | | **unchanged** |
+
+### Production verification (actual production results)
+
+Run with `verify_prod_g.sh`:
+- only user-level webhook calls, never admin endpoints;
+- Telegram API mocked inside a throwaway container, so no real chat received anything;
+- synthetic documents with neutral placeholder text, plus the blank official forms.
+
+Evidence is in `C:\Users\Eya Laourine\tna-backups\phaseG-verification\` (`SHA256SUMS`).
+
+| Check | Production result |
+|---|---|
+| Phase F + G session (bridge → WF03 → backend) | **30/30** |
+| Coverage | **60/60** |
+| Conversational | **22/22** |
+| Language (FR/AR/Derja/EN) | **26/26** |
+| Defect probes | **16/16** |
+| Phase B smoke (WF02 + WF03) | **9/9** |
+| WF02 retrieval with valid official citations | **5/5**, median 438 ms |
+| `/health` | ok, `manifest_records: 15` |
+| n8n | WF01 inactive, WF02/WF03 published, same versions |
+| Qdrant | point-for-point identical to the Phase C snapshot (272/174, 0 differences) |
+| Bridge | same container `3f73414a7eb7` and image `c247749d5f7f`, started 12:24:00, 0 restarts, 0 conflicts |
+| Data | only the four intended items differ from the backup |
+| Backend log (771 lines) | 0 placeholder text, 0 base64, 0 form labels, 0 errors |
+
+The data comparison in the script first reported "31 unexpected differences". This was a script error: `tar` read the `C:/` path as a remote host, so the archive was never extracted. Redone with `/c/`, it found exactly the four intended changes.
+
+**Forms recognised in production:**
+- CIN (01.pdf):
+  - blank: 10 applicant fields listed, 3 "if applicable", "7 champs réservés à l'administration ont été ignorés";
+  - required-only completed copy: none missing;
+  - scanned JPEG PDF and photo: recognised by OCR, none missing.
+- Passport (02.pdf):
+  - blank: 10 / 4 / 14 ignored;
+  - fully completed copy: none missing;
+  - blank photo: recognised by OCR.
+- RNE F-001 (PDF, partially filled PDF) and F-002 (OCR image): recognised.
+- Unrelated PDF and blank image: refused, with the four supported forms listed. Corrupt PDF: the localised "unreadable" message.
+
+**Phase F behaviour in production:**
+- Derja "قداش تاخو وقت؟" and Arabizi → processing time; "قداش نخلص؟" → fees.
+- "Je veux immatriculer une entreprise" and fees without a legal form → the legal form is asked.
+- SARL → row RNE C 012 with its official fee.
+- F-001 and F-002 content questions → printed content.
+- Passport and CIN form download → official links (`uploads/imprimes/02.pdf`, `01.pdf`).
+- An article question after a SARL turn does not inherit the SARL context.
+
+### Rollback readiness
+
+Not needed. The procedure is prepared in `phaseG-20261018T182136Z\rollback.txt`, in the reverse order, data first:
+1. Extract `config/sources.yaml` and `data/raw/manifest.json` from `data-config-prompts.tar`.
+2. Remove the two template folders.
+3. `docker tag tunisian-admin-assistant-backend:rc-20261018-e tunisian-admin-assistant-backend:latest`, then the same `compose up` command.
+4. Expect 14 records.
+
+The rollback image `rc-20261018-e` = `69d7a7faab1b` is present. **Never** use `8adaf99` or other unguarded images.
+
+### Remaining limitations
+
+1. **Not yet tested manually:** the Phase F and G behaviour has not been checked by hand in the real Telegram chat.
+2. **OCR margin:** scanned passports scored as low as 0.508 against the 0.5 threshold in isolated tests, so poor photos may still be refused. Short entries on wide lines in 150-dpi scanned PDFs can be falsely reported empty (CIN: 3 fields in 2 of 36 isolated cases; RNE has the same pre-existing limitation).
+3. **Interpretations:** the conditional field roles and the passport "حرر بـ … في" role are interpretations of the printed labels. The forms print only the signature as mandatory.
+4. **Provenance:** byte identity of the stored forms with the server files cannot be verified, because robots.txt disallows fetching them. Language and date stay unknown, and applicability is unverified.
+5. **Search index:** the two forms are not in the Qdrant index; no ingestion or indexing was run.
+6. **Unchanged from Phase E:** transient Telegram network warnings, admin key rotation, DPAPI-only key backups, Qdrant without an API key.
