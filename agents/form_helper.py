@@ -49,6 +49,10 @@ MAX_OCR_PAGES = 3
 OCR_DPI = 300
 OCR_TIMEOUT_SECONDS = 120
 MAX_DESKEW_DEGREES = 6.0
+# Tesseract page segmentation: 4 reads the page as one column; 11 (sparse text) also finds the label
+# columns of multi-column Arabic forms (e.g. the Interior CIN and passport forms), which 4 drops.
+OCR_PSM = "4"
+SPARSE_PSM = "11"
 
 
 @dataclass
@@ -95,10 +99,10 @@ def ocr_available() -> bool:
     return shutil.which("tesseract") is not None
 
 
-def ocr_words(image_bytes: bytes, page: int, languages: str) -> list[Word]:
+def ocr_words(image_bytes: bytes, page: int, languages: str, psm: str = OCR_PSM) -> list[Word]:
     """Runs local Tesseract on in-memory image bytes (stdin -> stdout, no temporary files)."""
     proc = subprocess.run(
-        ["tesseract", "stdin", "stdout", "-l", languages, "--psm", "4", "tsv"],
+        ["tesseract", "stdin", "stdout", "-l", languages, "--psm", psm, "tsv"],
         input=image_bytes, capture_output=True, timeout=OCR_TIMEOUT_SECONDS, check=False,
     )
     if proc.returncode != 0:
@@ -269,13 +273,15 @@ def new_words(template: Template, words: list[Word], tolerance: float = 3.0, min
     return out
 
 
-def _anchor_pairs(template: Template, words: list[Word]) -> list[tuple[tuple[float, float], tuple[float, float]]]:
-    """(image point, template point) for words that occur exactly once on both pages."""
+def _anchor_pairs(template: Template, words: list[Word], arabic: bool = False) -> list[tuple[tuple[float, float], tuple[float, float]]]:
+    """(image point, template point) for words that occur exactly once on both pages.
+
+    Latin words only by default; `arabic` also admits Arabic words (forms with too few Latin words)."""
     def unique(ws: list[Word]) -> dict[str, Word]:
         seen: dict[str, list[Word]] = {}
         for w in ws:
             t = norm_token(w.text)
-            if len(t) >= 4 and not ARABIC.search(t) and w.page == 0:
+            if len(t) >= 4 and (arabic or not ARABIC.search(t)) and w.page == 0:
                 seen.setdefault(t, []).append(w)
         return {t: v[0] for t, v in seen.items() if len(v) == 1}
 
@@ -283,11 +289,11 @@ def _anchor_pairs(template: Template, words: list[Word]) -> list[tuple[tuple[flo
     return [(_center(ocr[t]), _center(tpl[t])) for t in tpl if t in ocr]
 
 
-def fit_homography(template: Template, words: list[Word]) -> np.ndarray | None:
+def fit_homography(template: Template, words: list[Word], arabic: bool = False) -> np.ndarray | None:
     """Homography from image pixels to template points (RANSAC over anchor words).
 
     Handles scale, rotation, skew and perspective of scans and photos of the official form."""
-    pairs = _anchor_pairs(template, words)
+    pairs = _anchor_pairs(template, words, arabic)
     if len(pairs) < MIN_ANCHORS:
         return None
     src = np.float32([a for a, _ in pairs])
@@ -345,7 +351,9 @@ def check_geometric(template: Template, words: list[Word], tolerance: float = 3.
     return out
 
 
-def check_lines(fields: list[TemplateField], words: list[Word]) -> list[FormField]:
+def check_lines(fields: list[TemplateField], words: list[Word], printed: frozenset[str] = frozenset()) -> list[FormField]:
+    """Fallback without alignment: a label line with extra words counts as filled. Words in `printed`
+    (text of the blank form) never count, since sparse OCR lines can merge neighbouring labels."""
     lines = [[norm_token(w.text) for w in ws if not is_filler(w.text)] for ws in group_lines(words).values()]
     lines = [[t for t in ln if t] for ln in lines]
     out = []
@@ -358,7 +366,7 @@ def check_lines(fields: list[TemplateField], words: list[Word]) -> list[FormFiel
         if best is None or best_score < MIN_LINE_MATCH:
             out.append(FormField(label=f.label, status="not_found", role=f.role))
             continue
-        extra = [t for t in best if t not in f.label_tokens and len(t) > 1]
+        extra = [t for t in best if t not in f.label_tokens and t not in printed and len(t) > 1]
         out.append(FormField(label=f.label, status="filled" if extra else "empty", role=f.role))
     return out
 
@@ -400,24 +408,15 @@ class FormHelper:
         log.info("form_check", extra={"fields": {"method": method, "words": len(words), "mime": mime}})
 
         tokens = {norm_token(w.text) for w in words if not is_filler(w.text)} | extra_tokens
-        best_id, best_score = None, 0.0
         templates = self.templates()
-        labels = {d: set().union(*(f.label_tokens for f in t.fields)) for d, t in templates.items()}
-        ranking = []
-        for doc_id, label_tokens in labels.items():
-            # The overall share decides whether this is the form at all. Official forms share many
-            # labels (e.g. RNE F-001 / F-002), so the share of tokens found only on this form
-            # decides between candidates.
-            others = set().union(set(), *(v for d, v in labels.items() if d != doc_id))
-            distinct = label_tokens - others
-            overall = len(label_tokens & tokens) / len(label_tokens)
-            distinctive = len(distinct & tokens) / len(distinct) if distinct else 0.0
-            ranking.append((overall >= MIN_MATCH, distinctive, overall, doc_id))
-        if ranking:
-            eligible, _, best_score, best_id = max(ranking)
-            if not eligible:
-                best_id = None
-        if best_id is None or best_score < MIN_MATCH:
+        best_id, best_score, ranking = self._rank(tokens, templates)
+        sparse: list[Word] = []
+        if best_id is None and method == "ocr" and page_image is not None:
+            # Second OCR pass (first page) only when the single-column reading matched no form.
+            sparse = self._sparse_words(page_image)
+            tokens |= {norm_token(w.text) for w in sparse if not is_filler(w.text)}
+            best_id, best_score, ranking = self._rank(tokens, templates)
+        if best_id is None:
             # Metadata only (no file content): lets an unrecognised upload be diagnosed later (near miss vs other form).
             closest = max(ranking, key=lambda r: r[2]) if ranking else (False, 0.0, 0.0, None)
             log.info("form_unrecognised", extra={"fields": {"closest_template": closest[3],
@@ -438,11 +437,16 @@ class FormHelper:
             # confidence, so OCR text cannot tell filled from empty. OCR is used to recognise and
             # align the form; the decision compares ink with the blank official form.
             homography = fit_homography(template, words)
+            if homography is None and page_image is not None:
+                # Too few Latin anchors (e.g. Arabic-only forms): align on the sparse reading, Arabic words included.
+                sparse = sparse or self._sparse_words(page_image)
+                homography = fit_homography(template, sparse, arabic=True)
             if homography is not None and page_image is not None:
                 checked = check_ink(template, page_image, homography)
                 method = "ocr_ink"
             else:
-                checked = check_lines(template.fields, words)
+                printed = frozenset(norm_token(w.text) for w in template.words) if sparse else frozenset()
+                checked = check_lines(template.fields, words + sparse, printed)
         del page_image
         rec = self.corpus.records()[best_id]
         # Administration-only fields are never reported; optional ones are not reported when empty.
@@ -472,6 +476,31 @@ class FormHelper:
             form_url=rec.url, match_score=round(best_score, 3), fields=checked, missing=missing,
             if_applicable=if_applicable,
         )
+
+    def _sparse_words(self, page_image: bytes) -> list[Word]:
+        try:
+            return ocr_words(page_image, 0, self.ocr_languages, psm=SPARSE_PSM)
+        except (RuntimeError, subprocess.TimeoutExpired):
+            return []
+
+    @staticmethod
+    def _rank(tokens: set[str], templates: dict[str, Template]) -> tuple[str | None, float, list]:
+        """(best doc_id or None, its label share, ranking) for the recognition tokens of an upload."""
+        labels = {d: set().union(*(f.label_tokens for f in t.fields)) for d, t in templates.items()}
+        ranking = []
+        for doc_id, label_tokens in labels.items():
+            # The overall share decides whether this is the form at all. Official forms share many
+            # labels (e.g. RNE F-001 / F-002), so the share of tokens found only on this form
+            # decides between candidates.
+            others = set().union(set(), *(v for d, v in labels.items() if d != doc_id))
+            distinct = label_tokens - others
+            overall = len(label_tokens & tokens) / len(label_tokens)
+            distinctive = len(distinct & tokens) / len(distinct) if distinct else 0.0
+            ranking.append((overall >= MIN_MATCH, distinctive, overall, doc_id))
+        if not ranking:
+            return None, 0.0, ranking
+        eligible, _, best_score, best_id = max(ranking)
+        return (best_id if eligible else None), best_score, ranking
 
     def _extract(self, data: bytes, mime: str) -> tuple[list[Word], str, set[str], bytes | None]:
         """Returns (words, method, extra recognition tokens, first page image for OCR uploads)."""

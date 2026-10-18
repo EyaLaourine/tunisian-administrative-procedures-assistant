@@ -183,12 +183,12 @@ def test_unrecognised_file_names_every_supported_form(helper, make_pdf, lang):
 needs_ocr = pytest.mark.skipif(not ocr_available(), reason="tesseract is not installed (runs in the backend image)")
 
 
-def _scan(doc: fitz.Document, dpi=150) -> tuple[bytes, bytes]:
-    """(PNG of page 1, image-only PDF of every page): what a scanner or a phone photo produces."""
-    png = doc[0].get_pixmap(dpi=dpi, colorspace=fitz.csGRAY).tobytes("png")
+def _scan(doc: fitz.Document) -> tuple[bytes, bytes]:
+    """(150 dpi PNG of page 1, 200 dpi JPEG image-only PDF of every page): a phone photo and a scanner PDF."""
+    png = doc[0].get_pixmap(dpi=150, colorspace=fitz.csGRAY).tobytes("png")
     out = fitz.open()
     for page in doc:
-        img = page.get_pixmap(dpi=dpi, colorspace=fitz.csGRAY).tobytes("png")
+        img = page.get_pixmap(dpi=200, colorspace=fitz.csGRAY).tobytes("jpg", jpg_quality=85)
         out.new_page(width=page.rect.width, height=page.rect.height).insert_image(page.rect, stream=img)
     return png, out.tobytes()
 
@@ -196,13 +196,17 @@ def _scan(doc: fitz.Document, dpi=150) -> tuple[bytes, bytes]:
 @needs_ocr
 @pytest.mark.parametrize("doc_id", [CIN, PASSPORT])
 def test_scanned_blank_and_completed_copies(helper, doc_id):
-    blank_png, blank_pdf = _scan(fitz.open(stream=_official_pdf(doc_id), filetype="pdf"))
-    full_png, full_pdf = _scan(_fill(helper, doc_id, {"required", "optional", "conditional"}))
-    for data, mime in [(blank_png, "image/png"), (blank_pdf, "application/pdf")]:
-        res = helper.check(_req(data, mime))
-        assert res.recognised and res.form_doc_id == doc_id and res.method in ("ocr_ink", "ocr")
-        assert not any(f.role == "administration" and f.label in res.missing for f in res.fields)
-    for data, mime in [(full_png, "image/png"), (full_pdf, "application/pdf")]:
-        res = helper.check(_req(data, mime))
-        assert res.recognised and res.form_doc_id == doc_id
-        assert len(res.missing) <= 1  # scans may misread a field; never more than one
+    # The single-column OCR pass misses the Arabic label columns of these forms; the sparse-text pass
+    # recognises them and aligns the scan on Arabic anchor words, so the ink comparison runs.
+    blank = _scan(fitz.open(stream=_official_pdf(doc_id), filetype="pdf"))
+    required = _scan(_fill(helper, doc_id, {"required"}))
+    full = _scan(_fill(helper, doc_id, {"required", "optional", "conditional"}))
+    for (png, pdf), missing, if_applicable in [
+        (blank, _labels(helper, doc_id, "required"), _labels(helper, doc_id, "conditional")),
+        (required, [], _labels(helper, doc_id, "conditional")),
+        (full, [], []),
+    ]:
+        for data, mime in [(png, "image/png"), (pdf, "application/pdf")]:
+            res = helper.check(_req(data, mime))
+            assert res.recognised and res.form_doc_id == doc_id and res.method == "ocr_ink"
+            assert res.missing == missing and res.if_applicable == if_applicable
