@@ -22,7 +22,7 @@ UI = {
         'ack':'سجلت الوثائق التي صرحت بأنك تملكها.', 'declared':'صرحت بأنها متوفرة (لم يتم التحقق منها)',
         'remaining':'ما بقي للتحضير أو التأكيد — النص الرسمي', 'review':'التصريح لا يثبت العدد أو المواصفات أو الأصالة أو اكتمال الملف قانونيا. بعض الوثائق أدناه تخص الحالات المبينة في النص الرسمي فقط.',
         'unknown':'المصادر الرسمية المتاحة لا تقدم قائمة وثائق لهذه الحالة، لذلك لا يمكنني تحديد ما ينقص.', 'verify':'متوفرة حسب تصريحك لكن العدد أو المواصفات تحتاج إلى تأكيد'},
- 'derja': {'application':'أول مرة تعمل باسبور، تجديد، ولا تعويض بعد ضياع أو سرقة؟', 'residence':'تسكن في تونس ولا البرّا؟',
+ 'derja': {'application':'أول مرة تطلّع باسبور، ولا تحب تجدّدو، ولا تعوّضو خاطر ضاع ولا تسرق؟', 'residence':'تسكن في تونس ولا البرّا؟',
         'ack':'سجلت الأوراق اللي قلت عندك منهم.', 'declared':'قلت عندك منها (ما تثبتناش فيها)',
         'remaining':'اللي مازال تحضّرو ولا تثبّت فيه — النص الرسمي', 'review':'كي تقول عندك ورقة، هذا ما يثبتش العدد ولا المواصفات ولا صحتها ولا اكتمال الملف قانونيا. بعض الأوراق لتالي تلزم كان في الحالات المكتوبة في النص الرسمي.',
         'unknown':'المصادر الرسمية اللي عنا ما فيهاش قائمة أوراق للحالة هاذي، ما نجمش نحدّد شنوة ناقص.', 'verify':'قلت متوفرة أما يلزم تثبّت في العدد والمواصفات'},
@@ -47,6 +47,10 @@ APPLICATIONS = {
  'modification': r'changement|modification|modifier|تغيير|معطيات|n?baddel|update my|\bchang(?:e|ed|ing)\b.{0,30}\b(?:data|details|information|address|name)|\b(?:data|details|information|address|name)\b.{0,30}\bchang',
  'pilgrimage': r'pilgrimage|p[èe]lerinage|\bhajj\b|الحج',
 }
+# For a passport, "change/replace" can mean renewal, replacement after loss or data modification: never inherit
+# the previous case for it; ask which one instead (unless the same message states the case explicitly).
+MODIFICATION_CUE = r'changement|modification|modifier|تغيير|معطيات|update|data|details|adresse|address|nom|name|الاسم|العنوان'
+AMBIGUOUS_CHANGE = r'نبدل|نبدّل|نبدلو|تبديل|بدّل|بدل|نغير|نغيّر|\bn?badd?e?l\w*|\bchanger\b|\bremplac\w*|\breplac\w*|\bchange (?:my|the|a) passport'
 POSSESSION = r"\b(?:j'ai|jai|je dispose|i have|i already have|already have|3andi|andi|got)\b|عندي|لدي|عندى"
 NEGATIVE = r"\b(?:don't have|do not have|no longer have|j'ai pas|n'ai pas|ma3andich|maandich)\b|ما عنديش|ليس لدي|ماعنديش"
 REMAINING = r'manq|reste|remaining|still need|what else|missing|ne9s|na9s|neks|ناقص|نقص|ينقص|ناقصني'
@@ -149,6 +153,13 @@ def understand(text, state, llm=None, prompts=None):
             logging.getLogger(__name__).warning('dialogue_understanding_unavailable', extra={'fields':{'error':type(exc).__name__}})
     if q.strip(' .?!') in {'tunisie','tunisia','tounes','tunis','تونس'}:
         residence = 'tunisia'
+    if (state.category == 'passport' and app in (None, 'modification') and re.search(AMBIGUOUS_CHANGE, q)
+            and not re.search(MODIFICATION_CUE, q)):
+        app = None
+        if any(h in APPLICATIONS for h in state.hints):
+            state.declared_items = []
+            state.pending_intent = None
+        state.hints = [h for h in state.hints if h not in APPLICATIONS]
     if app:
         previous = next((h for h in state.hints if h in APPLICATIONS), None)
         if previous and previous != app:

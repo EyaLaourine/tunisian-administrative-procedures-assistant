@@ -289,6 +289,19 @@ class IntentRouter:
         return decision
 
     def _route(self, req: RouteRequest) -> RouteDecision:
+        from agents import conversation
+        kind = conversation.classify(req.text)
+        if kind:
+            # Affirmation, negation, gratitude, greeting or farewell: answered before any retrieval. The dialogue
+            # context is returned unchanged so a pending clarification (and the procedure) is kept.
+            lang = self.language(req)
+            return RouteDecision(language=lang, intent="greeting", procedure_category="none", next_agent="reply",
+                                 reply=conversation.reply(kind, lang, req.context), method="rules",
+                                 context=req.context)
+        stripped = conversation.strip_courtesy(req.text)
+        if stripped != req.text:
+            # "merci, et pour les frais ?" is routed as "et pour les frais ?" (not as a greeting).
+            req = req.model_copy(update={"text": stripped})
         if re.search(UNMATCHED_CASE, _normalize(req.text)):
             # "My case does not match": keep the conversation context and ask for the distinguishing facts the
             # official source uses, instead of repeating the previous answer.
