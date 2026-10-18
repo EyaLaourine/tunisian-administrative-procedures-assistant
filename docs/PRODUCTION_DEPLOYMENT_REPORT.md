@@ -452,3 +452,136 @@ No Qdrant, n8n or data rollback is required.
    - key backups are DPAPI-only;
    - Qdrant has no API key;
    - the `rollback-20261018` image (`8adaf99`) is vulnerable and must not be used.
+
+## 14. Phase D: conversational understanding (backend only, 2026-10-18)
+
+**Verdict: PHASE D DEPLOYED — AWAITING MANUAL TELEGRAM ACCEPTANCE**
+
+Release: commit `5a2f195` (branch `fix/conversational-understanding`); tests and fixture labelling are in `5deea2c`.
+Design, root cause and isolated validation are in `docs/CONVERSATIONAL_UNDERSTANDING_FIX.md`. No failure occurred
+and no rollback was needed.
+
+### Validation gates
+
+1. **Real transcript: not available.** A workspace search on 2026-10-18 found the four key phrases only in my own
+   test files and session history. As instructed, the regression fixture
+   (`tests/fixtures/phase_c_acceptance_session.json`) stays **reconstructed**. It now carries
+   `evidence_status: RECONSTRUCTED`, a per-turn `text_origin`, and `logged_origin` (production routing metadata
+   only):
+   - `reported_by_owner`: the exact phrases you quoted: "oui", "merci", "نحب نبدّل الباسبور، شنوة يلزمني؟",
+     "Chnowa lezemni bech njadded passport?";
+   - `acceptance_checklist`: the other turns.
+
+   No part of it is presented as verbatim production evidence.
+2. **Assertion review.** The earlier small-talk tests compared replies with the implementation's own strings, so I
+   added **18 requirement-based tests** that check properties only:
+   - gratitude gets a one-line acknowledgement of at most 90 characters, in the right script and language, that is
+     neither the welcome nor the refusal, with context kept;
+   - an affirmation never produces a refusal or a retrieval;
+   - an ambiguous change gets a question, with no retrieval and no inherited case;
+   - a clear renewal (Latin- and Arabic-script Derja, French, English) stays a renewal;
+   - after the clarification, official checklist items appear verbatim from the corpus, with citations.
+
+   Results:
+   - unit suite: **1264 passed**, 5 skipped;
+   - language tests: 63/63;
+   - conversational tests: 104/104.
+
+   Isolated end to end on the identical image (no image file changed since `5a2f195`): conversational 22/22,
+   language 26/26, probes 16/16, multilingual identical to baseline (49/49 records).
+3. **Production preflight:**
+   - backend `rc-20261018-lang` `cec1028a82e5` and bridge `rc-20261018-lang` `c247749d5f7f`, all services healthy;
+   - Qdrant 272/174 with only the official collections;
+   - data, config and prompts identical to the Phase C archive (prompts equal release `525830e`);
+   - rollback image `rc-20261018-lang` present; the candidate's 64/64 files hash-identical to the commit;
+   - workflows 01 inactive, 02 and 03 published; Phase C backup set intact.
+
+   **Warning, not a blocker:** the running bridge had logged 5 `telegram_poll_failed` warnings (`TelegramAPIError`
+   ×4, `RemoteProtocolError` ×1) at 12:32 and 12:58. They are transient Telegram network errors that recovered
+   automatically (messages were answered afterwards, 0 restarts). They are not polling conflicts: a 409 raises
+   `PollingConflict` and stops the bridge, and the 409 count is 0. The previous bridge showed the same pattern.
+4. **Minimal backup** for this backend-only change, at
+   `C:\Users\Eya Laourine\tna-backups\phaseD-20261018T131058Z\` (only your Windows account and SYSTEM have access):
+   - `data-config-prompts.tar` (128 files, SHA-256 `cc5186678f2932692163416f20696819ba925a49ffae1cbfa86dabb459913b1c`;
+     extracted and identical to production);
+   - redacted `inspect.backend-before.json`;
+   - `rollback.txt`.
+
+   Qdrant and n8n are not touched by this change. Their Phase C backups (`phaseC-20261018T122037Z`) were
+   re-verified and stay valid.
+
+### Deployment
+
+| Time (UTC) | Step |
+|---|---|
+| 13:10:28 | Preflight start |
+| 13:11:11 → 13:11:21 | Backend recreated → healthy |
+| 13:11:37–13:12:21 | Smoke test 9/9; conversational end to end 22/22 |
+| 13:13:11 | Final verification |
+
+```bash
+docker tag tunisian-admin-assistant-backend:rc-20261018-conv tunisian-admin-assistant-backend:latest
+docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull never backend
+```
+
+| Service | Before | After |
+|---|---|---|
+| Backend | `rc-20261018-lang` `sha256:cec1028a82e51f48a392a03321eb2694255263357756bc20bb11b0ed0c81d96c`, container `d9ff913e5d78` | `rc-20261018-conv` `sha256:d9d9f8ca7962ce6135317a6e7ae9b2e7bd24eb0bfc9d9cd6cd2d00caa84e133c`, container `336b9ea3c8d1` |
+| Telegram bridge | `rc-20261018-lang` `c247749d5f7f`, container `3f73414a7eb7` | **unchanged** (same container, started 12:24:00) |
+
+n8n, Qdrant, Ollama and the unrelated `qdrant` container were not restarted. No prompt, workflow, configuration or
+data file was changed.
+
+### Verification
+
+- **Backend:** `/health` returns `{"status":"ok","qdrant":true,"ollama":true,"manifest_records":14}`; healthy,
+  0 restarts, 0 errors.
+- **Admin protection:** checked statically inside the running container. Both admin routes depend on
+  `require_admin` (fail-closed), and the admin and agent keys are not configured. No admin request was sent.
+- **Bridge:** healthy, 1 container, 0 polling conflicts.
+- **n8n:** `/healthz` returns 200. WF01 inactive (`5193fd21`); WF02 (`f4849a5c`) and WF03 (`af6ad259`) published
+  and unchanged.
+- **Qdrant:** `/readyz` returns 200. Point-for-point identical to the Phase C snapshot (272/174, ids, payloads,
+  vectors); only the two official collections exist.
+- **Data:** `data/`, `config/` and `prompts/` identical to the Phase D backup; 14 manifest records; no ingestion or
+  indexing.
+- **Smoke tests** (read-only; evidence in `C:\Users\Eya Laourine\tna-backups\phaseD-verification\`):
+  - `scripts/phaseb_smoke.py`: **9/9**. The n8n `AxiosError 422` at 13:11:40 is the intentional WF02 missing-query
+    test.
+  - Conversational end to end through production workflow 03, with the released bridge code and the Telegram API
+    mocked (no real message): **22/22**. Covered:
+    - the reconstructed session ("oui" → short reply, not the refusal; "merci" → brief thanks, not the welcome;
+      "نحب نبدّل الباسبور" → clarification);
+    - yes/no against a pending question (re-ask);
+    - Derja ambiguity resolved with "تجديد";
+    - "يعطيك الصحة", "thanks", "merci, et pour les frais ?" and a farewell.
+
+### Rollback (prepared; not needed)
+
+```bash
+docker tag tunisian-admin-assistant-backend:rc-20261018-lang tunisian-admin-assistant-backend:latest
+docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull never backend
+```
+
+This returns to the Phase C protected backend `cec1028a82e5`. No prompt or data rollback is needed, and
+`8adaf99` must never be used.
+
+### Remaining limitations
+
+1. The regression fixture is **reconstructed**, not verbatim (gate 1). Provide the transcript to replace its texts.
+2. **Manual Telegram acceptance is pending:**
+   - "oui" after an answer, and after a clarifying question;
+   - "merci" / "يعطيك الصحة";
+   - "نحب نبدّل الباسبور، شنوة يلزمني؟" then "تجديد";
+   - "Chnowa lezemni bech njadded passport?";
+   - a farewell.
+3. A courtesy word inside a substantive message is ignored, not acknowledged separately. A bare "oui" with nothing
+   pending gets a generic follow-up offer.
+4. Transient Telegram network warnings occur occasionally, as before, and recover automatically.
+5. Unchanged from earlier phases:
+   - French-only sources are quoted in French;
+   - Latin-script Derja is answered in Arabic script;
+   - the admin key still needs rotation before any activation;
+   - the RNE upstream change has not been reviewed;
+   - key backups are DPAPI-only;
+   - Qdrant has no API key.
