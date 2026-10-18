@@ -17,8 +17,9 @@ _REPEAT = re.compile(r"(\w)\1{2,}", re.UNICODE)  # "merciii", "okkk", "شكرا�
 # Multi-word expressions are joined before word matching.
 _PHRASES = {
     "thank you": "thanks", "thanks a lot": "thanks", "merci beaucoup": "merci", "mille merci": "merci",
-    "يعطيك الصحة": "شكرا", "يعطيك الصحه": "شكرا", "ya3tik saha": "merci", "ya3tik essa7a": "merci",
-    "ya3tik sa7a": "merci", "barak allahou fik": "merci", "بارك الله فيك": "شكرا", "الله يبارك فيك": "شكرا",
+    "يعطيك الصحة": "يعيشك", "يعطيك الصحه": "يعيشك", "ya3tik saha": "ya3tik", "ya3tik essa7a": "ya3tik",
+    "ya3tik sa7a": "ya3tik", "yaatik saha": "ya3tik", "yaatik sa7a": "ya3tik", "yaatek saha": "ya3tik",
+    "ya3tek saha": "ya3tik", "y3atik saha": "ya3tik", "barak allahou fik": "merci", "بارك الله فيك": "شكرا", "الله يبارك فيك": "شكرا",
     "السلام عليكم": "سلام", "au revoir": "bye", "bonne journée": "bye", "bonne soirée": "bye", "à bientôt": "bye",
     "a bientot": "bye", "good bye": "bye", "see you": "bye", "مع السلامة": "بالسلامة", "bi slema": "bslema",
     "d'accord": "ok", "c'est bon": "ok", "ça marche": "ok", "ca marche": "ok", "bien sûr": "oui", "bien sur": "oui",
@@ -66,6 +67,38 @@ def classify(text: str) -> str | None:
     return None
 
 
+# Language carried by the courtesy expression itself. Arabic-script words shared by MSA and Derja ("شكرا", "نعم")
+# follow the conversation (Derja if it is Derja, else MSA); neutral words ("ok", "bye") follow the conversation.
+_EXPRESSION_LANGUAGE = {
+    "derja": {"ya3tik", "y3aychek", "3aychek", "yaichek", "behi", "bahi", "mrigel", "sahit", "sa7it", "bslema",
+              "beslema", "aslema", "3aslema", "ey", "eyy", "eyh", "iyeh", "le", "lala", "mouch", "moch", "khouya",
+              "barcha", "yesser", "يعيشك", "باهي", "مريقل", "صحيت", "عسلامة", "بالسلامة", "موش", "برشا",
+              "برشة", "خويا", "لاباس", "ياسر"},
+    "fr": {"merci", "oui", "ouais", "non", "nan", "daccord", "parfait", "exactement", "certainement", "bonjour",
+           "bonsoir", "salut", "beaucoup", "bcp", "tres", "très", "vraiment", "monsieur", "madame"},
+    "en": {"thanks", "thx", "yes", "yeah", "yep", "yup", "no", "nope", "hello", "hi", "hey", "sure", "please",
+           "much", "lot", "very", "sir", "alright", "right", "correct"},
+    "arabic": {"شكرا", "نعم", "لا", "مرحبا", "سلام", "اهلا", "اي", "ايه", "ايوا", "اكيد", "جزيلا", "صباح", "مساء",
+               "الخير", "النور", "وداعا", "صحيح", "متشكر", "مرسي"},
+}
+
+
+def expression_language(text: str, context=None) -> str | None:
+    """Language of a pure courtesy message from its own words, or None when its words are neutral ("ok")."""
+    words = set(_tokens(text))
+    conversation = getattr(context, "language", None) or getattr(context, "preferred_language", None)
+    if words & _EXPRESSION_LANGUAGE["derja"]:
+        return "derja"
+    if words & _EXPRESSION_LANGUAGE["fr"]:
+        # French courtesy words ("merci", "oui", "bonjour") are everyday Derja too: keep Derja in a Derja conversation.
+        return "derja" if conversation == "derja" else "fr"
+    if words & _EXPRESSION_LANGUAGE["en"]:
+        return "en"
+    if words & _EXPRESSION_LANGUAGE["arabic"]:
+        return "derja" if conversation == "derja" else "ar"
+    return None
+
+
 def strip_courtesy(text: str) -> str:
     """Removes leading/trailing courtesy words ("merci, et pour les frais ?" -> "et pour les frais ?"), keeping the
     question's own punctuation. Returns the text unchanged when nothing substantive would remain."""
@@ -89,7 +122,7 @@ REPLIES = {
         "en": "You're welcome! If you have another question, I'm here.",
         "fr": "Avec plaisir ! Si vous avez une autre question, je suis là.",
         "ar": "على الرحب والسعة! إن كان لديك سؤال آخر فأنا في الخدمة.",
-        "derja": "العفو! كان عندك سؤال آخر، أنا هوني.",
+        "derja": "يعيشك، مرحبا بيك! كان عندك سؤال آخر، أنا هوني.",
     },
     "farewell": {
         "en": "Goodbye, and good luck with your procedure!",
@@ -131,6 +164,9 @@ def pending_question(context, language: str) -> str | None:
     if context.category == "passport":
         from agents.dialogue import clarify
         return clarify(context, language)
+    if context.category == "national_id":
+        from agents.dialogue import APPLICATIONS, UI
+        return None if any(h in APPLICATIONS for h in context.hints) else UI[language]["cin_application"]
     if context.category == "business_registration" and not context.rne_code and not context.legal_subject:
         from agents.legal_evidence import CLARIFY
         return CLARIFY[language]

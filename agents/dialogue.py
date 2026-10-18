@@ -8,21 +8,21 @@ from pydantic import BaseModel, Field, ValidationError
 from agents.schemas import DeclaredItem, DialogueContext, ItemKey
 
 UI = {
- 'en': {'application':'Is this a first application, renewal, or replacement after loss/theft?', 'residence':'Do you live in Tunisia or abroad?',
+ 'en': {'cin_application':'Which case applies: first ID card, renewal, change of data, or replacement after loss, theft or damage?', 'application':'Is this a first application, renewal, or replacement after loss/theft?', 'residence':'Do you live in Tunisia or abroad?',
         'ack':'I have noted the documents you say you already have.', 'declared':'Declared as available (not verified)',
         'remaining':'Still to prepare or confirm — official wording', 'review':'Declarations do not verify quantity, specifications, authenticity or legal completeness. Some items below apply only to the circumstances stated in the official text.',
         'unknown':'The available official sources do not provide a document checklist for this case; I cannot establish what is missing.',
         'verify':'Available but quantity/specifications still need confirmation'},
- 'fr': {'application':'Est-ce une première demande, un renouvellement ou un remplacement après perte/vol ?', 'residence':'Tu résides en Tunisie ou à l’étranger ?',
+ 'fr': {'cin_application':'Quel cas vous concerne : première carte, renouvellement, changement de données, ou remplacement après perte, vol ou détérioration ?', 'application':'Est-ce une première demande, un renouvellement ou un remplacement après perte/vol ?', 'residence':'Tu résides en Tunisie ou à l’étranger ?',
         'ack':'J’ai noté les pièces que tu déclares déjà avoir.', 'declared':'Déjà déclaré disponible (non vérifié)',
         'remaining':'Reste à préparer ou à confirmer — texte officiel', 'review':'Une déclaration ne vérifie ni la quantité, ni les caractéristiques, ni l’authenticité, ni la complétude juridique. Certaines pièces ci-dessous dépendent des circonstances précisées dans le texte officiel.',
         'unknown':'Les sources officielles disponibles ne donnent pas de liste de pièces pour ce cas ; je ne peux pas établir ce qui manque.',
         'verify':'Disponible selon ta déclaration, mais quantité/caractéristiques à confirmer'},
- 'ar': {'application':'هل هو طلب أول مرة أم تجديد أم تعويض بعد ضياع أو سرقة؟', 'residence':'هل تقيم في تونس أم بالخارج؟',
+ 'ar': {'cin_application':'ما هي حالتك: أول بطاقة، تجديد، تغيير معطيات، أو تعويض بعد ضياع أو سرقة أو إتلاف؟', 'application':'هل هو طلب أول مرة أم تجديد أم تعويض بعد ضياع أو سرقة؟', 'residence':'هل تقيم في تونس أم بالخارج؟',
         'ack':'سجلت الوثائق التي صرحت بأنك تملكها.', 'declared':'صرحت بأنها متوفرة (لم يتم التحقق منها)',
         'remaining':'ما بقي للتحضير أو التأكيد — النص الرسمي', 'review':'التصريح لا يثبت العدد أو المواصفات أو الأصالة أو اكتمال الملف قانونيا. بعض الوثائق أدناه تخص الحالات المبينة في النص الرسمي فقط.',
         'unknown':'المصادر الرسمية المتاحة لا تقدم قائمة وثائق لهذه الحالة، لذلك لا يمكنني تحديد ما ينقص.', 'verify':'متوفرة حسب تصريحك لكن العدد أو المواصفات تحتاج إلى تأكيد'},
- 'derja': {'application':'أول مرة تطلّع باسبور، ولا تحب تجدّدو، ولا تعوّضو خاطر ضاع ولا تسرق؟', 'residence':'تسكن في تونس ولا البرّا؟',
+ 'derja': {'cin_application':'شنية الحالة متاعك: أول بطاقة، تجديد، تبديل معطيات، ولا تعويض خاطر ضاعت، تسرقت ولا تفسدت؟', 'application':'أول مرة تطلّع باسبور، ولا تحب تجدّدو، ولا تعوّضو خاطر ضاع ولا تسرق؟', 'residence':'تسكن في تونس ولا البرّا؟',
         'ack':'سجلت الأوراق اللي قلت عندك منهم.', 'declared':'قلت عندك منها (ما تثبتناش فيها)',
         'remaining':'اللي مازال تحضّرو ولا تثبّت فيه — النص الرسمي', 'review':'كي تقول عندك ورقة، هذا ما يثبتش العدد ولا المواصفات ولا صحتها ولا اكتمال الملف قانونيا. بعض الأوراق لتالي تلزم كان في الحالات المكتوبة في النص الرسمي.',
         'unknown':'المصادر الرسمية اللي عنا ما فيهاش قائمة أوراق للحالة هاذي، ما نجمش نحدّد شنوة ناقص.', 'verify':'قلت متوفرة أما يلزم تثبّت في العدد والمواصفات'},
@@ -41,7 +41,7 @@ LABELS = {
  'guardian_authorization': r'autorisation.{0,15}tuteur|authorization.{0,20}guardian|ترخيص الولي',
 }
 APPLICATIONS = {
- 'first_time': r'premi[eè]re (?:demande|fois)|first (?:application|time)|awel marra|أول مرة|اول مرة|لأول مرة',
+ 'first_time': r'premi[eè]re (?:demande|fois|carte)|first (?:application|time|card|id)|awel marra|أول مرة|اول مرة|لأول مرة|أول بطاقة|اول بطاقة',
  'renewal': r'renouvel|renew|تجديد|نجدد|يجدد|nejjedd|jadded|\bn?[jg]add?e?d\w*|\bt[ae]?jdid',
  'loss': r'\b(?:perdue?|perte|vol[ée]e?|lost|stolen|theft|damaged|deterioration|détérioration|d[ée]t[ée]rior[ée]e?|ab[îi]m[ée]e?|dha3\w*|dh?ay+a3\w*|damage|tsre9\w*|duplicata|duplicate)\b|ضياع|ضاع|ضيع|ضيّع|سرق|إتلاف|تلف|نظير',
  'modification': r'changement|modification|modifier|تغيير|معطيات|n?baddel|update my|\bchang(?:e|ed|ing)\b.{0,30}\b(?:data|details|information|address|name)|\b(?:data|details|information|address|name)\b.{0,30}\bchang',
@@ -153,8 +153,11 @@ def understand(text, state, llm=None, prompts=None):
             logging.getLogger(__name__).warning('dialogue_understanding_unavailable', extra={'fields':{'error':type(exc).__name__}})
     if q.strip(' .?!') in {'tunisie','tunisia','tounes','tunis','تونس'}:
         residence = 'tunisia'
-    if (state.category == 'passport' and app in (None, 'modification') and re.search(AMBIGUOUS_CHANGE, q)
-            and not re.search(MODIFICATION_CUE, q)):
+    # National ID: the official guide has two "change" cases (data change; loss, theft or damage). A bare change
+    # verb is ambiguous there too, but the validated Latin "baddel CIN" -> modification mapping is kept.
+    if ((state.category == 'passport' and app in (None, 'modification')
+         or state.category == 'national_id' and app is None)
+            and re.search(AMBIGUOUS_CHANGE, q) and not re.search(MODIFICATION_CUE, q)):
         app = None
         if any(h in APPLICATIONS for h in state.hints):
             state.declared_items = []
@@ -313,6 +316,9 @@ def route_dialogue(router, req):
         return RouteDecision(language=language, intent=intent, procedure_category=state.category, next_agent='reply',
                              reply=CLARIFY[language], method='rules', context=state)
     question = clarify(state,language) if state.category == 'passport' else None
+    if (state.category == 'national_id' and not any(h in APPLICATIONS for h in state.hints)
+            and re.search(AMBIGUOUS_CHANGE, normalize(req.text)) and not re.search(MODIFICATION_CUE, normalize(req.text))):
+        question = UI[language]['cin_application']
     if question:
         return RouteDecision(language=language,intent=intent,procedure_category=state.category,hints=state.hints,
                              next_agent='reply',reply=question,method='rules',context=state)

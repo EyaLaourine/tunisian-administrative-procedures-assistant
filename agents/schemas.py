@@ -94,6 +94,9 @@ class ChecklistResult(BaseModel):
     warnings: list[str] = Field(default_factory=list)
     citations: list[Citation] = Field(default_factory=list)
     translation: dict | None = None  # {model, prompt_ref, validated}
+    # Discrepancy between parallel official versions on fee amounts; shown only when the answer contains an amount
+    # or fees were asked for (see ChecklistBuilder._attach_fee_warning).
+    fee_discrepancy: str | None = None
 
 
 class AnswerResult(BaseModel):

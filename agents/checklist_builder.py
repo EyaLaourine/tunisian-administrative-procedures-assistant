@@ -84,6 +84,7 @@ class ChecklistBuilder:
                 focus_kind = {"fees":"fees", "processing_time":"delay", "submission_place":"place", "eligibility":"conditions"}.get(route.intent)
                 if focus_kind:
                     result.sections = [section for section in result.sections if section.kind == focus_kind]
+                    self._attach_fee_warning(result, route.intent)
                 result.alternatives = []
                 result.text = self._render(route,result.scenario or "",result)
             return result
@@ -115,14 +116,12 @@ class ChecklistBuilder:
         target = TARGET_LANGUAGE[lang]
         doc_lang = self._doc_language(doc_id)
         parallel = self._parallel(doc_id, scenario)
-        warnings: list[str] = []
+        fee_discrepancy = None
         if parallel and doc_lang != target and parallel[2] == target:
             (doc_id, scenario), parallel = (parallel[0], parallel[1]), (doc_id, scenario, doc_lang)
             doc_lang = target
         if parallel:
-            warning = self._fee_discrepancy(lang, (doc_id, scenario, doc_lang), parallel)
-            if warning:
-                warnings.append(warning)
+            fee_discrepancy = self._fee_discrepancy(lang, (doc_id, scenario, doc_lang), parallel)
 
         sections = self._select_sections(scenario, route.intent)
         if not sections:
@@ -141,11 +140,24 @@ class ChecklistBuilder:
         alternatives = [s.title for s in self.corpus.scenarios(doc_id) if s.index != scenario.index]
         result = ChecklistResult(
             text="", found=True, doc_id=doc_id, scenario=scenario.title, source_language=doc_lang,
-            sections=sections, alternatives=alternatives, warnings=warnings, citations=citations,
-            translation=translation,
+            sections=sections, alternatives=alternatives, citations=citations,
+            translation=translation, fee_discrepancy=fee_discrepancy,
         )
+        self._attach_fee_warning(result, route.intent)
         result.text = self._render(route, title, result)
         return result
+
+    @staticmethod
+    def _attach_fee_warning(result: ChecklistResult, intent: str) -> None:
+        """A conflict between official versions on fee amounts matters when the answer shows an amount or the user
+        asked about fees; it is not shown with an unrelated answer such as the submission place."""
+        if not result.fee_discrepancy:
+            return
+        shown = [i for s in result.sections for i in (s.items + (s.translated_items or []))]
+        relevant = intent == "fees" or any(AMOUNT.search(i) for i in shown)
+        result.warnings = [w for w in result.warnings if w != result.fee_discrepancy]
+        if relevant:
+            result.warnings.append(result.fee_discrepancy)
 
     def _scenario_candidates(self, passages: list[RetrievedPassage]) -> list[tuple[str, Scenario]]:
         out: list[tuple[str, Scenario]] = []

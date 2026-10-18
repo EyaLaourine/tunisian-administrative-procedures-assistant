@@ -90,12 +90,13 @@ def test_phase_c_acceptance_session(router):
 
 
 # ---------------------------------------------------------------- affirmation / negation against the pending question
-@pytest.mark.parametrize("answer", ["oui", "non", "إي", "ok"])
-def test_yes_or_no_to_an_either_or_clarification_reasks_it(router, answer):
+@pytest.mark.parametrize("answer,lang", [("oui", "fr"), ("non", "fr"), ("ok", "fr"),
+                                         ("إي", "ar")])  # Arabic-script "yes": re-asked in Arabic (Phase E, A1)
+def test_yes_or_no_to_an_either_or_clarification_reasks_it(router, answer, lang):
     (q, _), (d, ctx) = chain(router, ["Quelles pièces fournir pour renouveler un passeport ?", answer])
     assert q.reply == UI["fr"]["residence"] and ctx.pending_intent == "required_documents"
-    assert d.next_agent == "reply" and UI["fr"]["residence"] in d.reply
-    assert d.reply.startswith(REPLIES["reask"]["fr"])
+    assert d.next_agent == "reply" and UI[lang]["residence"] in d.reply
+    assert d.reply.startswith(REPLIES["reask"][lang])
     assert ctx.category == "passport" and ctx.hints == ["renewal"]  # context kept
     (*_, (after, _)) = chain(router, ["En Tunisie"], ctx)
     assert after.next_agent == "checklist" and after.hints == ["renewal"]
@@ -116,9 +117,15 @@ def test_yes_or_no_without_pending_question_is_answered_naturally(router, kind, 
 
 
 # ---------------------------------------------------------------- gratitude, greetings, farewells
-@pytest.mark.parametrize("word,previous,lang", [("merci", "fr", "fr"), ("شكرا", "derja", "derja"),
-                                                ("thanks", "ar", "ar"), ("يعطيك الصحة", "derja", "derja"),
-                                                ("merci", "en", "en")])
+@pytest.mark.parametrize("word,previous,lang", [
+    ("merci", "fr", "fr"), ("شكرا", "derja", "derja"), ("يعطيك الصحة", "derja", "derja"),
+    # Phase E (A1): the expression's own language wins over the conversation language...
+    ("thanks", "ar", "en"), ("thank you", "derja", "en"), ("merci", "en", "fr"), ("شكرا", "fr", "ar"),
+    ("يعطيك الصحة", "fr", "derja"), ("yaatik saha", "fr", "derja"), ("ya3tik saha", "en", "derja"),
+    ("3aychek", "fr", "derja"), ("يعيشك", "ar", "derja"),
+    # ...except French courtesy words, which are everyday Derja too.
+    ("merci", "derja", "derja"), ("ok merci", "derja", "derja"),
+])
 def test_gratitude_is_brief_and_in_conversation_language(router, word, previous, lang):
     ctx = DialogueContext(category="passport", hints=["renewal"], residence="tunisia", language=previous,
                           declared_items=[DeclaredItem(key="photos", quantity=4)])
@@ -248,3 +255,21 @@ def test_requirement_official_items_quoted_verbatim_after_clarification(router):
     official = [i for s in result.sections for i in s.items]
     assert official and all(i.strip() in result.text for i in official)  # official text unchanged
     assert result.citations and str(result.citations[0].url).startswith("http")
+
+
+# ---------------------------------------------------------------- Phase E (A1): observed production defect
+def test_phase_e_observed_derja_gratitude_in_french_conversation(router):
+    """Observed in production (owner's Telegram acceptance): "يعطيك الصحة" was answered "Avec plaisir !…"."""
+    *_, (d, ctx) = chain(router, ["Quelles pièces fournir pour renouveler un passeport ?", "En Tunisie", "يعطيك الصحة"])
+    assert d.language == "derja" and d.reply == REPLIES["thanks"]["derja"] and d.reply.startswith("يعيشك")
+    assert "Avec plaisir" not in d.reply
+    # The conversation language recorded in the context is not redirected by a courtesy message.
+    assert ctx.language == "fr" and ctx.category == "passport" and ctx.hints == ["renewal"]
+    # No retrieval, no LLM: the router has no LLM here and the decision carries no retrieval query.
+    assert d.retrieval_query is None and d.method == "rules"
+
+
+def test_phase_e_preference_is_never_changed_by_gratitude(router):
+    ctx = DialogueContext(category="passport", language="fr", preferred_language="ar")
+    (d, after), = chain(router, ["يعطيك الصحة"], ctx)
+    assert d.language == "derja" and after.preferred_language == "ar" and after.language == "fr"

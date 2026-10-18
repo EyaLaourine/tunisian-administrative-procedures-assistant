@@ -280,11 +280,15 @@ class IntentRouter:
         return cached[0]
 
     def route(self, req: RouteRequest) -> RouteDecision:
+        from agents import conversation
         decision = self._route(req)
         if decision.context is not None:
             # The conversation language travels in the dialogue context (passed through unchanged by n8n), so a
             # later short answer such as "oui" or "في تونس" keeps it. A None context still means "unchanged".
-            decision.context.language = decision.language
+            # A pure courtesy message ("merci", "يعطيك الصحة") is answered in its own language but does not
+            # redirect the conversation language.
+            if not (conversation.classify(req.text) and decision.context.language):
+                decision.context.language = decision.language
             decision.context.preferred_language = req.context.preferred_language if req.context else None
         return decision
 
@@ -293,8 +297,10 @@ class IntentRouter:
         kind = conversation.classify(req.text)
         if kind:
             # Affirmation, negation, gratitude, greeting or farewell: answered before any retrieval. The dialogue
-            # context is returned unchanged so a pending clarification (and the procedure) is kept.
-            lang = self.language(req)
+            # context is returned unchanged so a pending clarification (and the procedure) is kept. The expression's
+            # own language wins ("يعطيك الصحة" is Derja even in a French conversation); neutral words ("ok") follow
+            # the conversation.
+            lang = conversation.expression_language(req.text, req.context) or self.language(req)
             return RouteDecision(language=lang, intent="greeting", procedure_category="none", next_agent="reply",
                                  reply=conversation.reply(kind, lang, req.context), method="rules",
                                  context=req.context)
