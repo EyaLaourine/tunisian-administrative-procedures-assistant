@@ -286,3 +286,18 @@ def test_official_form_question_is_routed_without_llm(text, context):
     d = router.route(RouteRequest(text=text, context=context))
     assert d.procedure_category == "business_registration" and d.next_agent == "answer" and d.method == "rules"
     assert _OutOfScopeLLM.calls == 0
+
+
+# ---------------------------------------------------------------- localized file errors (found in the isolated run)
+@pytest.mark.parametrize("lang,phrase", [("fr", "le PDF est endommagé ou illisible"), ("en", "the PDF is damaged or unreadable"),
+                                         ("ar", "ملف PDF تالف"), ("derja", "الـPDF مفسود")])
+def test_corrupt_pdf_error_is_fully_localized(corpus, lang, phrase):
+    import base64
+    from agents.form_helper import FormHelper
+    from agents.schemas import FormCheckRequest
+    s = get_settings()
+    data = b"%PDF-1.4\n%neutral test\n" + bytes(range(256)) * 8
+    r = FormHelper(corpus, s.max_upload_bytes).check(FormCheckRequest(mime_type="application/pdf", language=lang,
+                                                                       data_b64=base64.b64encode(data).decode()))
+    assert r.recognised is False and r.error == "unreadable PDF"   # technical reason kept for clients/logs
+    assert phrase in r.text and "unreadable PDF" not in r.text      # user text has no English fragment

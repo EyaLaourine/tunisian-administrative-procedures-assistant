@@ -245,6 +245,35 @@ STRINGS: dict[str, dict[str, str]] = {
         "en": "I could not read this file: {reason}", "fr": "Je n'ai pas pu lire ce fichier : {reason}",
         "ar": "تعذرت قراءة هذا الملف: {reason}", "derja": "ما نجمتش نقرا الملف هذا: {reason}",
     },
+    "reason_unreadable_pdf": {
+        "en": "the PDF is damaged or unreadable", "fr": "le PDF est endommagé ou illisible",
+        "ar": "ملف PDF تالف أو غير مقروء", "derja": "الـPDF مفسود ولا ما يتقراش",
+    },
+    "reason_invalid_upload": {
+        "en": "the upload is invalid", "fr": "le fichier envoyé est invalide",
+        "ar": "الملف المرسل غير صالح", "derja": "الملف اللي بعثتو موش صالح",
+    },
+    "reason_too_large": {
+        "en": "the file is larger than {mb} MB", "fr": "le fichier dépasse {mb} Mo",
+        "ar": "حجم الملف يتجاوز {mb} ميغابايت", "derja": "الملف أكبر من {mb} ميغا",
+    },
+    "reason_unsupported_type": {
+        "en": "this file type is not supported (PDF, JPEG or PNG only)",
+        "fr": "ce type de fichier n'est pas pris en charge (PDF, JPEG ou PNG uniquement)",
+        "ar": "نوع الملف غير مدعوم (PDF أو JPEG أو PNG فقط)", "derja": "نوع الملف هذا موش مدعوم (PDF ولا JPEG ولا PNG برك)",
+    },
+    "reason_ocr_failed": {
+        "en": "the text recognition failed on this image", "fr": "la reconnaissance du texte a échoué sur cette image",
+        "ar": "فشل التعرف على النص في هذه الصورة", "derja": "ما نجمتش نقرا الكتيبة في التصويرة هاذي",
+    },
+    "reason_ocr_missing": {
+        "en": "text recognition is not available on the server", "fr": "la reconnaissance de texte n'est pas disponible sur le serveur",
+        "ar": "التعرف على النص غير متاح على الخادم", "derja": "قراية الكتيبة موش متوفرة في السرفور",
+    },
+    "reason_generic": {
+        "en": "the file could not be processed", "fr": "le fichier n'a pas pu être traité",
+        "ar": "تعذرت معالجة الملف", "derja": "ما نجمتش نعالج الملف",
+    },
     "answer_fallback": {
         "en": "Here are the most relevant official passages:", "fr": "Voici les passages officiels les plus pertinents :",
         "ar": "هذه أكثر المقاطع الرسمية صلة بسؤالك:", "derja": "هاذوما أقرب المقاطع الرسمية لسؤالك:",

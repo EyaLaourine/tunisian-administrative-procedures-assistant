@@ -482,4 +482,15 @@ class FormHelper:
 
     @staticmethod
     def _error(lang: str, reason: str) -> FormCheckResult:
-        return FormCheckResult(text=i18n.t("form_error", lang, reason=reason), recognised=False, error=reason)
+        # `error` keeps the technical reason (English, for logs/clients); the user text is localized.
+        key = next((k for prefix, k in ERROR_REASON_KEYS if reason.startswith(prefix)), "reason_generic")
+        localized = i18n.t(key, lang, mb=(re.search(r"\d+", reason) or ["?"])[0])
+        return FormCheckResult(text=i18n.t("form_error", lang, reason=localized), recognised=False, error=reason)
+
+
+# Technical reasons raised above -> localized explanation keys in agents/i18n.py.
+ERROR_REASON_KEYS = [
+    ("unreadable PDF", "reason_unreadable_pdf"), ("invalid base64", "reason_invalid_upload"),
+    ("file larger than", "reason_too_large"), ("unsupported file type", "reason_unsupported_type"),
+    ("OCR failed", "reason_ocr_failed"), ("scanned PDF and OCR", "reason_ocr_missing"), ("OCR (tesseract)", "reason_ocr_missing"),
+]
