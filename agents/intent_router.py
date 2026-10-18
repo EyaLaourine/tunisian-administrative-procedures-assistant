@@ -33,6 +33,8 @@ CATEGORY_KEYWORDS: dict[str, list[str]] = {
         "dénomination sociale", "nom commercial", "réservation", "trade name", "company name",
         "التسمية الاجتماعية", "الاسم التجاري", "حجز الشارة", "حجز التسمية",
         "شركة", "شركه", "السجل الوطني للمؤسسات", "المستفيد الحقيقي", "مؤسسة", "تاجر", "حرفي",
+        # Indefinite Arabic and Latin-script Derja names of the beneficial-owner and name-reservation decrees.
+        r"\bمستفيد(?:ا|ون|ين)?\s+حقيقي(?:ا|ون|ين)?", r"\b(?:mou?stafid|mustafid)\w*\s+(?:7a9i9i|ha9i9i|haqiqi|hakiki)", r"\b(?:7ajz|hajz)\b.{0,25}(?:esm|ism|tasmi|chara)",
     ],
     "birth_certificate": [
         "extrait de naissance", "acte de naissance", "birth certificate", "مضمون ولادة", "شهادة ميلاد",

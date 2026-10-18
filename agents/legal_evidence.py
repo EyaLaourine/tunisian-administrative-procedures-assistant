@@ -16,8 +16,8 @@ SUBJECTS = {
     'rne-law-2018-52-ar': (r'2018[- /]52|52.{0,12}2018', 'loi 2018-52 السجل الوطني للمؤسسات'),
     'rne-decree-law-2022-18-fr': (r'2022[- /]18|remise.{0,30}p[eé]nalit', 'décret-loi 2022-18 remise pénalités'),
     'rne-decree-2022-298-fees-fr': (r'2022[- /]298|298.{0,12}2022|redevance.{0,60}tableau|tableau.{0,60}redevance', 'décret 2022-298 redevances'),
-    'rne-decree-name-reservation': (r'r[eé]servation|name reservation|trade name|company.name|حجز.{0,20}(?:تسمية|اسم|شارة)|2019[- /]53', 'réservation dénomination sociale nom commercial حجز التسمية'),
-    'rne-decree-beneficial-owners': (r'b[eé]n[eé]ficiaire.{0,10}effectif|beneficial.owner|المستفيد الحقيقي|المستفيدون الحقيقيون|2019[- /]54|54.{0,12}2019', 'bénéficiaire effectif المستفيد الحقيقي'),
+    'rne-decree-name-reservation': (r'r[eé]servation|name reservation|trade name|company.name|حجز.{0,20}(?:تسمية|اسم|شارة)|2019[- /]53|\b(?:7ajz|hajz)\b.{0,25}(?:esm|ism|tasmi|chara)', 'réservation dénomination sociale nom commercial حجز التسمية'),
+    'rne-decree-beneficial-owners': (r'b[eé]n[eé]ficiaire.{0,10}effectif|beneficial.owner|المستفيد الحقيقي|المستفيدون الحقيقيون|مستفيد(?:ا|ون|ين)?\s+حقيقي(?:ا|ون|ين)?|(?:mou?stafid|mustafid)\w*\s+(?:7a9i9i|ha9i9i|haqiqi|hakiki)|2019[- /]54|54.{0,12}2019', 'bénéficiaire effectif المستفيد الحقيقي'),
 }
 NOTICE = {
     'en': 'Official source excerpts in their original language. These are selected provisions, not an exhaustive legal opinion. No conclusion beyond the quoted text is verified; current applicability and your individual case require confirmation.',
@@ -36,14 +36,18 @@ HEADING = re.compile(r'^(?:Art\.\s*(\d+)|Article\s+(premier)|الفصل\s*(ال�
 # Penalties for the register are set by Law 2018-52; checked after the decree-law on the *remission* of
 # late penalties, so "remise des pénalités" keeps pointing to Decree-law 2022-18.
 REGISTER = r'RNE|registre|register|السجل الوطني|سجل المؤسسات'
-PENALTY = r'penalt|sanction|punish|\bfines?\b|amende|p[ée]nalit|emprisonn|prison|عقوب|يعاقب|خطية|السجن'
+PENALTY = r'penalt|sanction|punish|\bfines?\b|amende|p[ée]nalit|emprisonn|prison|عقوب|يعاقب|خطية|السجن|غرامة|\b(?:khtiya|5tiya|ghrama)\b'
+# Lateness: Law 2018-52 art. 51 sets the late penalty ("غرامة تأخير" after the legal deadlines); the criminal
+# sanctions of arts. 53-57 must not outrank it for a question that is explicitly about being late.
+LATE = r'\blate\b|retard|tardi|after the deadline|past the deadline|d[ée]lai d[ée]pass|تأخير|التأخير|بعد الآجال|\b(?:nfout|fat|fet) el ajal\b'
 LAW_THEMES = (rf'(?:{PENALTY}).{{0,80}}(?:{REGISTER})|(?:{REGISTER}).{{0,80}}(?:{PENALTY})'
               r'|false declaration|fausse d[ée]claration|d[ée]claration (?:fausse|mensong[eè]re)|تصريح مخالف للحقيقة|بيان كاذب')
 # Cross-lingual search vocabulary for locating the relevant article of an act written in another language.
 # These are search terms only (no legal content): a concept found in the question adds the equivalent
 # wording used in the official texts to the article scoring.
 CONCEPTS = [
-    (PENALTY, ['يعاقب', 'بخطية', 'بالسجن', 'عقوبة', 'amende', 'emprisonnement']),
+    (rf'^(?![\s\S]*(?:{LATE}))[\s\S]*(?:{PENALTY})', ['يعاقب', 'بخطية', 'بالسجن', 'عقوبة', 'amende', 'emprisonnement']),
+    (LATE, ['غرامة تأخير', 'الآجال القانونية', 'retard']),
     (r'false|fausse|faux|mensong|inexact|untrue|كاذب|مخالف للحقيقة', ['مخالف للحقيقة', 'كاذب', 'fausse']),
     (r'd[ée]clar|statement|تصريح', ['تصريح', 'déclaration']),
     (r'deadline|time limit|d[ée]lai|within|أجل|آجال|ظرف', ['أجل', 'آجال', 'ظرف', 'délai']),
