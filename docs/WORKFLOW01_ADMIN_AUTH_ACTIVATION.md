@@ -17,7 +17,7 @@ The production backend was not modified and `ADMIN_API_KEY` is **not** active ye
 | Executions | 0 running |
 | n8n credentials | none before this phase |
 | Qdrant (production, host port 6343; port 6333 is an older standalone test container) | `official_docs_structure` 272 green, `official_docs_recursive` 174 green |
-| Production backend | image `8adaf99…`, no `ADMIN_API_KEY` (admin endpoints answer 403) |
+| Production backend | image `8adaf99…`. **Correction (2026-10-18, Phase B incident):** this image has **no** admin guard; its `/ingestion/run` and `/index/run` run without any key. An earlier version of this row said they answered 403, which was wrong. See `docs/PRODUCTION_DEPLOYMENT_REPORT.md`. |
 | Candidate | `tunisian-admin-assistant-backend:rc-20261018b` (same `require_admin` contract: 403 unset, 401 wrong key) |
 
 ## 2. Backup (outside Git)
@@ -130,7 +130,9 @@ The secret did not appear in any disposable log or output. Containers and the ne
    `powershell -NoProfile -File deploy/Set-AdminApiKeyEnv.ps1`
 3. Recreate only the backend with the already-validated image (no build, no pull):
    `docker compose up -d --no-deps --no-build --pull never backend`
-4. Verify without side effects: a `POST /index/run` with **no** header must return **401** (not 403). Do not send a
+4. Verify without side effects. **First confirm that the running image is `rc-20261018b` or later** (`docker inspect`); images
+   without `require_admin` (such as `8adaf99`) execute admin POSTs. Only on such a verified image, a `POST /index/run` with
+   **no** header must return **401** (not 403); the guard rejects it before the handler runs. Do not send a
    request with the real key to production admin endpoints as a test.
 5. WF01 stays inactive. It is run manually only when an ingestion is deliberately approved. Before that run,
    confirm in the n8n UI that both HTTP nodes show the credential **TNAA Backend Admin**.

@@ -215,7 +215,8 @@ Order at activation time (a future, separately approved step):
 1. `powershell -NoProfile -File deploy\Rotate-AdminApiKey.ps1`
 2. `powershell -NoProfile -File deploy\Set-AdminApiKeyEnv.ps1`
 3. `docker compose up -d --no-deps --no-build --pull never backend`
-4. Check that `POST /index/run` without a header returns 401.
+4. After confirming with `docker inspect` that the running image has `require_admin` (`rc-20261018b` or later), check
+   that `POST /index/run` without a header returns 401. Never send this to `8adaf99`, which executes it.
 
 Until step 3, the backend ignores the credential. Admin endpoints stay disabled (403), so the rotation itself has no
 production effect.
@@ -238,7 +239,9 @@ docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull nev
 ```bash
 docker inspect tunisian-admin-assistant-backend-1 --format '{{.Image}} {{.State.Health.Status}} {{.RestartCount}}'  # 6124980f..., healthy, 0
 curl -s http://127.0.0.1:8000/health                                   # {"status":"ok","qdrant":true,"ollama":true,...}
-curl -s -o /dev/null -w '%{http_code}\n' -X POST http://127.0.0.1:8000/index/run   # 403 (admin disabled; nothing runs)
+# Only /health exists: /health/live and /health/ready are not implemented (404) in 8adaf99 or rc-20261018b.
+# Admin protection: verify statically (deployed code + empty ADMIN_API_KEY). Never POST to /ingestion/run or /index/run
+# during the deployment: 8adaf99 executes them (Phase B incident, docs/PRODUCTION_DEPLOYMENT_REPORT.md).
 docker exec tunisian-admin-assistant-backend-1 printenv | cut -d= -f1 | grep -cE '^(TELEGRAM_BOT_TOKEN|N8N_ENCRYPTION_KEY)$'  # 0
 ```
 
