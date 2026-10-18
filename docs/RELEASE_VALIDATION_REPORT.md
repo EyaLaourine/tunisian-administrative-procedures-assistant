@@ -166,3 +166,11 @@ See `docs/GITHUB_SNAPSHOT_AUDIT.md`:
   validated candidate everywhere.
 - **Remaining conditions:** your approval of steps 1–5, and an owner-sent Telegram acceptance on the deployed
   system.
+
+## 9. N8N WORKFLOW COMPATIBILITY VERDICT (details in `docs/N8N_WORKFLOW_COMPATIBILITY.md`)
+
+| Workflow | Verdict | Evidence |
+|---|---|---|
+| `TnaaAssistant01` | **COMPATIBLE — NO CHANGE REQUIRED** | OpenAPI identical to final-candidate; 46 expression references resolve; replay 728/728 identical; multilingual 0 failures; probes 16/16; integration 37/37; 503 error branch verified |
+| `TnaaRetrieveApi1` | **COMPATIBLE — NO CHANGE REQUIRED** | unchanged `/retrieve` contract; isolated webhook calls return cited passages; filters work |
+| `TnaaIngestIndex1` | **CHANGE REQUIRED** (inactive; before its next run) | 403 from the hardened backend in an isolated run; the proposed Header Auth patch (`deploy/proposed/01_ingest_and_index_admin_key.json`) passes the isolated tests |
