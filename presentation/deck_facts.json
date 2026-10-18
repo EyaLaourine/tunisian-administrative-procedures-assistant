@@ -1,6 +1,6 @@
 {
  "repro_note": "re-run read-only on 2026-10-18: identical Hit@5/MRR@5 for all 4 configurations (retrieval_results_reproduce_20261018.json)",
- "unit_tests": "1069 passed, 5 skipped (overnight branch); 1059 passed on be787ca",
+ "unit_tests": "1097 passed, 5 skipped; integration 37/37 on the rc stack",
  "interpret": {
   "intent": "v1's RNE definition fixed most 'general' errors (category +0.167); Derja intent did not improve and invalid enums rose slightly — the code rejects them.",
   "dialogue": "v2 removed 15 invented scenario facts; v3's schema made 18/18 outputs valid. Invented quantities are removed by code validation, not by the prompt."

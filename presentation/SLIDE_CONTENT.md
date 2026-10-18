@@ -331,7 +331,7 @@ Each block lists the slide's professor section, presenter, target duration, the 
 - RANSAC homography anchor words → blank form
 - Ink per field vs blank template
 - Statuses filled / empty / unreadable
-- TABLE: Case (fixtures derived from official blank forms) | Method | Result | s // Official blank F-001 (PDF) | text_layer | 0 filled / 7 fields | 0.08 // Official blank F-002 (PDF) | text_layer | 0 filled / 8 fields | 0.07 // F-002 with 5 fields filled ('placeholder', synthetic) | text_layer | 5 filled / 8 fields | 0.07 // F-001 with 3 filled fields rendered to PNG (200 dpi) | ocr_ink | 3 filled / 7 fields | 2.19 // F-001 with 3 filled fields rendered to JPEG, rotated 3 degrees | ocr_ink | 3 filled / 7 fields | 2.11 // Corrupt PDF (first 5 KB of F-001) | ocr | not recognised | 0.01 // Unsupported type (text/plain) | — | unsupported file type text/plain | 0.00 // Oversized upload (11 MB of zeros declared as PNG) | — | file larger than 10 MB | 0.19
+- TABLE: Case (fixtures derived from official blank forms) | Method | Result | s // Official blank F-001 (PDF) | text_layer | 0 filled / 7 fields | 0.08 // Official blank F-002 (PDF) | text_layer | 0 filled / 8 fields | 0.06 // F-002 with 5 fields filled ('placeholder', synthetic) | text_layer | 5 filled / 8 fields | 0.08 // F-001 with 3 filled fields rendered to PNG (200 dpi) | ocr_ink | 3 filled / 7 fields | 2.27 // F-001 with 3 filled fields rendered to JPEG, rotated 3 degrees | ocr_ink | 3 filled / 7 fields | 2.44 // Corrupt PDF (first 5 KB of F-001) | ocr | not recognised | 0.02 // Unsupported type (text/plain) | — | unsupported file type text/plain | 0.00 // Oversized upload (11 MB of zeros declared as PNG) | — | file larger than 10 MB | 0.22
 - 13/13
 - multimodal cases behave as expected (candidate backend, 2026-10-18)
 - Dossier Validator Keeps apart: field status · official requirements quoted verbatim · completeness, which is never certified (no official RNE list exists).
@@ -343,7 +343,7 @@ Each block lists the slide's professor section, presenter, target duration, the 
 - **Target duration:** 55 s (+ demo time)
 - **Layout:** Four demo rows
 - **Main message:** We chose four interactions on fast, deterministic paths, so that the demo does not depend on a slow model.
-- **Evidence:** presentation/LIVE_DEMO_SCRIPT.md; latencies from report §7 and data/evaluation/multilingual_eval_results.json
+- **Evidence:** presentation/LIVE_DEMO_SCRIPT.md; latencies from report §7 and data/evaluation/rc_20261018b_multilingual_results.json
 - **Transition:** next slide, same presenter
 
 **On-slide text:**
@@ -366,7 +366,7 @@ Each block lists the slide's professor section, presenter, target duration, the 
 - /form_check + photo of blank F-001
 - OCR + homography · 7 fields reported empty
 - ≈ 2.5 s
-- Fallback: if the live bot is slow, show the recorded results in data/evaluation/multilingual_eval_results.json and the n8n execution view. Grounded LLM answers (20–70 s) are shown from recordings only.
+- Fallback: if the live bot is slow, show the recorded results in data/evaluation/rc_20261018b_multilingual_results.json and the n8n execution view. Grounded LLM answers (20–70 s) are shown from recordings only.
 
 ## Slide 17
 
@@ -375,7 +375,7 @@ Each block lists the slide's professor section, presenter, target duration, the 
 - **Target duration:** 53 s
 - **Layout:** Before/after stat cards + table
 - **Main message:** Before release, an independent audit replayed 728 end-to-end cases through n8n.
-- **Evidence:** report/tables/final_regression.tex; data/evaluation/multilingual_eval_results.json (scripts/multilingual_eval.py); pytest -m 'not integration'
+- **Evidence:** report/tables/final_regression.tex; rc_20261018b_replay_results.jsonl (scripts/score_replay.py); rc_20261018b_multilingual_results.json; pytest
 - **Transition:** next slide, same presenter
 
 **On-slide text:**
@@ -394,7 +394,7 @@ Each block lists the slide's professor section, presenter, target duration, the 
 - before → after
 - 0/10  →  10/10
 - Form-instruction answers with the official passage
-- TABLE: Check | Result // Fabricated legal provision (Law 2018-52 Art. 16) | yes → no // Citation URLs found in the official manifest | 1547/1547 // Multilingual parallel subset, 36 questions (candidate, today): 11 evidence, 4 correct refusals, 14 clarification questions, 7 failures | 29/36 correct // Behaviour cases: clarification, follow-up, RNE codes, out-of-scope, injection | 12/13 (carte grise fixed on overnight branch) // Unit and regression tests (no services needed) | 1069 passed, 5 skipped (overnight branch); 1059 passed on be787ca
+- TABLE: Check | Result // Fabricated legal provision (Law 2018-52 Art. 16) | yes → no // Citation URLs found in the official manifest | 1547/1547 // Release candidate rc-20261018b, same 728 cases: all 17 replay metrics | identical to final candidate // Multilingual parallel subset, 36 questions (rc-20261018b): 18 evidence, 4 correct refusals, 14 clarification questions, 0 failures | 0 failures (36/36 as designed) // Behaviour cases: clarification, follow-up, RNE codes, out-of-scope, carte grise, injection | 13/13 // Unit and regression tests (no services needed) | 1097 passed, 5 skipped; integration 37/37 on the rc stack
 
 ## Slide 18
 

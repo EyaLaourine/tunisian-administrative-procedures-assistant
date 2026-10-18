@@ -42,7 +42,7 @@ network" off again in the Ollama Settings, then repeat checks 1–2.
 `Disable-NetFirewallRule -Name '<rule name>'`.
 
 **If check 4 is missing a model:** do **not** re-pull or re-index anything. Check that the app's model location
-is still `C:\Users\Eya Laourine` (`OLLAMA_MODELS:` line in `%LOCALAPPDATA%\Ollama\server.log`).
+is still the user profile folder (`%USERPROFILE%`) (`OLLAMA_MODELS:` line in `%LOCALAPPDATA%\Ollama\server.log`).
 
 Background record and rollback: `rag-finance-pipeline/docs/OLLAMA_LOCAL_ONLY.md` and
 `rag-finance-pipeline/deployment/ollama_hardening/ROLLBACK.md`.

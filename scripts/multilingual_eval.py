@@ -73,11 +73,43 @@ def citations(text: str) -> int:
     return len(re.findall(r"^\s*\[\d+\]", footer, re.M))
 
 
+CLARIFY_REFUSAL_WORDS = ("يمكنني المساعدة فقط", "نجم نعاونك كان", "I can only help", "ne peux aider")
+
+
+def classify(doc: dict) -> dict:
+    """Adds an outcome to each part-A record: evidence_present, correct_refusal, clarification_question or failure.
+    Telegram-style requests ask for the application type / residence before passport lists (designed behaviour)."""
+    import collections
+    for r in doc["records"]:
+        if r["part"] != "A":
+            continue
+        txt = r["response_start"]
+        if r["ok"]:
+            r["outcome"] = "evidence_present" if r["answerability"] == "answerable" else "correct_refusal"
+        elif r["agent"] == "intent_router" and ("?" in txt or "؟" in txt) and not any(w in txt for w in CLARIFY_REFUSAL_WORDS):
+            r["outcome"] = "clarification_question"
+        else:
+            r["outcome"] = "failure"
+    a = [r for r in doc["records"] if r["part"] == "A"]
+    doc["summary_classified"] = {
+        "part_A_outcomes": dict(collections.Counter(r["outcome"] for r in a)),
+        "part_A_by_script": {s: dict(collections.Counter(r["outcome"] for r in a if r["script"] == s)) for s in sorted({r["script"] for r in a})},
+        "part_A_failures": [r["id"] for r in a if r["outcome"] == "failure"],
+        "part_B_failures": [r["id"] for r in doc["records"] if r["part"] == "B" and not r["ok"]]}
+    return doc
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--classify", help="only (re)classify an existing results file")
     ap.add_argument("--url", default="http://127.0.0.1:5680/webhook/assistant")
     ap.add_argument("--out", default=str(ROOT / "data" / "evaluation" / "multilingual_eval_results.json"))
     args = ap.parse_args()
+    if args.classify:
+        doc = classify(json.loads(Path(args.classify).read_text(encoding="utf-8")))
+        Path(args.classify).write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(json.dumps(doc["summary_classified"], ensure_ascii=False, indent=1))
+        return
     rows = [json.loads(line) for line in (ROOT / "data/evaluation/eval_set.jsonl").read_text(encoding="utf-8").splitlines()]
     parallel = [r for r in rows if r.get("parallel_group")]
     records = []
@@ -120,8 +152,8 @@ def main() -> None:
                "part_A_language_ok": f"{sum(r['language_ok'] for r in a)}/{len(a)}",
                "part_A_all": rate(a), "part_B": rate([r for r in records if r["part"] == "B"]),
                "median_seconds_A": sorted(r["seconds"] for r in a)[len(a) // 2] if a else None}
-    Path(args.out).write_text(json.dumps({"url": args.url, "at": datetime.now(timezone.utc).isoformat(),
-                                          "summary": summary, "records": records}, ensure_ascii=False, indent=1), encoding="utf-8")
+    doc = classify({"url": args.url, "at": datetime.now(timezone.utc).isoformat(), "summary": summary, "records": records})
+    Path(args.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=1))
 
 

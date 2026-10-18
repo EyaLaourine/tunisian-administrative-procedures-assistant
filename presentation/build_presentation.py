@@ -54,7 +54,7 @@ def evidence() -> dict:
     e["dialogue"], e["dialogue_valid"] = dd["summary"], dd["summary_after_production_validation"]
     e["translate"] = load("prompt_experiments/translate_items_results.json")["summary"]
     e["mm"] = load("multimodal_eval_results.json")["records"]
-    e["ml"] = load("multilingual_eval_results.json")
+    e["ml"] = load("rc_20261018b_multilingual_results.json")
     pc_a = load("agent_results_hybrid.json")["prompt_comparison"]
     pc_b = load("agent_results_prompt_v3.json")["prompt_comparison"]
     e["ga"] = {"v1": pc_a["v1"], "v2": pc_a["v2"], "v2b": pc_b["v2"], "v3": pc_b["v3"]}
@@ -613,9 +613,9 @@ def build():
         box(s, 7.1, y, 4.45, 0.8, exp, fill=WHITE, line=STEEL, size=12, align=PP_ALIGN.LEFT)
         box(s, 11.65, y, 1.2, 0.8, t_, fill=GREEN_T, size=13, bold=True, color=GREEN)
     box(s, 0.5, 6.05, 12.35, 0.6, [[("Fallback: ", {"bold": True, "color": AMBER}),
-                                    ("if the live bot is slow, show the recorded results in data/evaluation/multilingual_eval_results.json and the n8n execution view. "
+                                    ("if the live bot is slow, show the recorded results in data/evaluation/rc_20261018b_multilingual_results.json and the n8n execution view. "
                                      "Grounded LLM answers (20–70 s) are shown from recordings only.", {})]], fill=AMBER_T, align=PP_ALIGN.LEFT, size=12)
-    source(s, "presentation/LIVE_DEMO_SCRIPT.md; latencies from report §7 and data/evaluation/multilingual_eval_results.json")
+    source(s, "presentation/LIVE_DEMO_SCRIPT.md; latencies from report §7 and data/evaluation/rc_20261018b_multilingual_results.json")
 
     # 17 Evaluation ----------------------------------------------------------------------------------------
     s = new(17)
@@ -637,16 +637,17 @@ def build():
         text(s, x + 0.12, 3.15, 2.75, 0.85, label, size=12)
     ml = ev["ml"]["summary"]
     oc = ev["ml"]["summary_classified"]["part_A_outcomes"]
-    MLA = f'{oc["evidence_present"]} evidence, {oc["correct_refusal"]} correct refusals, {oc["clarification_question"]} clarification questions, {oc["failure"]} failures'
-    MLA_SCORE = f'{36 - oc["failure"]}/36 correct'
+    MLA = f'{oc["evidence_present"]} evidence, {oc["correct_refusal"]} correct refusals, {oc["clarification_question"]} clarification questions, {oc.get("failure", 0)} failures'
+    MLA_SCORE = f'{oc.get("failure", 0)} failures ({36 - oc.get("failure", 0)}/36 as designed)'
     rows = [["Check", "Result"],
             ["Fabricated legal provision (Law 2018-52 Art. 16)", f'{fr("Fabricated")[0]} → {fr("Fabricated")[2]}'],
             ["Citation URLs found in the official manifest", fr("Citation URLs")[2]],
-            ["Multilingual parallel subset, 36 questions (candidate, today): " + MLA, MLA_SCORE],
-            ["Behaviour cases: clarification, follow-up, RNE codes, out-of-scope, injection", ml["part_B"] + " (carte grise fixed on overnight branch)"],
+            ["Release candidate rc-20261018b, same 728 cases: all 17 replay metrics", "identical to final candidate"],
+            ["Multilingual parallel subset, 36 questions (rc-20261018b): " + MLA, MLA_SCORE],
+            ["Behaviour cases: clarification, follow-up, RNE codes, out-of-scope, carte grise, injection", ml["part_B"]],
             ["Unit and regression tests (no services needed)", UNIT_TESTS]]
-    table(s, 0.5, 4.3, 12.35, rows, [9.0, 3.35], size=11, row_h=0.38)
-    source(s, "report/tables/final_regression.tex; data/evaluation/multilingual_eval_results.json (scripts/multilingual_eval.py); pytest -m 'not integration'")
+    table(s, 0.5, 4.2, 12.35, rows, [9.0, 3.35], size=11, row_h=0.35)
+    source(s, "report/tables/final_regression.tex; rc_20261018b_replay_results.jsonl (scripts/score_replay.py); rc_20261018b_multilingual_results.json; pytest")
 
     # 18 Limitations + future ------------------------------------------------------------------------------
     s = new(18)

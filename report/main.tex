@@ -390,6 +390,14 @@ follow-up 0.08\,s, legal article 0.25\,s, French checklist 0.19\,s, English chec
 PDF form check 0.16\,s, image OCR 1.72\,s, dossier 0.28\,s. Running two stacks on the shared GPU made
 LLM- and embedding-dependent requests 10--200 times slower.
 
+\textbf{Release validation (18 October).} A parallel multilingual run (36 questions, five languages and scripts, through
+n8n) exposed seven failures, all vocabulary gaps: no lateness concept, so the criminal-sanction articles outranked
+Art.~51 of Law 2018-52 (the late penalty), and unrecognised indefinite Arabic and Latin-script Derja names of two
+decrees; a vehicle-registration question was also answered with ID-card evidence. Each was fixed with search
+vocabulary or a refusal rule (no legal content) and regression tests. The release candidate has no failure on that
+run (18 official spans, 4 correct refusals, 14 clarification questions) and reproduces every metric of
+Table~\ref{tab:final} on the 728 replayed cases; the items that motivated the fixes are not independent evidence.
+
 \textbf{Limits of the evaluation.} Labels were written by the developers and await human review; the
 held-out set is small; targeted span checks cannot detect a correct quotation of the wrong provision, which is
 why selected cases were compared manually with the source; Telegram acceptance has been verified live for

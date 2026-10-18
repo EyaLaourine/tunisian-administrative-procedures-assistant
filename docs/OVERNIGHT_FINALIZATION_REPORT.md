@@ -1,6 +1,6 @@
 # Overnight finalization report (2026-10-18, 00:00–06:30 Africa/Tunis)
 
-**Work location:** the isolated worktree `C:\Users\Eya Laourine\tna-overnight`, on the new branch
+**Work location:** a separate isolated worktree (`../tna-overnight`), on the new branch
 `overnight/finalization` (base `be787ca`). The main checkout (`codex/final-n8n-workflows`, `be787ca`) was not
 touched. Nothing was pushed, merged, deployed or restarted.
 

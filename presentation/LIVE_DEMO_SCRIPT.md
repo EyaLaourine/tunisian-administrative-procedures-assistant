@@ -3,7 +3,7 @@
 **Status on 2026-10-18 (overnight):** no Telegram message was sent and no screenshot of a Telegram chat
 exists. The four interactions below were verified **through the candidate n8n webhook** (final-n8n →
 final-candidate). The behaviour column quotes what was observed in
-`data/evaluation/multilingual_eval_results.json` and `data/evaluation/multimodal_eval_results.json`.
+`data/evaluation/rc_20261018b_multilingual_results.json` and `data/evaluation/multimodal_eval_results.json`.
 
 **Before the talk, decide which stack you demo** (see the action plan in `docs/OVERNIGHT_FINALIZATION_REPORT.md`):
 - **If the candidate has been deployed to production** (with approval), demo on Telegram.
@@ -20,7 +20,7 @@ final-candidate). The behaviour column quotes what was observed in
      visible; this is the intended privacy setting);
    - Telegram desktop with the bot chat, cleared;
    - a terminal at the repository root;
-   - the file `data/evaluation/multilingual_eval_results.json`, as the fallback.
+   - the file `data/evaluation/rc_20261018b_multilingual_results.json`, as the fallback.
 4. Have the blank official form ready: `data/raw/rne-form-f001-natural-person-registration/*.pdf`. Also have a
    phone photo of the **blank** printout. Never use a filled form with real personal data.
 
@@ -42,11 +42,11 @@ Executions for about 5 s to show the successful run of workflow 03.
 - **No answer after 10 s on interaction 4:** show `multimodal_eval_results.json` case `M05` (blank F-001 PNG:
   recognised, 7 empty, 2.42 s).
 - **Never** demo a generated legal or LLM answer live (20–70 s). If asked, show case R29 in
-  `agent_results_hybrid.json` (prompt comparison) and `multilingual_eval_results.json`.
+  `agent_results_hybrid.json` (prompt comparison) and `rc_20261018b_multilingual_results.json`.
 
 ## Genuine recorded-result fallback
-- `data/evaluation/multilingual_eval_results.json`: every request and its response start, the agent, and the
-  latency (run on 2026-10-18 through the candidate n8n).
+- `data/evaluation/rc_20261018b_multilingual_results.json`: every request and its response start, the agent, and the
+  latency (release candidate rc-20261018b through its isolated n8n, 2026-10-18; the earlier final-candidate run is in `multilingual_eval_results.json`).
 - `data/evaluation/multimodal_eval_results.json`: 13 upload cases.
 - `data/evaluation/final_candidate_defect_probes.json` and the candidate defect probes (16/16).
 - The n8n editor screenshots (`presentation/assets/n8n_workflow_0{1,2,3}.png`) are real.
