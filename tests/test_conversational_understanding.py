@@ -130,7 +130,8 @@ def test_gratitude_is_brief_and_in_conversation_language(router, word, previous,
     ctx = DialogueContext(category="passport", hints=["renewal"], residence="tunisia", language=previous,
                           declared_items=[DeclaredItem(key="photos", quantity=4)])
     (d, after), = chain(router, [word], ctx)
-    assert d.language == lang and d.reply == REPLIES["thanks"][lang]
+    assert (d.reply_language or d.language) == lang and d.reply == REPLIES["thanks"][lang]
+    assert d.language == previous  # the conversation language reported to clients is unchanged
     assert after.declared_items == ctx.declared_items and after.hints == ["renewal"]  # nothing lost
 
 
@@ -261,7 +262,8 @@ def test_requirement_official_items_quoted_verbatim_after_clarification(router):
 def test_phase_e_observed_derja_gratitude_in_french_conversation(router):
     """Observed in production (owner's Telegram acceptance): "يعطيك الصحة" was answered "Avec plaisir !…"."""
     *_, (d, ctx) = chain(router, ["Quelles pièces fournir pour renouveler un passeport ?", "En Tunisie", "يعطيك الصحة"])
-    assert d.language == "derja" and d.reply == REPLIES["thanks"]["derja"] and d.reply.startswith("يعيشك")
+    assert d.reply_language == "derja" and d.reply == REPLIES["thanks"]["derja"] and d.reply.startswith("يعيشك")
+    assert d.language == "fr"  # what the Telegram bridge stores as the conversation language
     assert "Avec plaisir" not in d.reply
     # The conversation language recorded in the context is not redirected by a courtesy message.
     assert ctx.language == "fr" and ctx.category == "passport" and ctx.hints == ["renewal"]
@@ -272,4 +274,5 @@ def test_phase_e_observed_derja_gratitude_in_french_conversation(router):
 def test_phase_e_preference_is_never_changed_by_gratitude(router):
     ctx = DialogueContext(category="passport", language="fr", preferred_language="ar")
     (d, after), = chain(router, ["يعطيك الصحة"], ctx)
-    assert d.language == "derja" and after.preferred_language == "ar" and after.language == "fr"
+    assert d.reply_language == "derja" and d.language == "fr"
+    assert after.preferred_language == "ar" and after.language == "fr"

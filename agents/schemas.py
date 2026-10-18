@@ -56,6 +56,9 @@ class RouteDecision(BaseModel):
     prompt_ref: str | None = None
     context: DialogueContext | None = None
     retrieval_query: str | None = Field(default=None, max_length=2000)
+    # Language of `reply` when it differs from the conversation language: a courtesy message ("يعطيك الصحة") is
+    # answered in its own language, while `language` keeps the conversation language that clients remember.
+    reply_language: Language | None = None
 
 
 class AgentRetrieveRequest(BaseModel):

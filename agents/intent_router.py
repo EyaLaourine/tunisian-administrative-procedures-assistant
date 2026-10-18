@@ -300,10 +300,13 @@ class IntentRouter:
             # context is returned unchanged so a pending clarification (and the procedure) is kept. The expression's
             # own language wins ("يعطيك الصحة" is Derja even in a French conversation); neutral words ("ok") follow
             # the conversation.
-            lang = conversation.expression_language(req.text, req.context) or self.language(req)
-            return RouteDecision(language=lang, intent="greeting", procedure_category="none", next_agent="reply",
-                                 reply=conversation.reply(kind, lang, req.context), method="rules",
-                                 context=req.context)
+            # `language` stays the conversation language (clients such as the Telegram bridge remember it), so a
+            # courtesy word never redirects the conversation; `reply_language` is the language of this reply.
+            reply_lang = conversation.expression_language(req.text, req.context) or self.language(req)
+            conversation_lang = (req.context.language if req.context is not None else None) or reply_lang
+            return RouteDecision(language=conversation_lang, intent="greeting", procedure_category="none",
+                                 next_agent="reply", reply=conversation.reply(kind, reply_lang, req.context),
+                                 method="rules", context=req.context, reply_language=reply_lang)
         stripped = conversation.strip_courtesy(req.text)
         if stripped != req.text:
             # "merci, et pour les frais ?" is routed as "et pour les frais ?" (not as a greeting).
