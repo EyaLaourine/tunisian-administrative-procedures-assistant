@@ -585,3 +585,130 @@ This returns to the Phase C protected backend `cec1028a82e5`. No prompt or data 
    - the RNE upstream change has not been reviewed;
    - key backups are DPAPI-only;
    - Qdrant has no API key.
+
+## 15. Phase E: multilingual UX fixes (backend only, 2026-10-18)
+
+**Verdict: PHASE E DEPLOYED — AWAITING MANUAL TELEGRAM ACCEPTANCE**
+
+Release: commit `d994df7` (branch `fix/phase-e`). Root causes, coverage matrix and isolated validation are in
+`docs/PHASE_E_FULL_FUNCTIONAL_VALIDATION.md`. No failure occurred and no rollback was needed.
+
+### Preflight (15:08:21 UTC; all gates passed)
+
+- **Candidate:** `rc-20261018-e` `sha256:69d7a7faab1bd9b474bde6c16f3ffe2c31b276a622b28a30c88cbdeea42ec1de`. Its
+  64/64 image files are hash-identical to `d994df7`, and no image file has changed since.
+- **Production:**
+  - backend `rc-20261018-conv` `d9d9f8ca7962` (container `336b9ea3c8d1`) and bridge `rc-20261018-lang`
+    `c247749d5f7f` (container `3f73414a7eb7`), both healthy;
+  - 1 bridge container, 0 polling conflicts;
+  - WF01 inactive (`5193fd21`), WF02 (`f4849a5c`) and WF03 (`af6ad259`) published;
+  - Qdrant 272/174 with only the official collections;
+  - data, config and prompts identical to the Phase D backup.
+- **Rollback image:** `rc-20261018-conv` present.
+- **Backups:** the Phase C and Phase D sets re-verified.
+- **Warning, not a blocker:** the running bridge had logged 12 `telegram_poll_failed` warnings since 12:24 UTC.
+  All are transient Telegram network errors (`TelegramAPIError`, `RemoteProtocolError`), with 0 restarts and 0
+  conflicts; the healthcheck requires a successful poll within 20 minutes, and it stayed healthy.
+- **Minimal backup**, at `C:\Users\Eya Laourine\tna-backups\phaseE-20261018T150851Z\` (only your Windows account
+  and SYSTEM have access):
+  - `data-config-prompts.tar`, 128 files, SHA-256
+    `cc5186678f2932692163416f20696819ba925a49ffae1cbfa86dabb459913b1c`. It is identical to the Phase D archive,
+    confirming no data, configuration or prompt change, and extracts identical to production.
+  - redacted `inspect.backend-before.json` and `rollback.txt`.
+
+### Deployment
+
+| Time (UTC) | Step |
+|---|---|
+| 15:09:04 → 15:09:14 | Backend recreated → healthy |
+| 15:09:36–15:11:44 | Smoke test 9/9; Phase E end-to-end verification 30/30 |
+| 15:12:07 | Final verification |
+
+```bash
+docker tag tunisian-admin-assistant-backend:rc-20261018-e tunisian-admin-assistant-backend:latest
+docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull never backend
+```
+
+| Service | Before | After |
+|---|---|---|
+| Backend | `rc-20261018-conv` `sha256:d9d9f8ca7962ce6135317a6e7ae9b2e7bd24eb0bfc9d9cd6cd2d00caa84e133c`, container `336b9ea3c8d1` | `rc-20261018-e` `sha256:69d7a7faab1bd9b474bde6c16f3ffe2c31b276a622b28a30c88cbdeea42ec1de`, container `629c78df05ac` |
+| Telegram bridge | `rc-20261018-lang` `c247749d5f7f`, container `3f73414a7eb7` | **unchanged** (same container, started 12:24:00) |
+
+n8n, Qdrant, Ollama and the unrelated `qdrant` container were not restarted. No prompt, workflow, configuration or
+data change was made.
+
+### Post-deployment verification
+
+- **Backend:** `/health` returns `{"status":"ok","qdrant":true,"ollama":true,"manifest_records":14}`; healthy,
+  0 restarts, 0 errors.
+- **Admin protection:** checked statically in the running container. `/ingestion/run` and `/index/run` depend on
+  `require_admin` (fail-closed), and the admin and agent keys are not configured. No admin request was sent.
+- **Bridge:** unchanged and healthy, 1 container, 0 polling conflicts.
+- **n8n:** `/healthz` returns 200; WF01 inactive, WF02 and WF03 published, all versions unchanged.
+- **Qdrant:** `/readyz` returns 200. Point-for-point identical to the Phase C snapshot (272/174, ids, payloads,
+  vectors); only the official collections exist.
+- **Data:** `data/`, `config/` and `prompts/` identical to the Phase E backup; 14 manifest records; no ingestion or
+  indexing.
+- **Privacy:** the placeholder value from the uploaded test files appears 0 times in backend logs.
+- **LLM use:** 0 LLM route-classifier calls during the whole verification.
+
+**Smoke and regression tests**, read-only, with Telegram mocked and no real message sent (evidence in
+`C:\Users\Eya Laourine\tna-backups\phaseE-verification\`):
+- `scripts/phaseb_smoke.py` against production WF02 and WF03: **9/9**. The n8n `AxiosError 422` at 15:09:41 is the
+  intentional WF02 missing-query test.
+- Phase E end to end through production WF03, with the released bridge code: **30/30 turns**. Covered: passport,
+  CIN, RNE (codes, documents, guidance, forms), document checks (PDF, OCR image, missing fields, unreadable,
+  corrupt, unsupported) and a legal question without an act.
+
+| Phase E fix | Production result |
+|---|---|
+| 1. `يعطيك الصحة` (in a French conversation) | "يعيشك، مرحبا بيك! كان عندك سؤال آخر، أنا هوني." (rules; conversation language kept) |
+| 2. `yaatik saha` | the same Derja acknowledgement |
+| 3. "je veux savoir le lieu de depot" after a passport answer | place section with official sources; **no fee-discrepancy warning**. The warning still appears for "et les frais ?". |
+| 4. "Je veux changer ma carte d'identité" | clarification: "Quel cas vous concerne : première carte, renouvellement, changement de données, ou remplacement après perte, vol ou détérioration ?"; "oui" re-asks; "perte" resolves |
+| 5. "Que contient le formulaire F-001 ?" | routed by rules to `business_registration` / answer (no out-of-scope refusal). A specific printed-content question returns official extracts; the generic question gets the "not found, no guess" reply. |
+| Corrupt PDF | "Je n'ai pas pu lire ce fichier : le PDF est endommagé ou illisible…" (no English fragment) |
+
+Isolated regression evidence from the identical image, before deployment:
+- unit suite 1327 passed;
+- coverage 60/60, Phase D conversational 22/22, language 26/26;
+- probes 16/16, WF02 5/5;
+- multilingual evaluation identical to baseline (49/49);
+- error recovery 2/2.
+
+### Rollback readiness
+
+The rollback image is present (`rc-20261018-conv` = `d9d9f8ca7962`) and was not needed:
+
+```bash
+docker tag tunisian-admin-assistant-backend:rc-20261018-conv tunisian-admin-assistant-backend:latest
+docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull never backend
+```
+
+- **Other rollback:** no data, prompt or workflow rollback is needed.
+- **Backups:** the Phase C full backups and the Phase E minimal backup are verified.
+- **Never** use `8adaf99` or other unguarded images.
+
+### Remaining limitations
+
+1. **Manual Telegram acceptance is pending:**
+   - "يعطيك الصحة" and "yaatik saha" in a French conversation;
+   - "je veux savoir le lieu de depot" after a passport answer;
+   - "Je veux changer ma carte d'identité" then "perte";
+   - "Que contient le formulaire F-001 ?";
+   - a corrupt or unreadable file.
+2. **Form content questions:** printed-content questions are answered only when they match a printed block;
+   otherwise the reply is "not found, no guess".
+3. **Unavailable passport form:** a question about the robots-blocked passport application form gets the passport
+   clarification, without stating that the form is unavailable.
+4. **Conflict detection:** extracted values are not checked against each other (not implemented).
+5. **Navigation buttons:** after a courtesy message in another language, the buttons stay in the conversation
+   language (bridge behaviour, unchanged).
+6. **Transient Telegram network warnings:** these keep occurring and recover automatically.
+7. **Unchanged from earlier phases:**
+   - the Phase C session fixture is reconstructed;
+   - French-only sources are quoted in French;
+   - the admin key still needs rotation before any activation;
+   - the RNE upstream change has not been reviewed;
+   - key backups are DPAPI-only;
+   - Qdrant has no API key.
