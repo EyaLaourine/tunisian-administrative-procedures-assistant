@@ -50,14 +50,18 @@ ollama pull translategemma:4b
 docker compose up -d --build
 curl http://localhost:8000/health          # {"status":"ok","qdrant":true,"ollama":true,...}
 
-# 4. Import, index and publish the n8n workflows (Git Bash on Windows: prefix with MSYS_NO_PATHCONV=1)
+# 4. First ingestion and indexing. The admin endpoints are disabled (HTTP 403) unless ADMIN_API_KEY is set in
+#    .env; set it, recreate the backend, then send the key in X-Admin-Key (workflow 01 stays inactive).
+docker compose exec backend python -m ingestion              # download the approved official sources
+curl -X POST http://127.0.0.1:8000/index/run -H "X-Admin-Key: $ADMIN_API_KEY"   # chunk + embed into Qdrant
+
+# 5. Import and publish the n8n workflows (Git Bash on Windows: prefix with MSYS_NO_PATHCONV=1)
 docker compose exec n8n n8n import:workflow --separate --input=/workflows
-docker compose exec -e N8N_RUNNERS_BROKER_PORT=5690 n8n n8n execute --id TnaaIngestIndex1
 docker compose exec -e N8N_RUNNERS_BROKER_PORT=5690 n8n n8n publish:workflow --id=TnaaRetrieveApi1
 docker compose exec -e N8N_RUNNERS_BROKER_PORT=5690 n8n n8n publish:workflow --id=TnaaAssistant01
 docker compose restart n8n
 
-# 5. Ask the assistant through n8n (send UTF-8 JSON; on Windows prefer a file: -d @question.json)
+# 6. Ask the assistant through n8n (send UTF-8 JSON; on Windows prefer a file: -d @question.json)
 curl -X POST http://localhost:5678/webhook/assistant -H "content-type: application/json; charset=utf-8" \
   -d '{"text":"Quelles pièces fournir pour renouveler un passeport ?"}'
 ```
@@ -132,13 +136,15 @@ py -3.11 -m venv .venv
 | `prompts/` | versioned prompt library (`registry.yaml` selects the active version of each prompt) |
 | `telegram_bridge/` | Telegram Bot API long-polling bridge to the n8n webhook |
 | `workflows/` | exported n8n workflows (01 ingest/index, 02 retrieval API, 03 multi-agent assistant) |
-| `scripts/` | benchmark |
+| `scripts/` | evaluation runners (retrieval, agents, prompt experiments, multilingual, multimodal), benchmark, n8n review tools |
 | `config/sources.yaml` | **official source registry** (approved, excluded and not-found candidates with reasons) |
 | `config/certs/` | intermediate CA certificate for an official server with an incomplete TLS chain |
 | `data/raw/` | unmodified official originals + `manifest.json` (provenance, SHA-256) + `ingestion_log.jsonl` |
 | `data/processed/` | regenerable extraction and chunk outputs (git-ignored) |
-| `data/evaluation/` | benchmark output |
-| `docs/` | agent design, test results |
+| `data/evaluation/` | evaluation sets and every recorded result (see `docs/EVALUATION.md`) |
+| `docs/` | architecture, agents, evaluation, prompt engineering, security and deployment plans |
+| `report/` | LaTeX report (`main.tex`; compiled `report_final.pdf`, 8 main pages + annexes) |
+| `presentation/` | 20-minute presentation (`FINAL_PRESENTATION.pptx`), speaker notes, demo script, Q&A, evidence files |
 
 ## Data policy
 

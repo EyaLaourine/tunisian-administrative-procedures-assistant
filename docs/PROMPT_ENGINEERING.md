@@ -82,3 +82,17 @@ Decree 2019-54)
 - **The LLM topic verdict** is too unstable to run by default.
 
 No prompt was tuned on the held-out or test sets.
+
+## Controlled before/after experiments for the remaining prompts (2026-10-18)
+
+`scripts/prompt_experiments.py` compares versions on identical inputs (local Ollama 0.40.4, temperature 0). For
+prompts with a single stored version, the baseline B0 is a **labelled controlled baseline**, not a historical prompt.
+
+| Prompt | Test | Result |
+|---|---|---|
+| intent_router B0 → v1 | 84 dev questions, LLM path only | category 0.714 → 0.881; both labels 0.452 → 0.643; Derja intent not improved |
+| dialogue_understanding v1 → v2 → v3 | 18 synthetic declarations | schema-valid 7/4/18; invented application/residence 15/0/0; after code validation precision 0.727/0.818/0.632, recall 0.421/0.474/0.632 |
+| translate_items B0 → v1 | 11 official FR checklist scenarios | accepted by the production validator 4/11 → 10/11 |
+
+Raw outputs: `data/evaluation/prompt_experiments/`. Full before/after write-up and compliance matrix:
+`presentation/PROMPT_ENGINEERING_EVIDENCE.md`; report Annex B.
