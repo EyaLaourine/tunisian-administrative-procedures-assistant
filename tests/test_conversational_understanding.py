@@ -180,3 +180,71 @@ def test_explicit_cases_are_not_treated_as_ambiguous(router):
     assert "loss" in d.hints and not (d.reply and UI["fr"]["application"] in d.reply)
     (m, _), = chain(router, ["nheb nbaddel l'adresse fil passport, fi tounes"])
     assert "modification" in m.hints
+
+
+# ---------------------------------------------------------------- requirement-based checks (independent of reply wording)
+ARABIC = re.compile(r"[؀-ۿ]")
+FRESH_PASSPORT = ["Quelles pièces fournir pour renouveler un passeport ?", "En Tunisie"]
+
+
+def _in_script(text, lang):
+    arabic = len(ARABIC.findall(text))
+    latin = len(re.findall(r"[A-Za-zÀ-ÿ]", text))
+    return arabic > latin if lang in {"ar", "derja"} else latin > arabic
+
+
+@pytest.mark.parametrize("word,lang", [("merci", "fr"), ("thanks", "en"), ("شكرا", "ar"), ("يعطيك الصحة", "derja")])
+def test_requirement_gratitude_is_a_brief_acknowledgement(router, word, lang):
+    (d, ctx), = chain(router, [word], DialogueContext(category="passport", hints=["renewal"], language=lang))
+    assert d.next_agent == "reply" and d.intent != "out_of_scope"
+    assert len(d.reply) <= 90 and "\n" not in d.reply                     # brief, one line
+    assert d.reply not in {t("greeting", l) for l in ("en", "fr", "ar", "derja")}  # not the welcome
+    assert d.reply not in {t("out_of_scope", l) for l in ("en", "fr", "ar", "derja")}
+    assert _in_script(d.reply, lang) and d.language == lang
+    assert ctx.category == "passport" and ctx.hints == ["renewal"]
+
+
+@pytest.mark.parametrize("word", ["oui", "yes", "نعم", "إي", "ey"])
+def test_requirement_affirmation_never_triggers_refusal_or_retrieval(router, word):
+    *_, (d, _) = chain(router, FRESH_PASSPORT + [word])
+    assert d.intent != "out_of_scope" and d.next_agent == "reply"
+    assert d.reply not in {t("out_of_scope", l) for l in ("en", "fr", "ar", "derja")}
+    assert d.retrieval_query is None
+
+
+@pytest.mark.parametrize("text", ["نحب نبدّل الباسبور، شنوة يلزمني؟", "nheb nbaddel passport chnowa yelzemni",
+                                  "Je veux changer mon passeport", "I need to replace my passport"])
+def test_requirement_ambiguous_change_is_clarified_not_answered(router, text):
+    (d, ctx), = chain(router, [text], DialogueContext(category="passport", hints=["loss"], residence="tunisia"))
+    assert d.next_agent == "reply" and d.retrieval_query is None          # no checklist sent
+    assert d.reply.rstrip().endswith(("?", "؟"))                          # a question is asked
+    assert not any(h in {"loss", "renewal", "first_time"} for h in ctx.hints)
+
+
+@pytest.mark.parametrize("text", ["Chnowa lezemni bech njadded passport?", "نحب نجدد الباسبور، شنوة يلزمني؟",
+                                  "Quelles pièces pour renouveler mon passeport ?", "How do I renew my passport?"])
+def test_requirement_clear_renewal_stays_renewal(router, text):
+    (d, ctx), = chain(router, [text], DialogueContext(category="passport", hints=["loss"], residence="tunisia"))
+    assert "renewal" in ctx.hints and "loss" not in ctx.hints
+    assert d.next_agent in {"checklist", "answer"}
+
+
+def test_requirement_official_items_quoted_verbatim_after_clarification(router):
+    from agents.checklist_builder import ChecklistBuilder
+    from agents.corpus import Corpus
+    from agents.schemas import ComposeRequest
+    from backend.settings import get_settings
+    from rag.retrieval import RetrievedPassage
+    settings = get_settings()
+    corpus = Corpus(settings.raw_dir, settings.processed_dir)
+    if not corpus.scenarios("interior-passport-guide-ar"):
+        pytest.skip("Official extraction unavailable")
+    *_, (route, _) = chain(router, ["نحب نبدّل الباسبور، شنوة يلزمني؟ ساكن في تونس", "تجديد"])
+    assert route.next_agent == "checklist" and "renewal" in route.hints and route.language == "derja"
+    sc = next(s for s in corpus.scenarios("interior-passport-guide-ar") if "تجديد" in s.title)
+    p = RetrievedPassage(score=.7, text="neutral", chunk_id="neutral", citation=corpus.citation("interior-passport-guide-ar", sc.path))
+    result = ChecklistBuilder(corpus, None, PromptLibrary(REPO_ROOT / "prompts")).build(
+        ComposeRequest(query="تجديد", route=route, passages=[p]))
+    official = [i for s in result.sections for i in s.items]
+    assert official and all(i.strip() in result.text for i in official)  # official text unchanged
+    assert result.citations and str(result.citations[0].url).startswith("http")

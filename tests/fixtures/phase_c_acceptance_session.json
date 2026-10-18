@@ -1,23 +1,160 @@
 {
  "source": "Phase C Telegram acceptance session, 2026-10-18 12:43-12:49 UTC. Reconstructed: the production logs record only routing metadata (never message text). Message texts are the phrases reported by the owner ('oui', 'merci', the Derja passport question) and the Phase C acceptance checklist messages that match the logged route sequence. Replace 'text' values with the verbatim transcript when it is provided.",
  "turns": [
-  {"text": "Quelles pièces fournir pour renouveler un passeport ?", "logged": {"language": "fr", "intent": "required_documents", "next": "reply"},
-   "expected": {"language": "fr", "next": "reply", "reply_key": "residence"}},
-  {"text": "En Tunisie", "logged": {"language": "fr", "intent": "required_documents", "next": "checklist"},
-   "expected": {"language": "fr", "next": "checklist", "hints": ["renewal"]}},
-  {"text": "ما هي الشروط من أجل استخراج نظير من جواز السفر بالنسبة إلى التونسيين المقيمين بالتراب التونسي؟", "logged": {"language": "ar", "intent": "eligibility", "next": "checklist"},
-   "expected": {"language": "ar", "next": "checklist", "hints": ["loss"]}},
-  {"text": "نحب نبدّل الباسبور، شنوة يلزمني؟", "logged": {"language": "derja", "intent": "required_documents", "next": "checklist", "defect": "inherited the previous duplicate (loss) case"},
-   "expected": {"language": "derja", "next": "reply", "reply_key": "application", "hints": []}},
-  {"text": "What documents do I need to renew my passport? I live in Tunisia.", "logged": {"language": "en", "intent": "required_documents", "next": "checklist"},
-   "expected": {"language": "en", "next": "checklist", "hints": ["renewal"]}},
-  {"text": "Chnowa lezemni bech njadded passport?", "logged": {"language": "derja", "intent": "required_documents", "next": "checklist"},
-   "expected": {"language": "derja", "next": "checklist", "hints": ["renewal"]}},
-  {"text": "Quelles pièces fournir pour renouveler un passeport ?", "logged": {"language": "fr", "intent": "required_documents", "next": "checklist"},
-   "expected": {"language": "fr", "next": "checklist", "hints": ["renewal"]}},
-  {"text": "oui", "logged": {"language": "fr", "intent": "out_of_scope", "next": "reply", "method": "llm", "defect": "generic unsupported-request refusal"},
-   "expected": {"language": "fr", "next": "reply", "small_talk": "affirm"}},
-  {"text": "merci", "logged": {"language": "fr", "intent": "greeting", "next": "reply", "defect": "full welcome message"},
-   "expected": {"language": "fr", "next": "reply", "small_talk": "thanks"}}
- ]
+  {
+   "text": "Quelles pièces fournir pour renouveler un passeport ?",
+   "logged": {
+    "language": "fr",
+    "intent": "required_documents",
+    "next": "reply"
+   },
+   "expected": {
+    "language": "fr",
+    "next": "reply",
+    "reply_key": "residence"
+   },
+   "text_origin": "acceptance_checklist",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "En Tunisie",
+   "logged": {
+    "language": "fr",
+    "intent": "required_documents",
+    "next": "checklist"
+   },
+   "expected": {
+    "language": "fr",
+    "next": "checklist",
+    "hints": [
+     "renewal"
+    ]
+   },
+   "text_origin": "acceptance_checklist",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "ما هي الشروط من أجل استخراج نظير من جواز السفر بالنسبة إلى التونسيين المقيمين بالتراب التونسي؟",
+   "logged": {
+    "language": "ar",
+    "intent": "eligibility",
+    "next": "checklist"
+   },
+   "expected": {
+    "language": "ar",
+    "next": "checklist",
+    "hints": [
+     "loss"
+    ]
+   },
+   "text_origin": "acceptance_checklist",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "نحب نبدّل الباسبور، شنوة يلزمني؟",
+   "logged": {
+    "language": "derja",
+    "intent": "required_documents",
+    "next": "checklist",
+    "defect": "inherited the previous duplicate (loss) case"
+   },
+   "expected": {
+    "language": "derja",
+    "next": "reply",
+    "reply_key": "application",
+    "hints": []
+   },
+   "text_origin": "reported_by_owner",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "What documents do I need to renew my passport? I live in Tunisia.",
+   "logged": {
+    "language": "en",
+    "intent": "required_documents",
+    "next": "checklist"
+   },
+   "expected": {
+    "language": "en",
+    "next": "checklist",
+    "hints": [
+     "renewal"
+    ]
+   },
+   "text_origin": "acceptance_checklist",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "Chnowa lezemni bech njadded passport?",
+   "logged": {
+    "language": "derja",
+    "intent": "required_documents",
+    "next": "checklist"
+   },
+   "expected": {
+    "language": "derja",
+    "next": "checklist",
+    "hints": [
+     "renewal"
+    ]
+   },
+   "text_origin": "reported_by_owner",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "Quelles pièces fournir pour renouveler un passeport ?",
+   "logged": {
+    "language": "fr",
+    "intent": "required_documents",
+    "next": "checklist"
+   },
+   "expected": {
+    "language": "fr",
+    "next": "checklist",
+    "hints": [
+     "renewal"
+    ]
+   },
+   "text_origin": "acceptance_checklist",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "oui",
+   "logged": {
+    "language": "fr",
+    "intent": "out_of_scope",
+    "next": "reply",
+    "method": "llm",
+    "defect": "generic unsupported-request refusal"
+   },
+   "expected": {
+    "language": "fr",
+    "next": "reply",
+    "small_talk": "affirm"
+   },
+   "text_origin": "reported_by_owner",
+   "logged_origin": "production routing log (metadata only)"
+  },
+  {
+   "text": "merci",
+   "logged": {
+    "language": "fr",
+    "intent": "greeting",
+    "next": "reply",
+    "defect": "full welcome message"
+   },
+   "expected": {
+    "language": "fr",
+    "next": "reply",
+    "small_talk": "thanks"
+   },
+   "text_origin": "reported_by_owner",
+   "logged_origin": "production routing log (metadata only)"
+  }
+ ],
+ "evidence_status": "RECONSTRUCTED - not verbatim production evidence. The verbatim Telegram transcript was not available in the workspace (searched 2026-10-18); production logs contain routing metadata only.",
+ "text_origin_legend": {
+  "reported_by_owner": "exact phrase quoted by the owner in the Phase D defect report or gate list",
+  "acceptance_checklist": "message from the Phase C manual acceptance checklist whose logged route matches this turn"
+ }
 }
