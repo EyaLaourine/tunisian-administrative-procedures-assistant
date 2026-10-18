@@ -121,3 +121,30 @@ def test_every_prompt_version_parses(prompts):
     for name, info in prompts.list_versions().items():
         for version in info["versions"]:
             assert prompts.get(name, version).ref == f"{name}@{version}"
+
+
+# Known uncovered procedures (vehicle registration "carte grise", driving licence) must be refused by rule.
+# Before this rule they reached the LLM fallback, which routed "carte grise" to a generated answer built
+# from the national-ID guide (multilingual evaluation 2026-10-18, case OOS-fr; held-out H17).
+@pytest.mark.parametrize("text", [
+    "Comment renouveler une carte grise ?",
+    "Comment obtenir un permis de conduire ?",
+    "How do I renew a vehicle registration card?",
+    "How do I get a driving licence?",
+    "كيفاش نجدد البطاقة الرمادية؟",
+    "ما هي وثائق رخصة السياقة؟",
+])
+@pytest.mark.parametrize("context", [None, {}])
+def test_known_uncovered_procedures_are_refused_by_rule(router, text, context):
+    d = router.route(RouteRequest(text=text, context=context))
+    assert (d.procedure_category, d.intent, d.next_agent, d.method) == ("none", "out_of_scope", "reply", "rules")
+    assert d.reply
+
+
+@pytest.mark.parametrize("text,category", [
+    ("Comment renouveler la carte d'identité nationale ?", "national_id"),
+    ("Quelles pièces pour renouveler un passeport ?", "passport"),
+    ("Faut-il un permis pour immatriculer une SARL au RNE ?", "business_registration"),
+])
+def test_uncovered_rule_does_not_capture_covered_procedures(router, text, category):
+    assert router.route(RouteRequest(text=text)).procedure_category == category

@@ -119,6 +119,12 @@ UNMATCHED_CASE = (
     r"|لا ينطبق|لا تنطبق|لا يتطابق|لا يتوافق|حالتي مختلفة|حالتي خاصة|ما ينطبقش|ما تنطبقش|موش نفس الحالة"
     r"|ma yentab9ch|mayentab9ch|7alti mokhtalfa|halti mokhtalfa"
 )
+# Administrative documents that sound like covered ones but are not in the corpus. Without this rule they reached
+# the LLM fallback, which routed "carte grise" to an answer built from the national-ID guide (held-out H17).
+UNCOVERED_PROCEDURE = (
+    r"cartes? grises?|permis de conduire|driving licen[cs]e|driver.?s licen[cs]e|vehicle registration|car registration"
+    r"|البطاقة الرمادية|بطاقة رمادية|رخصة السياقة|رخصة القيادة|رخصة سياقة|الكارت قريز|الكرت قريز"
+)
 # Distinguishing facts are the official scenario headings of each guide (no exception is invented).
 UNMATCHED_REPLY = {
     "fr": {
@@ -281,6 +287,10 @@ class IntentRouter:
             category = _rule_category(_normalize(req.text)) or "general"
             return RouteDecision(language=lang, intent="procedure_info", procedure_category=category,
                                  next_agent="reply", reply=LIMITS_REPLY[lang], method="rules", context=req.context)
+        if re.search(UNCOVERED_PROCEDURE, _normalize(req.text)) and _rule_category(_normalize(req.text)) is None:
+            lang = req.language or detect_language(req.text)
+            return RouteDecision(language=lang, intent="out_of_scope", procedure_category="none", next_agent="reply",
+                                 reply=_reply_text("none", "out_of_scope", lang), method="rules", context=req.context)
         if req.context is not None:
             from agents.dialogue import route_dialogue
             decision = route_dialogue(self,req)
