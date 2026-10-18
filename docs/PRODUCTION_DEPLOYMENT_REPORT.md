@@ -260,7 +260,56 @@ docker stop post-audit-candidate && docker rm post-audit-candidate
 
 No remaining test container exposes unprotected administrative endpoints or holds production credentials.
 
-**Residual low risk:** the two candidate backends serve unauthenticated, read-only `/agents/*` and `/retrieve` on
-loopback ports 8002 and 8003, against production Qdrant. They are left in place as instructed. Recommendation: remove
-all five when the release is accepted:
-`docker rm -f rc-candidate rc-n8n final-candidate final-n8n post-audit-n8n`.
+**Residual low risk (resolved in section 12):** the two candidate backends served unauthenticated, read-only
+`/agents/*` and `/retrieve` on loopback ports 8002 and 8003, against production Qdrant.
+
+## 12. Cleanup of the five remaining test containers (approved)
+
+**Safety checks before removal** (all passed):
+
+| Container | ID | Image | Host port | Mounts (all bind, read-only; no volumes) |
+|---|---|---|---|---|
+| `rc-candidate` | `0655101ffd44db31ddcc7e2993d8d2862589d11204a2e6ae68061333f08e0396` | `backend:rc-20261018b` | 127.0.0.1:8003 | worktree `tna-overnight\data`, `\config`, `\prompts` |
+| `rc-n8n` | `929220a9ae92be9c8231e41f3284743f518b321fb6c8589d45a1127fa27e32bf` | `n8nio/n8n:2.41.3` | 127.0.0.1:5681 | `deploy/rc_candidate/workflow_02_rc.json`, `workflow_03_rc.json` |
+| `final-candidate` | `f11fd350660676b29e1157a007cde2091d6a436435e1b26a8a17fd9f7ab90a12` | `backend:final-candidate` | 127.0.0.1:8002 | production `data`, `config`, `prompts` |
+| `final-n8n` | `4157f1d1dd1015e41fe9708d6dd8eecc52f6ae94b584e2c7f2bcb7ead34d9b07` | `n8nio/n8n:2.41.3` | 127.0.0.1:5680 | `deploy/final_candidate/workflow_03_final_candidate_v2.json` |
+| `post-audit-n8n` | `fe50693c63eef616651f4caa84f5d70a906e62087862d2186c1c94915e4500a2` | `n8nio/n8n:2.41.3` | 127.0.0.1:5679 | `data/evaluation/post_audit_backup/candidate_workflow.json` |
+
+- **Not part of production:** no Compose project label; restart policy `no`.
+- **Network:** all five were on `tunisian-admin-assistant_internal` without aliases.
+- **No production dependency:** neither the production containers nor `docker-compose.yml` reference them.
+- **Not in use:** the last non-health traffic was my own Phase B comparison request at 10:51:44; there was no n8n log
+  activity in the 15 minutes before removal, and no host test process was running.
+- **Production health before removal:** backend and bridge healthy, with 0 restarts.
+
+**Action** (11:02:19–11:02:22 UTC; no `compose down`; no image or volume removed):
+
+```bash
+docker stop rc-candidate rc-n8n final-candidate final-n8n post-audit-n8n
+docker rm rc-candidate rc-n8n final-candidate final-n8n post-audit-n8n
+```
+
+**Verification after cleanup**
+- **Remaining containers:** only the 4 production containers, plus the unrelated `qdrant` container (project
+  `rag-finance-pipeline`), which is untouched and was not restarted. No unexpected container was removed.
+- **Network:** the production internal network now contains only `backend-1`, `n8n-1`, `qdrant-1` and
+  `telegram-bridge`.
+- **Ports:** 8001, 8002, 8003, 5679, 5680 and 5681 have no listener (`curl` returns 000), and no container publishes
+  them.
+- **Backend:** `/health` returns `{"status":"ok","qdrant":true,"ollama":true,"manifest_records":14}`.
+- **Bridge:** healthy, 1 container, 0 409/conflict/poll-failure lines.
+- **n8n and Qdrant:** n8n `/healthz` returns 200 and Qdrant `/readyz` returns 200. Production start times are
+  unchanged, with 0 restarts.
+- **Qdrant points:** 272 / 174; only the two official collections.
+- **Workflows:** WF01 inactive (`5193fd21`); WF02 (`f4849a5c`) and WF03 (`af6ad259`) published and unchanged.
+- **Kept:** images `backend:rc-20261018b`, `backend:final-candidate`, `backend:post-audit-final` and
+  `n8nio/n8n:2.41.3`, and both production volumes.
+
+**Remaining risks after cleanup**
+1. The rollback image `backend:rollback-20261018` (`8adaf99`) still has unguarded admin endpoints (warning 2).
+2. The admin key still needs rotating before any activation.
+3. The upstream RNE formalities table change has not been reviewed.
+4. Key backups are DPAPI-only, and Qdrant has no API key.
+5. Manual Telegram acceptance is still pending (section 8).
+6. Old test images remain on disk. They are not running and can be removed later with `docker image rm`, not prune.
+   `post-audit-final` contains the unguarded code and must never be run against the production network.
