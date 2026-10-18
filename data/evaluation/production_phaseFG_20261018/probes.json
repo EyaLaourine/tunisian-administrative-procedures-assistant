@@ -1,0 +1,252 @@
+[
+ {
+  "id": "A-cin-fr",
+  "ok": true,
+  "seconds": 0.08,
+  "context_in": {
+   "category": "national_id",
+   "hints": [
+    "first_time"
+   ],
+   "residence": null,
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "required_documents",
+   "rne_code": null,
+   "legal_subject": null,
+   "language": "fr",
+   "preferred_language": null
+  },
+  "context_out": {
+   "category": "national_id",
+   "hints": [
+    "first_time"
+   ],
+   "residence": null,
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "required_documents",
+   "rne_code": null,
+   "legal_subject": null,
+   "language": "fr",
+   "preferred_language": null
+  },
+  "text": "D'accord. Le guide officiel de la carte d'identité distingue : première demande, renouvellement, changement pour modification de données, et changement pour vol, perte ou détérioration. Laquelle correspond à votre situation ? Si aucune ne correspond, adressez-vous à l'administration compétente."
+ },
+ {
+  "id": "A-passport-en",
+  "ok": true,
+  "seconds": 0.08,
+  "context_in": {
+   "category": "passport",
+   "hints": [
+    "renewal"
+   ],
+   "residence": "tunisia",
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "required_documents",
+   "rne_code": null,
+   "legal_subject": null,
+   "language": "en",
+   "preferred_language": null
+  },
+  "context_out": {
+   "category": "passport",
+   "hints": [
+    "renewal"
+   ],
+   "residence": "tunisia",
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "required_documents",
+   "rne_code": null,
+   "legal_subject": null,
+   "language": "en",
+   "preferred_language": null
+  },
+  "text": "Understood. The official passport guide distinguishes: first application or renewal, change of an ordinary passport, duplicate after loss, theft or damage, the pilgrimage travel document, and residence in Tunisia or abroad. Which of these is your situation? Describe it without personal data. If none applies, only the competent administration can advise you."
+ },
+ {
+  "id": "A-rne-fr",
+  "ok": true,
+  "seconds": 0.05,
+  "context_in": {
+   "category": "business_registration",
+   "hints": [],
+   "residence": null,
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "fees",
+   "rne_code": "RNE C 001",
+   "legal_subject": null,
+   "language": "fr",
+   "preferred_language": null
+  },
+  "context_out": {
+   "category": "business_registration",
+   "hints": [],
+   "residence": null,
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "fees",
+   "rne_code": "RNE C 001",
+   "legal_subject": null,
+   "language": "fr",
+   "preferred_language": null
+  },
+  "text": "D'accord. Pour le RNE, précisez le genre d'entreprise (personne physique ou morale), son type et l'opération (création, modification, radiation, dépôt des états financiers…), ou le code de procédure (ex. RNE C 001). Je ne peux pas déduire qu'une ligne s'applique à votre cas sans ces éléments."
+ },
+ {
+  "id": "A-legal-fr",
+  "ok": true,
+  "seconds": 0.06,
+  "context_in": {
+   "category": "business_registration",
+   "hints": [],
+   "residence": null,
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "procedure_info",
+   "rne_code": null,
+   "legal_subject": "rne-arrete-2026-35",
+   "language": "fr",
+   "preferred_language": null
+  },
+  "context_out": {
+   "category": "business_registration",
+   "hints": [],
+   "residence": null,
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "procedure_info",
+   "rne_code": null,
+   "legal_subject": "rne-arrete-2026-35",
+   "language": "fr",
+   "preferred_language": null
+  },
+  "text": "D'accord. Précisez quel point du texte vous concerne (article, obligation, délai, personne visée), sans données personnelles ; je ne peux pas déduire que ce texte s'applique à votre cas."
+ },
+ {
+  "id": "A-passport-derja",
+  "ok": true,
+  "seconds": 0.06,
+  "context_in": {
+   "category": "passport",
+   "hints": [
+    "renewal"
+   ],
+   "residence": "tunisia",
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "required_documents",
+   "rne_code": null,
+   "legal_subject": null,
+   "language": "derja",
+   "preferred_language": null
+  },
+  "context_out": {
+   "category": "passport",
+   "hints": [
+    "renewal"
+   ],
+   "residence": "tunisia",
+   "declared_items": [],
+   "pending_intent": null,
+   "last_intent": "required_documents",
+   "rne_code": null,
+   "legal_subject": null,
+   "language": "derja",
+   "preferred_language": null
+  },
+  "text": "باهي. الدليل الرسمي متاع الباسبور يفرق بين: أول مرة ولا تجديد، تبديل باسبور عادي، نظير على خاطر ضياع ولا سرقة ولا إتلاف، رخصة الحج، والسكنى في تونس ولا البرّا. شنية الحالة متاعك؟ احكيها من غير معطيات شخصية. كان حتى وحدة ما تنطبق، الإدارة وحدها تنجم توجهك."
+ },
+ {
+  "id": "B-scope-en",
+  "ok": true,
+  "seconds": 0.25,
+  "agent": "grounded_answer",
+  "chars": 1290,
+  "text": "The official document “Formalités” (Registre National des Entreprises (RNE)) is a table of 95 procedures of the National Business Register. Each row gives, in the official wording: the procedure code, the nature of the service, the entity kind and type, the procedure, the fee requested and the deadline.\nRows by nature of the service (official French labels):\n• Modification ou mise à jour des données du registre (53)\n• Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre (29)\n• Dépôt des états financiers (5)\n• Inscription complémentaire (3)\n• Radiation sur l’enregistrement (3)\n• Inscription d’un nantissement ou de leasing (2)\nEntity kind: Personne Morale (79), Personne physique (16). Code families: RNE M (64), RNE C (29), RNE I (2).\nThe table contains no list of supporting documents; its current applicability and its application to your case are not verified. For a specific row, give the code (e.g. RNE C 001).\n\n📚 Official sources:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n\n⚖️ Information quoted from official sources; not legal advice. Their current validity has not been verified: please confirm with the competent administration."
+ },
+ {
+  "id": "B-scope-fr",
+  "ok": true,
+  "seconds": 0.22,
+  "agent": "grounded_answer",
+  "chars": 1370,
+  "text": "Le document officiel « Formalités » (Registre National des Entreprises (RNE)) est un tableau de 95 procédures du Registre national des entreprises. Chaque ligne donne, dans la formulation officielle : le code de procédure, la nature du service, le genre et le type d'entreprise, la procédure, la redevance demandée et le délai.\nRépartition par nature du service (libellés officiels) :\n• Modification ou mise à jour des données du registre (53)\n• Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre (29)\n• Dépôt des états financiers (5)\n• Inscription complémentaire (3)\n• Radiation sur l’enregistrement (3)\n• Inscription d’un nantissement ou de leasing (2)\nGenre d'entreprise : Personne Morale (79), Personne physique (16). Familles de codes : RNE M (64), RNE C (29), RNE I (2).\nCe tableau ne contient pas de liste des pièces justificatives ; son applicabilité actuelle et son application à votre cas ne sont pas vérifiées. Pour une ligne précise, indiquez le code (ex. RNE C 001).\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "id": "B-scope-ar",
+  "ok": true,
+  "seconds": 0.3,
+  "agent": "grounded_answer",
+  "chars": 1130,
+  "text": "الوثيقة الرسمية «Formalités» (Registre National des Entreprises (RNE)) جدول يضم 95 إجراء خاصا بالسجل الوطني للمؤسسات. يتضمن كل سطر، بالصياغة الرسمية: رمز الإجراء، طبيعة الخدمة، صنف ونوع المؤسسة، الإجراء، المعلوم المطلوب والأجل.\nالتوزيع حسب طبيعة الخدمة (التسميات الرسمية بالفرنسية):\n• Modification ou mise à jour des données du registre (53)\n• Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre (29)\n• Dépôt des états financiers (5)\n• Inscription complémentaire (3)\n• Radiation sur l’enregistrement (3)\n• Inscription d’un nantissement ou de leasing (2)\nصنف المؤسسة: Personne Morale (79), Personne physique (16). أصناف الرموز: RNE M (64), RNE C (29), RNE I (2).\nلا يتضمن الجدول قائمة بالوثائق المطلوبة، ولم يتم التحقق من سريانه الحالي ولا من انطباقه على حالتك. لسطر معين، اذكر الرمز (مثلا RNE C 001).\n\n📚 المصادر الرسمية:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "id": "C-dup-ar-web",
+  "ok": true,
+  "seconds": 0.31,
+  "agent": "checklist_builder",
+  "chars": 712,
+  "text": "🛂 استخراج نظير من جواز سفر (من أجل السرقة أو الضياع أو الإتلاف) بالنسبة إلى التونسيين المقيمين بالتراب التونسي\n\n▪️ الشروط\n• أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n• استيفاء التحريات اللازمة\n• تأكد الحاجة لاستخراج جواز سفر\n\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "id": "C-dup-ar-tg",
+  "ok": true,
+  "seconds": 0.27,
+  "agent": "checklist_builder",
+  "chars": 712,
+  "text": "🛂 استخراج نظير من جواز سفر (من أجل السرقة أو الضياع أو الإتلاف) بالنسبة إلى التونسيين المقيمين بالتراب التونسي\n\n▪️ الشروط\n• أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n• استيفاء التحريات اللازمة\n• تأكد الحاجة لاستخراج جواز سفر\n\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "id": "C-dup-derja-tg",
+  "ok": true,
+  "seconds": 0.36,
+  "agent": "checklist_builder",
+  "chars": 1484,
+  "text": "🛂 استخراج نظير من جواز سفر (من أجل السرقة أو الضياع أو الإتلاف) بالنسبة إلى التونسيين المقيمين بالتراب التونسي\n\n▪️ الأوراق اللي لازمك تحضّرها\n• تعمير إستمارة الحصول على جواز سفر عادي مقروء آليا وإمضاؤها بصفة شخصية داخل الخانة المعدة للغرض\n• نسخة من بطاقة التعريف الوطنية مع الإستظهار بالأصل أو مضمون ولادة بالنسبة للقصر\n• 04 صور شمسية حسب المواصفات التالية :\n• أن تكون خلفية الصورة بيضاء\n• أن يكون حجم الصورة 3.5/4.5 صم تقريبا\n• شهادة ضياع جواز السفر\n• ترخيص الولي بالنسبة للقصر مصحوبا بنسخة من بطاقة تعريفه\n• ما يفيد الدراسة بالنسبة للتلاميذ والطلبة\n• وصل خلاص معلوم الطابع الجبائي المستوجب (150 دينارا)\n• إثبات تأكد إستخراج جواز سفر بوثيقة تعتمد وتثبت هذا التأكد\n\n▪️ الشروط\n• أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n• استيفاء التحريات اللازمة\n• تأكد الحاجة لاستخراج جواز سفر\n\n▪️ وين تحطّ الملف\n• مركز الأمن “شرطة أو حرس وطني” حسب مرجع النظر الترابي\n\n▪️ قدّاش ياخو وقت\n• بعد استكمال التحريات وإتمام الإجراءات اللازمة\n\nℹ️ النص الرسمي مكتوب بالعربية الفصحى، نقلناه كيما هو باش ما يتبدلّش معناه.\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "id": "D-art55-en",
+  "ok": true,
+  "seconds": 0.25,
+  "agent": "grounded_answer",
+  "chars": 1174,
+  "text": "Source: قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018) — article 55. The official text is in Arabic and is quoted as is; no official translation is provided.\n\nOfficial text:\n\n[1] § 55 (p. 9)\nالفصل55 يعاقب بالسجن مدة خمس سنوات وبخطية قدرها خمسون ألف دينار كل من تعمد تق ديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل10 من هذا القانون قصد التسجيل أو التنقيح أو التشطيب أو إتمام\nبيانات منقوصة.\n\nOfficial source excerpts in their original language. These are selected provisions, not an exhaustive legal opinion. No conclusion beyond the quoted text is verified; current applicability and your individual case require confirmation.\n\n📚 Official sources:\n[1] Loi_52_2018_Arabe (Registre National des Entreprises (RNE)) — قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018)\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/Loi_52_2018_Arabe.pdf\n\n⚖️ Information quoted from official sources; not legal advice. Their current validity has not been verified: please confirm with the competent administration."
+ },
+ {
+  "id": "D-art16-ar",
+  "ok": true,
+  "seconds": 0.28,
+  "agent": "grounded_answer",
+  "chars": 1392,
+  "text": "المصدر: قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018) — الفصل 16. النص الرسمي باللغة العربية ويُنقل كما هو دون ترجمة رسمية.\n\nالنص الرسمي:\n\n[1] § 16 (p. 5)\nالفصل16 يعتبر تسجيل الشخص الطبيعي بالسجل التجاري قرينة بسيطة لثبوت صفة التاجر.\nغير أن هذه القرينة لا يمكن أن يعارض بها الغير إذا أثبت ما يخالفها ولا يمكنه التمسك بها إذا ثبت علمه بأن الشخص\nالمسجل ليس تاجرا.\nولا يمكن للخاضع للتسج يل أن يعارض الغير بعدم تسجيله .\nولا يجوز للتاجر المسجل الذي يحيل الأصل التجاري أو يسلمه خاصة على وجه الكراء، معارضة الغير بتوقفه عن ممارسة نشاطه، للتفصي من دعاوى المسؤولية المقامة ضده في خصوص الالتزامات التي أبرمها خلفه في استغلال الأصل إلا من\nيوم ترسيم ا لبيان المتعلق بحصول الإحالة أو التسليم، وذلك بقطع النظر عن القواعد الواردة بالفصل234 من المجلة التجارية.\n\nمقتطفات رسمية بلغتها الأصلية. هذه أحكام مختارة وليست رأيا قانونيا شاملا. لا نثبت استنتاجا خارج النص المقتبس؛ يلزم التأكد من سريانه الحالي ومن انطباقه على حالتك.\n\n📚 المصادر الرسمية:\n[1] Loi_52_2018_Arabe (Registre National des Entreprises (RNE)) — قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018)\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/Loi_52_2018_Arabe.pdf\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "id": "D-bo-fr",
+  "ok": true,
+  "seconds": 0.3,
+  "agent": "grounded_answer",
+  "chars": 4098,
+  "text": "Source : Arrêté de la Cheffe du Gouvernement du 13 janvier 2026, fixant la procédure d'obtention des informations relatives au bénéficiaire effectif des personnes morales et des constructions juridiques (JORT n° 5 du 13 janvier 2026) — articles 2, 1, 5. Le texte officiel est en français et il est cité tel quel ; aucune traduction officielle n'est fournie.\n\nPassage le plus pertinent (formulation officielle) :\n« 2 - Le Centre national du registre des entreprises met, en temps réel, à la disposition des autorités compétentes les informations relatives au bénéficiaire effectif, par le biais de l’interopérabilité. »\n\nTexte officiel :\n\n[1] § 2 (p. 1)\nArt. 2 - Le Centre national du registre des entreprises met, en temps réel, à la disposition des autorités compétentes les informations relatives au bénéficiaire effectif, par le biais de l’interopérabilité.\nLes autorités compétentes peuvent, le cas échéant, demander l’obtention de ces informations sous format papier, et ce, sur demande écrite adressée au Centre national du registre des entreprises. Celui-ci se charge, dans ce cas, de donner suite à la demande dans un délai maximum de deux (2) jours à compter de la date de sa réception.\nDécrets et arrêtés\nSection 2\nSection 2 - Procédure d’obtention des informations relatives au bénéficiaire effectif par les personnes assujetties à\nl’obligation de diligence envers leurs clients\n\n[1] § 1 (p. 1)\nArticle premier - Au sens du présent arrêté, on entend par:\n1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes. Chapitre II Procédure d’obtention des informations relatives au bénéficiaire effectif Section première - Procédure d’obtention des informations relatives au bénéficiaire effectif par les autorités compétentes\n\n[1] § 5 (p. 2)\nArt. 5 - Le Centre national du registre des entreprises statue sur la demande d’obtention des informations relatives au bénéficiaire effectif dans un délai maximum de deux (2) jours à compter de la date de sa réception. L'intéressé est informé de la suite donnée à sa demande dans ce délai même, par tout moyen laissant une trace écrite. En cas de rejet, la décision est motivée.\n\nAutres articles du même texte, disponibles sur demande (« article N ») : § 3, § 4, § 6\n\nExtraits officiels dans leur langue originale. Il s’agit de dispositions sélectionnées, pas d’un avis juridique exhaustif. Aucune conclusion au-delà du texte cité n’est vérifiée ; confirmez son applicabilité actuelle et votre cas particulier.\n\n📚 Sources officielles:\n[1] Arrete2026_35 (Registre National des Entreprises (RNE)) — Arrêté de la Cheffe du Gouvernement du 13 janvier 2026, fixant la procédure d'obtention des informations relatives au bénéficiaire effectif des personnes morales et des constructions juridiques (JORT n° 5 du 13 janvier 2026)\nhttps://home.registre-entreprises.tn/wp-content/uploads/2026/01/Arrete2026_35.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "id": "D-art999",
+  "ok": true,
+  "seconds": 0.28,
+  "agent": "grounded_answer",
+  "chars": 168,
+  "text": "Je n'ai pas trouvé, dans mes sources officielles, d'éléments qui répondent à cette question ; je préfère ne pas deviner. Veuillez contacter l'administration compétente."
+ },
+ {
+  "id": "D-art-noact",
+  "ok": true,
+  "seconds": 0.06,
+  "agent": "intent_router",
+  "chars": 175,
+  "text": "De quelle procédure, prestation ou disposition précise parles-tu ? Décris la situation sans identifiants personnels ; je ne peux pas déduire que ce texte s’applique à ton cas."
+ }
+]

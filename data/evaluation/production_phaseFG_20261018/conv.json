@@ -1,0 +1,420 @@
+[
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 1,
+  "input": "Quelles pièces fournir pour renouveler un passeport ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "seconds": 0.05,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "Tu résides en Tunisie ou à l’étranger ?"
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 2,
+  "input": "En Tunisie",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "seconds": 0.34,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Pièces à fournir\n• Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n• Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n• 4 photos avec les caractéristiques suivantes :\n• fond blanc\n• format 3.5/4.5 cm\n• Justificatif de scolarisation pour les élèves et les étudiants.\n• Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n• Joindre l'ancien passeport en cas de renouvellement,\n• Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n\n▪️ Conditions\n• Le demandeur doit :\n• Etre de nationalité tunisienne ,\n• Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale territorialement compétent\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 3,
+  "input": "ما هي الشروط من أجل استخراج نظير من جواز السفر بالنسبة إلى التونسيين المقيمين بالتراب التونسي؟",
+  "expected_language": "ar",
+  "language": "ar",
+  "agent": "checklist_builder",
+  "seconds": 0.24,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 استخراج نظير من جواز سفر (من أجل السرقة أو الضياع أو الإتلاف) بالنسبة إلى التونسيين المقيمين بالتراب التونسي\n\n▪️ الشروط\n• أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n• استيفاء التحريات اللازمة\n• تأكد الحاجة لاستخراج جواز سفر\n\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 4,
+  "input": "نحب نبدّل الباسبور، شنوة يلزمني؟",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "intent_router",
+  "seconds": 0.09,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "أول مرة تطلّع باسبور، ولا تحب تجدّدو، ولا تعوّضو خاطر ضاع ولا تسرق؟"
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 5,
+  "input": "What documents do I need to renew my passport? I live in Tunisia.",
+  "expected_language": "en",
+  "language": "en",
+  "agent": "checklist_builder",
+  "seconds": 32.57,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Required documents\n• A machine-readable passport application form, to be filled out and signed in the designated area.\n• Copy of the National Identity Card, with presentation of the original or a birth certificate for minors.\n• 4 photos with the following characteristics:\n• white background\n• 3.5/4.5 cm format\n• Proof of enrollment for students and learners.\n• Authorization from the guardian for minors, accompanied by a copy of their National Identity Card.\n• Receipt for payment of the applicable tax stamp fee:\n• 20 dinars for students, learners and children under 6 years of age,\n• 60 dinars for others.\n• Attach the old passport if renewing,\n• Submit a standard paper application in case the applicant wishes to keep the old passport.\n\n▪️ Conditions\n• The applicant must:\n• Be of Tunisian nationality,\n• Be free from the restrictions indicated by Law No. 75-40 of 14/05/1975 relating to passports and travel documents and subsequent texts.\n\n▪️ Where to submit\n• Local police or National Guard post\n\n▪️ Processing time\n• Within 15 days from the date of submission of the application.\n\n⚠️ Warning: the official FR and AR versions of this page state different amounts (20/60 vs 25/80). Confirm the current amount with the administration.\nℹ️ Automatic translation of the official FR text; the official text prevails.\n\n📚 Official sources:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Information quoted from official sources; not legal advice. Their current validity has not been verified: please confirm with the competent administration."
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 6,
+  "input": "Chnowa lezemni bech njadded passport?",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "checklist_builder",
+  "seconds": 4.01,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 الحصول على جواز سفر لأوّل مرّة أو تجديده بالنسبة للتونسيّين المقيمين بالتراب التونسي\n\n▪️ الأوراق اللي لازمك تحضّرها\n• تعمير إستمارة الحصول على جواز سفر عادي مقروء آليا وإمضاؤها بصفة شخصية داخل الخانة المعدة للغرض\n• نسخة من بطاقة التعريف الوطنية مع الاستظهار بالأصل أو مضمون ولادة بالنسبة للقصر\n• 04 صور شمسية حسب المواصفات التالية :\n• أن تكون خلفية الصورة بيضاء\n• أن يكون حجم الصورة 3.5/4.5 صم تقريبا\n• ما يفيد الدراسة بالنسبة للتلاميذ والطلبة\n• ترخيص الولي بالنسبة للقصر مصحوبا بنسخة من بطاقة تعريفه\n• وصل خلاص معلوم الطابع الجبائي المستوجب :\n• 25 دنانير بالنسبة للتلاميذ و الطلبة والأطفال دون 6 سنوات\n• 80 دينارا بالنسبة للبقية\n• إضافة الجواز القديم في حالة تجديد\n• تقديم طلب على ورق عادي عند الرغبة في الإحتفاظ بالجواز القديم\n\n▪️ الشروط\n• أن يكون الراغب في الجواز :\n• حاملا للجنسية التونسية\n• أن لا تكون له الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n\n▪️ وين تحطّ الملف\n• مركز الأمن “شرطة أو حرس وطني” حسب مرجع النظر الترابي\n\n▪️ قدّاش ياخو وقت\n• خلال 15 يوما من تاريخ تقديم الطلب\n\n⚠️ ردّ بالك: النسخة الرسمية AR والنسخة FR فيهم مبالغ مختلفة (25/80 و 20/60). ثبّت في المبلغ الصحيح عند الإدارة.\nℹ️ النص الرسمي مكتوب بالعربية الفصحى، نقلناه كيما هو باش ما يتبدلّش معناه.\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 7,
+  "input": "Quelles pièces fournir pour renouveler un passeport ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "seconds": 0.24,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Pièces à fournir\n• Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n• Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n• 4 photos avec les caractéristiques suivantes :\n• fond blanc\n• format 3.5/4.5 cm\n• Justificatif de scolarisation pour les élèves et les étudiants.\n• Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n• Joindre l'ancien passeport en cas de renouvellement,\n• Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n\n▪️ Conditions\n• Le demandeur doit :\n• Etre de nationalité tunisienne ,\n• Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale territorialement compétent\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 8,
+  "input": "oui",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "seconds": 0.07,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "D'accord ! Vous pouvez me poser une autre question, par exemple sur les frais, le délai ou le lieu de dépôt."
+ },
+ {
+  "scenario": "phase_c_session_reconstructed",
+  "turn": 9,
+  "input": "merci",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "seconds": 0.1,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "Avec plaisir ! Si vous avez une autre question, je suis là."
+ },
+ {
+  "scenario": "yes_no_against_pending_question",
+  "turn": 1,
+  "input": "Quelles pièces fournir pour renouveler un passeport ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "seconds": 0.05,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "Tu résides en Tunisie ou à l’étranger ?"
+ },
+ {
+  "scenario": "yes_no_against_pending_question",
+  "turn": 2,
+  "input": "oui",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "seconds": 0.09,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "Pour continuer, j'ai besoin de cette précision :\n\nTu résides en Tunisie ou à l’étranger ?"
+ },
+ {
+  "scenario": "yes_no_against_pending_question",
+  "turn": 3,
+  "input": "En Tunisie",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "seconds": 0.21,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Pièces à fournir\n• Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n• Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n• 4 photos avec les caractéristiques suivantes :\n• fond blanc\n• format 3.5/4.5 cm\n• Justificatif de scolarisation pour les élèves et les étudiants.\n• Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n• Joindre l'ancien passeport en cas de renouvellement,\n• Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n\n▪️ Conditions\n• Le demandeur doit :\n• Etre de nationalité tunisienne ,\n• Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale territorialement compétent\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "yes_no_against_pending_question",
+  "turn": 4,
+  "input": "non",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "seconds": 0.06,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "D'accord. Si vous avez besoin d'autre chose, posez votre question."
+ },
+ {
+  "scenario": "derja_ambiguous_change",
+  "turn": 1,
+  "input": "ما هي الشروط من أجل استخراج نظير من جواز السفر بالنسبة إلى التونسيين المقيمين بالتراب التونسي؟",
+  "expected_language": "ar",
+  "language": "ar",
+  "agent": "checklist_builder",
+  "seconds": 0.27,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 استخراج نظير من جواز سفر (من أجل السرقة أو الضياع أو الإتلاف) بالنسبة إلى التونسيين المقيمين بالتراب التونسي\n\n▪️ الشروط\n• أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n• استيفاء التحريات اللازمة\n• تأكد الحاجة لاستخراج جواز سفر\n\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "scenario": "derja_ambiguous_change",
+  "turn": 2,
+  "input": "نحب نبدّل الباسبور، شنوة يلزمني؟",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "intent_router",
+  "seconds": 0.07,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "أول مرة تطلّع باسبور، ولا تحب تجدّدو، ولا تعوّضو خاطر ضاع ولا تسرق؟"
+ },
+ {
+  "scenario": "derja_ambiguous_change",
+  "turn": 3,
+  "input": "إي",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "intent_router",
+  "seconds": 0.11,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "باش نكمّل معاك، قلّي:\n\nأول مرة تطلّع باسبور، ولا تحب تجدّدو، ولا تعوّضو خاطر ضاع ولا تسرق؟"
+ },
+ {
+  "scenario": "derja_ambiguous_change",
+  "turn": 4,
+  "input": "تجديد",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "checklist_builder",
+  "seconds": 0.22,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 الحصول على جواز سفر لأوّل مرّة أو تجديده بالنسبة للتونسيّين المقيمين بالتراب التونسي\n\n▪️ الأوراق اللي لازمك تحضّرها\n• تعمير إستمارة الحصول على جواز سفر عادي مقروء آليا وإمضاؤها بصفة شخصية داخل الخانة المعدة للغرض\n• نسخة من بطاقة التعريف الوطنية مع الاستظهار بالأصل أو مضمون ولادة بالنسبة للقصر\n• 04 صور شمسية حسب المواصفات التالية :\n• أن تكون خلفية الصورة بيضاء\n• أن يكون حجم الصورة 3.5/4.5 صم تقريبا\n• ما يفيد الدراسة بالنسبة للتلاميذ والطلبة\n• ترخيص الولي بالنسبة للقصر مصحوبا بنسخة من بطاقة تعريفه\n• وصل خلاص معلوم الطابع الجبائي المستوجب :\n• 25 دنانير بالنسبة للتلاميذ و الطلبة والأطفال دون 6 سنوات\n• 80 دينارا بالنسبة للبقية\n• إضافة الجواز القديم في حالة تجديد\n• تقديم طلب على ورق عادي عند الرغبة في الإحتفاظ بالجواز القديم\n\n▪️ الشروط\n• أن يكون الراغب في الجواز :\n• حاملا للجنسية التونسية\n• أن لا تكون له الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n\n▪️ وين تحطّ الملف\n• مركز الأمن “شرطة أو حرس وطني” حسب مرجع النظر الترابي\n\n▪️ قدّاش ياخو وقت\n• خلال 15 يوما من تاريخ تقديم الطلب\n\n⚠️ ردّ بالك: النسخة الرسمية AR والنسخة FR فيهم مبالغ مختلفة (25/80 و 20/60). ثبّت في المبلغ الصحيح عند الإدارة.\nℹ️ النص الرسمي مكتوب بالعربية الفصحى، نقلناه كيما هو باش ما يتبدلّش معناه.\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "scenario": "derja_ambiguous_change",
+  "turn": 5,
+  "input": "يعطيك الصحة",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "intent_router",
+  "seconds": 0.06,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "يعيشك، مرحبا بيك! كان عندك سؤال آخر، أنا هوني."
+ },
+ {
+  "scenario": "gratitude_then_question_and_farewell",
+  "turn": 1,
+  "input": "What documents do I need to renew my passport? I live in Tunisia.",
+  "expected_language": "en",
+  "language": "en",
+  "agent": "checklist_builder",
+  "seconds": 19.74,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Required documents\n• A machine-readable passport application form, to be filled out and signed in the designated area.\n• Copy of the National Identity Card, with presentation of the original or a birth certificate for minors.\n• 4 photos with the following characteristics:\n• white background\n• 3.5/4.5 cm format\n• Proof of enrollment for students and learners.\n• Authorization from the guardian for minors, accompanied by a copy of their National Identity Card.\n• Receipt for payment of the applicable tax stamp fee:\n• 20 dinars for students, learners and children under 6 years of age,\n• 60 dinars for others.\n• Attach the old passport if renewing,\n• Submit a standard paper application in case the applicant wishes to keep the old passport.\n\n▪️ Conditions\n• The applicant must:\n• Be of Tunisian nationality,\n• Be free from the restrictions indicated by Law No. 75-40 of 14/05/1975 relating to passports and travel documents and subsequent texts.\n\n▪️ Where to submit\n• Local police or National Guard post\n\n▪️ Processing time\n• Within 15 days from the date of submission of the application.\n\n⚠️ Warning: the official FR and AR versions of this page state different amounts (20/60 vs 25/80). Confirm the current amount with the administration.\nℹ️ Automatic translation of the official FR text; the official text prevails.\n\n📚 Official sources:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Information quoted from official sources; not legal advice. Their current validity has not been verified: please confirm with the competent administration."
+ },
+ {
+  "scenario": "gratitude_then_question_and_farewell",
+  "turn": 2,
+  "input": "thanks",
+  "expected_language": "en",
+  "language": "en",
+  "agent": "intent_router",
+  "seconds": 0.06,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "You're welcome! If you have another question, I'm here."
+ },
+ {
+  "scenario": "gratitude_then_question_and_farewell",
+  "turn": 3,
+  "input": "merci, et pour les frais ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "seconds": 0.33,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Frais\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n\n⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "gratitude_then_question_and_farewell",
+  "turn": 4,
+  "input": "bye",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "seconds": 0.07,
+  "declared_items": [],
+  "checks": {
+   "language": true,
+   "markers": true,
+   "agent": true,
+   "isolation": true,
+   "absent": true
+  },
+  "ok": true,
+  "text": "Au revoir, et bon courage pour votre démarche !"
+ }
+]

@@ -1,8 +1,14 @@
 # Academic report (LaTeX)
 
 - `main.tex`: the report (A4, 10 pt).
-  - **Main report:** Sections 1–8 plus the references, at most 8 pages.
-  - **Annex A (prompt library):** starts on a new page after `\appendix` and is outside the page limit.
+  - **Main report:** Sections 1–8 plus the references, at most 8 pages (currently 7).
+  - **Annexes:** start on a new page after `\appendix`, outside the page limit.
+    - A: prompt library (generated).
+    - B: evidence index (`appendices/evidence_index.tex`, hand-written, mirrors `EVIDENCE_INDEX.md`).
+    - C: prompt before/after experiments (generated).
+- `EVIDENCE_INDEX.md`: maps every metric and deployment claim to its source artifact.
+- `CHANGES.md`: what changed in the 18 October 2026 update, and the facts that could not be verified.
+- `archive/2026-10-18_before_phaseG_update/`: the previous report source and PDFs, unchanged.
 - `references.bib`: bibliography (BibTeX, `plain` style).
 - `figures/*.tex`: TikZ diagrams (architecture, RAG pipeline, n8n workflow 03), included with `\input`.
 - `tables/*.tex`: tables.
@@ -11,8 +17,8 @@
     `docs/FINAL_REGRESSION_RESULTS.md` and `data/evaluation/final_candidate_*`.
 - `appendices/prompt_library.tex`: **generated** from the actual prompt files by `scripts/make_prompt_annex.py`.
   Do not edit it by hand.
-- `report.pdf` / `report_final.pdf`: the compiled report. `report_final.pdf` was written because `report.pdf`
-  was locked by an open viewer during the last build; both come from the same `main.tex`.
+- `report.pdf`: the compiled report (main report followed by the annexes). `report_final.pdf` is an identical copy
+  kept under its earlier name.
 
 ## Build
 

@@ -1,11 +1,12 @@
-% Tunisian Administrative Procedures Assistant -- academic project report.
+% Tunisian Administrative Procedures Assistant -- technical report.
 % Compiles with pdfLaTeX + BibTeX (Overleaf: upload the report/ folder, main document main.tex).
-% Main report: Sections 1-8 and references (at most 8 pages). Annex A (prompt library) follows \appendix.
+% Main report: Sections 1-8 and references (at most 8 pages). Annexes A-C follow \appendix.
+% The pre-update version is archived in report/archive/2026-10-18_before_phaseG_update/.
 \documentclass[10pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[margin=1.7cm,top=1.5cm,bottom=1.7cm]{geometry}
+\usepackage[margin=1.8cm,top=1.6cm,bottom=1.8cm]{geometry}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -29,414 +30,390 @@
 \setlength{\floatsep}{6pt plus 2pt minus 2pt}
 \setlength{\intextsep}{6pt plus 2pt minus 2pt}
 \newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\ev}[1]{\hyperref[app:evidence]{[#1]}}
+\newcommand{\pathcode}[1]{{\small\nolinkurl{#1}}}
+\def\UrlBreaks{\do\/\do\_\do-\do.}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \begin{document}
 
 \begin{center}
   {\LARGE\bfseries Tunisian Administrative Procedures Assistant}\\[3pt]
-  {\large A Local, Source-Grounded Multi-Agent RAG System for Multilingual Administrative Guidance}\\[4pt]
-  {\small Advanced Deep Learning --- academic project report \quad$\cdot$\quad October 2026}
+  {\large A Source-Grounded, Locally Served RAG Assistant with Orchestrated Specialised Agents}\\[4pt]
+  {\small Advanced Deep Learning --- technical report \quad$\cdot$\quad state of 18 October 2026 (release \code{rc-20261018-g})}
   % Author names and institution: add here (not recorded in the project files).
 \end{center}
 \vspace{-4pt}
 
 \begin{abstract}
-\noindent Information on Tunisian administrative procedures is spread across ministry pages, the National
-Business Register (RNE) site and Official Journal PDFs, in French and Arabic, while many citizens write in
-Tunisian Derja. Large language models answer such questions fluently but may invent fees, deadlines, legal
-provisions or required documents. We present a fully local assistant that answers in English, French, Arabic
-and Derja (Arabic and Latin script) exclusively from 12 indexed official documents. An n8n workflow
-orchestrates six specialised agents: a rule-first intent router with dialogue state, a hybrid retriever
-(BGE-M3 dense retrieval, BM25, reciprocal rank fusion and exact procedure-code lookup), a checklist builder
-that quotes official sections verbatim, a grounded-answer agent that quotes located legal articles and
-otherwise generates citation- and number-verified answers, an OCR-based form checker and a dossier validator.
-Hybrid retrieval raises Hit@5 from 0.704 to 0.873 on 84 development questions but only ties dense retrieval
-(0.750) on 20 held-out questions. An independent audit of 728 end-to-end cases exposed source-only replies
-for every contextual RNE question and a fabricated legal provision; after targeted corrections the final
-candidate answers all 380 RNE table cases with the exact official row, retains every required official
-span in 480/480 targeted checks and quotes the requested article instead of paraphrasing it.
+\noindent Citizens who prepare a Tunisian passport, national identity card (CIN) or company registration must
+combine French and Arabic pages of several ministries and the National Business Register (RNE), while many of
+them write in Tunisian Derja. A general-purpose chatbot can answer fluently yet invent fees, deadlines or legal
+provisions. We built a Telegram assistant that answers in French, Arabic, English and Derja (Arabic and Latin
+script) only from a registry of official sources, with citations copied from stored provenance. An n8n workflow
+orchestrates a FastAPI backend whose services are mostly deterministic (routing rules, hybrid BM25 and BGE-M3
+retrieval with reciprocal rank fusion, verbatim checklist and legal-article extraction, form recognition); a
+locally served Mistral~7B model generates text only where no deterministic method exists, and its output is
+validated. The deployed release recognises four official forms. In production, the automated suites passed
+(e.g.\ 30/30 Phase~F+G session turns and 60/60 coverage turns, Telegram mocked); in isolated evaluation, hybrid
+retrieval reached Hit@5 0.873 on 71 labelled development questions but only 0.750 on 16 held-out ones. The
+latest release has not yet been tested manually in Telegram.
 \end{abstract}
-\noindent\textbf{Keywords:} retrieval-augmented generation, multilingual retrieval, Tunisian Arabic, multi-agent orchestration, n8n, hallucination mitigation, document analysis.
 
 % ---------------------------------------------------------------------------
-\section{Introduction and problem definition}
-Obtaining a passport or registering a company in Tunisia requires combining several official sources: the
-Ministry of the Interior publishes procedure guides in French and Arabic \cite{interior_passport}; the RNE
-publishes a table of 95 procedures with fees and legal deadlines \cite{rne_formalities} and the legal texts
-that govern them \cite{law2018_52,decree2022_298}. These sources are fragmented, not always consistent (the
-French and Arabic passport pages state different stamp duties, 20/60 vs.\ 25/80 TND) and written in languages
-other than the one many users speak (Derja, often typed in Latin script with digits, e.g.\ \emph{``9adech
-ya5ou wa9t el passbor?''}). A general chatbot is a risky answer: hallucinated requirements or amounts
-\cite{ji2023hallucination} cost citizens time and money.
+\section{Introduction, use case and requirements}\label{sec:intro}
+Administrative information is fragmented: the Ministry of the Interior publishes procedure guides in French
+and Arabic \cite{interior_passport}, the RNE publishes a table of 95 procedures with fees and legal deadlines
+\cite{rne_formalities} and the laws and decrees behind it \cite{law2018_52,decree2022_298}. The sources are not
+always consistent (the French and Arabic passport pages state different stamp duties) and are written in
+languages other than the one many users type, often Derja in Latin script with digits for Arabic letters
+(\emph{``9adech ya5ou wa9t el passbor?''}). A hallucinated requirement or amount \cite{ji2023hallucination}
+costs the user time and money, so fluency is not the goal; traceability is.
 
-\textbf{Objectives.} (i) Answer only from verifiable official documents, with citations; (ii) refuse or ask
-for clarification when the corpus cannot answer; (iii) support four query languages without altering official
-text; (iv) check official forms and dossiers for missing information without certifying them; (v) run on one
-laptop (4\,GB GPU) without paid APIs or exposure of personal data. \textbf{Scope:} passports, the national
-identity card (CIN) and RNE business registration. Birth certificates are \emph{deliberately not covered}: the
-only source found opts out of AI use in its \code{robots.txt}, so the procedure is reported as uncovered.
+\textbf{Users and scope.} Individuals preparing a passport or CIN application and founders registering a
+natural person or company with the RNE, through a Telegram bot. Birth certificates are deliberately not
+covered: the only source found opts out of AI use in its \code{robots.txt}.
+
+\textbf{Requirements.} \textbf{R1}~answer only from registered official sources, with verifiable citations;
+\textbf{R2}~refuse or ask a clarification question when the sources cannot answer or the case is ambiguous;
+\textbf{R3}~accept English, French, Arabic and Derja (both scripts) without altering official wording;
+\textbf{R4}~check uploaded official forms for empty fields without certifying a dossier; \textbf{R5}~run model
+inference on one laptop (4\,GB GPU) without paid APIs; \textbf{R6}~keep questions and uploads out of logs and
+out of the knowledge base.
+
+\textbf{Contribution and status.} The system is implemented, deployed and verified automatically: the
+production backend is image \code{rc-20261018-g} (commit \code{3d84557}), with 15 stored official originals,
+12 indexed documents and four supported form templates \ev{E1, E2, E11}. This report distinguishes four levels of
+evidence throughout: \emph{implemented} (code and unit tests), \emph{isolated evaluation} (a separate stack),
+\emph{automated production verification} (HTTP requests through the production workflow with Telegram mocked)
+and \emph{manual Telegram testing}.
 
 % ---------------------------------------------------------------------------
-\section{System requirements and technology selection}
-Figure~\ref{fig:arch} shows the system as packaged with Docker Compose (all ports bound to \code{127.0.0.1}).
-Each tool was chosen against a requirement rather than by default:
-\begin{itemize}
-\item \textbf{Python + FastAPI} \cite{fastapi} for the agents: typed request/response models (Pydantic) give
-  every agent an explicit contract that n8n, tests and the Telegram bridge share; the extraction, OCR and
-  embedding ecosystems are Python-native.
-\item \textbf{n8n} \cite{n8n} as orchestrator: the agent chain is a visible, editable workflow with
-  conditional branches and per-node error outputs, and it schedules re-ingestion. A hand-written Python
-  pipeline would be simpler to test but opaque to non-programmers maintaining the service; an autonomous
-  agent framework \cite{wu2023autogen} would add non-deterministic control flow, which a citation-bound
-  administrative domain does not need.
-\item \textbf{Qdrant} \cite{qdrant}: payload filters on procedure category and document, exact scroll by
-  payload (used for RNE codes) and full provenance stored with each vector.
-\item \textbf{Ollama} \cite{ollama}: local inference keeps questions and uploaded documents on the machine
-  and costs nothing per query; quantised models fit 4\,GB of VRAM.
-\item \textbf{Telegram} \cite{telegram_bot_api} as primary channel (long polling: no public URL or inbound
-  port); a local web page and a CLI send the same requests to the same webhook as fallbacks.
-\item \textbf{PyMuPDF, Tesseract} \cite{smith2007tesseract} \textbf{and OpenCV} for PDF text layers, Arabic and
-  French OCR and geometric alignment of photographed forms.
-\item \textbf{RAG instead of fine-tuning} \cite{lewis2020rag}: answers must stay traceable to a source and
-  updatable when a decree changes; fine-tuning a 7B model is not feasible on this hardware.
-\end{itemize}
+\section{System architecture and tool choices}\label{sec:arch}
+Figure~\ref{fig:arch} shows the deployed services. A Python bridge polls the Telegram Bot API, forwards each
+message or upload to an n8n webhook, and n8n calls the backend agents in sequence over HTTP/JSON. The backend
+reads embeddings and chunks from Qdrant and calls models served by Ollama on the host GPU.
 
 \begin{figure}[H]
   \centering
   \resizebox{\textwidth}{!}{\input{figures/architecture.tex}}
-  \caption{Implemented architecture. Arrows are HTTP/JSON calls; green boxes are stores and model servers. $^\ast$Innovation extension, reached through workflow 03 with \code{mode: dossier}.}
+  \caption{Deployed architecture. Arrows are HTTP/JSON calls; green boxes are stores and model servers. All
+  published ports are bound to 127.0.0.1 \ev{E11}. $^\ast$Uploads sent with \code{mode: dossier}.}
   \label{fig:arch}
 \end{figure}
 
-% ---------------------------------------------------------------------------
-\section{LLM selection and deployment constraints}
-All models run in Ollama on an RTX 3050 laptop GPU (4\,GB VRAM) with 4-bit quantisation (Q4\_K\_M):
-\textbf{BGE-M3} \cite{chen2024bgem3} (567M parameters, F16) for multilingual dense embeddings (1024-d), chosen
-because one model embeds French, Arabic, English and Derja queries into the same space as French and Arabic
-documents; \textbf{Mistral~7B Instruct} \cite{jiang2023mistral} for the three generative roles (routing
-fallback, grounded answers, dialogue fact extraction), chosen as the strongest instruction-following model
-that fits the GPU partially (about 40\,\% of its layers on GPU; the rest on CPU); and \textbf{TranslateGemma
-4B} for French$\rightarrow$English translation of quoted checklist items. No paid API is used and no data
-leaves the machine. All prompts use temperature~0; structured outputs use JSON mode or a JSON schema.
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{Tools, the requirement that motivated each choice, and the accepted trade-off.}\label{tab:tools}
+  \begin{tabularx}{\textwidth}{@{}P{2.55cm} Y Y@{}}
+  \toprule
+  Tool (version) & Why it was chosen & Trade-off / limitation \\
+  \midrule
+  Telegram bot \cite{telegram_bot_api} & Channel users already have; long polling needs no public URL or inbound port & Messages transit Telegram's servers under its policies; network access required \\
+  Python bridge (\code{httpx}) & Session state per chat (per member in groups), uploads, menus and localised replies kept outside n8n & One more service to deploy; sessions are in memory (30\,min expiry) \\
+  n8n 2.41 \cite{n8n} & Agent chain visible and editable as a workflow; per-node error branches; inspectable routing & Harder to unit-test than Python; control flow is fixed by design, not planned by a model \\
+  FastAPI, Uvicorn, Pydantic \cite{fastapi,pydantic} & Typed request/response contracts shared by n8n, bridge and tests; Python ecosystem for OCR and embeddings & Agents are HTTP endpoints, so every call adds serialisation \\
+  Qdrant 1.19 \cite{qdrant} & Payload filters (category, document), exact scroll by payload for RNE codes, provenance stored with each vector & No API key configured; protected only by loopback/internal network \\
+  Ollama 0.40.4 \cite{ollama} & Local inference: no per-query cost, questions stay on the machine (R5, R6) & 4\,GB VRAM limits model size and speed \\
+  Docker Compose \cite{docker_compose} & Reproducible services, internal network, loopback-only ports, explicit environment lists & Ollama runs on the host, outside Compose \\
+  PyMuPDF, Tesseract, OpenCV, NumPy \cite{pymupdf,smith2007tesseract,bradski2000opencv} & PDF text layers and geometry; Arabic+French OCR; deskewing and homography alignment of scans & OCR of Arabic labels is fragile on poor scans (Section~\ref{sec:eval}) \\
+  \bottomrule
+  \end{tabularx}
+\end{table}
 
-\textbf{Design consequences.} The 7B model is slow (20--70\,s per grounded answer when alone on the GPU) and
-its paraphrases of legal text proved unreliable (Section~\ref{sec:eval}), so the architecture uses it only
-where no deterministic method exists, and every output is validated: routing JSON against enumerations,
-translations line by line and number by number, answers against citation indices and source numbers. French-to-Arabic
-translation was \emph{withdrawn} after it changed meanings while passing format checks (\emph{veuve}, widow,
-became ``one-eyed woman''); an LLM topic checker was \emph{disabled} after unstable verdicts. On model
-failure or timeout (300\,s), the router falls back to a default route and the answer agent quotes the top
-passages instead of generating. No comparison against other LLMs was run; the choice is justified by
-hardware and multilingual coverage, not by a benchmark.
-
-% ---------------------------------------------------------------------------
-\section{Official knowledge corpus and RAG methodology}
-\textbf{Provenance.} A source registry lists 18 candidate sources with their status. The downloader enforces
-\code{robots.txt}, AI opt-out directives and TLS verification; each original is stored unmodified with its
-SHA-256 and HTTP metadata in a manifest. 12 documents are indexed: the passport guides (FR, AR), the CIN guide,
-the RNE formalities table, Law 2018-52, Decree 2022-298 (fees), Decree-law 2022-18, two decrees of 2019, an
-order of 2026 and the forms F-001/F-002. Excluded with a recorded reason: the birth-certificate and
-passport-form pages (robots), a scanned decree without text layer, and two sources that do not exist. Legal
-applicability stays \code{unverified} until a human confirms it.
-
-\textbf{Extraction and chunking.} PDFs (PyMuPDF) and HTML pages become typed text blocks (heading, paragraph,
-list item, table row) with page numbers; Arabic presentation forms are normalised (NFKC). Two chunkers consume
-the same blocks (Table~\ref{tab:chunks}): a \emph{structure-aware} chunker that keeps headings, list sections
-and table rows together (max.\ 1200 characters, heading path prefixed) and a \emph{recursive} splitter
-(1000 characters, 150 overlap). Chunks are embedded into two Qdrant collections (272 and 174 points).
-
-\begin{figure}[H]
-  \centering
-  \resizebox{0.92\textwidth}{!}{\input{figures/rag_pipeline.tex}}
-  \caption{Ingestion and indexing (top) and query-time retrieval (bottom).}
-  \label{fig:rag}
-\end{figure}
-
-\textbf{Retrieval.} Reciprocal rank fusion (RRF, $k=60$) \cite{cormack2009rrf} of three lists restricted to
-the routed category: dense retrieval of the raw query, dense retrieval of a query expanded with fixed
-bilingual terms for the routed procedure, and BM25 \cite{robertson2009bm25} over the raw query with
-deterministic term normalisation (company types, common Arabizi words); at most two chunks per document enter
-the top 5. A question naming an RNE procedure code bypasses similarity search: the exact table row is read
-from Qdrant by payload, because a code is a key, not a meaning. No neural reranker is used (hardware).
-
-\textbf{Context assembly and grounding.} Retrieval only \emph{identifies} the document and section; the
-answering agents then read complete official units from the extracted structure: a whole checklist section, a
-table row, or a legal article whose boundaries are located in the text (Section~\ref{sec:agents}).
-\textbf{Citations} are never generated: title, URL, page and SHA-256 are copied from the chunk payload.
+\textbf{Why RAG and not fine-tuning.} Answers must remain traceable to a specific official document and be
+updatable when a decree changes; retrieval-augmented generation \cite{lewis2020rag} keeps the knowledge outside
+the weights, and fine-tuning a 7B model is not feasible on this hardware. \textbf{Why n8n and not an autonomous
+agent framework} \cite{wu2023autogen}: in a citation-bound administrative domain, a fixed and inspectable
+control flow is a requirement rather than a limitation. \textbf{Network dependence.} The system is not fully
+offline: Telegram transport and the acquisition of official sources need Internet access; only model inference,
+retrieval and storage are local.
 
 % ---------------------------------------------------------------------------
-\section{Multi-agent architecture and n8n orchestration}\label{sec:agents}
-Three n8n workflows are deployed: 01 (download and index, 5 nodes, inactive, admin-key endpoints), 02 (a dense
-retrieval API, 3 nodes) and 03 (Fig.~\ref{fig:agents}, 17 nodes), which receives every request from the Telegram bridge, the web
-fallback or the CLI, branches on the presence of a file, the dossier mode and the router's decision, and
-passes structured JSON between agents. Every agent call has an n8n error output leading to a structured
-\code{503} reply naming the failed agent; clients retry and then show a localised error.
+\section{LLM and embedding model choices}\label{sec:models}
+Table~\ref{tab:models} lists the three models installed and configured in production \ev{E11}. All run in
+Ollama on an NVIDIA RTX 3050 Laptop GPU with 4\,GB of VRAM, with temperature~0 for every prompt.
 
-\begin{figure}[H]
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{Models in the deployed configuration (sizes and quantisation as reported by the Ollama server).}\label{tab:models}
+  \begin{tabularx}{\textwidth}{@{}P{2.9cm} P{2.5cm} Y Y@{}}
+  \toprule
+  Model & Size / format & Role & Output validation \\
+  \midrule
+  BGE-M3 \cite{chen2024bgem3} & 567M, F16, 1024-d & Dense embeddings of queries and chunks in all four languages & Retrieval metrics (Section~\ref{sec:eval}) \\
+  Mistral 7B Instruct \cite{jiang2023mistral} (\code{mistral:latest}) & 7.2B, Q4\_K\_M, 4.07\,GiB & Fallback routing; grounded answers; dialogue fact extraction; language fallback & Enumerations, JSON schema, citation indices, numeric evidence check \\
+  TranslateGemma 4B \cite{translategemma} & 4.3B, Q4\_K\_M & French$\rightarrow$English translation of quoted checklist items & Same numbered lines and every number preserved, else French shown \\
+  \bottomrule
+  \end{tabularx}
+\end{table}
+
+\textbf{Rationale.} BGE-M3 was selected because one model embeds French, Arabic, English and Derja queries in
+the same space as French and Arabic documents, so no document needs to be translated before indexing (R3).
+Mistral~7B was selected as an instruction-following model with an open licence that can be served locally; its
+4.07\,GiB weights exceed the 4\,GB of VRAM, so it runs partly on the CPU. A smaller task-specific model translates
+quoted checklist items; its output is accepted only if every line and number is preserved, a check that
+rejected a baseline prompt which rewrote dates and dropped measurements (Annex~\ref{app:prompt_experiments}). \textbf{Limits of the evidence:} no head-to-head comparison with other
+generators or embedding models was run, so these choices are justified by hardware, licensing and language
+coverage, not by a benchmark.
+
+\textbf{Operational consequences.} Local serving keeps questions and uploads on the machine and has no
+per-query cost, but it is slow: an English checklist (translation) took a median 17.1\,s in isolation
+\ev{E13}, and one production answer generated by Mistral took 97\,s \ev{E6}. The architecture therefore uses
+the LLM only where no deterministic method exists. Two LLM uses were removed after evaluation:
+French$\rightarrow$Arabic translation, which changed meanings while passing format checks, and an LLM topic
+checker, whose verdicts were unstable (it remains in the prompt registry, disabled).
+
+% ---------------------------------------------------------------------------
+\section{RAG approach}\label{sec:rag}
+\textbf{Registry and provenance.} A versioned registry lists 19 candidate sources: 15 approved, 2 excluded
+with a recorded reason (AI opt-out; placeholder domain) and 2 not found \ev{E11}. The downloader respects
+\code{robots.txt}, AI opt-out directives and TLS verification; each original is stored unmodified under its
+SHA-256 with HTTP metadata in a manifest. Four counts must be kept apart: the \textbf{manifest} holds
+\textbf{15} stored originals; \textbf{12} documents are \textbf{indexed} (272 structure-aware and 174 recursive
+chunks in two Qdrant collections); the remaining three are a scanned decree without a text layer and the
+Interior CIN and passport application forms, which are stored only as \textbf{form templates} (imported
+manually because \code{robots.txt} disallows their automated retrieval). Language, publication date and
+applicability are filled only from the document itself; applicability stays \code{unverified}.
+
+\textbf{Extraction and chunking.} PDF (PyMuPDF) and HTML pages become typed blocks (heading, paragraph, list
+item, table row) with page numbers; Arabic presentation forms are normalised with NFKC. Two chunkers consume
+the same blocks: a \emph{structure-aware} chunker that keeps headings, lists and table rows together (at most
+1200 characters, sections below 200 merged, heading path prefixed; one RNE table row per chunk) and a
+\emph{recursive} splitter (1000 characters, 150 overlap). Chunks are embedded with BGE-M3 (1024-d, cosine).
+
+\textbf{Retrieval.} Three ranked lists of 20 candidates, restricted to the routed procedure category, are fused
+by reciprocal rank fusion \cite{cormack2009rrf} with $k=60$: dense retrieval of the raw query, dense retrieval
+of a query expanded with fixed bilingual terms for the routed procedure, and BM25 \cite{robertson2009bm25}
+($k_1=1.2$, $b=0.75$) over normalised query tokens (company types, frequent Arabizi words). At most 2 of the
+top 5 chunks may come from one document, so the 95 near-identical table rows cannot crowd out a guide. A
+question naming an RNE procedure code bypasses similarity search and reads the exact row by payload, because a
+code is a key, not a meaning. No cross-encoder reranker is used.
+
+\textbf{Context assembly and grounded answering.} Retrieval only identifies the document and section; the
+answering services then read complete official units from the extracted structure (a checklist section, a
+table row, a located legal article) and quote them. Citations are never generated: title, URL, page and
+SHA-256 are copied from the chunk payload. When generation is needed, Mistral receives numbered passages and
+must cite them; answers citing no or non-existent passages are replaced by the quoted passages, and every
+number written with digits must occur in the cited passages, otherwise its sentence is removed or the answer
+refused. \textbf{Missing, insufficient and conflicting evidence:} an answerability gate refuses when the
+question's IDF-weighted terms are not supported by the top passages; requests to certify validity or
+acceptance receive a fixed reply; when the French and Arabic guides state different amounts, both are quoted
+with a discrepancy warning instead of choosing one.
+
+\begin{table}[H]
+  \centering\footnotesize
+  \caption{Chunking and retrieval comparison on the 71 labelled development questions (of 84), $k=5$,
+  retrieval configuration of 16~October~2026 \ev{E7}. Hit@5: at least one relevant evidence group in the top 5;
+  MRR@5: mean reciprocal rank of the first relevant chunk (0 if none in the top 5); a chunk is relevant if it
+  belongs to the labelled document and contains the verified evidence span.}\label{tab:retrieval}
+  \begin{tabular}{@{}llrrr@{}}
+  \toprule
+  Configuration & Chunks & R@5 & MRR@5 & Hit@5 \\
+  \midrule
+  Dense, raw query & structure-aware & 0.718 & 0.575 & 0.732 \\
+  Dense, raw query & recursive & 0.803 & 0.642 & 0.817 \\
+  Hybrid RRF (raw + expanded + BM25) & structure-aware & 0.831 & 0.668 & 0.845 \\
+  Hybrid RRF + max.\ 2 chunks/document (deployed) & structure-aware & \textbf{0.859} & \textbf{0.675} & \textbf{0.873} \\
+  Hybrid RRF + max.\ 2 chunks/document & recursive & 0.768 & 0.613 & 0.775 \\
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+With raw dense retrieval, recursive chunks were better: the 95 structure-aware table-row chunks are short and
+near-identical. With fusion and the per-document cap the ranking reverses, because one row is one chunk that
+BM25 matches on exact codes. On 16 labelled held-out questions written after tuning, the deployed hybrid only
+tied raw dense retrieval (Hit@5 0.750; MRR@5 0.531 vs.\ 0.635) \ev{E7}: part of the development gain was
+overfitting. These figures were not re-measured on the deployed release.
+
+% ---------------------------------------------------------------------------
+\section{Agent architecture and conversational processing}\label{sec:agents}
+\textbf{Request flow.} Workflow 03 (17 nodes, Fig.~\ref{fig:agents}) receives every request on
+\code{/webhook/assistant}. Uploads go to the Form-Filling Helper, or to the Dossier Validator with
+\code{mode: dossier}. Text goes to the Intent Router, whose decision either produces a direct reply
+(clarification, courtesy, limits) or continues to the RAG Retriever and then to the Checklist Builder or the
+Grounded Answer service. Every agent call has an error branch that returns a structured \code{503} naming the
+failed agent. Workflow 02 exposes retrieval only; workflow 01 (download and index) is inactive \ev{E1}.
+
+\begin{figure}[!htb]
   \centering
   \resizebox{\textwidth}{!}{\input{figures/agents.tex}}
-  \caption{n8n workflow 03 (17 nodes): boxes are HTTP nodes calling one backend agent, diamonds are IF nodes, dashed red arrows are error outputs. $^\ast$Uploads with \code{mode: dossier}.}
+  \caption{n8n workflow 03: boxes are HTTP nodes calling one backend endpoint, diamonds are IF nodes, dashed
+  red arrows are error outputs. $^\ast$Uploads with \code{mode: dossier}.}
   \label{fig:agents}
 \end{figure}
 
-\begin{itemize}
-\item \textbf{Intent Router.} Language detection (including Latin-script Derja via digit-letters such as
-  \emph{3, 7, 9}), keyword rules for procedure, intent and application type (first, renewal, loss/theft/damage,
-  modification, residence), and a \emph{dialogue state} carried by the client: category, hints, declared
-  documents, RNE code and legal subject. Missing facts that change the answer (application type, residence
-  for passports; the act for an article number) trigger a targeted clarification. Requests to \emph{certify}
-  that a text is in force or that a file will be accepted or is complete receive a fixed reply explaining what
-  cannot be certified. Mistral (\code{intent\_router@v1}) is called only when no rule identifies the procedure.
-\item \textbf{RAG Retriever} (Section~4). \textbf{Checklist Builder.} Selects the official scenario and quotes
-  its complete sections; compares French and Arabic amounts and warns on discrepancies; translates to English
-  only with line- and number-level validation.
-\item \textbf{Grounded Answer.} Escalates by evidence type: (a) for the six legal texts it resolves the act,
-  then the requested article or table (exact number match, IDF ranking that ignores the act's own title words,
-  and a cross-lingual search vocabulary so that an English question can select an Arabic article), and quotes
-  it verbatim, refusing when the article does not exist; questions about what an official form says quote the
-  form's printed instructions the same way; (b) otherwise an \emph{answerability gate} requires
-  IDF-weighted lexical support of the question in the evidence; (c) Mistral generates an answer from numbered
-  passages; (d) answers citing no or non-existent passages are replaced by quoted passages, and every number
-  written with digits must occur in the cited passages (digits or number words), otherwise its sentence is
-  removed or the answer refused.
-\item \textbf{Form-Filling Helper} and \textbf{Dossier Validator} (Section~\ref{sec:mm}).
-\end{itemize}
-
-\textbf{Is it a multi-agent system?} Measured against the implementation, the system is an
-\emph{orchestrated} multi-agent architecture, not an autonomous one: no agent plans, negotiates or selects
-tools at run time. Two agents generate text with an LLM (grounded answer; checklist translation), the router
-uses one as a fallback classifier, and three are deterministic services (retriever, form helper, dossier
-validator, which itself composes three other agents). The separation is justified by task heterogeneity:
-lists must be complete and verbatim, procedure codes are keys, legal provisions must not be paraphrased by a
-7B model, forms need geometry and OCR, and readiness must never be certified by a model. The same project
-shows the cost of a single generic path: before the corrections, RNE follow-ups and legal questions went
-through one generic retrieve-then-generate agent, which produced source-only replies for all 190 contextual
-RNE questions and contained the official legal passage in 1 of 30 legal questions (Section~\ref{sec:eval}).
-
-\begin{table}[H]
+\begin{table}[!htb]
   \centering\footnotesize
-  \caption{Components classified from the implementation (not from their names).}\label{tab:classes}
-  \begin{tabularx}{\textwidth}{@{}l X l l@{}}
+  \caption{Components classified from the implementation: what each decides and whether an LLM is involved.}\label{tab:classes}
+  \begin{tabularx}{\textwidth}{@{}P{2.9cm} Y P{3.2cm} P{2.3cm}@{}}
   \toprule
-  Component & Decision it owns & LLM use & Classification \\
+  Component & Decision it owns & LLM use & Class \\
   \midrule
-  n8n workflow 03 & Branching on file, mode and \code{next\_agent}; error replies & none & orchestrator \\
-  Intent Router & Procedure, intent, hints, next agent, clarification; dialogue state & fallback only & tool-using specialised agent \\
-  RAG Retriever & Which passages are evidence (fusion, exact code key) & none (embeddings) & deterministic service \\
-  Checklist Builder & Which official scenario and sections to quote; conflict warnings & FR$\rightarrow$EN only & LLM-powered component \\
-  Grounded Answer & Extract, generate or refuse, according to the evidence & Mistral 7B & tool-using specialised agent \\
-  Form-Filling Helper & Form identity and field statuses & none & deterministic service \\
-  Dossier Validator & Readiness report; composes three other agents & none & deterministic service \\
+  n8n workflow 03 & Branching on file, mode and next agent; error replies & none & orchestration \\
+  Intent Router (+ language, dialogue, conversation rules) & Language, procedure, intent, application type, clarification questions, courtesy replies, dialogue state & fallbacks only (intent, language and dialogue prompts) & rule-first, LLM fallback \\
+  RAG Retriever & Which passages are evidence (fusion, exact code key) & none (embeddings) & deterministic \\
+  Checklist Builder (+ RNE registration) & Official scenario and sections to quote; legal form $\rightarrow$ official RNE rows; FR/AR discrepancy warnings & FR$\rightarrow$EN translation only & deterministic core \\
+  Grounded Answer (+ legal extractor, gate, verifiers) & Quote an article/form, generate, or refuse & \code{grounded\_answer} (Mistral) & LLM-driven, verified \\
+  Form-Filling Helper & Form identity; field status and role & none & deterministic \\
+  Dossier Validator & Readiness report from field statuses and quoted requirements & none & deterministic \\
   \bottomrule
   \end{tabularx}
 \end{table}
 
-\textbf{Prompt engineering.} Prompts are versioned YAML templates (\code{prompts/<name>/<version>.yaml}) with
-input variables, model role, decoding options and output constraints; a registry selects the active version
-and every response records its \code{prompt\_ref}. All templates are reproduced in Annex~\ref{app:prompts}.
-Iterations were measured (Table~\ref{tab:prompts}): \code{grounded\_answer} v1$\rightarrow$v2 raised the
-token limit after an Arabic answer was cut and raised acceptance from 0.667 to 0.750 and language consistency
-to 1.000, but verbatim evidence fell from 3/11 to 1/11 as the model paraphrased more; v3 (quote before
-explaining) reached only 2/11 at +28\,\% latency and was \emph{not adopted}. Controlled experiments on identical inputs (Annex~\ref{app:prompt_experiments}) measured every other key prompt:
-the router prompt raised category accuracy from 0.714 (labelled technique-free baseline) to 0.881 on 84 questions
-but not Derja intent; the dialogue extractor's versions removed 15 invented scenario facts (v1$\rightarrow$v2) and
-made 18/18 outputs schema-valid (v3); the translation prompt raised validator-accepted checklists from 4/11 to 10/11.
-The conclusion of these experiments was architectural: for legal text, no prompt version made a 7B model's
-paraphrase reliable, so legal answers are now extracted rather than generated.
+\textbf{Conversational processing.} The bridge stores a dialogue state per chat (procedure, application type,
+residence, declared documents, RNE code or legal form, pending clarification) and sends it with each message;
+the router resolves follow-ups such as ``et les frais ?'' against it. The response language is detected per
+message from marker words and Arabizi digit-letters; the model fallback is used only for long Latin-script
+messages with no marker. Facts that change the answer trigger targeted clarifications: application type and
+residence for passports, the legal form for an RNE registration (each form maps to its official table rows),
+the act for an article number.
+
+\textbf{Document assistance.} Form templates are derived from the official blank PDFs: every dot-leader row is
+a field labelled by the adjacent printed text. Digital PDFs are compared geometrically; scans and photos are
+deskewed, read with Tesseract (Arabic and French), aligned to the blank form by a RANSAC homography
+\cite{fischler1981ransac} over anchor words and compared by ink density per field. For the two Interior forms,
+each field has a role: \emph{administration-only} fields after the printed ``reserved for the administration''
+heading are never reported; spouse fields, the former card number and other nationalities are reported
+``if applicable''; boxes, check boxes and the signature are listed for manual checking. The roles of conditional
+fields are an interpretation of the printed labels, not a printed rule \ev{E5}. The Dossier Validator keeps field
+statuses, verbatim official requirements and completeness apart, and never certifies completeness.
+
+\textbf{Why this architecture fits the use case.} (i)~It separates conversational wording from official
+evidence: lists, table rows and legal articles are quoted, not paraphrased. (ii)~Routing decisions and failures
+are visible as n8n branches and as metadata in the logs. (iii)~Each service has a typed HTTP contract and is
+tested independently (1399 unit tests). (iv)~Text and document tasks need different machinery (retrieval vs.\
+OCR and geometry). (v)~Generation is confined to one fenced path. The system is therefore an
+\emph{orchestrated} architecture of specialised services, not an autonomous multi-agent system: no component
+plans, negotiates or selects tools at run time, and only the Grounded Answer path and the fallbacks call an LLM.
+Before this separation, a single retrieve-then-generate path returned source-only replies to all 190 contextual
+RNE questions and fabricated a legal provision behind a valid citation \ev{E9}.
+
+\textbf{Prompt engineering.} Prompts are versioned YAML files (\code{prompts/<name>/<version>.yaml}) with
+input variables, decoding options and output constraints; a registry selects the active version, versions are
+never edited once evaluated, and each response records the \code{name@version} it used. Six families and ten
+versions exist; Annex~\ref{app:prompts} reproduces all of them and Annex~\ref{app:prompt_experiments} the
+before/after experiments.
 
 % ---------------------------------------------------------------------------
-\section{Multimodal processing and dossier validation}\label{sec:mm}
-\textbf{Form analysis.} Field templates are derived from the official blank forms RNE F-001 and F-002: every
-dot-leader line is a field labelled by the adjacent French and Arabic text. Digital PDFs are checked
-geometrically; for photos and scans the page is deskewed, OCR'd with Tesseract \code{ara+fra}, aligned to the
-blank form by a RANSAC homography \cite{fischler1981ransac} over anchor words, and the ink in each field band
-is compared with the blank form (OCR text alone is unusable on dot leaders). Uploads (PDF, PNG, JPEG, Telegram
-photos; at most 10\,MB; signature-checked) are processed in memory and never indexed.
-
-\textbf{Innovation: Smart Administrative Dossier Validator.} With \code{mode: dossier} (Telegram
-\code{/dossier\_check}), the validator keeps three notions apart: \emph{form-field status} (\code{filled},
-\code{missing}, \code{unreadable}, or \code{cannot\_verify} for signatures and checkboxes); \emph{official
-requirements}, quoted verbatim with a status (\code{supported\_by\_official\_source}, \code{not\_verified},
-\code{official\_requirement\_unavailable}), e.g.\ the form's own statement that e-mail and mobile number are
-mandatory and the matching fee row; and \emph{completeness}, which is never certified: no official list of RNE
-supporting documents exists, so the report says completeness cannot be assessed instead of inventing a list.
-It reports statuses, never field values. Validated on the two official forms (blank, partially filled with
-placeholder text, rotated, perspective-distorted renders); \emph{real handwriting and photographs were not
-evaluated}, and speech input is not implemented.
-
-% ---------------------------------------------------------------------------
-\section{Experimental evaluation and discussion}\label{sec:eval}
-\textbf{Datasets.} (i) A development set of 84 questions (34 FR, 26 EN, 11 AR, 13 Derja) whose relevance
-labels are evidence spans verified verbatim against the official text (69 verified, 13 without answer in the
-corpus); human review of the labels is pending. (ii) 20 held-out questions written after all tuning and
-evaluated once. (iii) An independent coverage audit of 846 cases (728 end-to-end through n8n) derived from
-every indexed document: RNE rows with and without Telegram-style dialogue context, guide scenarios, legal
-questions, multi-turn, multilingual, adversarial and upload cases. All checks are deterministic (no LLM
-judge); citation validity is checked against the manifest (URL and SHA-256).
-
-\begin{table}[H]
-  \centering\small
-  \caption{Retrieval on the 71 development questions with verified labels ($k=5$).}\label{tab:retrieval}
-  \input{tables/retrieval.tex}
-\end{table}
-
-\textbf{Retrieval and chunking (Tables~\ref{tab:retrieval}, \ref{tab:chunks}).} With raw dense retrieval,
-recursive chunks beat structure-aware chunks (Hit@5 0.817 vs.\ 0.732): the 95 table-row chunks are
-near-identical and short. With routing, fusion and the per-document cap the ranking reverses
-(structure-aware: Hit@5 0.873, MRR@5 0.675) because one row is one chunk, which BM25 matches on exact codes.
-Each component was kept only after a measured gain (fusion $+0.127$ Hit@5, cap $+0.028$; a cap of 3 was
-worse). Latin-script Derja rose from 0.000 to 0.714 Hit@5 on a parallel subset (Fig.~\ref{fig:ml}), but the
-Arabizi map was built after observing failures, so this gain is optimistic. On the held-out set the hybrid
-ties raw dense retrieval (Hit@5 0.750, MRR@5 0.531 vs.\ 0.635; Table~\ref{tab:heldout}): part of the
-development gain was overfitting.
-
-\begin{minipage}[t]{0.40\textwidth}
-\vspace{0pt}
-\begin{table}[H]
-  \centering\small
-  \caption{Chunking statistics.}\label{tab:chunks}
-  \input{tables/chunks.tex}
-\end{table}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.55\textwidth}
-\vspace{0pt}
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{axis}[ybar, width=\linewidth, height=4.2cm, bar width=5pt, ymin=0, ymax=1.1,
-  symbolic x coords={fr,en,ar,derja,derja-latin}, xtick=data, ylabel={Hit@5}, ylabel style={font=\scriptsize},
-  tick label style={font=\scriptsize}, legend style={font=\tiny, at={(0.5,1.02)}, anchor=south, legend columns=3},
-  enlarge x limits=0.15, cycle list={{fill=gray!40,draw=gray},{fill=orange!60,draw=orange!80!black},{fill=accent!70,draw=accent}}]
-\input{tables/script_chart.tex}
-\end{axis}
-\end{tikzpicture}
-\caption{Parallel subset: the same 7 facts asked in each language and script.}\label{fig:ml}
-\end{figure}
-\end{minipage}
+\section{Evaluation methodology and results}\label{sec:eval}
+All checks are deterministic: no LLM judge is used. Table~\ref{tab:eval} gives each result with its release
+and environment; results from different suites are not summed, because their cases overlap.
 
 \begin{table}[H]
   \centering\footnotesize
-  \caption{Prompt iteration on the questions routed to the Grounded Answer agent (same passages; runs A and B).}\label{tab:prompts}
-  \input{tables/prompts.tex}
-\end{table}
-
-\begin{table}[H]
-  \centering\small
-  \caption{Development vs.\ held-out results before and after the reliability changes of the first evaluation round.}\label{tab:heldout}
-  \input{tables/heldout.tex}
-\end{table}
-
-\textbf{Answer quality and evidence verification.} On the 84 development items the chain cites only real
-manifest entries (145/145), never quotes an item absent from the official text, and rejects all unsupported
-requests (12/12); intent accuracy is 0.819. Two held-out failures, a number absent from its passages (H14) and
-an uncovered ``carte grise'' answered with ID-card evidence (H17), motivated a deterministic numeric verifier,
-which removed every unsupported number on five evaluation sets (Table~\ref{tab:verif}); an LLM topic verifier
-was unstable and is disabled. These two held-out items are no longer independent.
-
-\begin{table}[H]
-  \centering\small
-  \caption{Without (off) and with (on) the numeric evidence verifier. $^a$Contaminated items. $^b$Second evaluation. $^c$Evaluated once.}\label{tab:verif}
-  \input{tables/verification.tex}
-\end{table}
-
-\textbf{Independent audit and corrections (Table~\ref{tab:final}).} The 728-case end-to-end audit showed that
-these metrics hid two critical failures. First, every RNE fee or deadline question sent with Telegram-style
-dialogue context returned only an icon and source links: the dialogue query dropped the procedure code and a
-section filter discarded the table row. Second, a question on Article~16 of Law 2018-52 received a fabricated
-provision with an invented quotation behind a \emph{valid} citation: retrieval missed the article (written
-\emph{``al-fasl16''} without a space), the gate accepted because the topic was in scope, and the numeric
-verifier accepted because the numbers came from the question. Citation validity, 100\,\% in every run, was
-therefore no evidence of correctness. The corrections: exact-key retrieval for RNE codes, preservation of codes
-and legal subjects in the dialogue state, a shared multilingual vocabulary for CIN and passport application
-types, verbatim legal-article and table extraction with refusal of non-existent articles, and per-member
-sessions in Telegram groups.
-
-\begin{table}[H]
-  \centering\small
-  \caption{End-to-end results before (original production) and after the corrections (final candidate), same original audit cases through n8n. Targeted checks test specific official facts; they are not an overall accuracy estimate.}\label{tab:final}
-  \input{tables/final_regression.tex}
-\end{table}
-
-\begin{table}[H]
-  \centering\footnotesize
-  \caption{Evaluation overview by metric and data split (final candidate unless stated; dev.\ and held-out values are from the first evaluation round, whose retrieval code is unchanged).}\label{tab:overview}
-  \begin{tabularx}{\textwidth}{@{}l X X X@{}}
+  \caption{Evaluation evidence. Isolated: separate stack sharing no state with production. Production: requests
+  through the production n8n workflow 03 with the Telegram API mocked inside a disposable container.}\label{tab:eval}
+  \begin{tabularx}{\textwidth}{@{}P{2.7cm} P{3.0cm} Y P{3.5cm} l@{}}
   \toprule
-  Metric & Development (84) & Held-out (20) & Independent audit replay (728, through n8n) \\
+  Evaluation & Release, environment & Suite and cases & Result & Evid. \\
   \midrule
-  Retrieval Hit@5 / MRR@5 & 0.873 / 0.675 & 0.750 / 0.531 & -- \\
-  Intent routing & 0.819 & 0.950 & 691/728 agree with original labels \\
-  Citation correctness (manifest URL) & 145/145 & 31/31 & 1547/1547 \\
-  Targeted official facts / legal articles & -- & -- & 480/480 facts; 26/30 legal passages; 10/10 form instructions \\
-  Refusal of unsupported requests & 12/12 & 3/4 & birth certificate 4/4; non-existent article refused \\
-  Multi-turn continuity & -- & -- & 10/10 probe sequences keep or reset context correctly \\
-  Multilingual routing (5 variants) & -- & -- & 87/90 scenario probes correct, 2 clarifications, 1 wrong \\
-  Multimodal (official forms) & -- & -- & 8/8 recognised; 6/6 invalid files handled \\
+  Unit tests & \code{3d84557} (deployed code), local & 1406 tests, integration excluded & 1399 passed, 7 skipped & E4 \\
+  Integration tests & \code{12828f3}, isolated & 40 tests (Qdrant-writing test excluded) & 40/40 & E9 \\
+  Retrieval, development & retrieval of 16 Oct., isolated & 71 labelled questions & Hit@5 0.873, MRR@5 0.675 & E7 \\
+  Retrieval, held-out & same & 16 labelled questions & Hit@5 0.750, MRR@5 0.531 & E7 \\
+  Answers, dev.\ / held-out & 16 Oct., isolated & 84 / 20 questions & citations 145/145, 31/31; unsupported refused 12/12, 3/4 & E8 \\
+  Full-corpus audit replay & \code{12828f3}, isolated n8n & 728 end-to-end cases & targeted official facts 480/480; legal passage 26/30; intent 691/728 & E9 \\
+  Production, Phases F+G & \code{rc-20261018-g}, production & session 30, coverage 60, conversational 22, language 26, probes 16, smoke 9, retrieval API 5 & all passed (30/30, 60/60, 22/22, 26/26, 16/16, 9/9, 5/5) & E2 \\
+  Forms (scans) & \code{3d84557}, isolated & 36 CIN and 36 passport scan cases & 72/72 recognised; 22/24 completed scans exact & E5 \\
+  Manual Telegram & \code{rc-20261018-e}, production & owner's session, 18 Oct.\ 15:30--16:04 & 6 defects (D1--D6), fixed in F+G & E6 \\
+  Manual Telegram & \code{rc-20261018-g} & --- & \textbf{not yet performed} & E1 \\
   \bottomrule
   \end{tabularx}
 \end{table}
 
-\textbf{Residual defects and remaining limits.} Four residual defects found by the replay were fixed
-deterministically: follow-ups such as ``Et si mon cas ne correspond pas~?'' now receive a clarification that
-lists the official scenario headings of the current procedure (12 cases); the scope of the RNE formalities
-table is computed from its 95 official rows instead of an LLM summary; the Arabic ``duplicate'' wording
-selects the official loss/theft/damage scenario in both request shapes; legal answers start with a header in
-the user's language (act, article, original language, no official translation) and the most relevant verbatim
-sentence. Legal answers remain long when the relevant provision is long (fee tables) and are not translated,
-because local translation of Arabic legal text was unreliable; article selection is reliable for explicit
-article or table numbers and heuristic otherwise. Of the 72 cases whose intent label disagreed on the audited
-candidate, 49 now agree, 22 differ without changing a correct answer and 1 has a defective reference passage. \textbf{Latency} (final candidate alone on the GPU, median of 3): RNE row 0.08\,s,
-follow-up 0.08\,s, legal article 0.25\,s, French checklist 0.19\,s, English checklist 17.5\,s (translation),
-PDF form check 0.16\,s, image OCR 1.72\,s, dossier 0.28\,s. Running two stacks on the shared GPU made
-LLM- and embedding-dependent requests 10--200 times slower.
+\textbf{Datasets.} The development set has 84 questions (34 FR, 26 EN, 11 AR, 13 Derja, 9 of them in Latin
+script); every relevance label is an evidence span verified verbatim against the extracted official text, and
+13 items have no answer in the corpus. The held-out set (20 questions, 16 labelled) was written after all
+tuning. The 728-case audit was generated from every indexed document (RNE rows with and without dialogue
+context, guide scenarios, legal, multi-turn, multilingual, adversarial and upload cases). Human review of the
+labels is still pending.
 
-\textbf{Release validation (18 October).} A parallel multilingual run (36 questions, five languages and scripts, through
-n8n) exposed seven failures, all vocabulary gaps: no lateness concept, so the criminal-sanction articles outranked
-Art.~51 of Law 2018-52 (the late penalty), and unrecognised indefinite Arabic and Latin-script Derja names of two
-decrees; a vehicle-registration question was also answered with ID-card evidence. Each was fixed with search
-vocabulary or a refusal rule (no legal content) and regression tests. The release candidate has no failure on that
-run (18 official spans, 4 correct refusals, 14 clarification questions) and reproduces every metric of
-Table~\ref{tab:final} on the 728 replayed cases; the items that motivated the fixes are not independent evidence.
+\textbf{Correctness and groundedness.} Correctness is measured only where a reference exists: targeted checks
+require the exact official span or table row in the answer (480/480 facts in the replay), and legal answers must
+contain the official passage (26/30, $\geq0.8$ shingle containment) \ev{E9}. A valid citation is not evidence of
+correctness: in the original production audit, a fabricated provision of Law 2018-52 carried a citation that
+was valid, and citation validity was 100\,\% in every run while that defect existed. Retrieval success is likewise
+not end-to-end correctness: on the development set the verified evidence span appears in only 0.565 of answers
+even though Hit@5 is 0.873 \ev{E8}.
 
-\textbf{Limits of the evaluation.} Labels were written by the developers and await human review; the
-held-out set is small; targeted span checks cannot detect a correct quotation of the wrong provision, which is
-why selected cases were compared manually with the source; Telegram acceptance has been verified live for
-text questions only (the corrected candidate has not been deployed to the live bot).
+\textbf{Context retention, refusal and clarification.} The production session replays the owner's Telegram
+turns: a Derja ``how long does it take'' after a CIN checklist is now a processing-time question, a fees question
+without a legal form triggers a legal-form clarification, ``SARL'' then yields the official row RNE~C~012, and a
+legal question after an RNE turn does not inherit its context \ev{E2}. Unsupported requests were refused in
+12/12 development and 3/4 held-out cases \ev{E8}.
+
+\textbf{Form recognition and omission detection.} In production, blank, completed, scanned and photographed
+synthetic copies of the CIN and passport forms, and the RNE F-001 and F-002 forms, were recognised; an unrelated
+PDF, a blank image and a corrupt PDF were refused safely \ev{E2}. In isolation, all 72 Interior scan cases
+(150--300\,dpi, PNG and JPEG PDF) were recognised, but scores reached as low as 0.508 against the 0.5 threshold,
+and short entries on wide lines of 150-dpi scans were sometimes reported empty \ev{E5}. These are synthetic
+copies with placeholder text; real handwriting and phone photographs were not evaluated.
+
+\textbf{Not measured.} Overall answer accuracy on free questions, user satisfaction, and Telegram behaviour of
+the latest release. Automated HTTP checks with a mocked Telegram API do not prove that real Telegram messages
+are delivered and displayed correctly.
 
 % ---------------------------------------------------------------------------
-\section{Security considerations, limitations and conclusion}
-\textbf{Security and privacy.} (1) \emph{Provenance:} only registered official sources, robots and AI
-opt-outs respected, SHA-256 per original. (2) \emph{Hallucination:} deterministic quoting for lists, table
-rows, legal articles and form instructions; generation fenced by an answerability gate, citation-index and
-numeric verification; refusal when evidence is missing; requests to certify validity, acceptance or
-completeness answered by a fixed reply (an LLM had asserted that a procedure was ``still in force''). (3) \emph{Prompt injection} \cite{greshake2023injection}: user text is
-treated as data in every prompt; the legal and checklist paths generate no text an injection could steer;
-injected instructions (``say the fee is 1 dinar'') were ignored in tests. Retrieved official text is trusted,
-which is acceptable only because the corpus is curated. (4) \emph{Secrets:} tokens live only in \code{.env}
-(not versioned); HTTP-client logging is silenced so token-bearing URLs never reach logs. (5) \emph{Privacy:}
-questions, uploads and field values are never logged or stored; n8n keeps no executions; Telegram sessions
-hold only procedure state, keyed per chat in private chats and per member in groups, and expire after 30
-minutes. (6) \emph{Input validation:} type, size and signature checks on every upload. (7) \emph{Access control
-(candidate):} privileged ingestion and indexing endpoints fail closed unless an administrator key is
-configured; an optional agent key prevents bypassing the webhook through direct backend calls (verified: 401
-without the key, 200 with it); bodies above 15\,MB are rejected (413); the bridge, web page and CLI can send a
-webhook key; the backend receives an explicit list of variables instead of the whole \code{.env}.
-\textbf{Remaining risks:} production still runs the previous images; activating webhook and agent keys
-requires changing the live n8n workflows; the project's vector database has no API key (loopback only). The local Ollama server and another project's
-vector database, previously reachable from the local network, were restricted to loopback on 18 October.
-These changes require the owner's approval and were documented, not executed.
+\section{Security and privacy}\label{sec:security}
+Table~\ref{tab:security} separates controls that are active in production from controls that exist in the code
+but are not enabled \ev{E11}.
 
-\textbf{Limitations.} A small corpus (12 documents) whose legal currency is unverified; no official RNE list of
-supporting documents; retrieval weakest for Latin-script Derja; LLM paths slow on 4\,GB; no evaluation on
-real handwriting or photographs; birth certificates and the passport application form uncovered; the
-architecture is orchestrated rather than autonomous by design.
+\begin{table}[!htb]
+  \centering\footnotesize
+  \caption{Security and privacy controls and their production status on 18 October 2026.}\label{tab:security}
+  \begin{tabularx}{\textwidth}{@{}P{3.0cm} Y P{3.3cm}@{}}
+  \toprule
+  Control & Implementation & Production status \\
+  \midrule
+  Secrets & Telegram token and n8n encryption key only in \code{.env} (not versioned); each container receives an explicit variable list; the n8n API key used by local administration scripts is stored with Windows DPAPI and never printed & active \\
+  Network exposure & All published ports bound to 127.0.0.1; services on an internal Compose network; Ollama listens on loopback & active \\
+  Privileged endpoints & \code{/ingestion/run} and \code{/index/run} fail closed unless an admin key is set & active (no key set: disabled) \\
+  Agent and webhook keys & Optional \code{X-Agent-Key} on backend agents; optional webhook key sent by the bridge & available, \textbf{not enabled} \\
+  Qdrant & API key supported by configuration & \textbf{not enabled} (loopback only) \\
+  Containers & Backend and bridge run as a non-root user, not privileged & active; no read-only root filesystem or dropped capabilities \\
+  Uploads & PDF/PNG/JPEG only, magic-number check, 10\,MB limit (bridge and backend), 15\,MB request limit; processed in memory; OCR through stdin/stdout without temporary files; never indexed & active \\
+  Logs & Backend logs metadata only (method, word count, MIME type, routing); HTTP-client logging silenced so token-bearing URLs are not logged & active; 0 test values found in the production log \ev{E2} \\
+  Retention & Bridge sessions hold procedure state only and expire after 30 minutes; workflow 03 stores no execution data & active; workflow 02 uses n8n defaults (execution storage not verified) \\
+  \bottomrule
+  \end{tabularx}
+\end{table}
 
-\textbf{Conclusion.} Grounding every administrative statement in verbatim official text, measuring retrieval
-against verified evidence and refusing when the corpus is silent produced an assistant whose answers can be
-traced to their source. The main lesson is methodological: aggregate metrics (citation validity, faithfulness
-of numbers) stayed perfect while a user-facing path returned empty answers and a legal provision was
-fabricated. Only an exhaustive end-to-end audit with request shapes matching the real channel revealed it,
-and the fix that worked was architectural (extract, do not paraphrase) rather than a better prompt.
+\textbf{Prompt injection and untrusted input} \cite{greshake2023injection}. User text is delimited as data in
+every prompt, and model outputs are validated against enumerations, schemas, citation indices and source
+numbers. The checklist, RNE and legal paths generate no text that an injection could steer, and uploaded
+documents are never placed in a prompt: form checking is entirely deterministic. Retrieved official text is
+trusted, which is acceptable only because the corpus is curated and stored with hashes.
+
+\textbf{Remaining risks.} Telegram processes messages on third-party servers, so local inference does not make
+the channel private; users are told to avoid identity numbers. Anyone with access to the host can call the
+backend, n8n and Qdrant without a key. Recognising a form does not certify legal completeness or that the form
+is still in force. The admin key still needs rotation before workflow 01 is ever activated.
+
+% ---------------------------------------------------------------------------
+\section{Limitations, future work and conclusion}\label{sec:conclusion}
+\textbf{Limitations.} (1)~\emph{Corpus and freshness:} 12 indexed documents whose legal applicability is
+unverified; no official RNE list of supporting documents exists; the two Interior form templates are not in the
+search index, and their byte identity with the ministry's files could not be checked because automated retrieval
+is disallowed. (2)~\emph{Conflicting sources} are surfaced, not resolved. (3)~\emph{Retrieval} gains did not
+transfer to the held-out set, and Latin-script Derja remains the weakest language. (4)~\emph{OCR} recognition
+is close to its threshold on poor scans, and real handwriting was not evaluated. (5)~\emph{Form roles} for
+conditional fields are interpreted from printed labels. (6)~\emph{Dossier checks} are informational: they flag
+possible omissions and never certify readiness. (7)~\emph{Manual acceptance} of the latest release in Telegram is
+pending.
+
+\textbf{Prioritised future work.} (1)~Manual Telegram acceptance of the deployed release with synthetic
+documents. (2)~Human review of evaluation labels and a larger held-out set. (3)~Enabling the agent, webhook and
+Qdrant keys and container hardening. (4)~Evaluation on real scans and handwriting. (5)~A scheduled freshness
+check of official sources. (6)~A comparative benchmark of local generation and embedding models.
+
+\textbf{Conclusion.} The main contribution is an assistant whose administrative statements can be traced to
+verbatim official text, with refusals or clarifications where the sources are silent or the case is ambiguous.
+The main lesson is methodological: aggregate metrics such as citation validity stayed perfect while a user-facing
+path returned empty answers and a legal provision was fabricated. Only end-to-end tests shaped like real
+requests, including the owner's own Telegram session, exposed these failures, and the fixes that worked were
+architectural (extract instead of paraphrase, ask instead of guess) rather than better prompts.
 
 \small
 \bibliographystyle{plain}
@@ -446,7 +423,10 @@ and the fix that worked was architectural (extract, do not paraphrase) rather th
 \clearpage
 \normalsize
 \appendix
+\begin{center}\fbox{\parbox{0.95\textwidth}{\centering\bfseries Annexes (outside the 8-page limit of the main report):
+A~Prompt library \quad B~Evidence index \quad C~Prompt before/after experiments}}\end{center}
 \input{appendices/prompt_library.tex}
+\input{appendices/evidence_index.tex}
 \input{appendices/prompt_experiments.tex}
 
 \end{document}

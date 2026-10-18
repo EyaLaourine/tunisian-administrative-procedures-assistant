@@ -1,0 +1,72 @@
+national blank    dpi=150 kb=56 image/png rec=True national score=0.697 ocr_ink missing=10/10 if_app=3 notfound=0 3.0s
+national blank    dpi=150 kb=228 applicati rec=True national score=0.788 ocr_ink missing=10/10 if_app=3 notfound=0 8.7s
+national blank    dpi=200 kb=77 image/png rec=True national score=0.697 ocr_ink missing=10/10 if_app=3 notfound=0 4.5s
+national blank    dpi=200 kb=326 applicati rec=True national score=0.515 ocr_ink missing=10/10 if_app=3 notfound=0 10.5s
+national blank    dpi=300 kb=128 image/png rec=True national score=0.788 ocr_ink missing=10/10 if_app=3 notfound=0 6.6s
+national blank    dpi=300 kb=558 applicati rec=True national score=0.788 ocr_ink missing=10/10 if_app=3 notfound=0 8.1s
+national required dpi=150 kb=64 image/png rec=True national score=0.727 ocr_ink missing=0/10 if_app=3 notfound=0 2.8s
+national required dpi=150 kb=233 applicati rec=True national score=0.515 ocr_ink missing=3/10 if_app=3 notfound=0 9.1s MISSING=['اللقب', 'الإسم', 'المهنة']
+national required dpi=200 kb=87 image/png rec=True national score=0.545 ocr_ink missing=0/10 if_app=3 notfound=0 5.1s
+national required dpi=200 kb=334 applicati rec=True national score=0.667 ocr_ink missing=0/10 if_app=3 notfound=0 9.9s
+national required dpi=300 kb=145 image/png rec=True national score=0.667 ocr_ink missing=0/10 if_app=3 notfound=0 6.9s
+national required dpi=300 kb=572 applicati rec=True national score=0.667 ocr_ink missing=0/10 if_app=3 notfound=0 8.9s
+national full     dpi=150 kb=66 image/png rec=True national score=0.818 ocr_ink missing=0/10 if_app=0 notfound=0 2.5s
+national full     dpi=150 kb=235 applicati rec=True national score=0.788 ocr_ink missing=3/10 if_app=1 notfound=0 9.2s MISSING=['اللقب', 'الإسم', 'المهنة']
+national full     dpi=200 kb=92 image/png rec=True national score=0.515 ocr_ink missing=0/10 if_app=0 notfound=0 5.5s
+national full     dpi=200 kb=336 applicati rec=True national score=0.636 ocr_ink missing=0/10 if_app=0 notfound=0 13.9s
+national full     dpi=300 kb=150 image/png rec=True national score=0.636 ocr_ink missing=0/10 if_app=0 notfound=0 7.4s
+national full     dpi=300 kb=578 applicati rec=True national score=0.636 ocr_ink missing=0/10 if_app=0 notfound=0 8.2s
+passport blank    dpi=150 kb=85 image/png rec=True passport score=0.683 ocr_ink missing=10/10 if_app=4 notfound=0 3.7s
+passport blank    dpi=150 kb=304 applicati rec=True passport score=0.698 ocr_ink missing=10/10 if_app=4 notfound=0 12.7s
+passport blank    dpi=200 kb=115 image/png rec=True passport score=0.556 ocr_ink missing=10/10 if_app=4 notfound=0 6.4s
+passport blank    dpi=200 kb=453 applicati rec=True passport score=0.54 ocr_ink missing=10/10 if_app=4 notfound=0 6.7s
+passport blank    dpi=300 kb=188 image/png rec=True passport score=0.571 ocr_ink missing=10/10 if_app=4 notfound=0 9.6s
+passport blank    dpi=300 kb=763 applicati rec=True passport score=0.635 ocr_ink missing=10/10 if_app=4 notfound=0 6.3s
+passport required dpi=150 kb=93 image/png rec=True passport score=0.698 ocr_ink missing=0/10 if_app=4 notfound=0 4.6s
+passport required dpi=150 kb=309 applicati rec=True passport score=0.556 ocr_ink missing=0/10 if_app=4 notfound=0 7.9s
+passport required dpi=200 kb=126 image/png rec=True passport score=0.571 ocr_ink missing=0/10 if_app=4 notfound=0 7.9s
+passport required dpi=200 kb=460 applicati rec=True passport score=0.571 ocr_ink missing=0/10 if_app=4 notfound=0 8.6s
+passport required dpi=300 kb=206 image/png rec=True passport score=0.619 ocr_ink missing=0/10 if_app=4 notfound=0 9.6s
+passport required dpi=300 kb=780 applicati rec=True passport score=0.667 ocr_ink missing=0/10 if_app=4 notfound=0 7.6s
+passport full     dpi=150 kb=96 image/png rec=True passport score=0.524 ocr_ink missing=0/10 if_app=0 notfound=0 5.1s
+passport full     dpi=150 kb=311 applicati rec=True passport score=0.571 ocr_ink missing=0/10 if_app=0 notfound=0 8.6s
+passport full     dpi=200 kb=130 image/png rec=True passport score=0.587 ocr_ink missing=0/10 if_app=0 notfound=0 7.7s
+passport full     dpi=200 kb=464 applicati rec=True passport score=0.571 ocr_ink missing=0/10 if_app=0 notfound=0 8.1s
+passport full     dpi=300 kb=212 image/png rec=True passport score=0.508 ocr_ink missing=0/10 if_app=0 notfound=0 8.2s
+passport full     dpi=300 kb=787 applicati rec=True passport score=0.683 ocr_ink missing=0/10 if_app=0 notfound=0 7.9s
+f001-nat blank    dpi=150 kb=105 image/png rec=True f001-nat score=0.731 ocr_ink missing=7/7 if_app=0 notfound=0 2.2s
+f001-nat blank    dpi=150 kb=246 applicati rec=True f001-nat score=0.769 ocr_ink missing=7/7 if_app=0 notfound=0 4.2s
+f001-nat blank    dpi=200 kb=141 image/png rec=True f001-nat score=0.769 ocr_ink missing=7/7 if_app=0 notfound=0 3.4s
+f001-nat blank    dpi=200 kb=355 applicati rec=True f001-nat score=0.615 ocr_ink missing=7/7 if_app=0 notfound=0 4.0s
+f001-nat blank    dpi=300 kb=214 image/png rec=True f001-nat score=0.846 ocr_ink missing=7/7 if_app=0 notfound=0 3.4s
+f001-nat blank    dpi=300 kb=570 applicati rec=True f001-nat score=0.846 ocr_ink missing=7/7 if_app=0 notfound=0 3.3s
+f001-nat required dpi=150 kb=110 image/png rec=True f001-nat score=0.769 ocr_ink missing=2/7 if_app=0 notfound=0 2.3s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f001-nat required dpi=150 kb=249 applicati rec=True f001-nat score=0.885 ocr_ink missing=5/7 if_app=0 notfound=0 4.8s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع', 'N° Identité du Déposant / رقم بطاقة هوية المودع', 'Nom et Prénom (s) / الإسم و اللقب']
+f001-nat required dpi=200 kb=149 image/png rec=True f001-nat score=0.846 ocr_ink missing=2/7 if_app=0 notfound=0 2.7s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f001-nat required dpi=200 kb=360 applicati rec=True f001-nat score=0.692 ocr_ink missing=5/7 if_app=0 notfound=0 4.6s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع', 'N° Identité du Déposant / رقم بطاقة هوية المودع', 'Nom et Prénom (s) / الإسم و اللقب']
+f001-nat required dpi=300 kb=226 image/png rec=True f001-nat score=0.846 ocr_ink missing=2/7 if_app=0 notfound=0 3.3s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f001-nat required dpi=300 kb=581 applicati rec=True f001-nat score=0.808 ocr_ink missing=2/7 if_app=0 notfound=0 3.8s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f001-nat full     dpi=150 kb=110 image/png rec=True f001-nat score=0.769 ocr_ink missing=2/7 if_app=0 notfound=0 2.7s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f001-nat full     dpi=150 kb=249 applicati rec=True f001-nat score=0.885 ocr_ink missing=5/7 if_app=0 notfound=0 4.5s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع', 'N° Identité du Déposant / رقم بطاقة هوية المودع', 'Nom et Prénom (s) / الإسم و اللقب']
+f001-nat full     dpi=200 kb=149 image/png rec=True f001-nat score=0.846 ocr_ink missing=2/7 if_app=0 notfound=0 2.7s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f001-nat full     dpi=200 kb=360 applicati rec=True f001-nat score=0.692 ocr_ink missing=5/7 if_app=0 notfound=0 4.2s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع', 'N° Identité du Déposant / رقم بطاقة هوية المودع', 'Nom et Prénom (s) / الإسم و اللقب']
+f001-nat full     dpi=300 kb=226 image/png rec=True f001-nat score=0.846 ocr_ink missing=2/7 if_app=0 notfound=0 3.1s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f001-nat full     dpi=300 kb=581 applicati rec=True f001-nat score=0.808 ocr_ink missing=2/7 if_app=0 notfound=0 3.6s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال']
+f002-leg blank    dpi=150 kb=112 image/png rec=True f002-leg score=0.778 ocr_ink missing=8/8 if_app=0 notfound=0 2.7s
+f002-leg blank    dpi=150 kb=257 applicati rec=True f002-leg score=0.815 ocr_ink missing=8/8 if_app=0 notfound=0 4.9s
+f002-leg blank    dpi=200 kb=151 image/png rec=True f002-leg score=0.963 ocr_ink missing=8/8 if_app=0 notfound=0 3.0s
+f002-leg blank    dpi=200 kb=366 applicati rec=True f002-leg score=0.667 ocr_ink missing=8/8 if_app=0 notfound=0 4.4s
+f002-leg blank    dpi=300 kb=232 image/png rec=True f002-leg score=0.852 ocr_ink missing=8/8 if_app=0 notfound=0 3.2s
+f002-leg blank    dpi=300 kb=592 applicati rec=True f002-leg score=0.889 ocr_ink missing=8/8 if_app=0 notfound=0 4.8s
+f002-leg required dpi=150 kb=118 image/png rec=True f002-leg score=0.852 ocr_ink missing=3/8 if_app=0 notfound=0 2.9s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع']
+f002-leg required dpi=150 kb=262 applicati rec=True f002-leg score=0.852 ocr_ink missing=5/8 if_app=0 notfound=0 4.5s MISSING=['Représantant Légal / الممثل القانوني', 'Dénomination / إسم المؤسسة', 'E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع']
+f002-leg required dpi=200 kb=159 image/png rec=True f002-leg score=0.963 ocr_ink missing=1/8 if_app=0 notfound=0 3.2s MISSING=['Nom du Déposant / إسم و لقب المودع']
+f002-leg required dpi=200 kb=373 applicati rec=True f002-leg score=0.63 ocr_ink missing=5/8 if_app=0 notfound=0 4.5s MISSING=['Représantant Légal / الممثل القانوني', 'Dénomination / إسم المؤسسة', 'E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع']
+f002-leg required dpi=300 kb=246 image/png rec=True f002-leg score=0.889 ocr_ink missing=1/8 if_app=0 notfound=0 3.9s MISSING=['E-mail / البريد الإلكتروني']
+f002-leg required dpi=300 kb=605 applicati rec=True f002-leg score=0.926 ocr_ink missing=1/8 if_app=0 notfound=0 4.3s MISSING=['E-mail / البريد الإلكتروني']
+f002-leg full     dpi=150 kb=118 image/png rec=True f002-leg score=0.852 ocr_ink missing=3/8 if_app=0 notfound=0 3.4s MISSING=['E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع']
+f002-leg full     dpi=150 kb=262 applicati rec=True f002-leg score=0.852 ocr_ink missing=5/8 if_app=0 notfound=0 4.5s MISSING=['Représantant Légal / الممثل القانوني', 'Dénomination / إسم المؤسسة', 'E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع']
+f002-leg full     dpi=200 kb=159 image/png rec=True f002-leg score=0.963 ocr_ink missing=1/8 if_app=0 notfound=0 3.2s MISSING=['Nom du Déposant / إسم و لقب المودع']
+f002-leg full     dpi=200 kb=373 applicati rec=True f002-leg score=0.63 ocr_ink missing=5/8 if_app=0 notfound=0 4.9s MISSING=['Représantant Légal / الممثل القانوني', 'Dénomination / إسم المؤسسة', 'E-mail / البريد الإلكتروني', 'N°GSM / الهاتف الجوال', 'Nom du Déposant / إسم و لقب المودع']
+f002-leg full     dpi=300 kb=246 image/png rec=True f002-leg score=0.889 ocr_ink missing=1/8 if_app=0 notfound=0 3.4s MISSING=['E-mail / البريد الإلكتروني']
+f002-leg full     dpi=300 kb=605 applicati rec=True f002-leg score=0.926 ocr_ink missing=1/8 if_app=0 notfound=0 4.1s MISSING=['E-mail / البريد الإلكتروني']

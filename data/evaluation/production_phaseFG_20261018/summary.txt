@@ -1,0 +1,21 @@
+start 19:17:30Z
+backend: sha256:4d79b517a8902e093d32ac9821eba594942de1b928a10d976fb346c27d735d86 health=healthy restarts=0 started=2026-10-18T19:09:06.386904984Z
+bridge : sha256:c247749d5f7ffdf75fac02fe33e2df58830b73a9ecf7ede718f1432ccc6b7415 3f73414a7eb7 started=2026-10-18T12:24:00.273841374Z restarts=0 (expect c247749d5f7f, started 12:24:00)
+n8n    : sha256:fdce8f852ac7abbb2f31a53170bc3c2eeec45c37c0692a99f2d6c11b3822cd98 started=2026-10-17T11:16:26.228131991Z
+qdrant : sha256:057ee3a8da769fe7310dd3537b4dc7583bf87a95ce8ac43c0af5a46bc580d1fc started=2026-10-15T20:54:34.22384275Z
+health : {"status":"ok","qdrant":true,"ollama":true,"manifest_records":15} (expect manifest_records 15)
+bridge containers: 1 | conflicts: 0
+data config/sources.yaml: matches 3d84557
+data data/raw/manifest.json: matches 3d84557
+data data/raw/interior-national-id-application-form/1ccece129f68_01.pdf: matches 3d84557
+data data/raw/interior-passport-application-form/7e667ead4386_02.pdf: matches 3d84557
+other files vs backup: 31 unexpected differences (data/config/prompts)
+phase F+G session: {"summary": "30/30 turns passed"}
+coverage: {"summary": "60/60 turns passed"}
+conversational: {"summary": "22/22 turns passed"}
+language: {"summary": "26/26 turns passed"}
+probes: passed 16 / 16
+phaseb smoke (WF02+WF03): passed 9 / 9
+wf02 retrieval with valid official citations: 5/5 | median 438 ms
+backend log: lines=771 placeholder=0 base64-pdf=0 arabic-form-label=0 errors=0
+end 19:22:49Z

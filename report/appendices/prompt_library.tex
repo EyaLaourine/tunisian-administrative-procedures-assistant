@@ -8,9 +8,10 @@ This annex reproduces every prompt template of the implementation \emph{verbatim
 \begin{tabularx}{\textwidth}{@{}l c l X@{}}
 \toprule Prompt & Active & Model & Runtime component and trigger \\ \midrule
 \code{dialogue\_understanding} & v3 & \code{mistral:latest} & \code{agents/dialogue.py} (\code{understand}): Telegram dialogue path only, when the rules extract no fact but the message contains a possession/residence cue; every item must quote an exact substring of the message. \\
-\code{evidence\_topic} & v1 & \code{mistral:latest} & \code{agents/verification.py} (\code{EvidenceVerifier.check\_topic}): Disabled by default (\code{EVIDENCE\_TOPIC\_CHECK=false}); kept for experiments. \\
-\code{grounded\_answer} & v2 & \code{mistral:latest} & \code{agents/answer.py} (\code{GroundedAnswerer}): Free questions that are not RNE table rows, not guide checklists and not one of the six legal texts (those are answered by verbatim article extraction, without an LLM). Citations and numbers are verified after generation. \\
+\code{evidence\_topic} & v1 & \code{mistral:latest} & \code{agents/verification.py} (\code{EvidenceVerifier.check\_topic}): Disabled at run time (\code{EVIDENCE\_TOPIC\_CHECK=false} by default); kept for experiments. \\
+\code{grounded\_answer} & v2 & \code{mistral:latest} & \code{agents/answer.py} (\code{GroundedAnswerer}): Free questions that are not RNE table rows, not guide checklists, not legal-article or form questions and not RNE registration questions (those are answered deterministically). Citations and numbers are verified after generation. \\
 \code{intent\_router} & v1 & \code{mistral:latest} & \code{agents/intent\_router.py} (\code{IntentRouter.\_llm\_classify}): Only when no deterministic procedure keyword matches; output validated against fixed enumerations. \\
+\code{language\_identification} & v1 & \code{mistral:latest} & \code{agents/language.py} (\code{\_model\_language}): Only for Latin-script messages of at least four words in which the deterministic markers find no French, English or Arabizi Derja word; any value outside the three accepted codes is ignored and the conversation language is kept. \\
 \code{translate\_items} & v1 & \code{translategemma:4b} & \code{agents/checklist\_builder.py} (\code{\_translate}): French official checklist items to English only; rejected unless every line and number is preserved. French-to-Arabic use was withdrawn after meaning-changing errors. \\
 \bottomrule
 \end{tabularx}
@@ -21,22 +22,26 @@ The following components are deterministic and use \emph{no} prompt; no prompt i
 \begin{center}\footnotesize
 \begin{tabularx}{\textwidth}{@{}l l X@{}}
 \toprule Component & Source & Method \\ \midrule
+Language rules & \code{agents/language.py} & marker words and Arabizi digit-letters; the model fallback is used only when no marker is found \\
+Conversational intents & \code{agents/conversation.py} & greetings, thanks, yes/no against the pending clarification; no administrative facts \\
 RAG Retriever & \code{agents/retriever.py}, \code{rag/hybrid.py} & dense BGE-M3 retrieval, BM25, reciprocal rank fusion, exact RNE code lookup \\
+RNE registration & \code{agents/rne\_registration.py} & legal form $\rightarrow$ official creation rows of the RNE table; asks for the legal form when unknown \\
 Checklist Builder (core) & \code{agents/checklist\_builder.py} & verbatim official sections; only the optional FR$\rightarrow$EN translation uses a prompt \\
-Legal evidence extractor & \code{agents/legal\_evidence.py} & article/table location and verbatim quotation for six legal texts \\
+Legal evidence extractor & \code{agents/legal\_evidence.py} & article/table location, verbatim quotation, form overview, verified download links \\
 Answerability gate & \code{agents/answerability.py} & IDF-weighted lexical support of the question in the evidence \\
 Numeric claim verifier & \code{agents/verification.py} & every digit-written number must occur in the cited passages \\
-Form-Filling Helper & \code{agents/form\_helper.py} & template matching, Tesseract OCR, homography, ink detection \\
+Form-Filling Helper & \code{agents/form\_helper.py}, \code{agents/form\_roles.py} & template matching, Tesseract OCR, homography, ink detection, field roles \\
 Dossier Validator & \code{agents/dossier\_validator.py} & field statuses and verbatim official requirements; never certifies completeness \\
 \bottomrule
 \end{tabularx}
 \end{center}
 
 \subsection{\code{dialogue\_understanding}}
-\textbf{Runtime:} \code{agents/dialogue.py} (\code{understand}). Telegram dialogue path only, when the rules extract no fact but the message contains a possession/residence cue; every item must quote an exact substring of the message. \textbf{Status:} v1 and v2 superseded; v3 adds a JSON schema (structured output). \textbf{Versions:} v1, v2, v3 (active).
+\textbf{Runtime:} \code{agents/dialogue.py} (\code{understand}). Telegram dialogue path only, when the rules extract no fact but the message contains a possession/residence cue; every item must quote an exact substring of the message. \textbf{Status:} v1 and v2 historical; v3 (JSON schema) registry-selected. \textbf{Versions:} v1, v2, v3 (active).
 \subsubsection*{\code{dialogue\_understanding@v1}}
 \begin{itemize}
 \item \textbf{Purpose:} Extract only user-stated conversational facts, never administrative requirements.
+\item \textbf{File:} \code{prompts/dialogue\_understanding/v1.yaml}; \textbf{status:} historical.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=240}; structured JSON output: yes.
 \item \textbf{Input variables:} \code{message}.
 \end{itemize}
@@ -70,6 +75,7 @@ user_template: |
 \subsubsection*{\code{dialogue\_understanding@v2}}
 \begin{itemize}
 \item \textbf{Purpose:} Extract individually validated user declarations with short JSON and literal evidence.
+\item \textbf{File:} \code{prompts/dialogue\_understanding/v2.yaml}; \textbf{status:} historical.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=180}; structured JSON output: yes.
 \item \textbf{Input variables:} \code{message}.
 \end{itemize}
@@ -111,8 +117,12 @@ user_template: |
 \subsubsection*{\code{dialogue\_understanding@v3} --- active}
 \begin{itemize}
 \item \textbf{Purpose:} Schema-constrained user-declaration extraction; exact source evidence is mandatory.
+\item \textbf{File:} \code{prompts/dialogue\_understanding/v3.yaml}; \textbf{status:} registry-selected.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=180}; structured JSON output: yes (JSON schema).
 \item \textbf{Input variables:} \code{message}.
+\item \textbf{Expected output:} JSON list of declared items; v3 constrains it with a JSON schema.
+\item \textbf{Grounding and safety constraints:} each item must quote an exact substring of the user's message; items failing code validation are dropped; no administrative fact is produced.
+\item \textbf{Tests and evaluation evidence:} \code{tests/test\_dialogue.py}; Annex~\ref{app:prompt_experiments} (18 synthetic declarations).
 \end{itemize}
 \begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true,frame=single,framesep=2pt]
 name: dialogue_understanding
@@ -256,12 +266,16 @@ response_schema:
   - items
 \end{Verbatim}
 \subsection{\code{evidence\_topic}}
-\textbf{Runtime:} \code{agents/verification.py} (\code{EvidenceVerifier.check\_topic}). Disabled by default (\code{EVIDENCE\_TOPIC\_CHECK=false}); kept for experiments. \textbf{Status:} Unstable verdicts across runs; not enabled. \textbf{Versions:} v1 (active).
+\textbf{Runtime:} \code{agents/verification.py} (\code{EvidenceVerifier.check\_topic}). Disabled at run time (\code{EVIDENCE\_TOPIC\_CHECK=false} by default); kept for experiments. \textbf{Status:} Listed in the registry but disabled (experimental): unstable verdicts across runs. \textbf{Versions:} v1 (active).
 \subsubsection*{\code{evidence\_topic@v1} --- registry version, disabled at run time}
 \begin{itemize}
 \item \textbf{Purpose:} Topic-consistency check used by the evidence verifier when the procedure was not identified by the keyword rules. Decides whether the retrieved official documents describe the same administrative procedure as the question. Strict JSON; the caller treats any invalid output as "not the same".
+\item \textbf{File:} \code{prompts/evidence\_topic/v1.yaml}; \textbf{status:} registry-selected, disabled at run time.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=120}; structured JSON output: yes.
 \item \textbf{Input variables:} \code{question}, \code{documents}.
+\item \textbf{Expected output:} one JSON object with a same-procedure verdict.
+\item \textbf{Grounding and safety constraints:} any invalid output is treated as ``not the same''; disabled in the deployed configuration.
+\item \textbf{Tests and evaluation evidence:} \code{tests/test\_verification.py}; development runs in \code{docs/EVALUATION.md} (Section 7).
 \end{itemize}
 \begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true,frame=single,framesep=2pt]
 name: evidence_topic
@@ -303,10 +317,11 @@ changelog:
   - v1: initial version.
 \end{Verbatim}
 \subsection{\code{grounded\_answer}}
-\textbf{Runtime:} \code{agents/answer.py} (\code{GroundedAnswerer}). Free questions that are not RNE table rows, not guide checklists and not one of the six legal texts (those are answered by verbatim article extraction, without an LLM). Citations and numbers are verified after generation. \textbf{Status:} v2 active; v3 evaluated and not adopted (Section 7). \textbf{Versions:} v1, v2 (active), v3.
+\textbf{Runtime:} \code{agents/answer.py} (\code{GroundedAnswerer}). Free questions that are not RNE table rows, not guide checklists, not legal-article or form questions and not RNE registration questions (those are answered deterministically). Citations and numbers are verified after generation. \textbf{Status:} v1 historical; v2 registry-selected; v3 evaluated and not adopted. \textbf{Versions:} v1, v2 (active), v3.
 \subsubsection*{\code{grounded\_answer@v1}}
 \begin{itemize}
 \item \textbf{Purpose:} Answers a question strictly from numbered official passages, with [n] citations. The caller rejects any answer that cites a passage number that does not exist or cites nothing, and then falls back to quoting the passages verbatim.
+\item \textbf{File:} \code{prompts/grounded\_answer/v1.yaml}; \textbf{status:} historical.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=600, num\_ctx=8192}; structured JSON output: no.
 \item \textbf{Input variables:} \code{language\_name}, \code{passages}, \code{question}.
 \end{itemize}
@@ -349,8 +364,12 @@ changelog:
 \subsubsection*{\code{grounded\_answer@v2} --- active}
 \begin{itemize}
 \item \textbf{Purpose:} Answers a question strictly from numbered official passages, with [n] citations. The caller rejects any answer that cites a passage number that does not exist or cites nothing, and then falls back to quoting the passages verbatim.
+\item \textbf{File:} \code{prompts/grounded\_answer/v2.yaml}; \textbf{status:} registry-selected.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=900, num\_ctx=8192}; structured JSON output: no.
 \item \textbf{Input variables:} \code{language\_name}, \code{passages}, \code{question}.
+\item \textbf{Expected output:} plain text with numbered citations \code{[n]} pointing to the supplied passages.
+\item \textbf{Grounding and safety constraints:} answer only from the numbered passages; answers citing no or non-existent passages are replaced by quoted passages; numbers absent from the cited passages are removed or the answer is refused.
+\item \textbf{Tests and evaluation evidence:} \code{tests/test\_form\_helper\_and\_answer.py}, \code{tests/test\_answerability.py}, \code{tests/test\_verification.py}; Annex~\ref{app:prompt_experiments}.
 \end{itemize}
 \begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true,frame=single,framesep=2pt]
 name: grounded_answer
@@ -393,6 +412,7 @@ changelog:
 \subsubsection*{\code{grounded\_answer@v3}}
 \begin{itemize}
 \item \textbf{Purpose:} Answers a question strictly from numbered official passages, with [n] citations. The caller rejects any answer that cites a passage number that does not exist or cites nothing, and then falls back to quoting the passages verbatim.
+\item \textbf{File:} \code{prompts/grounded\_answer/v3.yaml}; \textbf{status:} evaluated, not adopted.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=900, num\_ctx=8192}; structured JSON output: no.
 \item \textbf{Input variables:} \code{language\_name}, \code{passages}, \code{question}.
 \end{itemize}
@@ -439,12 +459,16 @@ changelog:
   - "v3: rule 8, verbatim quotation before explanation (v2 paraphrased; evidence span present in 1/11 answers)."
 \end{Verbatim}
 \subsection{\code{intent\_router}}
-\textbf{Runtime:} \code{agents/intent\_router.py} (\code{IntentRouter.\_llm\_classify}). Only when no deterministic procedure keyword matches; output validated against fixed enumerations. \textbf{Status:} Single version. \textbf{Versions:} v1 (active).
+\textbf{Runtime:} \code{agents/intent\_router.py} (\code{IntentRouter.\_llm\_classify}). Only when no deterministic procedure keyword matches; output validated against fixed enumerations. \textbf{Status:} Single version; registry-selected. \textbf{Versions:} v1 (active).
 \subsubsection*{\code{intent\_router@v1} --- active}
 \begin{itemize}
 \item \textbf{Purpose:} Fallback classifier used only when the deterministic keyword rules cannot identify the procedure. Returns strict JSON; the caller validates every field against fixed enums.
+\item \textbf{File:} \code{prompts/intent\_router/v1.yaml}; \textbf{status:} registry-selected.
 \item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=120}; structured JSON output: yes.
 \item \textbf{Input variables:} \code{message}.
+\item \textbf{Expected output:} one JSON object with \code{procedure\_category} and \code{intent} from fixed enumerations.
+\item \textbf{Grounding and safety constraints:} classification only (``Do not answer the question''); values outside the enumerations are rejected and a default route is used; the message is delimited as data.
+\item \textbf{Tests and evaluation evidence:} \code{tests/test\_agents\_routing.py} (fallback and enumeration validation with a fake model); Annex~\ref{app:prompt_experiments} (84 development questions).
 \end{itemize}
 \begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true,frame=single,framesep=2pt]
 name: intent_router
@@ -482,13 +506,56 @@ user_template: |
 changelog:
   - v1: initial version.
 \end{Verbatim}
+\subsection{\code{language\_identification}}
+\textbf{Runtime:} \code{agents/language.py} (\code{\_model\_language}). Only for Latin-script messages of at least four words in which the deterministic markers find no French, English or Arabizi Derja word; any value outside the three accepted codes is ignored and the conversation language is kept. \textbf{Status:} Single version (added on 18 October 2026); registry-selected. \textbf{Versions:} v1 (active).
+\subsubsection*{\code{language\_identification@v1} --- active}
+\begin{itemize}
+\item \textbf{Purpose:} Fallback used only for long Latin-script messages in which the deterministic language markers (agents/language.py) find no French, English or Arabizi Derja word. Returns strict JSON; the caller accepts only "en", "fr" or "derja" and otherwise keeps the conversation language.
+\item \textbf{File:} \code{prompts/language\_identification/v1.yaml}; \textbf{status:} registry-selected.
+\item \textbf{Model:} \code{mistral:latest} (Mistral 7B Instruct, Q4\_K\_M); options: \code{temperature=0, num\_predict=20}; structured JSON output: yes.
+\item \textbf{Input variables:} \code{message}.
+\item \textbf{Expected output:} one JSON object with a \code{language} field (\code{en}, \code{fr} or \code{derja}).
+\item \textbf{Grounding and safety constraints:} no answer and no explanation; only three codes are accepted; failures are logged without message content.
+\item \textbf{Tests and evaluation evidence:} \code{tests/test\_auto\_language.py}; language suite (Section~\ref{sec:eval}).
+\end{itemize}
+\begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true,frame=single,framesep=2pt]
+name: language_identification
+version: v1
+created: 2026-10-18
+description: >
+  Fallback used only for long Latin-script messages in which the deterministic language markers
+  (agents/language.py) find no French, English or Arabizi Derja word. Returns strict JSON; the caller
+  accepts only "en", "fr" or "derja" and otherwise keeps the conversation language.
+model_role: llm  # llm | translation
+options:
+  temperature: 0
+  num_predict: 20
+json_output: true
+system: |
+  Identify the language of a message sent to an assistant about Tunisian administrative procedures.
+  The message is written in Latin script. It is English, French, or Tunisian Arabic (Derja) written in
+  Latin letters, possibly with digits standing for Arabic letters ("3", "7", "9").
+
+  Reply with a single JSON object and nothing else:
+  {"language": <one of: "en", "fr", "derja">}
+  Do not answer the message. Do not add explanations.
+user_template: |
+  Message:
+  """{message}"""
+changelog:
+  - v1: initial version.
+\end{Verbatim}
 \subsection{\code{translate\_items}}
-\textbf{Runtime:} \code{agents/checklist\_builder.py} (\code{\_translate}). French official checklist items to English only; rejected unless every line and number is preserved. French-to-Arabic use was withdrawn after meaning-changing errors. \textbf{Status:} Single version. \textbf{Versions:} v1 (active).
+\textbf{Runtime:} \code{agents/checklist\_builder.py} (\code{\_translate}). French official checklist items to English only; rejected unless every line and number is preserved. French-to-Arabic use was withdrawn after meaning-changing errors. \textbf{Status:} Single version; registry-selected. \textbf{Versions:} v1 (active).
 \subsubsection*{\code{translate\_items@v1} --- active}
 \begin{itemize}
 \item \textbf{Purpose:} Translates numbered checklist items taken verbatim from an official document. The caller checks that the output has exactly the same numbered lines and that every number (amounts, sizes, dates) of the source appears in the translation; otherwise the original text is shown.
+\item \textbf{File:} \code{prompts/translate\_items/v1.yaml}; \textbf{status:} registry-selected.
 \item \textbf{Model:} \code{translategemma:4b} (Q4\_K\_M); options: \code{temperature=0, num\_predict=1200}; structured JSON output: no.
 \item \textbf{Input variables:} \code{source\_language\_name}, \code{target\_language\_name}, \code{items}.
+\item \textbf{Expected output:} plain text, one translated line per numbered input line.
+\item \textbf{Grounding and safety constraints:} rejected unless the numbering and every number of the source are preserved; the official French text is shown instead.
+\item \textbf{Tests and evaluation evidence:} \code{tests/test\_checklist\_builder.py}; Annex~\ref{app:prompt_experiments} (11 official checklists).
 \end{itemize}
 \begin{Verbatim}[fontsize=\scriptsize,breaklines=true,breakanywhere=true,frame=single,framesep=2pt]
 name: translate_items

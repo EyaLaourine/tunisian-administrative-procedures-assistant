@@ -1,0 +1,902 @@
+[
+ {
+  "scenario": "f_d1_cin_deadline_derja",
+  "turn": 1,
+  "capability": "cin/first issuance",
+  "input": "Quelles pièces pour obtenir la carte d'identité nationale pour la première fois ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 6.92,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ Pièces à fournir\n• Imprimé administratif à remplir\n• Extrait de naissance établi des registres originaux d'état civil datant de 3 mois au plus,\n• Attestation prouvant la nationalité tunisienne,\n• Attestation de résidence,\n• Attestation de travail ou de présence scolaire ou universitaire,\n• 3 photos d'identité de l'intéressé du format 3⁄4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle 1/10 montrant le visage et les yeux,\n• Quittance de paiement du droit de timbre fiscal dû,\n• Deux exemplaires de la copie de la carte de résidence et de la carte consulaire pour les résidents à l'étranger,\n• Autorisation du tuteur légal signée, légalisée et motivée pour l'obtention de la carte d'identité nationale (raison professionnelle, éducative, sportive ou physique) et ce pour les mineurs de moins de 18 ans,\n• Certificat indiquant le groupe sanguin (facultatif).\n\n▪️ Conditions\n• Remplir l'imprimé administratif et le signer\n• Atteindre l'âge légal (18 ans),\n• Etre de nationalité tunisienne,\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n\n▪️ Délais\n• Dans les 15 jours à partir de la date de dépôt de la demande\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d1_cin_deadline_derja",
+  "turn": 2,
+  "capability": "D1 observed: deadline in Derja",
+  "input": "قداش تاخو وقت؟",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "processing_time",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.26,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ قدّاش ياخو وقت\n• Dans les 15 jours à partir de la date de dépôt de la demande\n\nℹ️ منقول باللغة متاع الوثيقة الرسمية (FR).\n\n📚 المصادر الرسمية:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "scenario": "f_d1_cin_deadline_derja",
+  "turn": 3,
+  "capability": "D1 Arabizi deadline",
+  "input": "9adech ta5ou wa9t?",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "processing_time",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.28,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ قدّاش ياخو وقت\n• Dans les 15 jours à partir de la date de dépôt de la demande\n\nℹ️ منقول باللغة متاع الوثيقة الرسمية (FR).\n\n📚 المصادر الرسمية:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "scenario": "f_d1_cin_deadline_derja",
+  "turn": 4,
+  "capability": "D1 English deadline",
+  "input": "How long does it take?",
+  "expected_language": "en",
+  "language": "en",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "processing_time",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 16.05,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ Processing time\n• Within 15 days from the date of application submission\n\nℹ️ Automatic translation of the official FR text; the official text prevails.\n\n📚 Official sources:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Information quoted from official sources; not legal advice. Their current validity has not been verified: please confirm with the competent administration."
+ },
+ {
+  "scenario": "f_d1_cin_deadline_derja",
+  "turn": 5,
+  "capability": "D1 fees stay fees",
+  "input": "قداش نخلص؟",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 4.21,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ قدّاش تخلّص\n• Quittance de paiement du droit de timbre fiscal dû,\n\nℹ️ منقول باللغة متاع الوثيقة الرسمية (FR).\n\n📚 المصادر الرسمية:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "scenario": "f_d2_d4_rne_registration",
+  "turn": 1,
+  "capability": "D2 observed: ask legal form",
+  "input": "Je veux immatriculer une entreprise en Tunisie",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.08,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Pour vous indiquer la bonne procédure d'immatriculation, précisez la forme juridique : personne physique (commerçant, artisan ou profession libérale), SARL / SUARL (ou autre société de personnes), société anonyme, association, ou autre forme (GIE, coopérative, succursale d'une société étrangère…) ?"
+ },
+ {
+  "scenario": "f_d2_d4_rne_registration",
+  "turn": 2,
+  "capability": "D4 observed: fees without legal form",
+  "input": "Quels sont les frais ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "business_registration",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.14,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Pour vous indiquer la bonne procédure d'immatriculation, précisez la forme juridique : personne physique (commerçant, artisan ou profession libérale), SARL / SUARL (ou autre société de personnes), société anonyme, association, ou autre forme (GIE, coopérative, succursale d'une société étrangère…) ?"
+ },
+ {
+  "scenario": "f_d2_d4_rne_registration",
+  "turn": 3,
+  "capability": "D2 legal form answer -> official row",
+  "input": "SARL",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.11,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nCode procédure: RNE C 012\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Sarl/Suarl/La société en nom collectif/La société en commandite par actions/La société en commandite simple/Societé civile\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: Trente jours à compter de la date de signature des statuts\n\n📝 Formulaires officiels:\n• RNE-F-002_declation_immatriculation_personne_motale\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d2_d4_rne_registration",
+  "turn": 4,
+  "capability": "D4 fees for the identified form",
+  "input": "Quels sont les frais ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.09,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nCode procédure: RNE C 012\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Sarl/Suarl/La société en nom collectif/La société en commandite par actions/La société en commandite simple/Societé civile\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: Trente jours à compter de la date de signature des statuts\n\n📝 Formulaires officiels:\n• RNE-F-002_declation_immatriculation_personne_motale\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d2_other_forms",
+  "turn": 1,
+  "capability": "D2 association rows",
+  "input": "Comment immatriculer une association ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.1,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nLes documents officiels de ma base ne contiennent pas de liste de pièces à fournir pour cette procédure. Voici ce que disent les sources officielles :\n\nCode procédure: RNE C 010.1\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par le décret-loi n° 88/2011 portant organisation des associations\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\nCode procédure: RNE C 010.2\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Association tunisienne régie par des réglementations particulières\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: L'immatriculation des associations créées avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible des délais d'immatriculation mais on ne peut pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\n📝 Formulaires officiels:\n• RNE-F-002_declation_immatriculation_personne_motale\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d2_other_forms",
+  "turn": 2,
+  "capability": "D2 natural person rows",
+  "input": "Je veux immatriculer une personne physique au RNE",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.11,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nLes documents officiels de ma base ne contiennent pas de liste de pièces à fournir pour cette procédure. Voici ce que disent les sources officielles :\n\nCode procédure: RNE C 001\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique commerçant\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: Trente jours à compter de la date du début de l'activité mentionnée dans la carte d'identification fiscale.\n\nCode procédure: RNE C 002\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique artisan\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: L'immatriculation des artisans qui ont commencé l'activité avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible à des délais d'immatriculation mais ils ne peuvent pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\nCode procédure: RNE C 003\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique professionnel\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: L'immatriculation des professionnels qui ont commencé l'activité avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible à des délais d'immatriculation mais ils ne peuvent pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\n📝 Formulaires officiels:\n• RNE-F-001_declation_immatriculation_personne_physique\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d2_other_forms",
+  "turn": 3,
+  "capability": "D2 Arabizi company: ask legal form",
+  "input": "nheb na3mel chirka",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "intent_router",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "business_registration",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.08,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "باش نعطيك الإجراء الصحيح متاع التسجيل، قلّي شنوة الشكل القانوني: شخص طبيعي (تاجر، حرفي ولا مهنة حرة)، SARL / SUARL (ولا شركة أشخاص أخرى)، شركة خفية الاسم، جمعية، ولا شكل آخر (GIE، تعاضدية، فرع شركة أجنبية…)؟"
+ },
+ {
+  "scenario": "f_d3_forms",
+  "turn": 1,
+  "capability": "D3 observed: F-001 content",
+  "input": "Que contient le formulaire F-001 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.34,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Contenu imprimé du formulaire officiel (cité tel quel) :\n• DÉCLARATION D’IMMATRICULATION D’UNE PERSONNE PHYSIQUE\n• RNE F 001 : مرجع\n\nChamps à remplir:\n• إمضاء المصرّ ح أو من ينوبه بتوكيل التاريخ\n• E-mail\n• N°GSM\n• Nom du Déposant\n• N° Identité du Déposant\n• N°Identité\n• Nom et Prénom\n\nMentions et options imprimées:\n• :هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل\n• أصرح على الشرف أني تحققت من البيانات و الوثائق المرفقة موضوع التصريح و أشهد بصحتها\n• IDENTIFIANT UNIQUE -المعرّف الوحيد\n• N° CERTIFICAT DE RÉSERVATION LE CAS ÉCHÉANT -رقم شهادة الحجز عند الإقتضاء\n• Type de Pièce d’identité / نوع بطاقة الهوية\n• -بطاقة قنصليةCARTE CONSULAIRE - CARTE DE SÉJOURبطاقة إقامة رقم جواز سفرPASSEPORT -بطاقة تعريفCIN -\n• Métier Libéral - مهنة حرّ ة Artisan - حرفيCommerçant -تاجر\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d3_forms",
+  "turn": 2,
+  "capability": "D3 observed follow-up: F-002",
+  "input": "Et le formulaire F-002 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.25,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Contenu imprimé du formulaire officiel (cité tel quel) :\n• RNE F 002 : مرجع\n\nChamps à remplir:\n• إمضاء الممثل القانوني أو من ينوبه بتوكيل التاريخ\n• Représantant Légal\n• Dénomination\n• E-mail\n• N°GSM\n• Nom du Déposant\n• N° Identité du Déposant\n• N°Identité\n\nMentions et options imprimées:\n• :هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل\n• أصرح على الشرف أني تحققت من البيانات و الوثائق المرفقة موضوع التصريح و أشهد بصحتها\n• IDENTIFIANT UNIQUE -المعرّف الوحيد\n• N° CERTIFICAT DE RÉSERVATION LE CAS ÉCHÉANT -رقم شهادة الحجز عند الإقتضاء\n• Type de Pièce d’identité / نوع بطاقة الهوية\n• -بطاقة قنصليةCARTE CONSULAIRE - CARTE DE SÉJOURبطاقة إقامة رقم جواز سفرPASSEPORT -بطاقة تعريفCIN -\n\n📚 Sources officielles:\n[1] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d3_forms",
+  "turn": 3,
+  "capability": "D3 bare follow-up",
+  "input": "Et le F-001 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.42,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Contenu imprimé du formulaire officiel (cité tel quel) :\n• DÉCLARATION D’IMMATRICULATION D’UNE PERSONNE PHYSIQUE\n• RNE F 001 : مرجع\n\nChamps à remplir:\n• إمضاء المصرّ ح أو من ينوبه بتوكيل التاريخ\n• E-mail\n• N°GSM\n• Nom du Déposant\n• N° Identité du Déposant\n• N°Identité\n• Nom et Prénom\n\nMentions et options imprimées:\n• :هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل\n• أصرح على الشرف أني تحققت من البيانات و الوثائق المرفقة موضوع التصريح و أشهد بصحتها\n• IDENTIFIANT UNIQUE -المعرّف الوحيد\n• N° CERTIFICAT DE RÉSERVATION LE CAS ÉCHÉANT -رقم شهادة الحجز عند الإقتضاء\n• Type de Pièce d’identité / نوع بطاقة الهوية\n• -بطاقة قنصليةCARTE CONSULAIRE - CARTE DE SÉJOURبطاقة إقامة رقم جواز سفرPASSEPORT -بطاقة تعريفCIN -\n• Métier Libéral - مهنة حرّ ة Artisan - حرفيCommerçant -تاجر\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d3_forms",
+  "turn": 4,
+  "capability": "D3 unindexed section: limitation",
+  "input": "Que dit le formulaire F-002 sur le capital social ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.21,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Le texte indexé de ce formulaire officiel ne contient pas de passage qui réponde à cette question précise ; je préfère ne pas deviner. Voici ce que contient le formulaire :\nContenu imprimé du formulaire officiel (cité tel quel) :\n• RNE F 002 : مرجع\n\nChamps à remplir:\n• إمضاء الممثل القانوني أو من ينوبه بتوكيل التاريخ\n• Représantant Légal\n• Dénomination\n• E-mail\n• N°GSM\n• Nom du Déposant\n• N° Identité du Déposant\n• N°Identité\n\nMentions et options imprimées:\n• :هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل\n• أصرح على الشرف أني تحققت من البيانات و الوثائق المرفقة موضوع التصريح و أشهد بصحتها\n• IDENTIFIANT UNIQUE -المعرّف الوحيد\n• N° CERTIFICAT DE RÉSERVATION LE CAS ÉCHÉANT -رقم شهادة الحجز عند الإقتضاء\n• Type de Pièce d’identité / نوع بطاقة الهوية\n• -بطاقة قنصليةCARTE CONSULAIRE - CARTE DE SÉJOURبطاقة إقامة رقم جواز سفرPASSEPORT -بطاقة تعريفCIN -\n\n📚 Sources officielles:\n[1] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d5_form_download",
+  "turn": 1,
+  "capability": "passport",
+  "input": "Quelles pièces fournir pour renouveler un passeport ? En Tunisie",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.34,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Pièces à fournir\n• Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n• Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n• 4 photos avec les caractéristiques suivantes :\n• fond blanc\n• format 3.5/4.5 cm\n• Justificatif de scolarisation pour les élèves et les étudiants.\n• Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n• Joindre l'ancien passeport en cas de renouvellement,\n• Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n\n▪️ Conditions\n• Le demandeur doit :\n• Etre de nationalité tunisienne ,\n• Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale territorialement compétent\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d5_form_download",
+  "turn": 2,
+  "capability": "D5 observed: passport form download (verified link since Phase G)",
+  "input": "Où télécharger le formulaire de passeport ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "passport",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.27,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Lien officiel de téléchargement: جواز السفر\nhttps://services.interieur.gov.tn/uploads/imprimes/02.pdf\n\n📚 Sources officielles:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/02.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d5_form_download",
+  "turn": 3,
+  "capability": "G: CIN form download link",
+  "input": "Où télécharger le formulaire de la carte d'identité ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "national_id",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.23,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Lien officiel de téléchargement: بطاقة التعريف الوطنية\nhttps://services.interieur.gov.tn/uploads/imprimes/01.pdf\n\n📚 Sources officielles:\n[1] بطاقة التعريف الوطنية (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/01.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d5_form_download",
+  "turn": 4,
+  "capability": "D5 verified RNE form link",
+  "input": "Où télécharger le formulaire F-001 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "passport",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.25,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Lien officiel de téléchargement: RNE-F-001_declation_immatriculation_personne_physique\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "f_d6_unrecognised_pdf",
+  "turn": 1,
+  "capability": "D6 unrecognised PDF names supported forms",
+  "input": "01.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.64,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Je n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs. Formulaires pris en charge : demande de carte d'identité nationale (ministère de l'Intérieur), demande de passeport ordinaire (ministère de l'Intérieur), RNE F-001 (immatriculation d'une personne physique) et RNE F-002 (immatriculation d'une personne morale).\n\nCe formulaire ne correspond pas à un modèle officiel pris en charge. Aucune conclusion sur les champs ne peut être établie.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "f_d6_unrecognised_pdf",
+  "turn": 2,
+  "capability": "D6 official form still recognised",
+  "input": "f001.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.32,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique\n\n❗ Champs qui semblent vides:\n• التاريخ\n• E-mail / البريد الإلكتروني\n• N°GSM / الهاتف الجوال\n• Nom du Déposant / إسم و لقب المودع\n• N° Identité du Déposant / رقم بطاقة هوية المودع\n• N°Identité / رقم الهوية\n• Nom et Prénom (s) / الإسم و اللقب\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\nChamps potentiellement manquants : 7. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 1,
+  "capability": "G observed: blank 01.pdf recognised, admin fields skipped",
+  "input": "01.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.15,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : بطاقة التعريف الوطنية\n\n❗ Champs qui semblent vides:\n• اللقب\n• الإسم\n• إسم الأب\n• إسم الجد\n• تاريخ الولادة — مكانها\n• إسم الأم\n• إسم الأم — لقبها\n• المهنة\n• عنوان السكنى\n• الولاية\n\n🔸 Champs vides à remplir seulement s'ils vous concernent:\n• إسم الزوج(ة)\n• إسم الزوج(ة) — لقبه(ها)\n• الهوية القديمة\n\n👁 Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même:\n• تاريخ الولادة\n• الجنس\n• الحالة العائلية\n• الفصيلة الدموية\n• متبرع\n• التوقيع\n\n🏛 7 champs réservés à l'administration ont été ignorés.\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] بطاقة التعريف الوطنية (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/01.pdf\n\nChamps potentiellement manquants : 10. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 2,
+  "capability": "G observed: blank 02.pdf recognised, admin fields skipped",
+  "input": "02.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.15,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : جواز السفر\n\n❗ Champs qui semblent vides:\n• Prénom / الإسم\n• Prénom du père / إسم الأب\n• Prénom du grand-père / إسم الجد\n• Nom de famille ou de jeune fille / اللقب العائلي\n• Nom et prénom de la mère / إسم الأم ولقبها\n• مكان الولادة — ولايتها\n• Profession / المهنة\n• حرر بـ … في\n• القامة\n• لون العينين\n\n🔸 Champs vides à remplir seulement s'ils vous concernent:\n• Prénom de l’Epoux(se) / إسم الزوج(ة)\n• Nom de l’Epoux(se) / لقب الزوج(ة)\n• Nationalité de l’Epoux(se) / جنسية الزوج(ة)\n• جنسيات أخرى\n\n👁 Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même:\n• N° de la Carte d’Identité Nationale / رقم بطاقة التعريف الوطنية\n• تاريخ الولادة\n• الجنس\n• Adresse / العنوان\n• الحالة العائلية\n• التوقيع\n\n🏛 14 champs réservés à l'administration ont été ignorés.\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/02.pdf\n\nChamps potentiellement manquants : 10. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 3,
+  "capability": "G CIN required fields filled",
+  "input": "cin.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.12,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : بطاقة التعريف الوطنية\n\n✅ Tous les champs du demandeur localisés semblent remplis.\n\n🔸 Champs vides à remplir seulement s'ils vous concernent:\n• إسم الزوج(ة)\n• إسم الزوج(ة) — لقبه(ها)\n• الهوية القديمة\n\n👁 Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même:\n• تاريخ الولادة\n• الجنس\n• الحالة العائلية\n• الفصيلة الدموية\n• متبرع\n• التوقيع\n\n🏛 7 champs réservés à l'administration ont été ignorés.\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] بطاقة التعريف الوطنية (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/01.pdf\n\nAucun champ potentiellement manquant signalé. Les informations saisies ne sont pas validées.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 4,
+  "capability": "G passport fully completed",
+  "input": "passeport.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.11,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : جواز السفر\n\n✅ Tous les champs du demandeur localisés semblent remplis.\n\n👁 Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même:\n• N° de la Carte d’Identité Nationale / رقم بطاقة التعريف الوطنية\n• تاريخ الولادة\n• الجنس\n• Adresse / العنوان\n• الحالة العائلية\n• التوقيع\n\n🏛 14 champs réservés à l'administration ont été ignorés.\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/02.pdf\n\nAucun champ potentiellement manquant signalé. Les informations saisies ne sont pas validées.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 5,
+  "capability": "G scanned completed CIN (JPEG PDF, OCR)",
+  "input": "scan_cin.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 9.46,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : بطاقة التعريف الوطنية\n\n✅ Tous les champs du demandeur localisés semblent remplis.\n\n👁 Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même:\n• تاريخ الولادة\n• الجنس\n• الحالة العائلية\n• الفصيلة الدموية\n• متبرع\n• التوقيع\n\n🏛 7 champs réservés à l'administration ont été ignorés.\n\nℹ️ Vérification automatique (OCR) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] بطاقة التعريف الوطنية (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/01.pdf\n\nAucun champ potentiellement manquant signalé. Les informations saisies ne sont pas validées.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 6,
+  "capability": "G photographed blank passport (OCR)",
+  "input": "photo.jpg",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 3.96,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : جواز السفر\n\n❗ Champs qui semblent vides:\n• Prénom / الإسم\n• Prénom du père / إسم الأب\n• Prénom du grand-père / إسم الجد\n• Nom de famille ou de jeune fille / اللقب العائلي\n• Nom et prénom de la mère / إسم الأم ولقبها\n• مكان الولادة — ولايتها\n• Profession / المهنة\n• حرر بـ … في\n• القامة\n• لون العينين\n\n🔸 Champs vides à remplir seulement s'ils vous concernent:\n• Prénom de l’Epoux(se) / إسم الزوج(ة)\n• Nom de l’Epoux(se) / لقب الزوج(ة)\n• Nationalité de l’Epoux(se) / جنسية الزوج(ة)\n• جنسيات أخرى\n\n👁 Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même:\n• N° de la Carte d’Identité Nationale / رقم بطاقة التعريف الوطنية\n• تاريخ الولادة\n• الجنس\n• Adresse / العنوان\n• الحالة العائلية\n• التوقيع\n\n🏛 14 champs réservés à l'administration ont été ignorés.\n\nℹ️ Vérification automatique (OCR) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/02.pdf\n\nChamps potentiellement manquants : 10. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 7,
+  "capability": "G photographed completed CIN (OCR)",
+  "input": "photo.jpg",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 3.21,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : بطاقة التعريف الوطنية\n\n✅ Tous les champs du demandeur localisés semblent remplis.\n\n👁 Non vérifiés automatiquement (cases, cases à cocher et signature) ; à vérifier vous-même:\n• تاريخ الولادة\n• الجنس\n• الحالة العائلية\n• الفصيلة الدموية\n• متبرع\n• التوقيع\n\n🏛 7 champs réservés à l'administration ont été ignorés.\n\nℹ️ Vérification automatique (OCR) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] بطاقة التعريف الوطنية (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/01.pdf\n\nAucun champ potentiellement manquant signalé. Les informations saisies ne sont pas validées.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "g_interior_forms",
+  "turn": 8,
+  "capability": "G RNE F-001 still recognised",
+  "input": "f001.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.29,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique\n\n❗ Champs qui semblent vides:\n• التاريخ\n• E-mail / البريد الإلكتروني\n• N°GSM / الهاتف الجوال\n• Nom du Déposant / إسم و لقب المودع\n• N° Identité du Déposant / رقم بطاقة هوية المودع\n• N°Identité / رقم الهوية\n• Nom et Prénom (s) / الإسم و اللقب\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\nChamps potentiellement manquants : 7. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ }
+]

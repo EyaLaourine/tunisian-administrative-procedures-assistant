@@ -1,5 +1,15 @@
 \begin{thebibliography}{10}
 
+\bibitem{pymupdf}
+{Artifex Software}.
+\newblock {PyMuPDF} documentation.
+\newblock \url{https://pymupdf.readthedocs.io}.
+
+\bibitem{bradski2000opencv}
+Gary Bradski.
+\newblock The {OpenCV} library.
+\newblock {\em Dr. Dobb's Journal of Software Tools}, 2000.
+
 \bibitem{chen2024bgem3}
 Jianlv Chen, Shitao Xiao, Peitian Zhang, Kun Luo, Defu Lian, and Zheng Liu.
 \newblock {BGE} {M3}-embedding: Multi-lingual, multi-functionality,
@@ -12,6 +22,11 @@ Gordon~V. Cormack, Charles L.~A. Clarke, and Stefan B{\"u}ttcher.
   learning methods.
 \newblock In {\em Proceedings of the 32nd International ACM SIGIR Conference on
   Research and Development in Information Retrieval}, pages 758--759, 2009.
+
+\bibitem{docker_compose}
+{Docker Inc.}
+\newblock Docker compose documentation.
+\newblock \url{https://docs.docker.com/compose/}.
 
 \bibitem{fischler1981ransac}
 Martin~A. Fischler and Robert~C. Bolles.
@@ -55,7 +70,7 @@ Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
 \newblock
   \url{https://services.interieur.gov.tn/wap/fr/docs/demarches/02.html},
   \url{https://services.interieur.gov.tn/wap/ar/docs/demarches/02.html},
-  retrieved 15 October 2026, 2026.
+  retrieved 15 October 2026.
 
 \bibitem{n8n}
 {n8n GmbH}.
@@ -68,6 +83,17 @@ Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
 \newblock Ollama: Run large language models locally.
 \newblock \url{https://ollama.com}.
 \newblock Accessed October 2026.
+
+\bibitem{translategemma}
+{Ollama}.
+\newblock translategemma (model library entry, tag 4b).
+\newblock \url{https://ollama.com/library/translategemma}.
+\newblock Model used: \texttt{translategemma:4b}, 4.3B parameters, Q4\_K\_M.
+
+\bibitem{pydantic}
+{Pydantic}.
+\newblock Pydantic documentation.
+\newblock \url{https://docs.pydantic.dev}.
 
 \bibitem{qdrant}
 {Qdrant}.
@@ -85,7 +111,7 @@ Sebasti{\'a}n Ram{\'i}rez.
 {Registre National des Entreprises}.
 \newblock {Formalités (table of RNE procedures, fees and legal deadlines)}.
 \newblock \url{https://home.registre-entreprises.tn/formalites/}, retrieved 15
-  October 2026, 2026.
+  October 2026.
 
 \bibitem{robertson2009bm25}
 Stephen Robertson and Hugo Zaragoza.

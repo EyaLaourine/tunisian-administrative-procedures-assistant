@@ -1,0 +1,1802 @@
+[
+ {
+  "scenario": "passport_renewal_place_and_fees",
+  "turn": 1,
+  "capability": "passport",
+  "input": "Quelles pièces fournir pour renouveler un passeport ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "passport",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.06,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Tu résides en Tunisie ou à l’étranger ?"
+ },
+ {
+  "scenario": "passport_renewal_place_and_fees",
+  "turn": 2,
+  "capability": "passport/checklist",
+  "input": "En Tunisie",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.49,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Pièces à fournir\n• Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n• Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n• 4 photos avec les caractéristiques suivantes :\n• fond blanc\n• format 3.5/4.5 cm\n• Justificatif de scolarisation pour les élèves et les étudiants.\n• Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n• Joindre l'ancien passeport en cas de renouvellement,\n• Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n\n▪️ Conditions\n• Le demandeur doit :\n• Etre de nationalité tunisienne ,\n• Etre libre des interdictions indiquées par la loi n° 75-40 du 14/05/1975 relative aux passeports et aux documents de voyages et les textes subséquents.\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale territorialement compétent\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "passport_renewal_place_and_fees",
+  "turn": 3,
+  "capability": "passport/place (A2)",
+  "input": "je veux savoir le lieu de depot",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "submission_place",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.46,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale territorialement compétent\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "passport_renewal_place_and_fees",
+  "turn": 4,
+  "capability": "passport/fees (A2)",
+  "input": "et les frais ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.31,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Frais\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n\n⚠️ Attention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "passport_renewal_place_and_fees",
+  "turn": 5,
+  "capability": "passport/delay (A2)",
+  "input": "quel est le délai ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "processing_time",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.25,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🛂 Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "passport_renewal_place_and_fees",
+  "turn": 6,
+  "capability": "conversation/gratitude (A1): Derja reply, conversation stays fr",
+  "input": "يعطيك الصحة",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "greeting",
+   "procedure_category": "none",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.07,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "يعيشك، مرحبا بيك! كان عندك سؤال آخر، أنا هوني."
+ },
+ {
+  "scenario": "passport_renewal_place_and_fees",
+  "turn": 7,
+  "capability": "conversation/neutral follows conversation",
+  "input": "ok",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "greeting",
+   "procedure_category": "none",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.11,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "D'accord ! Vous pouvez me poser une autre question, par exemple sur les frais, le délai ou le lieu de dépôt."
+ },
+ {
+  "scenario": "passport_duplicate_ar_and_ambiguous_derja",
+  "turn": 1,
+  "capability": "passport/duplicate ar",
+  "input": "ما هي الشروط من أجل استخراج نظير من جواز السفر بالنسبة إلى التونسيين المقيمين بالتراب التونسي؟",
+  "expected_language": "ar",
+  "language": "ar",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "eligibility",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.26,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🛂 استخراج نظير من جواز سفر (من أجل السرقة أو الضياع أو الإتلاف) بالنسبة إلى التونسيين المقيمين بالتراب التونسي\n\n▪️ الشروط\n• أن لا يكون للراغب في الجواز الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n• استيفاء التحريات اللازمة\n• تأكد الحاجة لاستخراج جواز سفر\n\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "scenario": "passport_duplicate_ar_and_ambiguous_derja",
+  "turn": 2,
+  "capability": "passport/ambiguous change",
+  "input": "نحب نبدّل الباسبور، شنوة يلزمني؟",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "intent_router",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "passport",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.07,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "أول مرة تطلّع باسبور، ولا تحب تجدّدو، ولا تعوّضو خاطر ضاع ولا تسرق؟"
+ },
+ {
+  "scenario": "passport_duplicate_ar_and_ambiguous_derja",
+  "turn": 3,
+  "capability": "passport/renewal derja",
+  "input": "تجديد",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.29,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🛂 الحصول على جواز سفر لأوّل مرّة أو تجديده بالنسبة للتونسيّين المقيمين بالتراب التونسي\n\n▪️ الأوراق اللي لازمك تحضّرها\n• تعمير إستمارة الحصول على جواز سفر عادي مقروء آليا وإمضاؤها بصفة شخصية داخل الخانة المعدة للغرض\n• نسخة من بطاقة التعريف الوطنية مع الاستظهار بالأصل أو مضمون ولادة بالنسبة للقصر\n• 04 صور شمسية حسب المواصفات التالية :\n• أن تكون خلفية الصورة بيضاء\n• أن يكون حجم الصورة 3.5/4.5 صم تقريبا\n• ما يفيد الدراسة بالنسبة للتلاميذ والطلبة\n• ترخيص الولي بالنسبة للقصر مصحوبا بنسخة من بطاقة تعريفه\n• وصل خلاص معلوم الطابع الجبائي المستوجب :\n• 25 دنانير بالنسبة للتلاميذ و الطلبة والأطفال دون 6 سنوات\n• 80 دينارا بالنسبة للبقية\n• إضافة الجواز القديم في حالة تجديد\n• تقديم طلب على ورق عادي عند الرغبة في الإحتفاظ بالجواز القديم\n\n▪️ الشروط\n• أن يكون الراغب في الجواز :\n• حاملا للجنسية التونسية\n• أن لا تكون له الموانع المنصوص عليها بالقانون عدد 40 لسنة 1975 المؤرخ في 14 ماي 1975 المتعلق بجوازات السفر ووثائق السفر و النصوص المنقحة والمتممة له\n\n▪️ وين تحطّ الملف\n• مركز الأمن “شرطة أو حرس وطني” حسب مرجع النظر الترابي\n\n▪️ قدّاش ياخو وقت\n• خلال 15 يوما من تاريخ تقديم الطلب\n\n⚠️ ردّ بالك: النسخة الرسمية AR والنسخة FR فيهم مبالغ مختلفة (25/80 و 20/60). ثبّت في المبلغ الصحيح عند الإدارة.\nℹ️ النص الرسمي مكتوب بالعربية الفصحى، نقلناه كيما هو باش ما يتبدلّش معناه.\n\n📚 المصادر الرسمية:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n[2] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "scenario": "cin_first_time_and_switch_from_passport",
+  "turn": 1,
+  "capability": "passport",
+  "input": "Quelles pièces fournir pour renouveler un passeport ? En Tunisie, j'ai 4 photos",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "remaining_documents",
+   "procedure_category": "passport",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.27,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Obtention d’un passeport pour la première fois ou son renouvellement pour les Tunisiens résidents sur le territoire Tunisien.\nJ’ai noté les pièces que tu déclares déjà avoir.\n\nDéjà déclaré disponible (non vérifié):\n• 4 photos avec les caractéristiques suivantes :\n\nDisponible selon ta déclaration, mais quantité/caractéristiques à confirmer:\n• fond blanc\n• format 3.5/4.5 cm\n\nReste à préparer ou à confirmer — texte officiel:\n• Un imprimé d’obtention d'un passeport ordinaire lisible à la machine, le remplir et mettre la signature dans la case y afférente.\n• Copie de la Carte d'identité nationale avec présentation de l'originale ou un extrait de naissance pour les mineurs.\n• Justificatif de scolarisation pour les élèves et les étudiants.\n• Autorisation du tuteur pour les mineurs accompagnée d'une copie de sa carte d'identité nationale.\n• Quittance de paiement du droit de timbre fiscal dû:\n• De 20 dinars pour les élèves, étudiants et enfants de moins de 6 ans,\n• De 60 dinars pour les autres.\n• Joindre l'ancien passeport en cas de renouvellement,\n• Présenter une demande sur papier ordinaire au cas ou l’intéressé désirerait garder l'ancien passeport.\n\nUne déclaration ne vérifie ni la quantité, ni les caractéristiques, ni l’authenticité, ni la complétude juridique. Certaines pièces ci-dessous dépendent des circonstances précisées dans le texte officiel.\n\nAttention : les versions officielles FR et AR de cette page indiquent des montants différents (20/60 contre 25/80). Vérifiez le montant actuel auprès de l'administration.\n\n📚 Sources officielles:\n[1] Vos Démarches - Passeport (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/02.html\n[2] جواز السفر (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/ar/docs/demarches/02.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "cin_first_time_and_switch_from_passport",
+  "turn": 2,
+  "capability": "cin/first issuance + switch",
+  "input": "Quelles pièces pour obtenir la carte d'identité nationale pour la première fois ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.34,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ Pièces à fournir\n• Imprimé administratif à remplir\n• Extrait de naissance établi des registres originaux d'état civil datant de 3 mois au plus,\n• Attestation prouvant la nationalité tunisienne,\n• Attestation de résidence,\n• Attestation de travail ou de présence scolaire ou universitaire,\n• 3 photos d'identité de l'intéressé du format 3⁄4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle 1/10 montrant le visage et les yeux,\n• Quittance de paiement du droit de timbre fiscal dû,\n• Deux exemplaires de la copie de la carte de résidence et de la carte consulaire pour les résidents à l'étranger,\n• Autorisation du tuteur légal signée, légalisée et motivée pour l'obtention de la carte d'identité nationale (raison professionnelle, éducative, sportive ou physique) et ce pour les mineurs de moins de 18 ans,\n• Certificat indiquant le groupe sanguin (facultatif).\n\n▪️ Conditions\n• Remplir l'imprimé administratif et le signer\n• Atteindre l'âge légal (18 ans),\n• Etre de nationalité tunisienne,\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n\n▪️ Délais\n• Dans les 15 jours à partir de la date de dépôt de la demande\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "cin_first_time_and_switch_from_passport",
+  "turn": 3,
+  "capability": "cin/place",
+  "input": "Où déposer la demande ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "submission_place",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.34,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "cin_first_time_and_switch_from_passport",
+  "turn": 4,
+  "capability": "cin/delay",
+  "input": "Quel est le délai ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "processing_time",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.29,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ Délais\n• Dans les 15 jours à partir de la date de dépôt de la demande\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "cin_first_time_and_switch_from_passport",
+  "turn": 5,
+  "capability": "cin/fees",
+  "input": "Combien ça coûte ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.37,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Obtention de la carte d’identité nationale pour la première fois\n\n▪️ Frais\n• Quittance de paiement du droit de timbre fiscal dû,\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "cin_renewal_loss_ambiguous_languages",
+  "turn": 1,
+  "capability": "cin/damaged",
+  "input": "Ma carte d'identité est abîmée, quelles pièces ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.28,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Changement de la carte d’identité nationale pour cause de vol, de perte ou de détérioration.\n\n▪️ Pièces à fournir\n• Remplir l'imprimé administratif et le signer\n• Attestation de déclaration de perte,\n• Trois photos d'identité de l'intéressé de format 3/4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle de 1/10 montrant les le visage et les yeux,\n• Timbre fiscal de 25 dinars.\n\n▪️ Conditions\n• Perte de la carte d'identité nationale\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "cin_renewal_loss_ambiguous_languages",
+  "turn": 2,
+  "capability": "cin/ambiguous change",
+  "input": "Je veux changer ma carte d'identité",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "national_id",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.06,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Quel cas vous concerne : première carte, renouvellement, changement de données, ou remplacement après perte, vol ou détérioration ?"
+ },
+ {
+  "scenario": "cin_renewal_loss_ambiguous_languages",
+  "turn": 3,
+  "capability": "cin/yes re-asks",
+  "input": "oui",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "greeting",
+   "procedure_category": "none",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.12,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Pour continuer, j'ai besoin de cette précision :\n\nQuel cas vous concerne : première carte, renouvellement, changement de données, ou remplacement après perte, vol ou détérioration ?"
+ },
+ {
+  "scenario": "cin_renewal_loss_ambiguous_languages",
+  "turn": 4,
+  "capability": "cin/lost resolved",
+  "input": "perte",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "national_id",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 42.22,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Pour changer votre carte d'identité nationale en cas de perte, vous devez suivre les étapes suivantes :\n1.\nFournissez une attestation de déclaration de perte [1]\n3.\n4.\nFournissez un timbre fiscal de 25 dinars [1]\nDéposez votre dossier au poste de la police ou de la garde nationale du lieu de résidence du demandeur [1]\nLe délai pour le dépôt du dossier est de 15 jours à compter de la date de dépôt [1]\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "cin_renewal_loss_ambiguous_languages",
+  "turn": 5,
+  "capability": "cin/renewal derja (FR source)",
+  "input": "شنوة يلزمني باش نجدد بطاقة التعريف؟",
+  "expected_language": "derja",
+  "language": "derja",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 10.05,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Renouvellement de la carte d’identité par une carte d’identité nationale\n\n▪️ الأوراق اللي لازمك تحضّرها\n• Remplir l'imprimé administratif et le signer\n• Extrait de naissance datant de 3 mois au plus,\n• 3 photos d'identité de l'intéressé du format 3⁄4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle 1/10 montrant le visage et les yeux,\n• Copie de la carte à renouveler avec présentation de l'originale qui doit être remise aux services compétents lors de l'obtention de la nouvelle carte,\n• Pièce prouvant le changement des éléments de l'état civil, de la résidence ou de la profession, le cas échéant,\n• Quittance de paiement du droit de timbre fiscal dû.\n\n▪️ الشروط\n• Chaque citoyen tunisien doit renouveler sa carte d'identité par une carte d'identité nationale\n\n▪️ وين تحطّ الملف\n• Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n\n▪️ قدّاش ياخو وقت\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\nℹ️ منقول باللغة متاع الوثيقة الرسمية (FR).\n\n📚 المصادر الرسمية:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ المعلومات هاذي منقولة من مصادر رسمية، وموش استشارة قانونية. ما تثبّتناش إذا مازالت سارية توّا، ثبّت في الإدارة المعنية."
+ },
+ {
+  "scenario": "cin_renewal_loss_ambiguous_languages",
+  "turn": 6,
+  "capability": "cin/renewal en (translated)",
+  "input": "What documents do I need to renew my national ID card?",
+  "expected_language": "en",
+  "language": "en",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 24.78,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Renouvellement de la carte d’identité par une carte d’identité nationale\n\n▪️ Required documents\n• Fill out the administrative form and sign it\n• Birth certificate no more than 3 months old,\n• 3 photos of the applicant in a 3/4 cm format, taken front-on, on a white or light-colored background, at a scale of 1/10, showing the face and eyes,\n• Copy of the card to be renewed, with presentation of the original, which must be handed over to the competent authorities upon obtaining the new card,\n• Document proving the change in civil status, residence or profession, if applicable,\n• Receipt for payment of the applicable tax stamp fee.\n\n▪️ Conditions\n• Every Tunisian citizen must renew their ID card with a national ID card\n\n▪️ Where to submit\n• Police or National Guard post at the applicant's place of residence\n\n▪️ Processing time\n• Within 15 days from the date of filing the application\n\nℹ️ Automatic translation of the official FR text; the official text prevails.\n\n📚 Official sources:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Information quoted from official sources; not legal advice. Their current validity has not been verified: please confirm with the competent administration."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 1,
+  "capability": "cin",
+  "input": "Ma carte d'identité est abîmée, quelles pièces ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "national_id",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 3.9,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🪪 Changement de la carte d’identité nationale pour cause de vol, de perte ou de détérioration.\n\n▪️ Pièces à fournir\n• Remplir l'imprimé administratif et le signer\n• Attestation de déclaration de perte,\n• Trois photos d'identité de l'intéressé de format 3/4 cm prises en face sur support arrière d'une couleur blanche ou claire et à l'échelle de 1/10 montrant les le visage et les yeux,\n• Timbre fiscal de 25 dinars.\n\n▪️ Conditions\n• Perte de la carte d'identité nationale\n\n▪️ Lieu de dépôt\n• Poste de la police ou de la garde nationale du lieu de résidence du demandeur\n\n▪️ Délais\n• Dans les 15 jours à compter de la date de dépôt du dossier\n\n\n📚 Sources officielles:\n[1] Vos Démarches - Carte d'Identité Nationale (Ministère de l'Intérieur)\nhttp://services.interieur.gov.tn/wap/fr/docs/demarches/01.html\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 2,
+  "capability": "rne/fees by code + switch from CIN",
+  "input": "Quelle redevance pour RNE C 001 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.13,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nCode procédure: RNE C 001\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique commerçant\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: Trente jours à compter de la date du début de l'activité mentionnée dans la carte d'identification fiscale.\n\n📝 Formulaires officiels:\n• RNE-F-001_declation_immatriculation_personne_physique\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 3,
+  "capability": "rne/deadline by code",
+  "input": "Quel délai pour RNE C 001 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "processing_time",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.11,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nCode procédure: RNE C 001\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique commerçant\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: Trente jours à compter de la date du début de l'activité mentionnée dans la carte d'identification fiscale.\n\n📝 Formulaires officiels:\n• RNE-F-001_declation_immatriculation_personne_physique\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 4,
+  "capability": "rne/unsupported code",
+  "input": "Quelle redevance pour RNE C 999 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "fees",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.09,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Le code de procédure RNE C 999 ne figure pas dans le tableau officiel des formalités du RNE.\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 5,
+  "capability": "rne/document requirements",
+  "input": "Quelles pièces pour l'immatriculation d'une personne physique au RNE ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.09,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nLes documents officiels de ma base ne contiennent pas de liste de pièces à fournir pour cette procédure. Voici ce que disent les sources officielles :\n\nCode procédure: RNE C 001\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique commerçant\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: Trente jours à compter de la date du début de l'activité mentionnée dans la carte d'identification fiscale.\n\nCode procédure: RNE C 002\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique artisan\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: L'immatriculation des artisans qui ont commencé l'activité avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible à des délais d'immatriculation mais ils ne peuvent pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\nCode procédure: RNE C 003\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne physique\nType d entreprise: Personne physique professionnel\nProcédure: Création\nRedevance demandée: vingt dinars (20 TND)\nDélais: L'immatriculation des professionnels qui ont commencé l'activité avant le 05/02/2019 date de l'entrée en vigueur de la loi 52-2018 relative au registre national des entreprises n'est pas susceptible à des délais d'immatriculation mais ils ne peuvent pas se prévaloir à l'égard des tiers de son défaut d'immatriculation (article 16 de la loi précitée)\n\n📝 Formulaires officiels:\n• RNE-F-001_declation_immatriculation_personne_physique\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 6,
+  "capability": "rne/registration guidance (Phase F: official row C 012)",
+  "input": "Comment immatriculer une SARL au RNE ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "checklist_builder",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "business_registration",
+   "next_agent": "checklist",
+   "method": "rules"
+  },
+  "seconds": 0.09,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "🏢 Registre National des Entreprises (RNE)\n\nLes documents officiels de ma base ne contiennent pas de liste de pièces à fournir pour cette procédure. Voici ce que disent les sources officielles :\n\nCode procédure: RNE C 012\nNature du service: Immatriculation principale y compris la déclaration du ou des bénéficiaires effectifs et la publication au journal officiel du Centre\nGenre d'Entreprise: Personne Morale\nType d entreprise: Sarl/Suarl/La société en nom collectif/La société en commandite par actions/La société en commandite simple/Societé civile\nProcédure: Création\nRedevance demandée: cinquante dinars (50 TND)\nDélais: Trente jours à compter de la date de signature des statuts\n\n📝 Formulaires officiels:\n• RNE-F-002_declation_immatriculation_personne_motale\n  https://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n📚 Sources officielles:\n[1] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n[2] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 7,
+  "capability": "rne/form F-001 printed content",
+  "input": "Que dit le formulaire F-001 sur les pièces à joindre ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.2,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Extraits officiels dans leur langue originale. Il s’agit de dispositions sélectionnées, pas d’un avis juridique exhaustif. Aucune conclusion au-delà du texte cité n’est vérifiée ; confirmez son applicabilité actuelle et votre cas particulier.\n\n[1] (p. 1)\n:هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 8,
+  "capability": "rne/form F-001 generic question (Phase F: printed overview)",
+  "input": "Que contient le formulaire F-001 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.22,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Contenu imprimé du formulaire officiel (cité tel quel) :\n• DÉCLARATION D’IMMATRICULATION D’UNE PERSONNE PHYSIQUE\n• RNE F 001 : مرجع\n\nChamps à remplir:\n• إمضاء المصرّ ح أو من ينوبه بتوكيل التاريخ\n• E-mail\n• N°GSM\n• Nom du Déposant\n• N° Identité du Déposant\n• N°Identité\n• Nom et Prénom\n\nMentions et options imprimées:\n• :هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو اتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل\n• أصرح على الشرف أني تحققت من البيانات و الوثائق المرفقة موضوع التصريح و أشهد بصحتها\n• IDENTIFIANT UNIQUE -المعرّف الوحيد\n• N° CERTIFICAT DE RÉSERVATION LE CAS ÉCHÉANT -رقم شهادة الحجز عند الإقتضاء\n• Type de Pièce d’identité / نوع بطاقة الهوية\n• -بطاقة قنصليةCARTE CONSULAIRE - CARTE DE SÉJOURبطاقة إقامة رقم جواز سفرPASSEPORT -بطاقة تعريفCIN -\n• Métier Libéral - مهنة حرّ ة Artisan - حرفيCommerçant -تاجر\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "rne_registration_forms_fees_legal",
+  "turn": 9,
+  "capability": "rne/form F-002 printed content",
+  "input": "Que dit le formulaire F-002 sur les pièces à joindre ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.21,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Extraits officiels dans leur langue originale. Il s’agit de dispositions sélectionnées, pas d’un avis juridique exhaustif. Aucune conclusion au-delà du texte cité n’est vérifiée ; confirmez son applicabilité actuelle et votre cas particulier.\n\n[1] (p. 1)\n:هام جدا الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب. كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا. تضمين البريد الالكتروني و الهاتف الجوال وجوبي حتى نتمكن من الإتصال بكم و إعلامكم بحالة الملف. يتم تعمير البيانات باللغة العربية مع إضافة اللغة الفرنسية إختياريا من القانون عدد 10 تنويه : كل من تعمد تقديم تصريح مخالف للحقيقة أو تقديم بيان كاذب أو تعمد مخالفة أحكام الفصل قصد التسجيل أو التنقيح أو التشطيب أو إتمام بيانات منقوصة يعرض نفسه للعقوبات المنصوص عليها 2018 لسنة52 . من نفس القانون55 بالفصل\n\n📚 Sources officielles:\n[1] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "legal_citations",
+  "turn": 1,
+  "capability": "legal/citation fr",
+  "input": "Quelles autorités compétentes peuvent obtenir les informations sur le bénéficiaire effectif ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.29,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Source : Arrêté de la Cheffe du Gouvernement du 13 janvier 2026, fixant la procédure d'obtention des informations relatives au bénéficiaire effectif des personnes morales et des constructions juridiques (JORT n° 5 du 13 janvier 2026) — articles 2, 1, 5. Le texte officiel est en français et il est cité tel quel ; aucune traduction officielle n'est fournie.\n\nPassage le plus pertinent (formulation officielle) :\n« 2 - Le Centre national du registre des entreprises met, en temps réel, à la disposition des autorités compétentes les informations relatives au bénéficiaire effectif, par le biais de l’interopérabilité. »\n\nTexte officiel :\n\n[1] § 2 (p. 1)\nArt. 2 - Le Centre national du registre des entreprises met, en temps réel, à la disposition des autorités compétentes les informations relatives au bénéficiaire effectif, par le biais de l’interopérabilité.\nLes autorités compétentes peuvent, le cas échéant, demander l’obtention de ces informations sous format papier, et ce, sur demande écrite adressée au Centre national du registre des entreprises. Celui-ci se charge, dans ce cas, de donner suite à la demande dans un délai maximum de deux (2) jours à compter de la date de sa réception.\nDécrets et arrêtés\nSection 2\nSection 2 - Procédure d’obtention des informations relatives au bénéficiaire effectif par les personnes assujetties à\nl’obligation de diligence envers leurs clients\n\n[1] § 1 (p. 1)\nArticle premier - Au sens du présent arrêté, on entend par:\n1. Autorités compétentes : les organismes publics chargés de l’application de la législation relative à la lutte contre les infractions de blanchiment d’argent et de financement du terrorisme. Ces autorités comprennent : - La Banque centrale de Tunisie, - La Commission tunisienne des analyses financières, - La Commission nationale de lutte contre le terrorisme, - Le Chef du contentieux de l’État, - La Direction générale des douanes, - La Caisse nationale de sécurité sociale, - La direction chargée des associations à la Présidence du Gouvernement, - La direction chargée de la fiscalité au ministère des finances, - La fonction juridictionnelle, - Le ministère de l’intérieur. 2. Intérêt légitime : la finalité qui permet au public d’obtenir les informations élémentaires relatives au bénéficiaire effectif des personnes morales et des constructions juridiques. Cette finalité est essentiellement liée à ce qui suit : - La lutte contre le blanchiment d’argent et le financement du terrorisme, - La prévention de la corruption et des conflits d’intérêts, - La protection des droits et des positions juridiques légitimes. Chapitre II Procédure d’obtention des informations relatives au bénéficiaire effectif Section première - Procédure d’obtention des informations relatives au bénéficiaire effectif par les autorités compétentes\n\n[1] § 5 (p. 2)\nArt. 5 - Le Centre national du registre des entreprises statue sur la demande d’obtention des informations relatives au bénéficiaire effectif dans un délai maximum de deux (2) jours à compter de la date de sa réception. L'intéressé est informé de la suite donnée à sa demande dans ce délai même, par tout moyen laissant une trace écrite. En cas de rejet, la décision est motivée.\n\nAutres articles du même texte, disponibles sur demande (« article N ») : § 3, § 4, § 6\n\nExtraits officiels dans leur langue originale. Il s’agit de dispositions sélectionnées, pas d’un avis juridique exhaustif. Aucune conclusion au-delà du texte cité n’est vérifiée ; confirmez son applicabilité actuelle et votre cas particulier.\n\n📚 Sources officielles:\n[1] Arrete2026_35 (Registre National des Entreprises (RNE)) — Arrêté de la Cheffe du Gouvernement du 13 janvier 2026, fixant la procédure d'obtention des informations relatives au bénéficiaire effectif des personnes morales et des constructions juridiques (JORT n° 5 du 13 janvier 2026)\nhttps://home.registre-entreprises.tn/wp-content/uploads/2026/01/Arrete2026_35.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridi\nque. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "legal_citations",
+  "turn": 2,
+  "capability": "legal/article ar",
+  "input": "ماذا ينص الفصل 16 من قانون السجل الوطني للمؤسسات 52 لسنة 2018؟",
+  "expected_language": "ar",
+  "language": "ar",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.22,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "المصدر: قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018) — الفصل 16. النص الرسمي باللغة العربية ويُنقل كما هو دون ترجمة رسمية.\n\nالنص الرسمي:\n\n[1] § 16 (p. 5)\nالفصل16 يعتبر تسجيل الشخص الطبيعي بالسجل التجاري قرينة بسيطة لثبوت صفة التاجر.\nغير أن هذه القرينة لا يمكن أن يعارض بها الغير إذا أثبت ما يخالفها ولا يمكنه التمسك بها إذا ثبت علمه بأن الشخص\nالمسجل ليس تاجرا.\nولا يمكن للخاضع للتسج يل أن يعارض الغير بعدم تسجيله .\nولا يجوز للتاجر المسجل الذي يحيل الأصل التجاري أو يسلمه خاصة على وجه الكراء، معارضة الغير بتوقفه عن ممارسة نشاطه، للتفصي من دعاوى المسؤولية المقامة ضده في خصوص الالتزامات التي أبرمها خلفه في استغلال الأصل إلا من\nيوم ترسيم ا لبيان المتعلق بحصول الإحالة أو التسليم، وذلك بقطع النظر عن القواعد الواردة بالفصل234 من المجلة التجارية.\n\nمقتطفات رسمية بلغتها الأصلية. هذه أحكام مختارة وليست رأيا قانونيا شاملا. لا نثبت استنتاجا خارج النص المقتبس؛ يلزم التأكد من سريانه الحالي ومن انطباقه على حالتك.\n\n📚 المصادر الرسمية:\n[1] Loi_52_2018_Arabe (Registre National des Entreprises (RNE)) — قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018)\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/Loi_52_2018_Arabe.pdf\n\n⚖️ معلومات منقولة من مصادر رسمية وليست استشارة قانونية. لم يتم التحقق من سريانها حاليا، يرجى التأكد لدى الإدارة المعنية."
+ },
+ {
+  "scenario": "legal_citations",
+  "turn": 3,
+  "capability": "legal/non-existent article",
+  "input": "Que dit l'article 999 de la loi 2018-52 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.22,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Je n'ai pas trouvé, dans mes sources officielles, d'éléments qui répondent à cette question ; je préfère ne pas deviner. Veuillez contacter l'administration compétente."
+ },
+ {
+  "scenario": "legal_citations",
+  "turn": 4,
+  "capability": "legal/article of the act under discussion",
+  "input": "Que dit l'article 5 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "business_registration",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 0.23,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Source : قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018) — article 5. Le texte officiel est en arabe et il est cité tel quel ; aucune traduction officielle n'est fournie.\n\nTexte officiel :\n\n[1] § 5 (p. 2)\nالفصل5 يخضع أعوان المركز لأحكام القانون عدد78 لسنة\n1985 المؤرخ في5 أوت1985 المتعلق بضبط النظام الأساسي\nالعام لأ عوان الدواوين والمؤسسات العمومية ذات الصبغة الصناعية والتجارية والشركات التي تملك الدولة أو الجماعات\nالعمومية المحلية رأس مالها كليا وبصفة مباشرة.\nصفحة4646 الرائد الرسمي للجمهورية التونسية–– 6 نوفمبر2018 عدد89\nيضبط بمقتضى أمر حكومي التنظيم الإداري والمالي للمركز\nوكذلك النظام الأساسي الخاص بأعوانه.\n\nExtraits officiels dans leur langue originale. Il s’agit de dispositions sélectionnées, pas d’un avis juridique exhaustif. Aucune conclusion au-delà du texte cité n’est vérifiée ; confirmez son applicabilité actuelle et votre cas particulier.\n\n📚 Sources officielles:\n[1] Loi_52_2018_Arabe (Registre National des Entreprises (RNE)) — قانون عدد 52 لسنة 2018 مؤرخ في 29 أكتوبر 2018 يتعلق بالسجل الوطني للمؤسسات (الرائد الرسمي عدد 89 بتاريخ 6 نوفمبر 2018)\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/Loi_52_2018_Arabe.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ },
+ {
+  "scenario": "legal_article_without_act",
+  "turn": 1,
+  "capability": "legal/article without act (fresh chat)",
+  "input": "Que dit l'article 5 ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "general",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.07,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "De quelle procédure, prestation ou disposition précise parles-tu ? Décris la situation sans identifiants personnels ; je ne peux pas déduire que ce texte s’applique à ton cas."
+ },
+ {
+  "scenario": "documents_form_check",
+  "turn": 1,
+  "capability": "form/valid PDF (text layer)",
+  "input": "f001.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.29,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique\n\n❗ Champs qui semblent vides:\n• التاريخ\n• E-mail / البريد الإلكتروني\n• N°GSM / الهاتف الجوال\n• Nom du Déposant / إسم و لقب المودع\n• N° Identité du Déposant / رقم بطاقة هوية المودع\n• N°Identité / رقم الهوية\n• Nom et Prénom (s) / الإسم و اللقب\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\nChamps potentiellement manquants : 7. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "documents_form_check",
+  "turn": 2,
+  "capability": "form/valid image (OCR)",
+  "input": "f002.png",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 2.51,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : RNE-F-002_declation_immatriculation_personne_motale\n\n❗ Champs qui semblent vides:\n• التاريخ\n• Représantant Légal / الممثل القانوني\n• Dénomination / إسم المؤسسة\n• E-mail / البريد الإلكتروني\n• N°GSM / الهاتف الجوال\n• Nom du Déposant / إسم و لقب المودع\n• N° Identité du Déposant / رقم بطاقة هوية المودع\n• N°Identité / رقم الهوية\n\nℹ️ Vérification automatique (OCR) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] RNE-F-002_declation_immatriculation_personne_motale (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-002_declation_immatriculation_personne_motale.pdf\n\nChamps potentiellement manquants : 8. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "documents_form_check",
+  "turn": 3,
+  "capability": "form/missing required fields",
+  "input": "f001_partial.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.18,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique\n\n❗ Champs qui semblent vides:\n• Nom du Déposant / إسم و لقب المودع\n• N° Identité du Déposant / رقم بطاقة هوية المودع\n• N°Identité / رقم الهوية\n• Nom et Prénom (s) / الإسم و اللقب\n\nℹ️ Vérification automatique (PDF) ; l'écriture manuscrite peut être mal lue. Aucun contenu de votre fichier n'est conservé.\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n\nChamps potentiellement manquants : 4. Consultez les libellés dans le résultat ci-dessus.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "documents_form_check",
+  "turn": 4,
+  "capability": "form/unreadable image",
+  "input": "blank.png",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.37,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Je n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs. Formulaires pris en charge : demande de carte d'identité nationale (ministère de l'Intérieur), demande de passeport ordinaire (ministère de l'Intérieur), RNE F-001 (immatriculation d'une personne physique) et RNE F-002 (immatriculation d'une personne morale).\n\nCe formulaire ne correspond pas à un modèle officiel pris en charge. Aucune conclusion sur les champs ne peut être établie.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "documents_form_check",
+  "turn": 5,
+  "capability": "form/invalid file",
+  "input": "corrupt.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.05,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Je n'ai pas pu lire ce fichier : le PDF est endommagé ou illisible\n\nLe fichier n’a pas pu être lu correctement. Essayez une photo nette et droite ou un PDF lisible. Cela ne signifie pas que les champs sont vides.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "documents_form_check",
+  "turn": 6,
+  "capability": "form/unsupported document",
+  "input": "unrelated.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "form_helper",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.13,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Je n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs. Formulaires pris en charge : demande de carte d'identité nationale (ministère de l'Intérieur), demande de passeport ordinaire (ministère de l'Intérieur), RNE F-001 (immatriculation d'une personne physique) et RNE F-002 (immatriculation d'une personne morale).\n\nCe formulaire ne correspond pas à un modèle officiel pris en charge. Aucune conclusion sur les champs ne peut être établie.\n\nVérification manuelle nécessaire. Ce contrôle signale des omissions possibles ; il ne certifie ni lisibilité, ni exactitude, ni validité juridique."
+ },
+ {
+  "scenario": "documents_dossier",
+  "turn": 1,
+  "capability": "telegram/dossier mode",
+  "input": "/dossier_check",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Validation du dossier : envoyez un PDF, JPEG, PNG ou une photo Telegram (maximum 10 Mo), de préférence anonymisé. Ce mode reste actif jusqu’au contrôle de formulaire, à une nouvelle question ou à /cancel. Informatif uniquement ; aucune certification de complétude juridique ni approbation officielle."
+ },
+ {
+  "scenario": "documents_dossier",
+  "turn": 2,
+  "capability": "dossier/partially filled F-001",
+  "input": "f001_partial.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "dossier_validator",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.51,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Validation du dossier\nChamps remplis: 3\nChamps manquants: 4\nChamps illisibles: 0\nChamps non vérifiables: 4\nExigences étayées par des sources officielles: 2\nExigences non vérifiables:\n• Le formulaire exige les pièces justificatives requises, mais les sources officielles disponibles ne les listent pas : la complétude du dossier ne peut pas être évaluée.\n• Le tableau officiel du RNE liste 4 procédures d'immatriculation pour ce type d'entreprise, chacune avec sa redevance et son délai ; celle qui s'applique n'est pas vérifiée.\n• La présence des pièces justificatives\n• Le paiement de la redevance\n• La signature et la date\n• L'exactitude des valeurs saisies\n\n🗂️ Rapport de préparation du dossier (aide uniquement)\n📝 Formulaire reconnu : RNE-F-001_declation_immatriculation_personne_physique\n\n4 des 7 champs détectés semblent vides et 0 n'ont pas pu être lus. Les sources officielles disponibles ne listent pas les pièces justificatives requises : la complétude du dossier ne peut pas être évaluée. Ce rapport n'est pas une validation officielle.\n\n✅ Champs qui semblent remplis:\n• التاريخ\n• E-mail / البريد الإلكتروني\n• N°GSM / الهاتف الجوال\n\n❗ Champs à vérifier:\n• Nom du Déposant / إسم و لقب المودع\n• N° Identité du Déposant / رقم بطاقة هوية المودع\n• N°Identité / رقم الهوية\n• Nom et Prénom (s) / الإسم و اللقب\n\n❔ Sections que cet outil ne peut pas vérifier (signature, cases à cocher):\n• إمضاء المصرّ ح أو من ينوبه بتوكيل\n• Type de Pièce d’identité / نوع بطاقة الهوية\n• Métier Libéral - مهنة حرّ ة Artisan - حرفيCommerçant -تاجر\n• IDENTIFIANT UNIQUE -المعرّف الوحيد\n\n📜 Exigences officielles:\n• [source officielle] Le formulaire officiel demande de remplir toutes les données ; il indique que toute donnée manquante entraîne le rejet.\n  « الرجاء تعمير البيانات كاملة ,بكل دقة و بوضوح و كل بيان ناقص موجب لرفض الطلب »\n• [source officielle] Le formulaire officiel indique que l'e-mail et le numéro de mobile sont obligatoires.\n  « تضمين البريد الالكتروني و الهاتف الجوال وجوبي »\n• [liste officielle indisponible] Le formulaire exige les pièces justificatives requises, mais les sources officielles disponibles ne les listent pas : la complétude du dossier ne peut pas être évaluée.\n  « كل تصريح يتضمن بيانات مخالفة للواقع أو تنقصه الوثائق المطلوبة يعتبر لاغيا »\n• [non vérifié] Le tableau officiel du RNE liste 4 procédures d'immatriculation pour ce type d'entreprise, chacune avec sa redevance et son délai ; celle qui s'applique n'est pas vérifiée.\n\n⚠️ Non vérifié par cet outil:\n• La présence des pièces justificatives\n• Le paiement de la redevance\n• La signature et la date\n• L'exactitude des valeurs saisies\n\n📚 Sources officielles:\n[1] RNE-F-001_declation_immatriculation_personne_physique (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/wp-content/uploads/2022/10/RNE-F-001_declation_immatriculation_personne_physique.pdf\n[2] Formalités (Registre National des Entreprises (RNE))\nhttps://home.registre-entreprises.tn/formalites/\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente.\n\nLa détection des champs est automatique et n'a pas été testée sur de l'écriture manuscrite ou des photos réelles.\n\nCeci est un outil d'aide, pas une validation officielle : seule l'administration décide si un dossier est complet.\n\nLa validation du dossier est informative. Elle ne certifie ni la complétude juridique ni une approbation officielle. Une vérification manuelle par l’administration compétente reste nécessaire."
+ },
+ {
+  "scenario": "documents_dossier",
+  "turn": 3,
+  "capability": "dossier/unsupported document",
+  "input": "unrelated.pdf",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "dossier_validator",
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.09,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Validation du dossier\nChamps remplis: Non évalué / non communiqué\nChamps manquants: Non évalué / non communiqué\nChamps illisibles: Non évalué / non communiqué\nChamps non vérifiables: Non évalué / non communiqué\nExigences étayées par des sources officielles: Non évalué / non communiqué\nExigences non vérifiables:\nNon évalué / non communiqué\n\nJe n'ai pas pu associer ce fichier à un formulaire officiel de ma base ; je ne peux donc pas vérifier ses champs. Formulaires pris en charge : demande de carte d'identité nationale (ministère de l'Intérieur), demande de passeport ordinaire (ministère de l'Intérieur), RNE F-001 (immatriculation d'une personne physique) et RNE F-002 (immatriculation d'une personne morale).\n\nCe formulaire ne correspond pas à un modèle officiel pris en charge. Aucune conclusion sur les champs ne peut être établie.\n\nSeuls les formulaires officiels RNE F-001 et F-002 sont pris en charge.\n\nLa validation du dossier est informative. Elle ne certifie ni la complétude juridique ni une approbation officielle. Une vérification manuelle par l’administration compétente reste nécessaire."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 1,
+  "capability": "telegram/start",
+  "input": "/start",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Bienvenue ! Passeports, actes de naissance (couverture limitée), création d’entreprise, listes de pièces et vérification de formulaires officiels. Ces indications reposent sur les sources officielles disponibles et ne remplacent pas l’administration compétente."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 2,
+  "capability": "telegram/help",
+  "input": "/help",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Choisissez une démarche ou posez une question. Commandes : /start /help /language /procedures /passport /birth_certificate /business /checklist /form_check /privacy /cancel. Précisez votre situation sans données personnelles. /dossier_check — Validation du dossier"
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 3,
+  "capability": "telegram/language keyboard",
+  "input": "/language",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Auto (par défaut) : je réponds dans la langue de chaque message. Vous pouvez aussi choisir une langue préférée :"
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 4,
+  "capability": "telegram/language preference",
+  "input": "language:derja",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "سجّلت اللغة اللي تحبها. نستعملها في القوائم وفي الميساجات القصيرة برشا، أما كان تكتب سؤال بلغة أخرى نجاوبك بيها. اختار Auto باش ترجع للوضع الأوتوماتيكي."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 5,
+  "capability": "telegram/auto",
+  "input": "language:auto",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Langue automatique : je réponds dans la langue de chaque message."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 6,
+  "capability": "telegram/procedures",
+  "input": "/procedures",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Choisissez une démarche :"
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 7,
+  "capability": "telegram/procedure button",
+  "input": "procedure:passport",
+  "expected_language": null,
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "required_documents",
+   "procedure_category": "passport",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.05,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Est-ce une première demande, un renouvellement ou un remplacement après perte/vol ?\n\nTu résides en Tunisie ou à l’étranger ?"
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 8,
+  "capability": "telegram/privacy",
+  "input": "/privacy",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Les fichiers sont traités temporairement en mémoire, sans enregistrement ni ajout à la base publique. Telegram traite également les messages selon ses règles. Les préférences expirent après 30 minutes. Évitez les numéros d’identité et les données personnelles inutiles.\n\nPour les relances, seuls la démarche, le type de demande, la catégorie de résidence et les types/quantités de pièces déclarées sont gardés en mémoire jusqu’à 30 minutes. Aucun identifiant personnel ni historique de messages n’est conservé. /cancel efface ce contexte."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 9,
+  "capability": "telegram/form check mode",
+  "input": "/form_check",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Envoyez un PDF, JPEG, PNG ou une photo Telegram (maximum 10 Mo), de préférence anonymisé. Les champs potentiellement manquants sont signalés sur les formulaires reconnus. Ce contrôle ne constitue ni approbation officielle ni validation juridique."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 10,
+  "capability": "telegram/new question",
+  "input": "menu:new",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Posez une nouvelle question. Le contexte de démarche est effacé ; la langue choisie est conservée."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 11,
+  "capability": "telegram/cancel",
+  "input": "/cancel",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Interaction annulée. Préférences effacées."
+ },
+ {
+  "scenario": "telegram_commands",
+  "turn": 12,
+  "capability": "telegram/too long",
+  "input": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "expected_language": null,
+  "language": null,
+  "agent": null,
+  "route": {
+   "intent": null,
+   "procedure_category": null,
+   "next_agent": null,
+   "method": null
+  },
+  "seconds": 0.0,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Limitez votre question à 2 000 caractères."
+ },
+ {
+  "scenario": "out_of_scope_and_unavailable",
+  "turn": 1,
+  "capability": "scope/out of scope",
+  "input": "Quelle est la météo demain ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "out_of_scope",
+   "procedure_category": "none",
+   "next_agent": "reply",
+   "method": "llm"
+  },
+  "seconds": 16.93,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Je ne peux aider que pour les démarches administratives tunisiennes couvertes par mes sources officielles (passeport, carte d'identité nationale, immatriculation au RNE)."
+ },
+ {
+  "scenario": "out_of_scope_and_unavailable",
+  "turn": 2,
+  "capability": "scope/uncovered vehicle procedure",
+  "input": "Comment obtenir une carte grise ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "out_of_scope",
+   "procedure_category": "none",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.07,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Je ne peux aider que pour les démarches administratives tunisiennes couvertes par mes sources officielles (passeport, carte d'identité nationale, immatriculation au RNE)."
+ },
+ {
+  "scenario": "out_of_scope_and_unavailable",
+  "turn": 3,
+  "capability": "scope/uncovered category",
+  "input": "Comment obtenir un extrait de naissance ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "intent_router",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "birth_certificate",
+   "next_agent": "reply",
+   "method": "rules"
+  },
+  "seconds": 0.11,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Cette procédure n'est pas encore couverte : aucune source officielle n'a pu être intégrée à ma base."
+ },
+ {
+  "scenario": "out_of_scope_and_unavailable",
+  "turn": 4,
+  "capability": "scope/unavailable official form (robots-blocked)",
+  "input": "Où télécharger le formulaire de demande de passeport ?",
+  "expected_language": "fr",
+  "language": "fr",
+  "agent": "grounded_answer",
+  "route": {
+   "intent": "procedure_info",
+   "procedure_category": "passport",
+   "next_agent": "answer",
+   "method": "rules"
+  },
+  "seconds": 6.84,
+  "checks": {
+   "language": true,
+   "agent": true,
+   "markers": true,
+   "any_markers": true,
+   "absent": true,
+   "isolation": true,
+   "backend_called": true,
+   "session_cleared": true,
+   "amounts": true,
+   "replied": true
+  },
+  "ok": true,
+  "text": "Lien officiel de téléchargement: جواز السفر\nhttps://services.interieur.gov.tn/uploads/imprimes/02.pdf\n\n📚 Sources officielles:\n[1] جواز السفر (Ministère de l'Intérieur)\nhttps://services.interieur.gov.tn/uploads/imprimes/02.pdf\n\n⚖️ Informations citées de sources officielles ; ceci n'est pas un avis juridique. Leur validité actuelle n'a pas été vérifiée : confirmez auprès de l'administration compétente."
+ }
+]

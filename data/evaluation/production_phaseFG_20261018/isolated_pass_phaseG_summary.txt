@@ -1,0 +1,9 @@
+phaseG backend: sha256:4d79b517a8902e093d32ac9821eba594942de1b928a10d976fb346c27d735d86
+start 18:01:43Z
+coverage: {"summary": "60/60 turns passed"}
+conversational: {"summary": "22/22 turns passed"}
+language: {"summary": "26/26 turns passed"}
+phase F session: {"summary": "28/29 turns passed"}
+probes: passed 16 / 16
+wf02 retrieval with valid official citations: 5/5 | median 500 ms
+end 18:06:29Z

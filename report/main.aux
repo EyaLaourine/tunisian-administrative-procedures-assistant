@@ -7,99 +7,111 @@
 \citation{law2018_52}
 \citation{decree2022_298}
 \citation{ji2023hallucination}
-\citation{fastapi}
+\citation{telegram_bot_api}
 \citation{n8n}
-\citation{wu2023autogen}
+\citation{fastapi}
+\citation{pydantic}
 \citation{qdrant}
 \citation{ollama}
-\citation{telegram_bot_api}
+\citation{docker_compose}
+\citation{pymupdf}
 \citation{smith2007tesseract}
-\citation{lewis2020rag}
+\citation{bradski2000opencv}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction and problem definition}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}System requirements and technology selection}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction, use case and requirements}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction, use case and requirements}{section.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}System architecture and tool choices}{1}{section.2}\protected@file@percent }
+\newlabel{sec:arch}{{2}{1}{System architecture and tool choices}{section.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Deployed architecture. Arrows are HTTP/JSON calls; green boxes are stores and model servers. All published ports are bound to 127.0.0.1 \hyperref  [app:evidence]{[E11]}. $^\ast $Uploads sent with \texttt  {\small  mode: dossier}.}}{1}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:arch}{{1}{1}{Deployed architecture. Arrows are HTTP/JSON calls; green boxes are stores and model servers. All published ports are bound to 127.0.0.1 \ev {E11}. $^\ast $Uploads sent with \code {mode: dossier}}{figure.caption.1}{}}
+\citation{lewis2020rag}
+\citation{wu2023autogen}
 \citation{chen2024bgem3}
 \citation{jiang2023mistral}
+\citation{translategemma}
+\def\@LN@column{1}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Tools, the requirement that motivated each choice, and the accepted trade-off.}}{2}{table.caption.2}\protected@file@percent }
+\newlabel{tab:tools}{{1}{2}{Tools, the requirement that motivated each choice, and the accepted trade-off}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}LLM and embedding model choices}{2}{section.3}\protected@file@percent }
+\newlabel{sec:models}{{3}{2}{LLM and embedding model choices}{section.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Models in the deployed configuration (sizes and quantisation as reported by the Ollama server).}}{2}{table.caption.3}\protected@file@percent }
+\newlabel{tab:models}{{2}{2}{Models in the deployed configuration (sizes and quantisation as reported by the Ollama server)}{table.caption.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}RAG approach}{2}{section.4}\protected@file@percent }
+\newlabel{sec:rag}{{4}{2}{RAG approach}{section.4}{}}
 \citation{cormack2009rrf}
 \citation{robertson2009bm25}
-\def\@LN@column{1}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Implemented architecture. Arrows are HTTP/JSON calls; green boxes are stores and model servers. $^\ast $Innovation extension, reached through workflow 03 with \texttt  {\small  mode: dossier}.}}{2}{figure.caption.1}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:arch}{{1}{2}{Implemented architecture. Arrows are HTTP/JSON calls; green boxes are stores and model servers. $^\ast $Innovation extension, reached through workflow 03 with \code {mode: dossier}}{figure.caption.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}LLM selection and deployment constraints}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Official knowledge corpus and RAG methodology}{2}{section.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Ingestion and indexing (top) and query-time retrieval (bottom).}}{2}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:rag}{{2}{2}{Ingestion and indexing (top) and query-time retrieval (bottom)}{figure.caption.2}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Multi-agent architecture and n8n orchestration}{3}{section.5}\protected@file@percent }
-\newlabel{sec:agents}{{5}{3}{Multi-agent architecture and n8n orchestration}{section.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces n8n workflow 03 (17 nodes): boxes are HTTP nodes calling one backend agent, diamonds are IF nodes, dashed red arrows are error outputs. $^\ast $Uploads with \texttt  {\small  mode: dossier}.}}{3}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:agents}{{3}{3}{n8n workflow 03 (17 nodes): boxes are HTTP nodes calling one backend agent, diamonds are IF nodes, dashed red arrows are error outputs. $^\ast $Uploads with \code {mode: dossier}}{figure.caption.3}{}}
 \citation{fischler1981ransac}
 \def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Components classified from the implementation (not from their names).}}{4}{table.caption.4}\protected@file@percent }
-\newlabel{tab:classes}{{1}{4}{Components classified from the implementation (not from their names)}{table.caption.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Multimodal processing and dossier validation}{4}{section.6}\protected@file@percent }
-\newlabel{sec:mm}{{6}{4}{Multimodal processing and dossier validation}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Experimental evaluation and discussion}{4}{section.7}\protected@file@percent }
-\newlabel{sec:eval}{{7}{4}{Experimental evaluation and discussion}{section.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Chunking and retrieval comparison on the 71 labelled development questions (of 84), $k=5$, retrieval configuration of 16~October~2026 \hyperref  [app:evidence]{[E7]}. Hit@5: at least one relevant evidence group in the top 5; MRR@5: mean reciprocal rank of the first relevant chunk (0 if none in the top 5); a chunk is relevant if it belongs to the labelled document and contains the verified evidence span.}}{3}{table.caption.4}\protected@file@percent }
+\newlabel{tab:retrieval}{{3}{3}{Chunking and retrieval comparison on the 71 labelled development questions (of 84), $k=5$, retrieval configuration of 16~October~2026 \ev {E7}. Hit@5: at least one relevant evidence group in the top 5; MRR@5: mean reciprocal rank of the first relevant chunk (0 if none in the top 5); a chunk is relevant if it belongs to the labelled document and contains the verified evidence span}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Agent architecture and conversational processing}{3}{section.5}\protected@file@percent }
+\newlabel{sec:agents}{{5}{3}{Agent architecture and conversational processing}{section.5}{}}
 \def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Retrieval on the 71 development questions with verified labels ($k=5$).}}{5}{table.caption.5}\protected@file@percent }
-\newlabel{tab:retrieval}{{2}{5}{Retrieval on the 71 development questions with verified labels ($k=5$)}{table.caption.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Chunking statistics.}}{5}{table.caption.6}\protected@file@percent }
-\newlabel{tab:chunks}{{3}{5}{Chunking statistics}{table.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Parallel subset: the same 7 facts asked in each language and script.}}{5}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:ml}{{4}{5}{Parallel subset: the same 7 facts asked in each language and script}{figure.caption.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Prompt iteration on the questions routed to the Grounded Answer agent (same passages; runs A and B).}}{5}{table.caption.8}\protected@file@percent }
-\newlabel{tab:prompts}{{4}{5}{Prompt iteration on the questions routed to the Grounded Answer agent (same passages; runs A and B)}{table.caption.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Development vs.\ held-out results before and after the reliability changes of the first evaluation round.}}{5}{table.caption.9}\protected@file@percent }
-\newlabel{tab:heldout}{{5}{5}{Development vs.\ held-out results before and after the reliability changes of the first evaluation round}{table.caption.9}{}}
-\def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Without (off) and with (on) the numeric evidence verifier. $^a$Contaminated items. $^b$Second evaluation. $^c$Evaluated once.}}{6}{table.caption.10}\protected@file@percent }
-\newlabel{tab:verif}{{6}{6}{Without (off) and with (on) the numeric evidence verifier. $^a$Contaminated items. $^b$Second evaluation. $^c$Evaluated once}{table.caption.10}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces End-to-end results before (original production) and after the corrections (final candidate), same original audit cases through n8n. Targeted checks test specific official facts; they are not an overall accuracy estimate.}}{6}{table.caption.11}\protected@file@percent }
-\newlabel{tab:final}{{7}{6}{End-to-end results before (original production) and after the corrections (final candidate), same original audit cases through n8n. Targeted checks test specific official facts; they are not an overall accuracy estimate}{table.caption.11}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Evaluation overview by metric and data split (final candidate unless stated; dev.\ and held-out values are from the first evaluation round, whose retrieval code is unchanged).}}{6}{table.caption.12}\protected@file@percent }
-\newlabel{tab:overview}{{8}{6}{Evaluation overview by metric and data split (final candidate unless stated; dev.\ and held-out values are from the first evaluation round, whose retrieval code is unchanged)}{table.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces n8n workflow 03: boxes are HTTP nodes calling one backend endpoint, diamonds are IF nodes, dashed red arrows are error outputs. $^\ast $Uploads with \texttt  {\small  mode: dossier}.}}{4}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:agents}{{2}{4}{n8n workflow 03: boxes are HTTP nodes calling one backend endpoint, diamonds are IF nodes, dashed red arrows are error outputs. $^\ast $Uploads with \code {mode: dossier}}{figure.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Components classified from the implementation: what each decides and whether an LLM is involved.}}{4}{table.caption.6}\protected@file@percent }
+\newlabel{tab:classes}{{4}{4}{Components classified from the implementation: what each decides and whether an LLM is involved}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Evaluation methodology and results}{4}{section.6}\protected@file@percent }
+\newlabel{sec:eval}{{6}{4}{Evaluation methodology and results}{section.6}{}}
 \citation{greshake2023injection}
+\def\@LN@column{1}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Evaluation evidence. Isolated: separate stack sharing no state with production. Production: requests through the production n8n workflow 03 with the Telegram API mocked inside a disposable container.}}{5}{table.caption.7}\protected@file@percent }
+\newlabel{tab:eval}{{5}{5}{Evaluation evidence. Isolated: separate stack sharing no state with production. Production: requests through the production n8n workflow 03 with the Telegram API mocked inside a disposable container}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Security and privacy}{5}{section.7}\protected@file@percent }
+\newlabel{sec:security}{{7}{5}{Security and privacy}{section.7}{}}
 \bibstyle{plain}
 \bibdata{references}
-\bibcite{chen2024bgem3}{1}
-\bibcite{cormack2009rrf}{2}
-\bibcite{fischler1981ransac}{3}
-\bibcite{greshake2023injection}{4}
-\bibcite{ji2023hallucination}{5}
+\bibcite{pymupdf}{1}
+\bibcite{bradski2000opencv}{2}
+\bibcite{chen2024bgem3}{3}
+\bibcite{cormack2009rrf}{4}
+\bibcite{docker_compose}{5}
+\bibcite{fischler1981ransac}{6}
+\bibcite{greshake2023injection}{7}
+\bibcite{ji2023hallucination}{8}
+\bibcite{jiang2023mistral}{9}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Security considerations, limitations and conclusion}{7}{section.8}\protected@file@percent }
-\bibcite{jiang2023mistral}{6}
-\bibcite{lewis2020rag}{7}
-\bibcite{interior_passport}{8}
-\bibcite{n8n}{9}
-\bibcite{ollama}{10}
-\bibcite{qdrant}{11}
-\bibcite{fastapi}{12}
-\bibcite{rne_formalities}{13}
-\bibcite{robertson2009bm25}{14}
-\bibcite{law2018_52}{15}
-\bibcite{decree2022_298}{16}
-\bibcite{smith2007tesseract}{17}
-\bibcite{telegram_bot_api}{18}
-\bibcite{wu2023autogen}{19}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Security and privacy controls and their production status on 18 October 2026.}}{6}{table.caption.8}\protected@file@percent }
+\newlabel{tab:security}{{6}{6}{Security and privacy controls and their production status on 18 October 2026}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Limitations, future work and conclusion}{6}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{6}{Limitations, future work and conclusion}{section.8}{}}
+\bibcite{lewis2020rag}{10}
+\bibcite{interior_passport}{11}
+\bibcite{n8n}{12}
+\bibcite{ollama}{13}
+\bibcite{translategemma}{14}
+\bibcite{pydantic}{15}
+\bibcite{qdrant}{16}
+\bibcite{fastapi}{17}
+\bibcite{rne_formalities}{18}
+\bibcite{robertson2009bm25}{19}
+\bibcite{law2018_52}{20}
+\bibcite{decree2022_298}{21}
+\bibcite{smith2007tesseract}{22}
+\bibcite{telegram_bot_api}{23}
+\bibcite{wu2023autogen}{24}
 \def\@LN@column{1}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Prompt library}{9}{appendix.A}\protected@file@percent }
-\newlabel{app:prompts}{{A}{9}{Prompt library}{appendix.A}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}\texttt  {\small  dialogue\_understanding}}{9}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Prompt library}{8}{appendix.A}\protected@file@percent }
+\newlabel{app:prompts}{{A}{8}{Prompt library}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}\texttt  {\small  dialogue\_understanding}}{8}{subsection.A.1}\protected@file@percent }
 \def\@LN@column{1}
 \def\@LN@column{1}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}\texttt  {\small  evidence\_topic}}{12}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}\texttt  {\small  evidence\_topic}}{11}{subsection.A.2}\protected@file@percent }
+\def\@LN@column{1}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.3}\texttt  {\small  grounded\_answer}}{12}{subsection.A.3}\protected@file@percent }
 \def\@LN@column{1}
 \def\@LN@column{1}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.4}\texttt  {\small  intent\_router}}{14}{subsection.A.4}\protected@file@percent }
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}\texttt  {\small  translate\_items}}{15}{subsection.A.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Prompt before/after experiments}{15}{appendix.B}\protected@file@percent }
-\newlabel{app:prompt_experiments}{{B}{15}{Prompt before/after experiments}{appendix.B}{}}
-\gdef \@abspage@last{15}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}\texttt  {\small  language\_identification}}{15}{subsection.A.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}\texttt  {\small  translate\_items}}{15}{subsection.A.6}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Evidence index}{16}{appendix.B}\protected@file@percent }
+\newlabel{app:evidence}{{B}{16}{Evidence index}{appendix.B}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Prompt before/after experiments}{16}{appendix.C}\protected@file@percent }
+\newlabel{app:prompt_experiments}{{C}{16}{Prompt before/after experiments}{appendix.C}{}}
+\def\@LN@column{1}
+\gdef \@abspage@last{17}
