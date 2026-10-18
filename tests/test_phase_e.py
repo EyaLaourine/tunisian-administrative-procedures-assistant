@@ -264,3 +264,25 @@ def test_context_switch_cin_to_rne(router):
 def test_uncovered_procedure_is_declared_not_answered(router):
     (d, _), = chain(router, ["Comment obtenir un extrait de naissance ?"])
     assert d.next_agent == "reply" and d.reply == t("uncovered_category", "fr")
+
+
+# ---------------------------------------------------------------- official form questions never reach the LLM fallback
+class _OutOfScopeLLM:
+    """Stand-in for the local model returning what production returned for these questions."""
+    calls = 0
+
+    def run(self, spec, **values):
+        from types import SimpleNamespace
+        _OutOfScopeLLM.calls += 1
+        return SimpleNamespace(text='{"procedure_category": "none", "intent": "out_of_scope"}')
+
+
+@pytest.mark.parametrize("text", ["Que contient le formulaire F-001 ?", "Que contient le formulaire F-002 ?"])
+@pytest.mark.parametrize("context", [None, DialogueContext(category="business_registration", rne_code="RNE C 999", language="fr")])
+def test_official_form_question_is_routed_without_llm(text, context):
+    """Observed in the isolated baseline run (LLM fallback enabled, as in production): out-of-scope refusal."""
+    _OutOfScopeLLM.calls = 0
+    router = IntentRouter(_OutOfScopeLLM(), PromptLibrary(REPO_ROOT / "prompts"), True)
+    d = router.route(RouteRequest(text=text, context=context))
+    assert d.procedure_category == "business_registration" and d.next_agent == "answer" and d.method == "rules"
+    assert _OutOfScopeLLM.calls == 0

@@ -343,11 +343,16 @@ class IntentRouter:
         method, prompt_ref = "rules", None
 
         if category is None:
-            from agents.legal_evidence import CLARIFY, requested_article
-            if requested_article(req.text) is not None:
+            from agents.legal_evidence import CLARIFY, identify_form, requested_article
+            if identify_form(req.text):
+                # A question about the printed content of an official RNE form (F-001, F-002) is recognised
+                # deterministically, before the LLM fallback (which classified it as out of scope).
+                category, intent = "business_registration", "procedure_info"
+            elif requested_article(req.text) is not None:
                 # An article number without the act it belongs to cannot be resolved: ask, never guess.
                 return RouteDecision(language=lang, intent="procedure_info", procedure_category="general",
                                      hints=hints, next_agent="reply", reply=CLARIFY[lang], method="rules")
+        if category is None:
             greeting = _hits(text, GREETING_KEYWORDS) > 0
             if greeting and len(text.split()) <= 6:
                 category, intent = "none", "greeting"
