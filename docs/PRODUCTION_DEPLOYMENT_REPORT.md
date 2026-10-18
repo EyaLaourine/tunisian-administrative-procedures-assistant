@@ -313,3 +313,142 @@ docker rm rc-candidate rc-n8n final-candidate final-n8n post-audit-n8n
 5. Manual Telegram acceptance is still pending (section 8).
 6. Old test images remain on disk. They are not running and can be removed later with `docker image rm`, not prune.
    `post-audit-final` contains the unguarded code and must never be run against the production network.
+
+## 13. Phase C: automatic language detection release (2026-10-18)
+
+**Verdict: PHASE C DEPLOYED — AWAITING MANUAL TELEGRAM ACCEPTANCE**
+
+Release: commit `525830e` (branch `fix/auto-language`); design and isolated validation in
+`docs/AUTO_LANGUAGE_DETECTION_FIX.md`. No failure occurred and no rollback was needed.
+
+### Timeline (UTC)
+
+| Time | Step |
+|---|---|
+| 12:20:10 | Phase C preflight start |
+| 12:20:37–12:22 | Backups, restore tests, secret scan (all gates passed) |
+| 12:22:59 | Prompt files applied to the production checkout |
+| 12:23:09 → 12:23:19 | Backend recreated → healthy |
+| 12:23:20–12:23:35 | Read-only smoke test, 9/9 (gate for the bridge) |
+| 12:23:41 → 12:24:00 → 12:24:37 | Bridge recreated (old poller stopped first) → started → healthy |
+| 12:24:51–12:25:42 | AUTO-language end-to-end checks on production, 17/17 |
+| 12:25:57 | Final verification |
+
+### Images
+
+| Service | Before | After |
+|---|---|---|
+| Backend | `rc-20261018b` `sha256:6124980fa90552a86b633d644335771e5039ebe0522f7f1d76f3f828898aaa92`, container `981da8424bc9` | `rc-20261018-lang` `sha256:cec1028a82e51f48a392a03321eb2694255263357756bc20bb11b0ed0c81d96c`, container `d9ff913e5d78` |
+| Telegram bridge | `final-candidate` `sha256:517755a5ad39343ab2f3e0c7f2efc7e46df6831ae6c8aa7917a1d5c59165c23c`, container `d8877372e84d` | `rc-20261018-lang` `sha256:c247749d5f7ffdf75fac02fe33e2df58830b73a9ecf7ede718f1432ccc6b7415`, container `3f73414a7eb7` |
+
+- **Provenance:** both candidates were re-verified before deployment; all copied files (63 and 10) are
+  hash-identical to `525830e`.
+- **Untouched:** n8n (started 2026-10-17 11:16), Qdrant (2026-10-15), Ollama and the unrelated `qdrant` container
+  were not restarted.
+
+### Preflight and backups
+
+Backup folder: `C:\Users\Eya Laourine\tna-backups\phaseC-20261018T122037Z\` (17 files; only the Windows account and
+SYSTEM have access; `SHA256SUMS.all` covers 16 files and verifies).
+
+| Backup | Details | Restore verification |
+|---|---|---|
+| Qdrant `official_docs_structure` | 272 points, `…-2026-10-18-12-20-38.snapshot`, 4 420 096 bytes, SHA-256 `79f0d76a71430d0abbdb1998e31f1c136774f56131e181c23c3f4fac0b9e9310` (equals the server checksum) | Restored into a throwaway Qdrant: 272/272, identical ids, payloads and vectors |
+| Qdrant `official_docs_recursive` | 174 points, `…-2026-10-18-12-20-38.snapshot`, 3 365 888 bytes, SHA-256 `19400cef01471addaa85a8d46d619b7ba2b8b25637dbde67c5a5521023a194a2` | 174/174 identical |
+| n8n database | `VACUUM INTO` copy, `integrity_check` ok, SHA-256 `d7f033b869d20d5428df76a9ed0be81d7bc2756e174b448e23db7b2b16151797` | Throwaway n8n with `--network none`: 3 workflows equal field by field; the credential decrypts with the backed-up key (unchanged DPAPI backup of Phase A, still equal to the current `.env` key) |
+| n8n workflows | `workflows.all.json` plus one file per workflow (01 inactive `5193fd21`, 02 `f4849a5c`, 03 `af6ad259`) | Same as above |
+| Data, config, prompts | `files/data-config-prompts.tar`, 127 files, SHA-256 `c31b290287a937f206915b745eba9e368eeaaac14a617e858da940efdb54e48d` | Extracted and compared with production: identical |
+| Rollback configuration | `rollback-prompts/registry.yaml` (pre-release registry, SHA-256 `6979e2ca310e5c68efcf644fe8ad5dae7c63bb10e37809733c62f9c6b98efc08`), `compose/docker-compose.yml`, environment variable names only, redacted `docker inspect` of backend and bridge | n/a |
+
+**Secret scan** (values never printed): the admin secret, the n8n encryption key and the Telegram token were
+searched in the Git history of the release branches, tracked files, backup metadata and the last 3 hours of
+backend, bridge and n8n logs. **0 exposures.** `QDRANT_API_KEY`, `ADMIN_API_KEY`, `AGENT_API_KEY` and
+`ASSISTANT_WEBHOOK_KEY` are unset.
+
+### Configuration change
+
+Only the two prompt files required by the release were changed in the production checkout
+(`C:\Users\Eya Laourine\tunisian-admin-assistant`). Both are byte-identical to `525830e`:
+
+- `prompts/language_identification/v1.yaml`: new file;
+- `prompts/registry.yaml`: one added line, `language_identification: v1`.
+
+`config/`, `docker-compose.yml`, `.env`, `data/` and `workflows/` were unchanged. The production checkout now shows
+these two files as uncommitted changes against its branch `codex/final-n8n-workflows` (`be787ca`). This is
+intentional, and they equal the release commit.
+
+### Commands executed
+
+```bash
+docker tag tunisian-admin-assistant-backend:rc-20261018-lang tunisian-admin-assistant-backend:latest
+docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull never backend
+docker tag tunisian-admin-assistant-telegram:rc-20261018-lang tunisian-admin-assistant-telegram:latest
+docker compose -p tunisian-admin-assistant --profile telegram up -d --no-deps --no-build --pull never telegram-bridge
+```
+
+### Verification
+
+**Health and configuration**
+- Backend: `/health` returns `{"status":"ok","qdrant":true,"ollama":true,"manifest_records":14}`; healthy,
+  0 restarts, 0 ERROR or traceback lines.
+- Prompts: the new prompt `language_identification@v1` loads, and `language_model_unavailable` was never logged.
+- Admin protection (static check inside the running container; no admin request sent): `/ingestion/run` and
+  `/index/run` depend on `require_admin`, which fails closed; the admin and agent keys are not configured.
+
+**Telegram bridge**
+- Exactly 1 bridge container; the old one was replaced, not duplicated.
+- Healthy, 0 restarts, 0 lines matching 409, conflict or poll failure.
+- Reaches `n8n:5678/healthz` and `backend:8000/health` (200); no webhook key set.
+- The language keyboard offers Auto first.
+
+**n8n, Qdrant and data**
+- n8n: `/healthz` returns 200. WF01 inactive (`5193fd21`); WF02 (`f4849a5c`) and WF03 (`af6ad259`) published and
+  unchanged.
+- Qdrant: `/readyz` returns 200. 272 / 174 points, point-for-point identical to the Phase C snapshot; only the two
+  official collections exist.
+- Data: `data/` is identical to the Phase C archive, with 14 manifest records and no untracked files.
+- Activity: no ingestion or indexing event; Workflow 01 not executed; no Telegram message sent by the tests.
+
+**Smoke tests** (read-only; evidence in `C:\Users\Eya Laourine\tna-backups\phaseC-verification\`)
+- `scripts/phaseb_smoke.py` against production workflows 02 and 03: **9/9**.
+  - Covered: retrieval citations, WF02 error handling, Arabic and Derja duplicate questions, French and Arabic legal
+    citations, unknown-article handling, two-turn French checklist, conversation context.
+  - The n8n `AxiosError … 422` log line at 12:23:33 comes from the intentional WF02 missing-query test.
+- AUTO-language end to end against production workflow 03, run through the released bridge code (hash-identical to
+  the image) with the Telegram API mocked: **17/17 turns**.
+  - Covered: FR→AR with procedure isolation (the 4 declared photos are not reused for the duplicate); Latin-script
+    Derja with "fi tounes" and "merci" follow-ups; an Arabic-script Derja clarification; a Derja preference with a
+    French question (answered in French), "ok", then Auto; refusals in French and in Derja; an RNE code.
+
+### Rollback (not needed; prepared)
+
+Restore only the immediately previous protected release, never `8adaf99`:
+
+```bash
+docker tag tunisian-admin-assistant-backend:rc-20261018b tunisian-admin-assistant-backend:latest
+docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull never backend
+docker tag tunisian-admin-assistant-telegram:final-candidate tunisian-admin-assistant-telegram:latest
+docker compose -p tunisian-admin-assistant --profile telegram up -d --no-deps --no-build --pull never telegram-bridge
+```
+
+**Prompts:** restore `rollback-prompts/registry.yaml` from the Phase C backup to `prompts/registry.yaml`. The extra
+`prompts/language_identification/` folder is harmless to `rc-20261018b`, but can be removed for exact consistency.
+No Qdrant, n8n or data rollback is required.
+
+### Remaining risks
+
+1. **Manual Telegram acceptance is pending.** The owner checks, without using `/language`:
+   - French → Arabic → Derja → English → French;
+   - a Latin-script Derja question;
+   - "في تونس" or "oui" after a clarification;
+   - `/language` → Derja → a French question (answered in French, menus in Derja) → **Auto**.
+2. The limitations in `docs/AUTO_LANGUAGE_DETECTION_FIX.md`, section 9:
+   - French-only official sources are quoted in French;
+   - Latin-script Derja is answered in Arabic script;
+   - a bare "oui" or "merci" is routed as before.
+3. Unchanged from earlier phases:
+   - the admin key still needs rotation before any activation;
+   - the RNE formalities table change upstream has not been reviewed;
+   - key backups are DPAPI-only;
+   - Qdrant has no API key;
+   - the `rollback-20261018` image (`8adaf99`) is vulnerable and must not be used.
