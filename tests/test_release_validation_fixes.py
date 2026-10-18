@@ -97,3 +97,14 @@ def test_decree_questions_quote_the_official_evidence(case):
 ])
 def test_vocabulary_additions_do_not_capture_other_procedures(text):
     assert identify_subject(text) is None
+
+
+# Mixed messages: a covered procedure named next to an uncovered vehicle document is still answered.
+@pytest.mark.parametrize("text,category", [
+    ("Je veux renouveler mon passeport et ma carte grise.", "passport"),
+    ("Pour la carte d identité, faut-il le permis de conduire ?", "national_id"),
+    ("Une société de location de voitures doit-elle s'immatriculer au RNE ?", "business_registration"),
+    ("I lost my driving licence and my passport, what documents for the passport?", "passport"),
+])
+def test_uncovered_vehicle_words_do_not_refuse_a_covered_procedure(text, category):
+    assert router.route(RouteRequest(text=text)).procedure_category == category

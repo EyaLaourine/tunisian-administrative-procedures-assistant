@@ -21,7 +21,7 @@ CATEGORY_KEYWORDS: dict[str, list[str]] = {
     "passport": ["passeport", "passport", "passbor", "basbor", "paspor", "باسبور", "الباسبور", "جواز",
                  "pèlerinage", "pelerinage", "pélerinage", "pilgrimage", "hajj", "الحج"],
     "national_id": [
-        "carte d'identité", "carte d identite", "carte d'identite", "carte identité", r"\bcin\b",
+        "carte d'identité", "carte d identite", "carte d'identite", "carte identité", "carte d identité", r"\bcin\b",
         "identity card", "national id", r"\bid card", "بطاقة التعريف", "بطاقة تعريف", "الكارطة",
         r"\bkarta\b", r"\blkarta\b",
     ],
