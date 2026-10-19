@@ -51,6 +51,12 @@ STRINGS: dict[str, dict[str, str]] = {
         "ar": "الترجمة غير متاحة أو لم تجتز التثبت؛ يُعرض النص الرسمي بلغته الأصلية ({source}).",
         "derja": "الترجمة موش متوفرة ولا ما تعدّاتش التثبت؛ نوريك النص الرسمي باللغة الأصلية ({source}).",
     },
+    "passport_abroad_fee_categories": {
+        "fr": "Pour les résidents à l’étranger, les catégories citées sont :\n• {reduced} TND : élèves, étudiants et enfants de moins de 6 ans.\n• {standard} TND : autres demandeurs.\nLa version arabe précise l’équivalent en monnaie étrangère. Confirmez le montant actuel et les modalités de paiement auprès de l’administration compétente.",
+        "en": "For residents abroad, the cited categories are:\n• {reduced} TND: school pupils, students and children under 6.\n• {standard} TND: other applicants.\nThe Arabic version specifies the equivalent in foreign currency. Confirm the current amount and payment arrangements with the competent administration.",
+        "ar": "للمقيمين بالخارج، الفئات المذكورة هي:\n• {reduced} دينارا تونسيا: للتلاميذ والطلبة والأطفال دون 6 سنوات.\n• {standard} دينارا تونسيا: لبقية الطالبين.\nتنص النسخة العربية على ما يعادل المبلغ بالعملة الأجنبية. يرجى تأكيد المبلغ الحالي وطريقة الدفع لدى الإدارة المختصة.",
+        "derja": "للمقيمين بالخارج، الفئات المذكورة هي:\n• {reduced} دينار تونسي: للتلامذة والطلبة والصغار أقل من 6 سنين.\n• {standard} دينار تونسي: لبقية الطالبين.\nالنسخة العربية تقول ما يعادل المبلغ بالعملة الأجنبية. ثبّت في المبلغ الحالي وكيفاش تخلّص عند الإدارة المعنية.",
+    },
     "machine_translation": {
         "en": "Automatic translation of the official {source} text; the official text prevails.",
         "fr": "Traduction automatique du texte officiel ({source}) ; le texte officiel fait foi.",

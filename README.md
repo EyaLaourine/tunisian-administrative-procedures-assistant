@@ -4,7 +4,7 @@ An academic assistant grounded in official Tunisian administrative documents. **
 
 ## For Professors - Installation and Testing
 
-Repository: https://github.com/EyaLaourine/tunisian-administrative-procedures-assistant. This repository is private; professors need an invitation and their own GitHub authentication.
+Repository: https://github.com/EyaLaourine/tunisian-administrative-procedures-assistant. The default branch is `master`; `release/github-ready` also contains the final release.
 
 Start with [the complete Windows installation guide](docs/INSTALLATION.md) or the [PDF guide](output/pdf/Professor_Installation_Guide.pdf).
 Prerequisites: Python 3.11, Git, Docker Desktop/Compose v2 and native Ollama. Download `bge-m3`,
@@ -61,6 +61,14 @@ docker compose up -d --build
 
 These commands alone do not populate Qdrant or publish workflows: complete the guide. Tracked official originals allow offline extraction. A fresh index has 14 documents and 286/186 structural/recursive chunks; historical production has 12 indexed documents and 272/174 points. New form templates did not automatically reindex production.
 
+## Verified Telegram acceptance
+
+The owner-reported 19 October session exercised passport clarification, declared-document follow-ups,
+Tunisia/abroad switching, fees and citations, English/Arabic/Derja responses, PDF and image form checks,
+CIN dossier findings, cancellation, unsupported-procedure refusal and conversational closing.
+See [the acceptance record](docs/FINAL_TELEGRAM_ACCEPTANCE_20261019.md) for evidence boundaries.
+This does not establish correctness for every possible input or current legal applicability.
+
 ## Testing
 
 ```powershell
@@ -82,7 +90,6 @@ Build processed files first. Integration scripts may hard-code localhost ports; 
 | `data/evaluation/`, `tests/` | Recorded evaluations and tests |
 | `scripts/`, `deploy/` | Reproduction and deployment tooling |
 | `docs/` | Installation, security and historical evidence |
-| `report/`, `presentation/` | Academic report, annexes and presentation |
 
 ## Security and scope
 
