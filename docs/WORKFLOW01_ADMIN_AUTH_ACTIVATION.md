@@ -22,7 +22,7 @@ The production backend was not modified and `ADMIN_API_KEY` is **not** active ye
 
 ## 2. Backup (outside Git)
 
-Directory: `C:\Users\Eya Laourine\tna-backups\phase0-workflow01-20261018T092520Z\`
+Directory: `%USERPROFILE%\tna-backups\phase0-workflow01-20261018T092520Z\`
 
 | File | SHA-256 |
 |---|---|

@@ -1,155 +1,89 @@
 # Tunisian Administrative Procedures Assistant
 
-A multi-agent Retrieval-Augmented Generation (RAG) assistant that helps Tunisian citizens understand
-official administrative procedures (passport, national ID card, business registration with the RNE),
-built **exclusively on documents retrieved from official Tunisian government sources**. It answers in
-English, French, Arabic and Tunisian Derja, on Telegram or over HTTP, and checks official forms (PDF or
-photo) for empty fields.
+An academic assistant grounded in official Tunisian administrative documents. **The frontend is the Telegram bot interface.** A Python bridge connects Telegram to n8n and FastAPI, with local Ollama models and Qdrant retrieval.
 
-> Status: **Phase 1 (foundation) and Phase 2 (agents, n8n orchestration, Telegram, multilingual
-> answers, form checking) implemented and tested.** Speech recognition is not implemented.
-> Agent design: [docs/AGENTS.md](docs/AGENTS.md). Results: [docs/TEST_RESULTS.md](docs/TEST_RESULTS.md).
+## For Professors - Installation and Testing
 
-The assistant does **not** provide legal advice and never states that a document is legally valid.
-Checklists are quoted verbatim from the official texts. Every answer lists its official sources (URL,
-official reference). Each source keeps an `applicability` flag that stays `unverified` until a human
-confirms the text is still in force.
+Start with [the complete Windows installation guide](docs/INSTALLATION.md) or the [PDF guide](output/pdf/Professor_Installation_Guide.pdf).
+Prerequisites: Python 3.11, Git, Docker Desktop/Compose v2 and native Ollama. Download `bge-m3`,
+`mistral:latest` and `translategemma:4b`. Default ports: backend 8000, n8n 5678, Qdrant 6343, Ollama 11434.
 
-## Architecture
+1. Configure private `.env` from `.env.example`; generate your own n8n encryption key.
+2. Install dependencies, reconstruct processed files and start the new Docker stack.
+3. Initialize Qdrant only on the new empty installation; import the three JSON exports in `workflows/`.
+4. Publish workflows 02 and 03; keep workflow 01 inactive. Exact commands are in the guide.
+5. Create your own bot with official `@BotFather` and enter its token privately before starting the bridge.
+6. Ask a passport question and a follow-up; test FR/EN/AR/Derja and verify official references.
+7. Test an unsupported request such as carte grise, upload a supported test form, and try both Form Check and Dossier Check.
+8. Run the automated tests; never upload real identity documents for a demonstration.
 
-```
- Telegram ─(long polling)─ telegram-bridge ─┐
- HTTP client ───────────────────────────────┤ POST /webhook/assistant
-                                            ▼
-                               n8n workflow 03 (orchestrator)
-        ┌───────────────┬───────────────┬──────────────────┬───────────────────┐
-        ▼               ▼               ▼                  ▼                   ▼
-  Intent Router   RAG Retriever   Checklist Builder   Grounded Answer   Form-Filling Helper
-  /agents/route   /agents/retrieve /agents/checklist  /agents/answer    /agents/form-check
-        └───────────────┴──── FastAPI backend (agents/, rag/) ────────────────┘
-                          │                         │
-                Qdrant (official corpus)    Ollama on the host: bge-m3, mistral, translategemma
-```
+The project does not ship with personal credentials. Poor photos may be refused; live Telegram delivery
+requires the professor's own bot and manual acceptance. See the guide for safe shutdown and troubleshooting.
 
-Phase 1 workflows remain: `01` (ingest and index, manual or weekly) and `02` (`/webhook/retrieve`).
+## Features
 
-## Quick start
+- French, English, Arabic and Tunisian Derja interaction, clarification and conversational context.
+- Supported passport, national identity card and RNE questions with official references.
+- PDF/image assistance for RNE F-001, RNE F-002, CIN and ordinary passport application templates.
+- `/form_check` for potential omissions and `/dossier_check` for informational readiness.
+- Controlled refusals and numerical evidence checks.
 
-Prerequisites: Docker Desktop (Compose v2), Ollama on the host, Python 3.11 (for tests/CLI).
+This is not legal advice or official validation. Coverage and source freshness are limited. Recognition does not prove authenticity or legal completeness. No speech recognition or model fine-tuning is claimed.
 
-```bash
-# 1. Configuration
-cp .env.example .env          # then set N8N_ENCRYPTION_KEY to a long random string
+## Architecture and stack
 
-# 2. Local models (host Ollama)
-ollama pull bge-m3
-ollama pull mistral
-ollama pull translategemma:4b
-
-# 3. Start the stack (Qdrant, backend, n8n)
-docker compose up -d --build
-curl http://localhost:8000/health          # {"status":"ok","qdrant":true,"ollama":true,...}
-
-# 4. First ingestion and indexing. The admin endpoints are disabled (HTTP 403) unless ADMIN_API_KEY is set in
-#    .env; set it, recreate the backend, then send the key in X-Admin-Key (workflow 01 stays inactive).
-docker compose exec backend python -m ingestion              # download the approved official sources
-curl -X POST http://127.0.0.1:8000/index/run -H "X-Admin-Key: $ADMIN_API_KEY"   # chunk + embed into Qdrant
-
-# 5. Import and publish the n8n workflows (Git Bash on Windows: prefix with MSYS_NO_PATHCONV=1)
-docker compose exec n8n n8n import:workflow --separate --input=/workflows
-docker compose exec -e N8N_RUNNERS_BROKER_PORT=5690 n8n n8n publish:workflow --id=TnaaRetrieveApi1
-docker compose exec -e N8N_RUNNERS_BROKER_PORT=5690 n8n n8n publish:workflow --id=TnaaAssistant01
-docker compose restart n8n
-
-# 6. Ask the assistant through n8n (send UTF-8 JSON; on Windows prefer a file: -d @question.json)
-curl -X POST http://localhost:5678/webhook/assistant -H "content-type: application/json; charset=utf-8" \
-  -d '{"text":"Quelles pièces fournir pour renouveler un passeport ?"}'
+```text
+Telegram -> Python bridge (long polling) -> n8n /webhook/assistant
+                                             |
+                                      FastAPI services
+                                      /             \
+                          Qdrant + hybrid RAG      PDF/OCR/forms
+                                      |
+                       Ollama: BGE-M3, Mistral, TranslateGemma
 ```
 
-Form check over HTTP: `{"file": {"filename": "f.pdf", "mime_type": "application/pdf", "data_b64": "<base64>"}, "language": "fr"}`.
+Python 3.11, FastAPI, Uvicorn, Pydantic and HTTPX provide APIs and integration. BM25 and Reciprocal Rank Fusion complement dense retrieval. PyMuPDF, Tesseract, OpenCV and NumPy process documents; Beautiful Soup extracts HTML. Docker Compose manages services and pytest provides tests. The optional web demo is a fallback, not the frontend presented here.
 
-### Telegram
+## Quick start (new installation only)
 
-All commands, menus, language preferences and upload handlers can be tested without Telegram credentials.
-The optional bridge runs in its own lightweight image. Without a token, Compose keeps it idle with
-`LIVE_CONNECTIVITY_PENDING`; this does not affect backend or n8n and does not claim live connectivity.
-
-For the existing running stack, build/start only the bridge:
+Follow [the Windows installation guide](docs/INSTALLATION.md) for models, private configuration, initial indexing, workflow publication and Telegram setup. Never run initialization commands against production.
 
 ```powershell
-docker compose --profile telegram up -d --no-deps --build telegram-bridge
-```
-
-For a fresh stack after the setup and workflow publication steps above:
-
-```powershell
-docker compose --profile telegram up -d --build
-```
-
-Commands: `/start`, `/help`, `/language`, `/procedures`, `/passport`, `/birth_certificate`, `/business`,
-`/checklist`, `/form_check`, `/privacy`, `/cancel`. Inline menus include language and procedure choices,
-Back, Main menu and New question. Selected language persists; New question clears procedure context,
-and `/cancel` clears preferences and suppresses a pending answer. Official evidence remains unchanged.
-
-PDF, JPEG, PNG and Telegram photos are processed in memory with size and signature checks. Private
-uploads are never stored or indexed. Unknown forms and unreadable files receive distinct explanations;
-all form results require manual verification. Source coverage remains limited for birth certificates.
-
-Preferences expire after 30 minutes of inactivity, with at most 1,000 sessions. At most two upstream
-requests run simultaneously, one per chat. Cancellation suppresses delivery and further retries but
-cannot interrupt processing already running inside n8n/OCR. Update deduplication is process-local;
-crash recovery is not exactly once. A fixed container name, local process lock and Telegram conflict
-handling discourage competing pollers. No public URL or inbound Telegram port is required.
-
-[Activation guide and live-test checklist](docs/TELEGRAM_ACTIVATION.md) ·
-[Telegram implementation and verification report](docs/TELEGRAM_REPORT.md)
-
-| Service | Host port | Notes |
-|---|---|---|
-| backend (FastAPI) | 8000 | OpenAPI docs at `/docs`; agents under `/agents/*` |
-| n8n | 5678 | workflows in [workflows/](workflows/) |
-| Qdrant | 6343 | 6333 deliberately avoided (may be used by another local project) |
-| Ollama | 11434 (host) | optional containerised Ollama: `--profile ollama-docker` |
-| telegram-bridge | — | outbound only; compose profile `telegram` |
-
-All ports are bound to `127.0.0.1` only.
-
-## Local development and tests
-
-```bash
+Copy-Item .env.example .env
+# Privately replace N8N_ENCRYPTION_KEY before startup.
 py -3.11 -m venv .venv
-.venv/Scripts/pip install -e ".[dev]"        # Linux/macOS: .venv/bin/pip
-.venv/Scripts/python -m pytest -m "not integration"   # unit tests (no services needed)
-.venv/Scripts/python -m pytest -m integration         # needs the stack, published workflow 03 and host Ollama
-.venv/Scripts/python scripts/benchmark.py --runs 3    # local LLM + end-to-end latency benchmark
-.venv/Scripts/python -m ingestion                     # run ingestion from the CLI (same code as /ingestion/run)
+.venv\Scripts\python -m pip install -e ".[dev]"
+.venv\Scripts\python scripts/build_processed_corpus.py
+docker compose up -d --build
 ```
 
-## Repository layout
+These commands alone do not populate Qdrant or publish workflows: complete the guide. Tracked official originals allow offline extraction. A fresh index has 14 documents and 286/186 structural/recursive chunks; historical production has 12 indexed documents and 272/174 points. New form templates did not automatically reindex production.
 
-| Path | Content |
+## Testing
+
+```powershell
+.venv\Scripts\python -m pytest -m "not integration" -q
+```
+
+Build processed files first. Integration scripts may hard-code localhost ports; use a dedicated test installation. HTTP tests do not establish real Telegram delivery. See [release readiness](docs/GITHUB_RELEASE_READINESS.md) for executed checks and limitations.
+
+## Repository structure
+
+| Path | Purpose |
 |---|---|
-| `backend/` | FastAPI app (`main.py`, `agents_api.py`), settings, structured logging, Dockerfile (includes Tesseract OCR) |
-| `ingestion/` | source registry models, robots/AI-opt-out policy, downloader, checksums, manifest, manual import |
-| `rag/` | extraction (PDF/HTML structure detection), chunking (recursive + structure-aware), embeddings, Qdrant store, indexing, retrieval |
-| `agents/` | intent router, language detection, retriever, checklist builder, grounded answer, form helper, UI strings |
-| `prompts/` | versioned prompt library (`registry.yaml` selects the active version of each prompt) |
-| `telegram_bridge/` | Telegram Bot API long-polling bridge to the n8n webhook |
-| `workflows/` | exported n8n workflows (01 ingest/index, 02 retrieval API, 03 multi-agent assistant) |
-| `scripts/` | evaluation runners (retrieval, agents, prompt experiments, multilingual, multimodal), benchmark, n8n review tools |
-| `config/sources.yaml` | **official source registry** (approved, excluded and not-found candidates with reasons) |
-| `config/certs/` | intermediate CA certificate for an official server with an incomplete TLS chain |
-| `data/raw/` | unmodified official originals + `manifest.json` (provenance, SHA-256) + `ingestion_log.jsonl` |
-| `data/processed/` | regenerable extraction and chunk outputs (git-ignored) |
-| `data/evaluation/` | evaluation sets and every recorded result (see `docs/EVALUATION.md`) |
-| `docs/` | architecture, agents, evaluation, prompt engineering, security and deployment plans |
-| `report/` | LaTeX report (`main.tex`; compiled `report_final.pdf`, 8 main pages + annexes) |
-| `presentation/` | 20-minute presentation (`FINAL_PRESENTATION.pptx`), speaker notes, demo script, Q&A, evidence files |
+| `telegram_bridge/` | Telegram commands, menus, polling and uploads |
+| `backend/`, `agents/` | APIs, routing, conversation and specialized services |
+| `rag/`, `ingestion/` | Extraction, retrieval and controlled indexing |
+| `workflows/` | Three canonical n8n exports |
+| `prompts/`, `config/` | Versioned prompts, source registry, public TLS intermediate |
+| `data/raw/` | Official originals and provenance manifest |
+| `data/evaluation/`, `tests/` | Recorded evaluations and tests |
+| `scripts/`, `deploy/` | Reproduction and deployment tooling |
+| `docs/` | Installation, security and historical evidence |
+| `report/`, `presentation/` | Academic report, annexes and presentation |
 
-## Data policy
+## Security and scope
 
-Only real documents from official Tunisian sources are used. No synthetic or AI-generated
-administrative content enters the knowledge base. Sources whose `robots.txt` opts out of AI agents,
-or disallows crawling of a path, are not downloaded automatically. Every source, including excluded and
-not-found candidates with the reason, is listed in [config/sources.yaml](config/sources.yaml).
-User questions and uploaded files are processed in memory and are never logged, stored or indexed.
+Never commit `.env`, tokens, private keys, user uploads or credential exports. The certificate in `config/certs/` is a public intermediate CA. TLS verification stays enabled. Administrative endpoints are disabled without an admin key; optional agent/webhook authentication must be configured consistently with n8n. Avoid printing complete container environments or Compose configuration.
+
+See [security guidance](docs/SECURITY_DEPLOYMENT_GUIDE.md), [agent design](docs/AGENTS.md), [evaluation](docs/EVALUATION.md) and [production evidence](docs/PRODUCTION_DEPLOYMENT_REPORT.md). Academic results are tied to their recorded datasets and environments, not universal accuracy guarantees.

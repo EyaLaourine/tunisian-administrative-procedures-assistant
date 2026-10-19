@@ -1,4 +1,16 @@
-# Local credentials must never be sent in a Docker build context.
+# Keep local source control, caches and private state outside build contexts.
+.git
+.venv
+venv
+__pycache__
+.pytest_cache
+tmp
+output
+volumes
+data/uploads
+data/evaluation/post_audit_backup/qdrant/*.snapshot
 .env
 .env.*
 !.env.example
+*.key
+*.dpapi

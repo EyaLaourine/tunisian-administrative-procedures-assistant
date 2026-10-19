@@ -114,7 +114,7 @@ The candidate's first Phase F run scored 20/21 because of an error in **my** tes
 - Amounts must belong to the official table.
 - The fee-conflict warning tests from Phase E pass unchanged.
 
-**Evidence:** `C:\Users\Eya Laourine\tna-backups\phaseF-validation-20261018\` (48 files, `SHA256SUMS`).
+**Evidence:** `%USERPROFILE%\tna-backups\phaseF-validation-20261018\` (48 files, `SHA256SUMS`).
 
 ## 6. Performance (measured, same 115 backend turns, isolated)
 

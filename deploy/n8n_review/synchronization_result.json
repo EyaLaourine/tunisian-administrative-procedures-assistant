@@ -2,7 +2,7 @@
   "status": "STOPPED_AFTER_VERIFIED_ROLLBACK",
   "release_directory": "tmp\\n8n-live-release\\20261017T225152Z",
   "fresh_before_cli_backups": "tmp/n8n-review/20261017T224927121512Z",
-  "final_read_only_exports": "C:\\Users\\Eya Laourine\\tunisian-admin-assistant\\tmp\\n8n-review\\20261017T225339956378Z",
+  "final_read_only_exports": "%USERPROFILE%\\tunisian-admin-assistant\\tmp\\n8n-review\\20261017T225339956378Z",
   "workflows": [
     {
       "id": "TnaaIngestIndex1",

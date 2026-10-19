@@ -8,7 +8,7 @@ activated, no ingestion ran, and no n8n credential or workflow was changed.
 ## 1. Production inventory (read-only checks)
 
 Compose project `tunisian-admin-assistant`. Working directory and config file:
-`C:\Users\Eya Laourine\tunisian-admin-assistant\docker-compose.yml`. That checkout is at `be787ca` with a clean
+`%USERPROFILE%\tunisian-admin-assistant\docker-compose.yml`. That checkout is at `be787ca` with a clean
 working tree.
 
 | Service | Container | Image ID | Started (UTC) | Restarts | Health |
@@ -56,8 +56,8 @@ working tree.
 
 ## 2. Backups
 
-Root: `C:\Users\Eya Laourine\tna-backups\phaseA-20261018T102604Z\` (outside Git, 72 MB, 20 files). Only the
-Windows account `Eya Laourine` and SYSTEM can access it. `SHA256SUMS.all` covers every file, and
+Root: `%USERPROFILE%\tna-backups\phaseA-20261018T102604Z\` (outside Git, 72 MB, 20 files). Only the
+owner's Windows account and SYSTEM can access it. `SHA256SUMS.all` covers every file, and
 `sha256sum -c SHA256SUMS.all` passes.
 
 ### Qdrant (`qdrant\`)
@@ -223,7 +223,7 @@ production effect.
 
 ## 7. Phase B commands (prepared, NOT executed)
 
-Run these from `C:\Users\Eya Laourine\tunisian-admin-assistant` in Git Bash. Keep `.env` unchanged for the initial
+Run these from `%USERPROFILE%\tunisian-admin-assistant` in Git Bash. Keep `.env` unchanged for the initial
 deployment.
 
 **1. Deploy the backend** (about 10–30 s of interruption; WF03 returns its 503 error branch meanwhile):
@@ -274,10 +274,10 @@ docker logs --since 5m tunisian-admin-telegram-bridge 2>&1 | grep -iE "error|con
 **6. Acceptance tests** (read-only Q&A through WF03; they do not write to Qdrant):
 
 ```bash
-cd "C:/Users/Eya Laourine/tna-overnight"
-mkdir -p "C:/Users/Eya Laourine/tna-backups/phaseB-acceptance"
-"C:/Users/Eya Laourine/tunisian-admin-assistant/.venv/Scripts/python" scripts/defect_probes.py http://127.0.0.1:5678/webhook/assistant "C:/Users/Eya Laourine/tna-backups/phaseB-acceptance/probes.json"   # 16/16
-"C:/Users/Eya Laourine/tunisian-admin-assistant/.venv/Scripts/python" scripts/multilingual_eval.py --url http://127.0.0.1:5678/webhook/assistant --out "C:/Users/Eya Laourine/tna-backups/phaseB-acceptance/multilingual.json"   # 0 failures
+cd "%USERPROFILE%/tna-overnight"
+mkdir -p "%USERPROFILE%/tna-backups/phaseB-acceptance"
+"%USERPROFILE%/tunisian-admin-assistant/.venv/Scripts/python" scripts/defect_probes.py http://127.0.0.1:5678/webhook/assistant "%USERPROFILE%/tna-backups/phaseB-acceptance/probes.json"   # 16/16
+"%USERPROFILE%/tunisian-admin-assistant/.venv/Scripts/python" scripts/multilingual_eval.py --url http://127.0.0.1:5678/webhook/assistant --out "%USERPROFILE%/tna-backups/phaseB-acceptance/multilingual.json"   # 0 failures
 ```
 
 Then the owner sends the demo messages on Telegram: French, Arabic and Derja text, one PDF, and one image. Do

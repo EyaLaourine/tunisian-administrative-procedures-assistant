@@ -32,7 +32,7 @@ See [architecture](N8N_THREE_WORKFLOW_ARCHITECTURE.md), [visual scope](N8N_VISUA
 
 ## Exact changed-file inventory
 
-All 22 files are new; no pre-existing backend, agent, RAG, prompt, corpus, evaluation ground truth, Compose, environment or canonical workflow file changed. Paths are relative to `C:\Users\Eya Laourine\tunisian-admin-assistant`.
+All 22 files are new; no pre-existing backend, agent, RAG, prompt, corpus, evaluation ground truth, Compose, environment or canonical workflow file changed. Paths are relative to `%USERPROFILE%\tunisian-admin-assistant`.
 
 | Path | Purpose |
 |---|---|

@@ -5,13 +5,20 @@ __pycache__/
 venv/
 *.egg-info/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
 htmlcov/
 
-# Environment and secrets
+# Environment and secrets (.env.example is the only environment file that is tracked)
 .env
+.env.*
+!.env.example
 *.pem
 *.key
+# Exception: public intermediate CA certificates needed for TLS verification of official sites
+# (see ingestion/tls.py). Never place a private key here.
+!config/certs/*.pem
 
 # data/raw/ (original official files + manifest) IS tracked: it is the verifiable corpus snapshot.
 # Processed outputs are regenerable from data/raw/.
@@ -25,8 +32,27 @@ tmp/
 # Docker volumes / local service state
 volumes/
 
+# LaTeX build artefacts (report/report.pdf is the published PDF)
+report/*.aux
+report/*.bbl
+report/*.blg
+report/*.log
+report/*.out
+report/*.toc
+report/*.synctex.gz
+report/main.pdf
+
+# Office lock files and editor backups
+~$*
+*.tmp
+*.bak
+
 # IDE / OS
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local credential stores and runtime snapshots (original official files remain tracked)
+*.dpapi
+data/evaluation/post_audit_backup/qdrant/*.snapshot

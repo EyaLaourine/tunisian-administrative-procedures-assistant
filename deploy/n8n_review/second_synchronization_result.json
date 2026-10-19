@@ -4,7 +4,7 @@
   "approved_candidates_commit": "6021546a1bb16166b919d92aa75a655d1bbead60",
   "backups_cli": "tmp/n8n-review/20261017T231419059090Z",
   "backups_api": "tmp\\n8n-live-release\\20261017T231447Z-second",
-  "final_exports": "C:\\Users\\Eya Laourine\\tunisian-admin-assistant\\tmp\\n8n-review\\20261017T231608959554Z",
+  "final_exports": "%USERPROFILE%\\tunisian-admin-assistant\\tmp\\n8n-review\\20261017T231608959554Z",
   "workflows": [
     {
       "id": "TnaaIngestIndex1",

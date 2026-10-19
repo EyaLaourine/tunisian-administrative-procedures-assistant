@@ -115,7 +115,7 @@ messages.
 - **Shared resource:** host Ollama, for inference only.
 
 All containers and the network were removed afterwards. The evidence is in
-`C:\Users\Eya Laourine\tna-backups\lang-validation-20261018\` (cases, per-turn results, probe and evaluation outputs,
+`%USERPROFILE%\tna-backups\lang-validation-20261018\` (cases, per-turn results, probe and evaluation outputs,
 scripts, `SHA256SUMS`).
 
 The scenario messages come from this specification and from the Phase B manual acceptance checklist. The original

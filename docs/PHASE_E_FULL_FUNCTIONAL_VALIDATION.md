@@ -218,7 +218,7 @@ on the same machine and stack.
 
 ## 9. Evidence
 
-`C:\Users\Eya Laourine\tna-backups\phaseE-validation-20261018\` (53 files, `SHA256SUMS`):
+`%USERPROFILE%\tna-backups\phaseE-validation-20261018\` (53 files, `SHA256SUMS`):
 - `pass_baseline/`, `pass_candidate/` and `pass_final/`: per-turn results with full reply texts (coverage,
   conversational, language), probes, WF02 summary, backend logs, multilingual evaluation (final) and error recovery
   (final);

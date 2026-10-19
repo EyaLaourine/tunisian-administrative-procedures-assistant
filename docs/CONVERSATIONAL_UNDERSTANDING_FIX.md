@@ -68,7 +68,7 @@ the Phase C checklist messages that match the logged route sequence, and the log
 turn. If you provide the verbatim transcript, it will replace the `text` values without changing the test logic.
 
 **Evidence** (cases, per-turn results, probes, evaluation, scripts, `SHA256SUMS`):
-`C:\Users\Eya Laourine\tna-backups\conv-validation-20261018\`. The isolated containers and network were removed.
+`%USERPROFILE%\tna-backups\conv-validation-20261018\`. The isolated containers and network were removed.
 
 ## 5. Performance
 

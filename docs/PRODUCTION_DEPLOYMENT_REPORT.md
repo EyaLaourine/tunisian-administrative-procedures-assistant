@@ -1,7 +1,7 @@
 # Production deployment report (Phase B)
 
 Date: 2026-10-18 (all times UTC). Branch: `overnight/finalization`. Plan and backups:
-`docs/PRODUCTION_BACKUP_AND_PREFLIGHT.md`, `C:\Users\Eya Laourine\tna-backups\phaseA-20261018T102604Z\`.
+`docs/PRODUCTION_BACKUP_AND_PREFLIGHT.md`, `%USERPROFILE%\tna-backups\phaseA-20261018T102604Z\`.
 
 **Verdict: DEPLOYED — AUTOMATED CHECKS PASSED — AWAITING MANUAL TELEGRAM ACCEPTANCE**
 
@@ -99,7 +99,7 @@ deployment.
   - rollback tags `backend:rollback-20261018` = `8adaf99…` and `telegram:rollback-20261018` = `7eafea6…`;
   - candidates `rc-20261018b` = `6124980f…` and `final-candidate` = `517755a5…` (provenance in the Phase A report).
 - **Compose:**
-  - project `tunisian-admin-assistant`, working directory `C:\Users\Eya Laourine\tunisian-admin-assistant`;
+  - project `tunisian-admin-assistant`, working directory `%USERPROFILE%\tunisian-admin-assistant`;
   - services `qdrant`, `backend`, `n8n` and `telegram-bridge`;
   - the n8n and Qdrant config hashes equal their running containers.
 - **Services:**
@@ -111,7 +111,7 @@ deployment.
 
 ## 4. Actual deployment commands
 
-Run from `C:\Users\Eya Laourine\tunisian-admin-assistant`; `.env` was not modified.
+Run from `%USERPROFILE%\tunisian-admin-assistant`; `.env` was not modified.
 
 ```bash
 docker tag tunisian-admin-assistant-backend:rc-20261018b tunisian-admin-assistant-backend:latest
@@ -140,7 +140,7 @@ Compose output for each was `Recreate → Recreated → Starting → Started` fo
 ## 6. n8n smoke tests (workflows 02 and 03, read-only)
 
 Script: `scripts/phaseb_smoke.py` (10 webhook calls); results in
-`C:\Users\Eya Laourine\tna-backups\phaseB-20261018\smoke.json`. Expected patterns come from the validated probe
+`%USERPROFILE%\tna-backups\phaseB-20261018\smoke.json`. Expected patterns come from the validated probe
 sets. Final run (10:51:59–10:52:01): **9/9 passed**.
 
 | Case | Result |
@@ -348,7 +348,7 @@ Release: commit `525830e` (branch `fix/auto-language`); design and isolated vali
 
 ### Preflight and backups
 
-Backup folder: `C:\Users\Eya Laourine\tna-backups\phaseC-20261018T122037Z\` (17 files; only the Windows account and
+Backup folder: `%USERPROFILE%\tna-backups\phaseC-20261018T122037Z\` (17 files; only the Windows account and
 SYSTEM have access; `SHA256SUMS.all` covers 16 files and verifies).
 
 | Backup | Details | Restore verification |
@@ -368,7 +368,7 @@ backend, bridge and n8n logs. **0 exposures.** `QDRANT_API_KEY`, `ADMIN_API_KEY`
 ### Configuration change
 
 Only the two prompt files required by the release were changed in the production checkout
-(`C:\Users\Eya Laourine\tunisian-admin-assistant`). Both are byte-identical to `525830e`:
+(`%USERPROFILE%\tunisian-admin-assistant`). Both are byte-identical to `525830e`:
 
 - `prompts/language_identification/v1.yaml`: new file;
 - `prompts/registry.yaml`: one added line, `language_identification: v1`.
@@ -409,7 +409,7 @@ docker compose -p tunisian-admin-assistant --profile telegram up -d --no-deps --
 - Data: `data/` is identical to the Phase C archive, with 14 manifest records and no untracked files.
 - Activity: no ingestion or indexing event; Workflow 01 not executed; no Telegram message sent by the tests.
 
-**Smoke tests** (read-only; evidence in `C:\Users\Eya Laourine\tna-backups\phaseC-verification\`)
+**Smoke tests** (read-only; evidence in `%USERPROFILE%\tna-backups\phaseC-verification\`)
 - `scripts/phaseb_smoke.py` against production workflows 02 and 03: **9/9**.
   - Covered: retrieval citations, WF02 error handling, Arabic and Derja duplicate questions, French and Arabic legal
     citations, unknown-article handling, two-turn French checklist, conversation context.
@@ -501,7 +501,7 @@ and no rollback was needed.
    automatically (messages were answered afterwards, 0 restarts). They are not polling conflicts: a 409 raises
    `PollingConflict` and stops the bridge, and the 409 count is 0. The previous bridge showed the same pattern.
 4. **Minimal backup** for this backend-only change, at
-   `C:\Users\Eya Laourine\tna-backups\phaseD-20261018T131058Z\` (only your Windows account and SYSTEM have access):
+   `%USERPROFILE%\tna-backups\phaseD-20261018T131058Z\` (only your Windows account and SYSTEM have access):
    - `data-config-prompts.tar` (128 files, SHA-256 `cc5186678f2932692163416f20696819ba925a49ffae1cbfa86dabb459913b1c`;
      extracted and identical to production);
    - redacted `inspect.backend-before.json`;
@@ -545,7 +545,7 @@ data file was changed.
   vectors); only the two official collections exist.
 - **Data:** `data/`, `config/` and `prompts/` identical to the Phase D backup; 14 manifest records; no ingestion or
   indexing.
-- **Smoke tests** (read-only; evidence in `C:\Users\Eya Laourine\tna-backups\phaseD-verification\`):
+- **Smoke tests** (read-only; evidence in `%USERPROFILE%\tna-backups\phaseD-verification\`):
   - `scripts/phaseb_smoke.py`: **9/9**. The n8n `AxiosError 422` at 13:11:40 is the intentional WF02 missing-query
     test.
   - Conversational end to end through production workflow 03, with the released bridge code and the Telegram API
@@ -609,7 +609,7 @@ Release: commit `d994df7` (branch `fix/phase-e`). Root causes, coverage matrix a
 - **Warning, not a blocker:** the running bridge had logged 12 `telegram_poll_failed` warnings since 12:24 UTC.
   All are transient Telegram network errors (`TelegramAPIError`, `RemoteProtocolError`), with 0 restarts and 0
   conflicts; the healthcheck requires a successful poll within 20 minutes, and it stayed healthy.
-- **Minimal backup**, at `C:\Users\Eya Laourine\tna-backups\phaseE-20261018T150851Z\` (only your Windows account
+- **Minimal backup**, at `%USERPROFILE%\tna-backups\phaseE-20261018T150851Z\` (only your Windows account
   and SYSTEM have access):
   - `data-config-prompts.tar`, 128 files, SHA-256
     `cc5186678f2932692163416f20696819ba925a49ffae1cbfa86dabb459913b1c`. It is identical to the Phase D archive,
@@ -653,7 +653,7 @@ data change was made.
 - **LLM use:** 0 LLM route-classifier calls during the whole verification.
 
 **Smoke and regression tests**, read-only, with Telegram mocked and no real message sent (evidence in
-`C:\Users\Eya Laourine\tna-backups\phaseE-verification\`):
+`%USERPROFILE%\tna-backups\phaseE-verification\`):
 - `scripts/phaseb_smoke.py` against production WF02 and WF03: **9/9**. The n8n `AxiosError 422` at 15:09:41 is the
   intentional WF02 missing-query test.
 - Phase E end to end through production WF03, with the released bridge code: **30/30 turns**. Covered: passport,
@@ -742,7 +742,7 @@ docker compose -p tunisian-admin-assistant up -d --no-deps --no-build --pull nev
   - signature and checkboxes are listed for manual checking;
   - the bridge's "no legal validity" notice appears in FR, EN, AR and Derja;
   - no field is called legally mandatory, and form validity is not asserted.
-- **Backup** at `C:\Users\Eya Laourine\tna-backups\phaseG-20261018T182136Z\` (owner and SYSTEM only):
+- **Backup** at `%USERPROFILE%\tna-backups\phaseG-20261018T182136Z\` (owner and SYSTEM only):
   - `data-config-prompts.tar`, 128 files, SHA-256 `cc5186678f29…`, identical to the Phase E archive; it extracts identical to production;
   - compose file, service and image states, redacted backend inspect, workflow states, Qdrant metadata, `rollback.txt`, `SHA256SUMS`.
   - The first permission change on the backup left its files unreadable. They were reset to inherit the folder ACL (owner and SYSTEM), and the checksums were verified afterwards.
@@ -774,7 +774,7 @@ Run with `verify_prod_g.sh`:
 - Telegram API mocked inside a throwaway container, so no real chat received anything;
 - synthetic documents with neutral placeholder text, plus the blank official forms.
 
-Evidence is in `C:\Users\Eya Laourine\tna-backups\phaseG-verification\` (`SHA256SUMS`).
+Evidence is in `%USERPROFILE%\tna-backups\phaseG-verification\` (`SHA256SUMS`).
 
 | Check | Production result |
 |---|---|
