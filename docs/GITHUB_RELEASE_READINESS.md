@@ -30,7 +30,7 @@ Unit tests used an already available Python environment, without modifying its p
 
 - README introduces Telegram as frontend and includes the professor installation/test checklist.
 - `docs/INSTALLATION.md` gives ordered PowerShell commands, models, configuration, offline preparation, new-install-only indexing, n8n import/publication and BotFather steps.
-- `output/pdf/Professor_Installation_Guide.pdf` is the printable guide; update its repository URL after publication.
+- `output/pdf/Professor_Installation_Guide.pdf` is the printable guide; includes the assigned private repository URL.
 - `.env.example` documents defaults and distinguishes host options from Compose forwarding.
 - `.dockerignore` excludes credentials, source-control metadata, caches and disposable state while keeping required official originals.
 - Public CA certificate is tracked; no private key is included.
@@ -48,4 +48,4 @@ Professors must install Docker/Python/Ollama, download models, configure their o
 
 Scanning is a finite check, not proof that arbitrary data can never contain sensitive content. Reviewed original documents have the recorded official hashes; tests use fixture material. No real Telegram authentication or message exchange was performed by this continuation. Manual four-language, PDF/image and dossier acceptance with a new bot remains required. OCR may reject poor images; dossier output cannot certify legal completeness. Model tags are mutable: record digests when reproducing measurements.
 
-The repository must remain private initially. GitHub CLI requires the owner's interactive authorization. Publication URL, pushed SHA, default branch and remote verification must be reported only after successful authenticated creation/push. No credentials may be stored in this report.
+The repository must remain private initially. GitHub CLI authorization was completed by the owner as EyaLaourine. The new private repository is `EyaLaourine/tunisian-administrative-procedures-assistant`. A local clone of the committed release passed essential-file presence checks. Professors require an invitation before accessing the private repository. Publication URL, pushed SHA, default branch and remote verification must be reported only after successful authenticated creation/push. No credentials may be stored in this report.

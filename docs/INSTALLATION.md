@@ -1,13 +1,13 @@
 # Windows installation guide
 
-This guide initializes a **new local installation**, not production. Commands are PowerShell, from the repository root. The release worktree has no remote: replace the URL placeholder with the approved publication URL.
+This guide initializes a **new local installation**, not production. Commands are PowerShell, from the repository root. Repository: https://github.com/EyaLaourine/tunisian-administrative-procedures-assistant. The repository is private: the owner must invite the professor, who must authenticate with their own GitHub account before cloning.
 
 ## 1. Prerequisites
 
 Mandatory: Git; Python 3.11 with the `py` launcher; Docker Desktop in Linux-container mode with Compose v2; native Ollama. Allow enough disk/RAM/VRAM for models and containers. No universal hardware minimum has been measured; CPU inference is slower. Internet is needed for packages/models and Telegram. A Telegram account/token is optional until real bot activation.
 
 ```powershell
-git clone <APPROVED_REPOSITORY_URL> tunisian-admin-assistant
+git clone --branch release/github-ready https://github.com/EyaLaourine/tunisian-administrative-procedures-assistant.git tunisian-admin-assistant
 Set-Location tunisian-admin-assistant
 py -3.11 --version
 docker version

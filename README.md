@@ -4,6 +4,8 @@ An academic assistant grounded in official Tunisian administrative documents. **
 
 ## For Professors - Installation and Testing
 
+Repository: https://github.com/EyaLaourine/tunisian-administrative-procedures-assistant. This repository is private; professors need an invitation and their own GitHub authentication.
+
 Start with [the complete Windows installation guide](docs/INSTALLATION.md) or the [PDF guide](output/pdf/Professor_Installation_Guide.pdf).
 Prerequisites: Python 3.11, Git, Docker Desktop/Compose v2 and native Ollama. Download `bge-m3`,
 `mistral:latest` and `translategemma:4b`. Default ports: backend 8000, n8n 5678, Qdrant 6343, Ollama 11434.
