@@ -329,6 +329,7 @@ class TelegramBridge:
                     if len(payload["text"]) + len(suffix) <= 2000:
                         payload["text"] += suffix
             payload = AssistantRequest.model_validate(payload).model_dump(exclude_none=True)
+            webhook_started = time.perf_counter()
             for attempt in range(3):
                 if self.stop.is_set() or (cancelled and cancelled.is_set()):
                     return
@@ -343,6 +344,7 @@ class TelegramBridge:
                     self.stop.wait(2 ** attempt)
             if self.stop.is_set() or (cancelled and cancelled.is_set()):
                 return
+            webhook_ms = round((time.perf_counter() - webhook_started) * 1000)
             result = AssistantResponse.model_validate(resp.json())
             # Retain only validated routing metadata, never the user's question or document values.
             category = result.route.get("procedure_category")
@@ -395,6 +397,7 @@ class TelegramBridge:
             self.send_text(chat_id, text, navigation(menu_lang))
             log.info("telegram_message_answered", extra={"fields": {
                 "kind": kind, "ms": round((time.perf_counter() - started) * 1000),
+                "webhook_ms": webhook_ms, "webhook_attempts": attempt + 1,
                 "agent": (resp.json() or {}).get("agent")}})
         except Exception as exc:  # never let one message stop the bridge
             if self.stop.is_set() or (cancelled and cancelled.is_set()):

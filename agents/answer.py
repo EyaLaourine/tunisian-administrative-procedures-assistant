@@ -11,7 +11,7 @@ import re
 from agents import i18n
 from agents.answerability import AnswerabilityGate
 from agents.verification import EvidenceVerifier, verify_numbers
-from agents.checklist_builder import sources_footer
+from agents.checklist_builder import AMOUNT, ChecklistBuilder, sources_footer
 from agents.language import LANGUAGE_NAMES
 from agents.llm import LLMError, OllamaChatClient
 from agents.prompts import PromptLibrary
@@ -36,6 +36,24 @@ class GroundedAnswerer:
         self.corpus = corpus
 
     def answer(self, req: ComposeRequest) -> AnswerResult:
+        result = self._answer(req)
+        # Free-form/fallback answers bypass ChecklistBuilder rendering. Preserve the same
+        # parallel-source warning whenever a supported passport answer discusses money.
+        if (self.corpus is not None and result.found and req.route.procedure_category == "passport"
+                and (req.route.intent == "fees" or AMOUNT.search(result.text))):
+            route = req.route.model_copy(update={"context": None, "intent": "fees"})
+            fee_report = ChecklistBuilder(self.corpus, None, self.prompts)._procedure_guide(
+                req.model_copy(update={"route": route}))
+            for warning in fee_report.warnings:
+                if warning not in result.text:
+                    result.text += "\n\n⚠️ " + warning
+            for citation in fee_report.citations if fee_report.warnings else []:
+                if citation.doc_id not in {c.doc_id for c in result.citations}:
+                    result.citations.append(citation)
+                    result.text += "\n" + citation.title + "\n" + citation.url
+        return result
+
+    def _answer(self, req: ComposeRequest) -> AnswerResult:
         if self.corpus is not None:
             from agents.legal_evidence import download_reply, legal_reply
             result = download_reply(req, self.corpus) or legal_reply(req, self.corpus)

@@ -168,7 +168,8 @@ def test_rne_forms_are_unchanged(helper, doc_id):
     assert res.recognised and res.form_doc_id == doc_id and res.match_score == 1.0
     assert all(f.role == "required" and f.status == "empty" for f in res.fields)
     assert res.missing == [f.label for f in res.fields] and res.if_applicable == []
-    assert "🏛" not in res.text and "👁" not in res.text and i18n.t("form_missing", "fr") in res.text
+    assert "🏛" not in res.text and i18n.t("form_missing", "fr") in res.text
+    assert res.manual_verification and i18n.t("form_not_checked", "fr") in res.text
 
 
 @pytest.mark.parametrize("lang", ["fr", "en", "ar", "derja"])

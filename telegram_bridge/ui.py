@@ -188,3 +188,13 @@ DIALOGUE_PRIVACY = {
 }
 for language, note in DIALOGUE_PRIVACY.items():
     TEXT[language]["privacy"] += "\n\n" + note
+
+# Form observations and supporting-document completeness are different assessments.
+for _language, _scope, _unavailable in [
+    ("en", "Form-field checks (not dossier completeness):", "Dossier completeness cannot be evaluated without an applicable official checklist or configured rules."),
+    ("fr", "Vérification des champs du formulaire (pas de la complétude du dossier) :", "La complétude du dossier ne peut pas être évaluée sans liste officielle applicable ou règles configurées."),
+    ("ar", "تفقد خانات المطبوعة (وليس اكتمال الملف):", "لا يمكن تقييم اكتمال الملف دون قائمة رسمية منطبقة أو قواعد مهيأة."),
+    ("derja", "تفقد خانات المطبوعة (موش اكتمال الملف):", "ما ننجموش نقيّموا اكتمال الملف من غير قائمة رسمية تنطبق ولا قواعد مهيأة."),
+]:
+    TEXT[_language]["dossier_field_scope"] = _scope
+    TEXT[_language]["dossier_completeness_unavailable"] = _unavailable

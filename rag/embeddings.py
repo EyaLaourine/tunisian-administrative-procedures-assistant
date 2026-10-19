@@ -1,8 +1,14 @@
 """Embedding client interface and the Ollama (BGE-M3) implementation."""
 
+import logging
+import time
+
 from typing import Protocol
 
 import httpx
+
+
+log = logging.getLogger(__name__)
 
 
 class EmbeddingClient(Protocol):
@@ -30,6 +36,7 @@ class OllamaEmbeddingClient:
         with httpx.Client(timeout=self._timeout) as client:
             for i in range(0, len(texts), self._batch_size):
                 batch = texts[i : i + self._batch_size]
+                started = time.perf_counter()
                 try:
                     resp = client.post(self._url, json={"model": self.model, "input": batch})
                     resp.raise_for_status()
@@ -39,6 +46,9 @@ class OllamaEmbeddingClient:
                 if len(batch_vectors) != len(batch) or any(len(v) != self.dim for v in batch_vectors):
                     raise EmbeddingError(f"unexpected embedding shape from model {self.model}")
                 vectors.extend(batch_vectors)
+                log.info("embedding_timing", extra={"fields": {
+                    "model": self.model, "items": len(batch),
+                    "ms": round((time.perf_counter() - started) * 1000)}})
         return vectors
 
     def ping(self) -> bool:

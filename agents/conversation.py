@@ -54,8 +54,38 @@ def _tokens(text: str) -> list[str]:
     return t.split()
 
 
-def classify(text: str) -> str | None:
-    """affirm | deny | thanks | greeting | farewell, or None when the message carries anything else."""
+# Full-message matches only: never treat a negative document declaration or a
+# courtesy prefix followed by a real administrative question as conversation closing.
+_DERJA_CLOSING = re.compile(
+    r"(?:le|la)\s+ma\s*nhe+b{1,2}\s+(?:chay|chey|chayy|chai)\s+(?:ekhr|ekher|e5er|akher)"
+    r"|barra\s+(?:ya+tik|ya3tik|yaatek|y3atik)\s+(?:saha|sa7a|essa7a)"
+)
+
+
+def _closing_text(text: str) -> str:
+    # Accent folding is limited to this bounded matcher (e.g. 'lé').
+    folded = "".join(c for c in unicodedata.normalize("NFKD", text.lower()) if not unicodedata.combining(c))
+    return " ".join(_REPEAT.sub(r"\1", _PUNCT.sub(" ", folded)).split())
+
+
+def _is_derja_closing(text: str) -> bool:
+    normalized = _closing_text(text)
+    return bool(_DERJA_CLOSING.fullmatch(normalized)) or normalized in {"la merci", "le merci"}
+
+
+def classify(text: str, context=None) -> str | None:
+    """closing | affirm | deny | thanks | greeting | farewell; substantive text returns None."""
+    # "barra" also means "abroad": while residence is being clarified, a short
+    # "barra + thanks" is a substantive answer, not a farewell.
+    residence_answer = (
+        _closing_text(text).startswith("barra ") and _is_derja_closing(text)
+        and context is not None and context.category == "passport"
+        and context.pending_intent and context.residence is None
+    )
+    if residence_answer:
+        return None
+    if _is_derja_closing(text) or _closing_text(text) == "non merci":
+        return "closing"
     words = _tokens(text)
     if not words or len(words) > 6 or not all(w in _WORDS for w in words) or not any(w in _ALL for w in words):
         return None
@@ -85,6 +115,8 @@ _EXPRESSION_LANGUAGE = {
 
 def expression_language(text: str, context=None) -> str | None:
     """Language of a pure courtesy message from its own words, or None when its words are neutral ("ok")."""
+    if _is_derja_closing(text):
+        return "derja"
     words = set(_tokens(text))
     conversation = getattr(context, "language", None) or getattr(context, "preferred_language", None)
     if words & _EXPRESSION_LANGUAGE["derja"]:
@@ -118,6 +150,12 @@ def strip_courtesy(text: str) -> str:
 
 
 REPLIES = {
+    "closing": {
+        "en": "Alright, goodbye!",
+        "fr": "D’accord, bonne continuation !",
+        "ar": "حسنا، مع السلامة!",
+        "derja": "باهي، بالسلامة! ربي يسهّل.",
+    },
     "thanks": {
         "en": "You're welcome! If you have another question, I'm here.",
         "fr": "Avec plaisir ! Si vous avez une autre question, je suis là.",

@@ -242,18 +242,18 @@ def personalize(result, state, language):
                 ready.append(line)
             else:
                 remaining.append(line)
-    out = [result.scenario or '',ui['ack']]
+    out = [(result.translation or {}).get('title', result.scenario or ''),ui['ack']]
     for heading, lines in [(ui['declared'],ready),(ui['verify'],uncertain),(ui['remaining'],remaining)]:
         if lines:
             out += ['',heading + ':',*['• '+line for line in lines]]
     out += ['',ui['review']]
     from agents import i18n
     if result.translation and result.translation.get('validated'):
-        out += ['',i18n.t('machine_translation',language,source=i18n.SOURCE_LANGUAGE_LABEL.get(result.source_language,result.source_language))]
+        out += ['',i18n.t('application_translation' if result.translation.get('method') == 'explicit_cin_ar_v1' else 'machine_translation',language,source=i18n.SOURCE_LANGUAGE_LABEL.get(result.source_language,result.source_language))]
     elif language == 'derja' and result.source_language == 'ar':
         out += ['',i18n.t('official_msa',language)]
     elif result.source_language and result.source_language != {'derja':'ar'}.get(language,language):
-        out += ['',i18n.t('original_language',language,source=i18n.SOURCE_LANGUAGE_LABEL.get(result.source_language,result.source_language))]
+        out += ['',i18n.t('translation_unavailable' if result.translation and not result.translation.get('validated') else 'original_language',language,source=i18n.SOURCE_LANGUAGE_LABEL.get(result.source_language,result.source_language))]
     for warning in result.warnings:
         out += ['',warning]
     result.text = '\n'.join(out + sources_footer(language,result.citations))

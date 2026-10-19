@@ -86,7 +86,7 @@ class ChecklistBuilder:
                     result.sections = [section for section in result.sections if section.kind == focus_kind]
                     self._attach_fee_warning(result, route.intent)
                 result.alternatives = []
-                result.text = self._render(route,result.scenario or "",result)
+                result.text = self._render(route,(result.translation or {}).get("title", result.scenario or ""),result)
             return result
         if self.gate is not None and req.passages and not self.gate.assess(req.query, route, req.passages).answerable:
             # The procedure was only guessed (LLM fallback) and the evidence does not support it.
@@ -134,10 +134,13 @@ class ChecklistBuilder:
 
         title = scenario.title
         translation = None
-        if doc_lang in SOURCE_LANGUAGE_NAMES and doc_lang != target and target in TRANSLATION_TARGETS:
-            title, translation = self._translate(scenario.title, sections, doc_lang, target)
+        if doc_lang in SOURCE_LANGUAGE_NAMES and doc_lang != target:
+            title, translation = self._translate(scenario.title, sections, doc_lang, target, doc_id)
 
         alternatives = [s.title for s in self.corpus.scenarios(doc_id) if s.index != scenario.index]
+        if translation and translation.get("method") == "explicit_cin_ar_v1" and translation.get("validated"):
+            from agents.checklist_arabic import translate_cin
+            alternatives = translate_cin(alternatives) or []
         result = ChecklistResult(
             text="", found=True, doc_id=doc_id, scenario=scenario.title, source_language=doc_lang,
             sections=sections, alternatives=alternatives, citations=citations,
@@ -241,7 +244,22 @@ class ChecklistBuilder:
         return out
 
     # ------------------------------------------------------------------ translation
-    def _translate(self, title: str, sections: list[ChecklistSection], source: str, target: str):
+    def _translate(self, title: str, sections: list[ChecklistSection], source: str, target: str, doc_id: str | None = None):
+        if target == "ar":
+            # The local model's FR->AR output previously changed legal meaning. Use a bounded
+            # application translation only for exact passages of the indexed CIN guide.
+            from agents.checklist_arabic import translate_cin
+            lines = [title] + [item for section in sections for item in section.items]
+            translated = translate_cin(lines) if source == "fr" and doc_id == "interior-national-id-guide-fr" else None
+            if translated is None or not all(_same_numbers(a, b) for a, b in zip(lines, translated)):
+                return title, {"validated": False, "reason": "translation_unavailable"}
+            position = 1
+            for section in sections:
+                section.translated_items = translated[position:position + len(section.items)]
+                position += len(section.items)
+            return translated[0], {"validated": True, "method": "explicit_cin_ar_v1", "seconds": 0.0, "title": translated[0]}
+        if target not in TRANSLATION_TARGETS:
+            return title, {"validated": False, "reason": "translation_unavailable"}
         if self.llm is None:
             return title, {"validated": False, "reason": "llm_disabled"}
         lines = [title] + [i for s in sections for i in s.items]
@@ -383,6 +401,31 @@ class ChecklistBuilder:
         best = score(ranked[0])
         return [r for r in ranked[:MAX_ROWS] if score(r) >= max(best - 1, 1)]
 
+    def _passport_abroad_fee_details(self, route: RouteDecision, result: ChecklistResult) -> str | None:
+        """Clarify applicant groups only when the selected source and aligned version agree."""
+        if (route.procedure_category != "passport" or route.intent != "fees" or "abroad" not in route.hints
+                or result.fee_discrepancy or not result.doc_id):
+            return None
+        items = [item for section in result.sections if section.kind == "fees" for item in section.items]
+        reduced = [item for item in items if re.search(r"élèves|للتلاميذ", item) and re.search(r"étudiants|الطلبة", item)
+                   and re.search(r"\b6\b", item)]
+        standard = [item for item in items if re.search(r"autres|للبقية", item)]
+        if len(reduced) != 1 or len(standard) != 1:
+            return None
+        a, b = list(AMOUNT.finditer(reduced[0])), list(AMOUNT.finditer(standard[0]))
+        if len(a) != 1 or len(b) != 1:
+            return None
+        scenario = next((s for s in self.corpus.scenarios(result.doc_id) if s.title == result.scenario), None)
+        parallel = self._parallel(result.doc_id, scenario) if scenario else None
+        if parallel is None:
+            return None
+        # The foreign-currency qualification must actually occur in this scenario's Arabic text.
+        evidence = items + [item for section in parallel[1].sections for item in section.items]
+        if not any("بالعملة الأجنبية" in item for item in evidence):
+            return None
+        return i18n.t("passport_abroad_fee_categories", route.language,
+                      reduced=a[0].group(1), standard=b[0].group(1))
+
     # ------------------------------------------------------------------ rendering
     def _render(self, route: RouteDecision, title: str, result: ChecklistResult) -> str:
         lang = route.language
@@ -391,14 +434,18 @@ class ChecklistBuilder:
             items = s.translated_items or s.items
             out += ["", f"▪️ {i18n.t(s.kind, lang)}"]
             out += [f"• {i.strip()}" for i in items]
+        details = self._passport_abroad_fee_details(route, result)
+        if details:
+            out += ["", details]
         out.append("")
         for w in result.warnings:
             out.append(f"⚠️ {w}")
         label = i18n.SOURCE_LANGUAGE_LABEL.get(result.source_language or "", "?")
         if result.translation and result.translation.get("validated"):
-            out.append(f"ℹ️ {i18n.t('machine_translation', lang, source=label)}")
+            key = "application_translation" if result.translation.get("method") == "explicit_cin_ar_v1" else "machine_translation"
+            out.append("ℹ️ " + i18n.t(key, lang, source=label))
         elif result.source_language != TARGET_LANGUAGE[lang]:
-            out.append(f"ℹ️ {i18n.t('original_language', lang, source=label)}")
+            out.append("ℹ️ " + i18n.t("translation_unavailable", lang, source=label))
         elif lang == "derja" and result.source_language == "ar":
             # Derja explanations around the official Modern Standard Arabic text, which is never rewritten.
             out.append(f"ℹ️ {i18n.t('official_msa', lang)}")

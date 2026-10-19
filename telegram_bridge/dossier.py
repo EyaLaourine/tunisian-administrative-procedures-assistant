@@ -8,7 +8,7 @@ def render_dossier(result: AssistantResponse, language: str) -> str:
     report = result.report
     assessed = result.recognised is True and report is not None
     fields = report.form_fields if assessed else None
-    lines = [ui['dossier_title']]
+    lines = [ui['dossier_title'], ui['dossier_field_scope']]
     for name, key in [('filled', 'dossier_filled'), ('missing', 'dossier_missing'),
                       ('unreadable', 'dossier_unreadable'), ('cannot_verify', 'dossier_unverifiable')]:
         values = getattr(fields, name) if fields else None
@@ -18,7 +18,12 @@ def render_dossier(result: AssistantResponse, language: str) -> str:
     requirements = evidence.official_requirements if evidence else None
     supported = ([q for q in requirements if q.status == 'supported_by_official_source']
                  if requirements is not None else None)
-    lines.append(f"{ui['dossier_supported']}: " + (str(len(supported)) if supported is not None else ui['dossier_unknown']))
+    count = str(len(supported)) if supported is not None else ui['dossier_unknown']
+    if evidence and evidence.official_checklist_available is False and not requirements:
+        count = ui['dossier_unknown']
+    lines.append(f"{ui['dossier_supported']}: " + count)
+    if evidence and evidence.official_checklist_available is False:
+        lines.append(ui['dossier_completeness_unavailable'])
     lines.append(ui['dossier_unverified'] + ':')
     if evidence and evidence.requirements_not_verified is not None and requirements is not None:
         notes = [q.note or q.id for q in requirements if q.status != 'supported_by_official_source']

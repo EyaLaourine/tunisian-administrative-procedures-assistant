@@ -1,12 +1,16 @@
 """Minimal client for local LLM generation through Ollama's /api/chat (no paid APIs)."""
 
 import json
+import logging
 import time
 from dataclasses import dataclass
 
 import httpx
 
 from agents.prompts import PromptSpec
+
+
+log = logging.getLogger(__name__)
 
 
 class LLMError(Exception):
@@ -48,6 +52,12 @@ class OllamaChatClient:
                 data = resp.json()
         except (httpx.HTTPError, json.JSONDecodeError) as exc:
             raise LLMError(f"Ollama chat request failed ({model}): {exc}") from exc
+        log.info("llm_timing", extra={"fields": {
+            "model": model, "prompt": spec.ref,
+            "ms": round((time.perf_counter() - started) * 1000),
+            **{key + "_ms": round(data[key] / 1_000_000) for key in
+               ("load_duration", "prompt_eval_duration", "eval_duration") if isinstance(data.get(key), (int, float))},
+            "eval_tokens": data.get("eval_count")}})
         text = (data.get("message") or {}).get("content", "")
         return LLMResult(text=text.strip(), model=model, prompt_ref=spec.ref,
                          seconds=round(time.perf_counter() - started, 2), eval_tokens=data.get("eval_count"),

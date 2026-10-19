@@ -64,6 +64,7 @@ MAX_TABLE_ROWS_SHOWN = 3
 class FieldReport(BaseModel):
     label: str  # official bilingual label of the field on the form
     status: str  # filled | missing | unreadable | cannot_verify
+    role: str = "required"
     required_by: list[str] = Field(default_factory=list)  # ids of official requirements naming this field
 
 
@@ -115,10 +116,28 @@ class DossierValidator:
             return DossierReport(text=check.text, recognized=False, error=check.error, method=check.method,
                                  limitations=[i18n.t("dossier_lim_unsupported", lang)])
         rules = FORM_RULES.get(check.form_doc_id)
-        if rules is None:  # recognised form without validator rules: report fields only
-            return DossierReport(text=check.text, recognized=True, method=check.method,
-                                 form_type={"doc_id": check.form_doc_id, "title": check.form_title, "url": check.form_url},
-                                 limitations=[i18n.t("dossier_lim_no_rules", lang)])
+        if rules is None:  # Keep form findings even when no supporting-document rules exist.
+            status_map = {"filled": "filled", "empty": "missing", "not_found": "unreadable"}
+            fields = []
+            for field in check.fields:
+                if field.role == "administration" or (field.role == "optional" and field.status != "filled"):
+                    continue
+                status = "if_applicable" if field.role == "conditional" and field.status == "empty" else status_map[field.status]
+                fields.append(FieldReport(label=field.label, status=status, role=field.role))
+            fields += [FieldReport(label=label, status="cannot_verify") for label in check.manual_verification]
+            unavailable = i18n.t("dossier_lim_no_rules", lang)
+            return DossierReport(
+                text=check.text + "\n\n" + unavailable, recognized=True, method=check.method,
+                form_type={"doc_id": check.form_doc_id, "title": check.form_title, "url": check.form_url},
+                recognized_fields=fields,
+                filled_fields=[f.label for f in fields if f.status == "filled"],
+                missing_fields=list(check.missing),
+                unreadable_fields=[f.label for f in fields if f.status == "unreadable"],
+                unverifiable_fields=list(check.manual_verification),
+                requirements_not_verified=[unavailable],
+                source_references=[c for c in [self.corpus.citation(check.form_doc_id)] if c],
+                readiness_summary=unavailable,
+                limitations=[unavailable, i18n.t("dossier_lim_not_certification", lang)])
         form_cit = self.corpus.citation(check.form_doc_id)
 
         # 1. Field status (from the Form-Filling Helper) + sections it cannot analyse.

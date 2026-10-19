@@ -2,6 +2,15 @@
 
 Date: 2026-10-19. Scope: `release/github-ready`, release checkout only. No deployment, production restart, ingestion, production indexing, Telegram message, merge or history rewrite was performed.
 
+## Final publication update - 19 October 2026
+
+The repository was subsequently made public by its owner and master became the default branch. This
+release task preserves that visibility and the master deletion commits for report/, presentation/,
+AGENTS.md and CLAUDE.md. Those academic archives remain in Git history; they are not runtime dependencies.
+The latest runtime includes the bounded conversation closing fix. The owner supplied a real Telegram
+acceptance transcript; see FINAL_TELEGRAM_ACCEPTANCE_20261019.md. Historical pending statements below
+describe earlier checkpoints, not the current acceptance status.
+
 ## Completed before this continuation
 
 Claude prepared configuration cleanup, a public TLS intermediate certificate, an offline corpus builder, a disposable `fresh-*` stack and fresh-install evaluation. Prior production Phase F/G results remain historical evidence, not tests rerun by this release task.

@@ -39,7 +39,7 @@ def chain(router, messages, ctx=None):
     ("non", "deny"), ("no", "deny"), ("لا", "deny"), ("le", "deny"),
     ("merci", "thanks"), ("Merci beaucoup !", "thanks"), ("merciii", "thanks"), ("thanks", "thanks"),
     ("thank you", "thanks"), ("شكرا", "thanks"), ("شكرا برشا", "thanks"), ("يعطيك الصحة", "thanks"),
-    ("ya3tik saha", "thanks"), ("ok merci", "thanks"), ("non merci", "thanks"), ("يعيشك", "thanks"),
+    ("ya3tik saha", "thanks"), ("ok merci", "thanks"), ("non merci", "closing"), ("يعيشك", "thanks"),
     ("bonjour", "greeting"), ("Salam", "greeting"), ("عسلامة", "greeting"), ("السلام عليكم", "greeting"),
     ("hello", "greeting"), ("au revoir", "farewell"), ("bye", "farewell"), ("بالسلامة", "farewell"),
     ("bslema", "farewell"), ("bonne journée", "farewell"),

@@ -224,13 +224,16 @@ def test_cin_fees_only_from_official_text(builder, corpus):
         assert all(i.strip() in official_lines(corpus, CIN) for s in r.sections for i in s.items)
 
 
-def test_cin_arabic_user_gets_french_official_text_with_note(builder, corpus):
+def test_cin_arabic_user_gets_labelled_translation_with_original_citation(builder, corpus):
     from agents.schemas import RouteDecision
     route = RouteDecision(language="ar", intent="required_documents", procedure_category="national_id", hints=["renewal"],
                           next_agent="checklist", method="rules")
     r = build(builder, corpus, route, CIN, corpus.scenarios(CIN)[1])
     assert r.found and r.source_language == "fr"
-    assert t("original_language", "ar", source="FR") in r.text   # quoted, not machine-translated
+    assert r.translation["validated"] and r.translation["method"] == "explicit_cin_ar_v1"
+    assert t("application_translation", "ar", source="FR") in r.text
+    assert all(section.translated_items for section in r.sections)
+    assert r.citations[0].doc_id == CIN
     assert t("sources", "ar") in r.text and t("disclaimer", "ar") in r.text
 
 

@@ -297,14 +297,14 @@ class IntentRouter:
             # later short answer such as "oui" or "في تونس" keeps it. A None context still means "unchanged".
             # A pure courtesy message ("merci", "يعطيك الصحة") is answered in its own language but does not
             # redirect the conversation language.
-            if not (conversation.classify(req.text) and decision.context.language):
+            if not (conversation.classify(req.text, req.context) and decision.context.language):
                 decision.context.language = decision.language
             decision.context.preferred_language = req.context.preferred_language if req.context else None
         return decision
 
     def _route(self, req: RouteRequest) -> RouteDecision:
         from agents import conversation
-        kind = conversation.classify(req.text)
+        kind = conversation.classify(req.text, req.context)
         if kind:
             # Affirmation, negation, gratitude, greeting or farewell: answered before any retrieval. The dialogue
             # context is returned unchanged so a pending clarification (and the procedure) is kept. The expression's
