@@ -37,3 +37,11 @@ The deleted academic files remain available in prior Git commits.
 
 Post-integration tests and the final branch ancestry/tree comparisons must pass before the master push.
 Final remote commit identities are reported after successful publication rather than predicted here.
+
+## Windows clone line endings
+
+The first post-merge Windows clone converted three hash-validated n8n JSON candidates to CRLF.
+Three tests failed while 1467 passed. Git attributes now disable text conversion for official raw
+originals and workflow JSON artifacts, preserving recorded bytes without changing expected hashes.
+This is a packaging fix, not a workflow or production change. Post-fix validation is required before
+master publication.

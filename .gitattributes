@@ -1,3 +1,8 @@
 *.pdf binary
 *.pptx binary
 *.snapshot binary
+
+# Preserve official originals and hash-validated workflow artifacts byte-for-byte on Windows.
+data/raw/** -text
+deploy/**/*.json -text
+workflows/*.json -text
