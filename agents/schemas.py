@@ -56,7 +56,7 @@ class RouteDecision(BaseModel):
     prompt_ref: str | None = None
     context: DialogueContext | None = None
     retrieval_query: str | None = Field(default=None, max_length=2000)
-    # Language of `reply` when it differs from the conversation language: a courtesy message ("يعطيك الصحة") is
+    # Language of `reply` when it differs from the conversation language: a courtesy message ("ÙŠØ¹Ø·ÙŠÙƒ Ø§Ù„ØµØ­Ø©") is
     # answered in its own language, while `language` keeps the conversation language that clients remember.
     reply_language: Language | None = None
 
@@ -137,5 +137,6 @@ class FormCheckResult(BaseModel):
     match_score: float | None = None
     fields: list[FormField] = Field(default_factory=list)
     missing: list[str] = Field(default_factory=list)  # empty required applicant fields
+    manual_verification: list[str] = Field(default_factory=list)  # signature/boxes: never auto-verified
     if_applicable: list[str] = Field(default_factory=list)  # empty conditional fields
     error: str | None = None

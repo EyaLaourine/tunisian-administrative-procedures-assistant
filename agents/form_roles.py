@@ -46,6 +46,18 @@ class TemplateRules:
 C, O, A = "conditional", "optional", "administration"
 
 TEMPLATE_RULES: dict[str, TemplateRules] = {
+    "rne-form-f001-natural-person-registration": TemplateRules(
+        sha256="dbfa1f815312620a99519e84ff854d751f8784b970861082df686bf911296172",
+        fields={},
+        unchecked=("إمضاء المصرّ ح أو من ينوبه بتوكيل", "Type de Pièce d’identité / نوع بطاقة الهوية",
+                   "Métier Libéral - مهنة حرّ ة Artisan - حرفيCommerçant -تاجر", "IDENTIFIANT UNIQUE -المعرّف الوحيد"),
+    ),
+    "rne-form-f002-legal-entity-registration": TemplateRules(
+        sha256="f68cfaa0a715fd213c4e3a97b32a270d513eabcac2e868f98531d401a73ff06c",
+        fields={},
+        unchecked=("إمضاء الممثل القانوني أو من ينوبه بتوكيل", "Type de Pièce d’identité / نوع بطاقة الهوية",
+                   "RIB -المعرف البنكي", "IDENTIFIANT UNIQUE -المعرّف الوحيد"),
+    ),
     # مطلب بطاقة التعريف الوطنية (IL.01-12/2013). Applicant part: y 192-450 of page 1; "بيانـات خاصة
     # بالإدارة" starts at y 475 and page 2 is administration only.
     "interior-national-id-application-form": TemplateRules(

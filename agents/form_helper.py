@@ -474,7 +474,7 @@ class FormHelper:
         return FormCheckResult(
             text="\n".join(lines), recognised=True, method=method, form_doc_id=best_id, form_title=rec.title,
             form_url=rec.url, match_score=round(best_score, 3), fields=checked, missing=missing,
-            if_applicable=if_applicable,
+            if_applicable=if_applicable, manual_verification=list(template.unchecked),
         )
 
     def _sparse_words(self, page_image: bytes) -> list[Word]:
